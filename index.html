@@ -2,14 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Discord, most platforms -->
   <meta property="og:title" content="Codex.bat">
   <meta property="og:description" content="Codex.bat's website showcasing posts, socials and other important dets.">
   <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
   <meta property="og:url" content="https://codex-bat.github.io">
   <meta property="og:type" content="website">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Codex.bat">
   <meta name="twitter:description" content="Codex.bat's website showcasing posts, socials and other important dets.">
@@ -25,7 +22,7 @@
   <link rel="manifest" href="/assets/site.webmanifest" />
   <meta name="description" content="Codex.bat's website showcasing posts, socials and other important dets." />
   <style>
-    /* ===== base styles (unchanged, just preserved) ===== */
+    /* ===== base styles ===== */
     body {
       background: #000;
       color: #ddd;
@@ -99,58 +96,81 @@
       padding-top: 1rem;
     }
 
-    /* ===== EYE COMPONENT (always visible, mouse-following with JS) ===== */
-    /* container: fixed at bottom center, does NOT block clicks/interaction */
+    /* ===== EYE COMPONENT – human‑like almond shape, eerie glow ===== */
     .magic-eye {
       position: fixed;
-      bottom: 24px;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
-      width: 52px;
-      height: 52px;
-      background: radial-gradient(circle at 35% 35%, #f9f9fc, #e2e6f0);
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 0 3px #1a1a1a;
+      /* almond / human‑like proportions (wider than tall) */
+      width: 58px;
+      height: 48px;
+      /* custom border‑radius for realistic eye shape */
+      border-radius: 50% / 45% 45% 55% 55%;
+      background: radial-gradient(ellipse at 35% 40%, #fff6e8, #f0e4d0);
+      box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 16px rgba(0,0,0,0.6), inset 0 0 12px rgba(180, 60, 60, 0.3);
       cursor: default;
       z-index: 9999;
-      /* let all mouse events pass through — buttons/links under the eye stay clickable */
-      pointer-events: none;
-      /* subtle smooth scaling on hover? not needed, but nice */
-      transition: box-shadow 0.2s ease;
+      pointer-events: none;    /* so it never blocks clicks */
+      transition: box-shadow 0.2s ease, transform 0.05s ease;
+      /* eerie red inner glow (pulsing slightly) */
+      animation: eeriePulse 4s infinite alternate;
     }
     
-    /* tiny shine effect for that "alive" look */
+    /* eerie red glow animation */
+    @keyframes eeriePulse {
+      0% { box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 16px rgba(0,0,0,0.6), inset 0 0 10px rgba(180, 40, 40, 0.3); }
+      100% { box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(220, 60, 60, 0.6); }
+    }
+    
+    /* subtle moisture / reflection */
     .magic-eye::before {
       content: "";
       position: absolute;
       top: 12px;
       left: 12px;
-      width: 12px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.6);
+      width: 14px;
+      height: 14px;
+      background: rgba(255, 245, 235, 0.7);
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    /* second smaller highlight for depth */
+    .magic-eye::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 240, 0.5);
       border-radius: 50%;
       filter: blur(1px);
       pointer-events: none;
+      z-index: 2;
     }
     
-    /* pupil: absolute inside the eye, initially dead-center */
+    /* pupil – still round, but follows mouse with elliptical constraints */
     .eye-pupil {
       position: absolute;
       top: 50%;
       left: 50%;
       width: 20px;
       height: 20px;
-      background: #0b0b1f;
-      background: radial-gradient(circle at 35% 35%, #1a1f2e, #03060e);
+      background: radial-gradient(circle at 35% 35%, #0a0a1c, #010101);
       border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 0 2px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 4px rgba(0,0,0,0.8), inset 0 0 2px rgba(255,255,200,0.3);
       transform: translate(-50%, -50%);
       will-change: transform;
       pointer-events: none;
-      transition: transform 0.03s linear; /* micro-smooth but responsive */
+      transition: transform 0.04s linear;
+      z-index: 3;
     }
     
-    /* inner light reflection (tiny catchlight) */
+    /* tiny red glint in pupil (eerie) */
     .eye-pupil::after {
       content: "";
       position: absolute;
@@ -158,41 +178,92 @@
       left: 5px;
       width: 5px;
       height: 5px;
-      background: white;
+      background: #ffaa88;
       border-radius: 50%;
-      opacity: 0.9;
+      opacity: 0.8;
+      filter: blur(0.5px);
       pointer-events: none;
     }
     
-    /* if JS is disabled, the eye stays static but looks perfectly normal.
-       no movement, but the design remains intact and page works flawlessly.
-       Also make sure the eye doesn't cause overflow on tiny screens */
+    /* BLINK animation – scale Y almost flat + hide pupil briefly */
+    .magic-eye.blink {
+      transform: translateX(-50%) scaleY(0.08);
+      transition: transform 0.08s cubic-bezier(0.2, 1.2, 0.8, 1);
+    }
+    .magic-eye.blink .eye-pupil {
+      opacity: 0;
+      transition: opacity 0.05s;
+    }
+    
+    /* ===== SPEECH BUBBLE (eerie, appears near eye) ===== */
+    .eye-speech {
+      position: fixed;
+      bottom: 85px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f0f12e6;
+      backdrop-filter: blur(8px);
+      border: 1px solid #aa5555;
+      border-radius: 20px 20px 20px 6px;
+      padding: 8px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #ffcccc;
+      text-shadow: 0 0 4px #aa3333;
+      white-space: nowrap;
+      max-width: 260px;
+      white-space: normal;
+      word-break: keep-all;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 12px rgba(200,60,60,0.3);
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    
+    .eye-speech.show {
+      opacity: 1;
+    }
+    
+    /* small arrow pointing to eye */
+    .eye-speech::before {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 14px;
+      height: 14px;
+      background: #0f0f12e6;
+      border-right: 1px solid #aa5555;
+      border-bottom: 1px solid #aa5555;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+    
+    /* responsive: smaller screens */
     @media (max-width: 480px) {
       .magic-eye {
-        width: 46px;
-        height: 46px;
-        bottom: 16px;
+        width: 48px;
+        height: 40px;
+        bottom: 20px;
       }
       .eye-pupil {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
-      .eye-pupil::after {
-        top: 3px;
-        left: 4px;
-        width: 4px;
-        height: 4px;
+      .eye-speech {
+        bottom: 70px;
+        font-size: 0.7rem;
+        max-width: 200px;
+        padding: 6px 12px;
       }
     }
     
-    /* optional: soft pulse on the eye edge? makes it charming but not invasive */
-    @keyframes subtleGlow {
-      0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 0 3px #1a1a1a; }
-      100% { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 240, 180, 0.3) inset, 0 0 0 3px #2a2a2a; }
-    }
-    .magic-eye {
-      animation: subtleGlow 3s infinite alternate;
-    }
+    /* fallback: if JS disabled, eye still looks good, no animations, but static */
   </style>
 </head>
 <body>
@@ -207,7 +278,6 @@
 
   <h2>posts</h2>
   <div id="posts-container">
-    <!-- Posts are now served as static HTML – works with or without JavaScript -->
     <ul class="post-list">
       <li>
         <div class="post-date">March 21, 2026</div>
@@ -223,36 +293,60 @@
   </footer>
 </div>
 
-<!-- ========== THE EYE: visible to everyone, but interactive pupil only with JS ========== -->
-<div class="magic-eye" aria-hidden="true">
+<!-- THE EYE (human-like + eerie) + speech bubble container -->
+<div class="magic-eye" id="magicEye" aria-hidden="true">
   <div class="eye-pupil" id="eyePupil"></div>
 </div>
+<div class="eye-speech" id="eyeSpeech"></div>
 
 <script>
   (function() {
-    // --- EYE FOLLOWS MOUSE ---
-    // This script only adds the interactive pupil movement. No layout or content depends on it.
+    // ======================== CUSTOMIZABLE PHRASE ARRAY ========================
+    // ✨ Add / remove / modify any phrases you like – the eye will speak them randomly
+    const PHRASE_LIST = [
+      "👁️ I see you...",
+      "psst... click something",
+      "you're still here?",
+      "the void stares back",
+      "shh, it's listening",
+      "welcome, wanderer",
+      "need a secret?",
+      "don't blink...",
+      "so dark in here",
+      "👁️‍🗨️ follow me",
+      "time is thin here",
+      "what do you seek?",
+      "⚡ eerie vibes",
+      "...or am I dreaming?",
+      "beware the silence"
+    ];
     
+    // ======================== INTERVAL CONTROLS (seconds) ========================
+    const BLINK_INTERVAL_SEC = 4;      // min 3, max 8 (randomized)
+    const SPEAK_INTERVAL_SEC = 12;     // random between 10 and 25 seconds
+    
+    // Speech bubble duration (how long text stays visible)
+    const SPEECH_DURATION_MS = 3800;
+    
+    // ---------- DOM elements ----------
+    const eye = document.getElementById('magicEye');
     const pupil = document.getElementById('eyePupil');
-    const eyeContainer = document.querySelector('.magic-eye');
+    const speechBubble = document.getElementById('eyeSpeech');
     
-    // Guard: if for any reason elements don't exist, silently exit
-    if (!pupil || !eyeContainer) return;
+    // guard: if JS disabled, no errors, everything static (eye still looks cool)
+    if (!eye || !pupil) return;
     
-    // ----- geometry & bounds caching -----
+    // ---------- Elliptical pupil movement (accurate for almond eye) ----------
     let eyeRect = { left: 0, top: 0, width: 0, height: 0, centerX: 0, centerY: 0 };
-    let eyeRadius = 0;          // radius of the outer eye (px)
-    let pupilRadius = 0;        // radius of the pupil element (px)
-    let maxMoveDistance = 0;    // how far pupil can travel from center (eyeRadius - pupilRadius)
+    let aRadius = 0;   // horizontal half-axis (max offset X) = (eyeWidth/2 - pupilRadius)
+    let bRadius = 0;   // vertical half-axis (max offset Y)
+    let pupilRadius = 0;
+    let lastMouseX = null, lastMouseY = null;
     
-    // store last mouse coordinates (for resize correction, if needed)
-    let lastMouseX = null;
-    let lastMouseY = null;
-    
-    // helper: update all metrics (eye size, position, pupil size)
+    // update eye metrics and ellipse limits
     function updateEyeMetrics() {
-      if (!eyeContainer || !pupil) return;
-      const rect = eyeContainer.getBoundingClientRect();
+      if (!eye || !pupil) return;
+      const rect = eye.getBoundingClientRect();
       eyeRect.left = rect.left;
       eyeRect.top = rect.top;
       eyeRect.width = rect.width;
@@ -260,158 +354,167 @@
       eyeRect.centerX = rect.left + rect.width / 2;
       eyeRect.centerY = rect.top + rect.height / 2;
       
-      // compute radii: outer eye radius
-      eyeRadius = rect.width / 2;
-      // get pupil actual dimensions (might change on window resize due to media queries)
       const pupilRect = pupil.getBoundingClientRect();
       pupilRadius = pupilRect.width / 2;
-      // maximum offset from center before pupil touches eye edge
-      maxMoveDistance = Math.max(0, eyeRadius - pupilRadius);
+      
+      // ellipse axes: max allowed offset from center to keep pupil inside visible sclera
+      aRadius = Math.max(0, (eyeRect.width / 2) - pupilRadius);
+      bRadius = Math.max(0, (eyeRect.height / 2) - pupilRadius);
     }
     
-    // reset pupil to exact center (no offset)
-    function resetPupilToCenter() {
-      if (!pupil) return;
-      pupil.style.transform = 'translate(-50%, -50%)';
+    // reset pupil to exact center
+    function resetPupilCenter() {
+      if (pupil) pupil.style.transform = 'translate(-50%, -50%)';
     }
     
-    // move pupil based on mouse coordinates (clamped inside eye boundaries)
+    // move pupil with ellipse constraint (realistic for almond shape)
     function movePupilTo(mouseX, mouseY) {
-      if (!pupil || maxMoveDistance <= 0 || !eyeContainer) {
-        // if eye is extremely small or invalid, keep centered
-        return;
+      if (!pupil || aRadius <= 0 || bRadius <= 0) return;
+      
+      let dx = mouseX - eyeRect.centerX;
+      let dy = mouseY - eyeRect.centerY;
+      
+      // ellipse equation: (dx^2)/(a^2) + (dy^2)/(b^2) <= 1
+      const normX = dx / aRadius;
+      const normY = dy / bRadius;
+      const distanceSq = normX * normX + normY * normY;
+      
+      if (distanceSq > 1.0 && distanceSq > 0.01) {
+        // scale vector to the ellipse boundary
+        const scale = 1 / Math.sqrt(distanceSq);
+        dx = dx * scale;
+        dy = dy * scale;
       }
       
-      // vector from eye center to mouse cursor
-      let deltaX = mouseX - eyeRect.centerX;
-      let deltaY = mouseY - eyeRect.centerY;
-      
-      // distance from eye center to cursor
-      let distance = Math.hypot(deltaX, deltaY);
-      
-      let limitedDeltaX = deltaX;
-      let limitedDeltaY = deltaY;
-      
-      if (distance > maxMoveDistance && distance > 0.01) {
-        // clamp: keep direction but limit to maxMoveDistance
-        const ratio = maxMoveDistance / distance;
-        limitedDeltaX = deltaX * ratio;
-        limitedDeltaY = deltaY * ratio;
-      }
-      
-      // Apply transformation: we keep the default translate(-50%, -50%) and add pixel offset.
-      // pupil default is centered via translate(-50%, -50%).
-      // Additional offsetX, offsetY move the pupil within the eye.
-      // formula: translate( calc(-50% + Xpx), calc(-50% + Ypx) )
-      const xOffset = limitedDeltaX;
-      const yOffset = limitedDeltaY;
-      
-      pupil.style.transform = `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`;
+      // apply transform: keep centered with pixel offset
+      pupil.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
     }
     
-    // handler for mouse/touch movement
-    function onPointerMove(clientX, clientY) {
-      if (!eyeContainer) return;
-      // store last known position
+    // --- pointer/touch handlers ---
+    function handlePointerMove(clientX, clientY) {
+      if (!eye) return;
       lastMouseX = clientX;
       lastMouseY = clientY;
-      // only move pupil if we have valid metrics
-      if (eyeRadius > 0 && maxMoveDistance >= 0) {
+      if (aRadius > 0 && bRadius > 0) {
         movePupilTo(clientX, clientY);
       }
     }
     
-    // --- mouse move event (desktop / laptop) ---
     function onMouseMove(e) {
-      onPointerMove(e.clientX, e.clientY);
+      handlePointerMove(e.clientX, e.clientY);
     }
     
-    // --- touch events for mobile (so the eye follows finger/touch, enhances experience) ---
     function onTouchMove(e) {
-      if (e.touches.length > 0) {
+      if (e.touches.length) {
         const touch = e.touches[0];
-        onPointerMove(touch.clientX, touch.clientY);
-        // optional: prevent scrolling while touching the eye area? but pointer-events: none already allows scrolling,
-        // and we don't need to call preventDefault because eye is non-interactive.
+        handlePointerMove(touch.clientX, touch.clientY);
       }
     }
     
     function onTouchEnd() {
-      // when touch ends, reset pupil to center for a clean state
-      resetPupilToCenter();
-      lastMouseX = null;
-      lastMouseY = null;
+      resetPupilCenter();
+      lastMouseX = lastMouseY = null;
     }
     
-    // when mouse leaves the whole window, reset pupil to center (avoids weird stuck positions)
     function onMouseLeaveWindow(e) {
       if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
-        resetPupilToCenter();
-        lastMouseX = null;
-        lastMouseY = null;
+        resetPupilCenter();
+        lastMouseX = lastMouseY = null;
       }
     }
     
-    // recalc dimensions & recenter pupil on resize/orientation change, and re-apply last known mouse if exists
+    // ---------- BLINK: adds .blink class then removes it ----------
+    function blink() {
+      if (!eye) return;
+      eye.classList.add('blink');
+      setTimeout(() => {
+        eye.classList.remove('blink');
+      }, 140);  // blink duration ~140ms
+    }
+    
+    // ---------- SPEECH: random phrase from array, show bubble ----------
+    let currentSpeechTimeout = null;
+    function speakRandom() {
+      if (!speechBubble) return;
+      // pick random phrase
+      const randomIndex = Math.floor(Math.random() * PHRASE_LIST.length);
+      const phrase = PHRASE_LIST[randomIndex];
+      speechBubble.textContent = phrase;
+      speechBubble.classList.add('show');
+      
+      // clear any previous hiding timeout
+      if (currentSpeechTimeout) clearTimeout(currentSpeechTimeout);
+      currentSpeechTimeout = setTimeout(() => {
+        speechBubble.classList.remove('show');
+        currentSpeechTimeout = null;
+      }, SPEECH_DURATION_MS);
+    }
+    
+    // ---------- RANDOM TIMERS (blink & speak with natural variation) ----------
+    let blinkTimer = null;
+    let speakTimer = null;
+    
+    function scheduleBlink() {
+      if (blinkTimer) clearTimeout(blinkTimer);
+      const delayMs = (BLINK_INTERVAL_SEC + Math.random() * 4) * 1000;  // between 4s and 8s
+      blinkTimer = setTimeout(() => {
+        blink();
+        scheduleBlink();   // re-schedule after blink
+      }, delayMs);
+    }
+    
+    function scheduleSpeak() {
+      if (speakTimer) clearTimeout(speakTimer);
+      const delayMs = (SPEAK_INTERVAL_SEC + Math.random() * 13) * 1000; // 12–25 sec range
+      speakTimer = setTimeout(() => {
+        speakRandom();
+        scheduleSpeak();
+      }, delayMs);
+    }
+    
+    // ---------- resize & orientation: re-measure ellipse + reapply mouse if needed ----------
     function handleResize() {
       updateEyeMetrics();
-      // reset pupil to center after layout shift (avoids weird offsets)
-      resetPupilToCenter();
-      // if we have a last known valid mouse position, re-apply movement (optional, improves UX)
+      resetPupilCenter();
       if (lastMouseX !== null && lastMouseY !== null) {
-        // but ensure coordinates are within window
         if (lastMouseX >= 0 && lastMouseX <= window.innerWidth && lastMouseY >= 0 && lastMouseY <= window.innerHeight) {
-          // re-calc move with fresh metrics
           movePupilTo(lastMouseX, lastMouseY);
         } else {
-          lastMouseX = null;
-          lastMouseY = null;
+          lastMouseX = lastMouseY = null;
         }
       }
     }
     
-    // initialise: get geometry, add event listeners
-    function initEye() {
+    // ---------- INIT everything ----------
+    function initInteractiveEye() {
       updateEyeMetrics();
+      resetPupilCenter();
       
-      // only if there's a valid max move distance (eye and pupil exist)
-      if (eyeRadius > 0 && pupilRadius > 0) {
-        // set initial centered state (already default, but enforce)
-        resetPupilToCenter();
-      }
-      
-      // register events
+      // event listeners
       window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('mouseleave', onMouseLeaveWindow);
-      // touch events for mobile (provides natural following on phones/tablets)
       window.addEventListener('touchmove', onTouchMove, { passive: true });
       window.addEventListener('touchend', onTouchEnd);
       window.addEventListener('touchcancel', onTouchEnd);
       window.addEventListener('resize', handleResize);
-      // also listen to orientation change for mobile
       window.addEventListener('orientationchange', handleResize);
-      // small safeguard: re-check metrics on scroll? not needed for fixed eye,
-      // but sometimes browser UI changes (like address bar) can affect layout.
-      // So we also update on scroll? Actually fixed element relative to viewport isn't affected by scroll,
-      // but if document height changes and address bar hides, recalc on scroll can be safe.
-      // We'll do a lightweight re-check on scroll, just to be robust.
-      window.addEventListener('scroll', function() {
-        // only if there's a last mouse position? but scroll shouldn't affect fixed eye position relative to viewport.
-        // However, some mobile browsers change viewport geometry on scroll (rare), so we update metrics.
-        if (eyeContainer) {
+      window.addEventListener('scroll', () => {
+        if (eye) {
           updateEyeMetrics();
-          if (lastMouseX !== null && lastMouseY !== null) {
-            movePupilTo(lastMouseX, lastMouseY);
-          }
+          if (lastMouseX !== null && lastMouseY !== null) movePupilTo(lastMouseX, lastMouseY);
         }
       }, { passive: true });
+      
+      // start random behaviors
+      scheduleBlink();
+      scheduleSpeak();
     }
     
-    // wait for DOM fully loaded to ensure elements are ready
+    // start when DOM ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initEye);
+      document.addEventListener('DOMContentLoaded', initInteractiveEye);
     } else {
-      initEye();
+      initInteractiveEye();
     }
   })();
 </script>
