@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta property="og:title" content="Codex.bat">
@@ -22,7 +23,7 @@
   <link rel="manifest" href="/assets/site.webmanifest" />
   <meta name="description" content="Codex.bat's website showcasing posts, socials and other important dets." />
   <style>
-    /* ===== base styles ===== */
+    /* ===== base styles (unchanged) ===== */
     body {
       background: #000;
       color: #ddd;
@@ -30,63 +31,79 @@
       margin: 0;
       padding: 2rem;
       line-height: 1.5;
+      user-select: none;
+      -webkit-user-select: none;
     }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
     }
+
     header {
       border-bottom: 2px solid #2a2a2a;
       margin-bottom: 2rem;
       padding-bottom: 1rem;
     }
+
     h1 {
       font-size: 2.5rem;
       margin: 0;
       color: #fff;
     }
+
     nav {
       margin-top: 0.5rem;
     }
+
     nav a {
       color: #7f9eff;
       text-decoration: none;
       margin-right: 1rem;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .post-list {
       list-style: none;
       padding: 0;
     }
+
     .post-list li {
       border: 1px solid #2a2a2a;
       background: #0c0c0c;
       margin-bottom: 1rem;
       padding: 1rem;
     }
+
     .post-date {
       color: #888;
       font-size: 0.8rem;
     }
+
     .post-title {
       font-size: 1.4rem;
       margin: 0.5rem 0;
     }
+
     .post-title a {
       color: #7f9eff;
       text-decoration: none;
     }
+
     .post-title a:hover {
       text-decoration: underline;
     }
+
     .empty {
       text-align: center;
       color: #888;
       padding: 2rem;
       border: 1px dashed #2a2a2a;
     }
+
     footer {
       margin-top: 2rem;
       text-align: center;
@@ -96,518 +113,534 @@
       padding-top: 1rem;
     }
 
-/* ===== EYE COMPONENT – sharper almond shape, cooler tint ===== */
-.magic-eye {
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  width: 60px;
-  height: 46px;
-  transform: translateX(-50%);
-  z-index: 9999;
-  pointer-events: none;
-  cursor: default;
-  overflow: hidden;
+    /* ===== EYE COMPONENT – smoother shape + cleaner blink ===== */
+    .magic-eye {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      width: 44px;
+      height: 34px;
+      transform: translateX(-50%) scale(var(--eye-squish, 1)) scaleY(var(--eye-blink, 1));
+      transform-origin: center center;
 
-  /* pointed left/right edges */
-  clip-path: polygon(
-    0% 50%,
-    7% 28%,
-    22% 12%,
-    50% 4%,
-    78% 12%,
-    93% 28%,
-    100% 50%,
-    93% 72%,
-    78% 88%,
-    50% 96%,
-    22% 88%,
-    7% 72%
-  );
+      /* smoother almond shape */
+      clip-path: polygon(0% 50%,
+          4% 39%,
+          10% 29%,
+          18% 20%,
+          28% 14%,
+          39% 10%,
+          50% 8%,
+          61% 10%,
+          72% 14%,
+          82% 20%,
+          90% 29%,
+          96% 39%,
+          100% 50%,
+          96% 61%,
+          90% 71%,
+          82% 80%,
+          72% 86%,
+          61% 90%,
+          50% 92%,
+          39% 90%,
+          28% 86%,
+          18% 80%,
+          10% 71%,
+          4% 61%);
 
-  background:
-    radial-gradient(circle at 35% 38%, rgba(255,255,255,0.16), rgba(255,255,255,0) 26%),
-    linear-gradient(145deg, #172131 0%, #0b0f16 72%);
-  border: 1px solid #2a3550;
-  box-shadow:
-    0 0 0 2px rgba(10, 12, 18, 0.95),
-    0 0 0 5px rgba(0, 0, 0, 0.35),
-    0 8px 20px rgba(0, 0, 0, 0.55),
-    inset 0 0 12px rgba(127, 158, 255, 0.10),
-    inset 0 -8px 18px rgba(0, 0, 0, 0.45);
+      background: radial-gradient(ellipse at 35% 40%,
+          #fbf8f1 0%,
+          #f3eee4 52%,
+          #e7dfd0 100%);
 
-  transition: box-shadow 0.2s ease, transform 0.05s ease;
-  animation: eyePulse 5s ease-in-out infinite alternate;
-}
+      box-shadow:
+        0 0 0 2px #171717,
+        0 0 0 5px rgba(0, 0, 0, 0.28),
+        0 6px 14px rgba(0, 0, 0, 0.55),
+        inset 0 0 10px rgba(140, 160, 190, 0.08);
 
-@keyframes eyePulse {
-  0% {
-    box-shadow:
-      0 0 0 2px rgba(10, 12, 18, 0.95),
-      0 0 0 5px rgba(0, 0, 0, 0.35),
-      0 8px 20px rgba(0, 0, 0, 0.55),
-      inset 0 0 10px rgba(127, 158, 255, 0.08),
-      inset 0 -8px 18px rgba(0, 0, 0, 0.45);
-  }
-  100% {
-    box-shadow:
-      0 0 0 2px rgba(10, 12, 18, 0.95),
-      0 0 0 5px rgba(0, 0, 0, 0.35),
-      0 8px 24px rgba(0, 0, 0, 0.68),
-      inset 0 0 16px rgba(127, 158, 255, 0.14),
-      inset 0 -8px 18px rgba(0, 0, 0, 0.5);
-  }
-}
+      cursor: pointer;
+      z-index: 9999;
+      pointer-events: auto;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease, transform 0.08s ease;
+      animation: eeriePulse 4s infinite alternate;
+    }
 
-/* subtle highlights */
-.magic-eye::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 11px;
-  width: 13px;
-  height: 13px;
-  background: rgba(225, 233, 255, 0.18);
-  border-radius: 50%;
-  filter: blur(1px);
-  pointer-events: none;
-  z-index: 2;
-}
+    @keyframes eeriePulse {
+      0% {
+        box-shadow:
+          0 0 0 2px #171717,
+          0 0 0 5px rgba(0, 0, 0, 0.28),
+          0 6px 14px rgba(0, 0, 0, 0.55),
+          inset 0 0 8px rgba(140, 160, 190, 0.06);
+      }
 
-.magic-eye::after {
-  content: "";
-  position: absolute;
-  bottom: 9px;
-  right: 13px;
-  width: 7px;
-  height: 7px;
-  background: rgba(210, 220, 255, 0.14);
-  border-radius: 50%;
-  filter: blur(0.5px);
-  pointer-events: none;
-  z-index: 2;
-}
+      100% {
+        box-shadow:
+          0 0 0 2px #171717,
+          0 0 0 5px rgba(0, 0, 0, 0.28),
+          0 6px 18px rgba(0, 0, 0, 0.7),
+          inset 0 0 12px rgba(140, 160, 190, 0.1);
+      }
+    }
 
-/* pupil */
-.eye-pupil {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle at 35% 35%, #11182a, #020308 72%);
-  border-radius: 50%;
-  box-shadow:
-    0 0 4px rgba(0, 0, 0, 0.8),
-    inset 0 0 2px rgba(127, 158, 255, 0.15);
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  pointer-events: none;
-  transition: transform 0.08s linear;
-  z-index: 3;
-}
+    .magic-eye::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 9px;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 253, 248, 0.72);
+      border-radius: 50%;
+      filter: blur(1.5px);
+      pointer-events: none;
+      z-index: 2;
+    }
 
-/* cool glint instead of red */
-.eye-pupil::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 5px;
-  width: 5px;
-  height: 5px;
-  background: rgba(185, 200, 255, 0.72);
-  border-radius: 50%;
-  opacity: 0.65;
-  filter: blur(0.5px);
-  pointer-events: none;
-}
+    .magic-eye::after {
+      content: "";
+      position: absolute;
+      bottom: 7px;
+      right: 9px;
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 250, 0.42);
+      border-radius: 50%;
+      filter: blur(1px);
+      pointer-events: none;
+      z-index: 2;
+    }
 
-/* blink: eyelid-style instead of squashing the whole eye */
-.magic-eye.blink {
-  animation: eyeBlink 150ms cubic-bezier(0.4, 0, 0.2, 1) both;
-}
+    .eye-pupil {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle at 35% 35%, #101024, #040406 75%);
+      border-radius: 50%;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.8), inset 0 0 1px rgba(255, 255, 220, 0.2);
+      transform: translate(-50%, -50%);
+      will-change: transform, opacity;
+      pointer-events: none;
+      transition: transform 0.05s linear, opacity 0.06s ease;
+      z-index: 3;
+    }
 
-@keyframes eyeBlink {
-  0% {
-    clip-path: polygon(
-      0% 50%,
-      7% 28%,
-      22% 12%,
-      50% 4%,
-      78% 12%,
-      93% 28%,
-      100% 50%,
-      93% 72%,
-      78% 88%,
-      50% 96%,
-      22% 88%,
-      7% 72%
-    );
-    transform: translateX(-50%) translateY(0);
-  }
-  45%,
-  55% {
-    clip-path: polygon(
-      0% 50%,
-      10% 47%,
-      92% 47%,
-      100% 50%,
-      92% 53%,
-      10% 53%
-    );
-    transform: translateX(-50%) translateY(1px);
-  }
-  100% {
-    clip-path: polygon(
-      0% 50%,
-      7% 28%,
-      22% 12%,
-      50% 4%,
-      78% 12%,
-      93% 28%,
-      100% 50%,
-      93% 72%,
-      78% 88%,
-      50% 96%,
-      22% 88%,
-      7% 72%
-    );
-    transform: translateX(-50%) translateY(0);
-  }
-}
+    .eye-pupil::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      width: 3px;
+      height: 3px;
+      background: #ffd2c0;
+      border-radius: 50%;
+      opacity: 0.7;
+      filter: blur(0.4px);
+    }
 
-/* ===== SPEECH BUBBLE – matched to page palette ===== */
-.eye-speech {
-  position: fixed;
-  bottom: 85px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(8, 11, 17, 0.92);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(127, 158, 255, 0.28);
-  border-radius: 20px 20px 20px 6px;
-  padding: 8px 16px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: #dbe4ff;
-  white-space: normal;
-  word-break: keep-all;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(127, 158, 255, 0.12);
-  z-index: 10000;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  font-weight: bold;
-  letter-spacing: 0.4px;
-}
+    /* blink closes the whole eye instead of only hiding the iris */
+    .magic-eye.blink {
+      --eye-blink: 0.12;
+    }
 
-.eye-speech.show {
-  opacity: 1;
-}
+    .magic-eye.blink .eye-pupil {
+      opacity: 0;
+    }
 
-.eye-speech::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 14px;
-  height: 14px;
-  background: rgba(8, 11, 17, 0.92);
-  border-right: 1px solid rgba(127, 158, 255, 0.28);
-  border-bottom: 1px solid rgba(127, 158, 255, 0.28);
-  backdrop-filter: blur(8px);
-  pointer-events: none;
-}
+    /* tiny click squish */
+    .magic-eye.poke {
+      --eye-squish: 0.96;
+    }
 
-@media (max-width: 480px) {
-  .magic-eye {
-    width: 50px;
-    height: 40px;
-    bottom: 20px;
-  }
+    .eye-speech {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(12, 12, 16, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid #2e3954;
+      border-radius: 18px;
+      padding: 8px 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #d7e2ff;
+      text-shadow: none;
+      white-space: normal;
+      word-break: keep-all;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 10px rgba(127, 158, 255, 0.08);
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
 
-  .eye-pupil {
-    width: 15px;
-    height: 15px;
-  }
+    .eye-speech.show {
+      opacity: 1;
+    }
 
-  .eye-speech {
-    bottom: 70px;
-    font-size: 0.7rem;
-    max-width: 200px;
-    padding: 6px 12px;
-  }
-}
-    
-    /* fallback: if JS disabled, eye still looks good, no animations, but static */
+    .eye-speech::before {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: rgba(12, 12, 16, 0.9);
+      border-right: 1px solid #2e3954;
+      border-bottom: 1px solid #2e3954;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .magic-eye {
+        width: 38px;
+        height: 30px;
+        bottom: 20px;
+      }
+
+      .eye-pupil {
+        width: 11px;
+        height: 11px;
+      }
+
+      .eye-speech {
+        bottom: 64px;
+        font-size: 0.7rem;
+        max-width: 200px;
+        padding: 6px 10px;
+      }
+    }
   </style>
 </head>
-<body>
-<div class="container">
-  <header>
-    <h1>Codex.bat</h1>
-    <nav>
-      <a href="/">home</a>
-      <a href="/codex.bat">about me</a>
-    </nav>
-  </header>
 
-  <h2>posts</h2>
-  <div id="posts-container">
-    <ul class="post-list">
-      <li>
-        <div class="post-date">March 21, 2026</div>
-        <div class="post-title">
-          <a href="post/first-post">First Post</a>
-        </div>
-      </li>
-    </ul>
+<body>
+  <div class="container">
+    <header>
+      <h1>Codex.bat</h1>
+      <nav>
+        <a href="/">home</a>
+        <a href="/codex.bat">about me</a>
+      </nav>
+    </header>
+
+    <h2>posts</h2>
+    <div id="posts-container">
+      <ul class="post-list">
+        <li>
+          <div class="post-date">March 21, 2026</div>
+          <div class="post-title">
+            <a href="post/first-post">First Post</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2026 Codex.bat All rights reserved
+    </footer>
   </div>
 
-  <footer>
-    © 2026 Codex.bat All rights reserved
-  </footer>
-</div>
+  <!-- EYE + speech bubble -->
+  <div class="magic-eye" id="magicEye" aria-hidden="true">
+    <div class="eye-pupil" id="eyePupil"></div>
+  </div>
+  <div class="eye-speech" id="eyeSpeech"></div>
 
-<!-- THE EYE (human-like + eerie) + speech bubble container -->
-<div class="magic-eye" id="magicEye" aria-hidden="true">
-  <div class="eye-pupil" id="eyePupil"></div>
-</div>
-<div class="eye-speech" id="eyeSpeech"></div>
+  <script>
+    (function () {
+      const PHRASE_LIST = [
+        "👁️ watching...",
+        "psst... click something",
+        "still here?",
+        "the void whispers",
+        "shh, it's listening",
+        "welcome, wanderer",
+        "need a secret?",
+        "don't blink...",
+        "so dark in here",
+        "👁️‍🗨️ follow me",
+        "time is thin here",
+        "what do you seek?",
+        "⚡ eerie hum",
+        "are you real?",
+        "beware the silence"
+      ];
 
-<script>
-  (function() {
-    // ======================== CUSTOMIZABLE PHRASE ARRAY ========================
-    // ✨ Add / remove / modify any phrases you like – the eye will speak them randomly
-    const PHRASE_LIST = [
-      "👁️ I see you...",
-      "psst... click something",
-      "you're still here?",
-      "the void stares back",
-      "shh, it's listening",
-      "welcome, wanderer",
-      "need a secret?",
-      "don't blink...",
-      "so dark in here",
-      "👁️‍🗨️ follow me",
-      "time is thin here",
-      "what do you seek?",
-      "⚡ eerie vibes",
-      "...or am I dreaming?",
-      "beware the silence"
-    ];
-    
-    // ======================== INTERVAL CONTROLS (seconds) ========================
-    const BLINK_INTERVAL_SEC = 4;      // min 3, max 8 (randomized)
-    const SPEAK_INTERVAL_SEC = 12;     // random between 10 and 25 seconds
-    
-    // Speech bubble duration (how long text stays visible)
-    const SPEECH_DURATION_MS = 3800;
-    
-    // ---------- DOM elements ----------
-    const eye = document.getElementById('magicEye');
-    const pupil = document.getElementById('eyePupil');
-    const speechBubble = document.getElementById('eyeSpeech');
-    
-    // guard: if JS disabled, no errors, everything static (eye still looks cool)
-    if (!eye || !pupil) return;
-    
-    // ---------- Elliptical pupil movement (accurate for almond eye) ----------
-    let eyeRect = { left: 0, top: 0, width: 0, height: 0, centerX: 0, centerY: 0 };
-    let aRadius = 0;   // horizontal half-axis (max offset X) = (eyeWidth/2 - pupilRadius)
-    let bRadius = 0;   // vertical half-axis (max offset Y)
-    let pupilRadius = 0;
-    let lastMouseX = null, lastMouseY = null;
-    
-    // update eye metrics and ellipse limits
-    function updateEyeMetrics() {
-      if (!eye || !pupil) return;
-      const rect = eye.getBoundingClientRect();
-      eyeRect.left = rect.left;
-      eyeRect.top = rect.top;
-      eyeRect.width = rect.width;
-      eyeRect.height = rect.height;
-      eyeRect.centerX = rect.left + rect.width / 2;
-      eyeRect.centerY = rect.top + rect.height / 2;
-      
-      const pupilRect = pupil.getBoundingClientRect();
-      pupilRadius = pupilRect.width / 2;
-      
-      // ellipse axes: max allowed offset from center to keep pupil inside visible sclera
-      aRadius = Math.max(0, (eyeRect.width / 2) - pupilRadius);
-      bRadius = Math.max(0, (eyeRect.height / 2) - pupilRadius);
-    }
-    
-    // reset pupil to exact center
-    function resetPupilCenter() {
-      if (pupil) pupil.style.transform = 'translate(-50%, -50%)';
-    }
-    
-    // move pupil with ellipse constraint (realistic for almond shape)
-    function movePupilTo(mouseX, mouseY) {
-      if (!pupil || aRadius <= 0 || bRadius <= 0) return;
-      
-      let dx = mouseX - eyeRect.centerX;
-      let dy = mouseY - eyeRect.centerY;
-      
-      // ellipse equation: (dx^2)/(a^2) + (dy^2)/(b^2) <= 1
-      const normX = dx / aRadius;
-      const normY = dy / bRadius;
-      const distanceSq = normX * normX + normY * normY;
-      
-      if (distanceSq > 1.0 && distanceSq > 0.01) {
-        // scale vector to the ellipse boundary
-        const scale = 1 / Math.sqrt(distanceSq);
-        dx = dx * scale;
-        dy = dy * scale;
+      const FAR_AWAY_PHRASES = [
+        "stop messing with me",
+        "oh, you're back...",
+        "where did you go?",
+        "lost in the void?",
+        "don't sneak up on me",
+        "i felt your absence",
+        "👁️‍🗨️ you returned",
+        "careful with that cursor",
+        "the eye sees all",
+        "did you get lost?"
+      ];
+
+      const CLICK_PHRASES = [
+        "don't poke me!",
+        "ouch! that tickles",
+        "respect the eye",
+        "rude!",
+        "👁️ i'm watching you",
+        "stop that",
+        "gentle, please",
+        "you dare?",
+        "that's sensitive",
+        "no touching!"
+      ];
+
+      const BLINK_INTERVAL_SEC = 5;
+      const SPEAK_INTERVAL_SEC = 12;
+      const SPEECH_DURATION_MS = 4000;
+      const INTERACTION_PAUSE_MS = 2800;
+
+      const eye = document.getElementById('magicEye');
+      const pupil = document.getElementById('eyePupil');
+      const speechBubble = document.getElementById('eyeSpeech');
+
+      if (!eye || !pupil || !speechBubble) return;
+
+      let eyeRect = { left: 0, top: 0, width: 0, height: 0, centerX: 0, centerY: 0 };
+      let aRadius = 0;
+      let bRadius = 0;
+      let pupilRadius = 0;
+      let lastMouseX = null;
+      let lastMouseY = null;
+
+      let speechTimeout = null;
+      let blinkTimer = null;
+      let speakTimer = null;
+
+      let pointerOutside = false;
+      let idleSuppressedUntil = 0;
+
+      function randomFrom(list) {
+        return list[Math.floor(Math.random() * list.length)];
       }
-      
-      // apply transform: keep centered with pixel offset
-      pupil.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
-    }
-    
-    // --- pointer/touch handlers ---
-    function handlePointerMove(clientX, clientY) {
-      if (!eye) return;
-      lastMouseX = clientX;
-      lastMouseY = clientY;
-      if (aRadius > 0 && bRadius > 0) {
-        movePupilTo(clientX, clientY);
+
+      function suppressIdle(ms = INTERACTION_PAUSE_MS) {
+        idleSuppressedUntil = Math.max(idleSuppressedUntil, Date.now() + ms);
       }
-    }
-    
-    function onMouseMove(e) {
-      handlePointerMove(e.clientX, e.clientY);
-    }
-    
-    function onTouchMove(e) {
-      if (e.touches.length) {
-        const touch = e.touches[0];
-        handlePointerMove(touch.clientX, touch.clientY);
+
+      function canIdleSpeak() {
+        return Date.now() >= idleSuppressedUntil;
       }
-    }
-    
-    function onTouchEnd() {
-      resetPupilCenter();
-      lastMouseX = lastMouseY = null;
-    }
-    
-    function onMouseLeaveWindow(e) {
-      if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+
+      function updateMetrics() {
+        const rect = eye.getBoundingClientRect();
+        eyeRect = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+          centerX: rect.left + rect.width / 2,
+          centerY: rect.top + rect.height / 2
+        };
+
+        const pupilRect = pupil.getBoundingClientRect();
+        pupilRadius = pupilRect.width / 2;
+        aRadius = Math.max(0, (eyeRect.width / 2) - pupilRadius);
+        bRadius = Math.max(0, (eyeRect.height / 2) - pupilRadius);
+      }
+
+      function resetPupilCenter() {
+        pupil.style.transform = 'translate(-50%, -50%)';
+      }
+
+      function movePupil(mouseX, mouseY) {
+        if (aRadius <= 0 || bRadius <= 0) return;
+
+        let dx = mouseX - eyeRect.centerX;
+        let dy = mouseY - eyeRect.centerY;
+
+        const normX = dx / aRadius;
+        const normY = dy / bRadius;
+        const distSq = normX * normX + normY * normY;
+
+        if (distSq > 1 && distSq > 0.01) {
+          const scale = 1 / Math.sqrt(distSq);
+          dx *= scale;
+          dy *= scale;
+        }
+
+        pupil.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+      }
+
+      function onPointerMove(clientX, clientY) {
+        lastMouseX = clientX;
+        lastMouseY = clientY;
+        movePupil(clientX, clientY);
+      }
+
+      function onMouseMove(e) {
+        onPointerMove(e.clientX, e.clientY);
+      }
+
+      function onTouchMove(e) {
+        if (e.touches.length) {
+          onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }
+
+      function onTouchEnd() {
         resetPupilCenter();
-        lastMouseX = lastMouseY = null;
+        lastMouseX = null;
+        lastMouseY = null;
       }
-    }
-    
-    // ---------- BLINK: adds .blink class then removes it ----------
-    function blink() {
-  if (!eye) return;
-  eye.classList.add('blink');
-  setTimeout(() => {
-    eye.classList.remove('blink');
-  }, 150);
-}
-    
-    // ---------- SPEECH: random phrase from array, show bubble ----------
-    let currentSpeechTimeout = null;
-    function speakRandom() {
-      if (!speechBubble) return;
-      // pick random phrase
-      const randomIndex = Math.floor(Math.random() * PHRASE_LIST.length);
-      const phrase = PHRASE_LIST[randomIndex];
-      speechBubble.textContent = phrase;
-      speechBubble.classList.add('show');
-      
-      // clear any previous hiding timeout
-      if (currentSpeechTimeout) clearTimeout(currentSpeechTimeout);
-      currentSpeechTimeout = setTimeout(() => {
-        speechBubble.classList.remove('show');
-        currentSpeechTimeout = null;
-      }, SPEECH_DURATION_MS);
-    }
-    
-    // ---------- RANDOM TIMERS (blink & speak with natural variation) ----------
-    let blinkTimer = null;
-    let speakTimer = null;
-    
-    function scheduleBlink() {
-      if (blinkTimer) clearTimeout(blinkTimer);
-      const delayMs = (BLINK_INTERVAL_SEC + Math.random() * 4) * 1000;  // between 4s and 8s
-      blinkTimer = setTimeout(() => {
-        blink();
-        scheduleBlink();   // re-schedule after blink
-      }, delayMs);
-    }
-    
-    function scheduleSpeak() {
-      if (speakTimer) clearTimeout(speakTimer);
-      const delayMs = (SPEAK_INTERVAL_SEC + Math.random() * 13) * 1000; // 12–25 sec range
-      speakTimer = setTimeout(() => {
-        speakRandom();
-        scheduleSpeak();
-      }, delayMs);
-    }
-    
-    // ---------- resize & orientation: re-measure ellipse + reapply mouse if needed ----------
-    function handleResize() {
-      updateEyeMetrics();
-      resetPupilCenter();
-      if (lastMouseX !== null && lastMouseY !== null) {
-        if (lastMouseX >= 0 && lastMouseX <= window.innerWidth && lastMouseY >= 0 && lastMouseY <= window.innerHeight) {
-          movePupilTo(lastMouseX, lastMouseY);
-        } else {
-          lastMouseX = lastMouseY = null;
-        }
-      }
-    }
-    
-    // ---------- INIT everything ----------
-    function initInteractiveEye() {
-      updateEyeMetrics();
-      resetPupilCenter();
-      
-      // event listeners
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('mouseleave', onMouseLeaveWindow);
-      window.addEventListener('touchmove', onTouchMove, { passive: true });
-      window.addEventListener('touchend', onTouchEnd);
-      window.addEventListener('touchcancel', onTouchEnd);
-      window.addEventListener('resize', handleResize);
-      window.addEventListener('orientationchange', handleResize);
-      window.addEventListener('scroll', () => {
-        if (eye) {
-          updateEyeMetrics();
-          if (lastMouseX !== null && lastMouseY !== null) movePupilTo(lastMouseX, lastMouseY);
-        }
-      }, { passive: true });
-      
-      // start random behaviors
-      scheduleBlink();
-      scheduleSpeak();
-    }
-    
-    // start when DOM ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initInteractiveEye);
-    } else {
-      initInteractiveEye();
-    }
-  })();
-</script>
 
-<!-- 
-  🧿 (I remmeber you, yuri) EYE BEHAVIOR SUMMARY:
-  - The eye is always visible (center-bottom of every page).
-  - If JavaScript is disabled: the eye stays still with a centered pupil → no movement, 
-    but everything works, looks fine, and no errors appear.
-  - If JavaScript is enabled: the pupil smoothly follows mouse (or finger on touch devices)
-    while staying strictly inside the eyeball. 
-  - Pointer-events: none ensures the eye never blocks any link, button, or text selection.
-  - This snippet is self-contained: add the .magic-eye and .eye-pupil HTML + CSS + script
-    to any page of the site, and it will persist across the whole website with the same 
-    charming tracking behaviour.
--->
+      function onDocumentMouseOut(e) {
+        if (!e.relatedTarget && !e.toElement) {
+          pointerOutside = true;
+          window._mouseOutside = true;
+          resetPupilCenter();
+          suppressIdle(1200);
+          // no speech here
+        }
+      }
+
+      function onDocumentMouseOver(e) {
+        // only trigger if coming from outside the window
+        if (pointerOutside && !e.relatedTarget) {
+          pointerOutside = false;
+          window._mouseOutside = false;
+          suppressIdle(2500);
+          showSpeech(randomFrom(FAR_AWAY_PHRASES));
+        }
+      }
+
+      function onWindowBlur() {
+        pointerOutside = true;
+        window._mouseOutside = true;
+        resetPupilCenter();
+        suppressIdle(1200);
+      }
+
+      function showSpeech(text) {
+        speechBubble.textContent = text;
+        speechBubble.classList.add('show');
+
+        if (speechTimeout) clearTimeout(speechTimeout);
+        speechTimeout = setTimeout(() => {
+          speechBubble.classList.remove('show');
+          speechTimeout = null;
+        }, SPEECH_DURATION_MS);
+      }
+
+      function speakRandom() {
+        showSpeech(randomFrom(PHRASE_LIST));
+      }
+
+      function blink() {
+        eye.classList.add('blink');
+        setTimeout(() => {
+          eye.classList.remove('blink');
+        }, 180);
+      }
+
+      function scheduleBlink() {
+        if (blinkTimer) clearTimeout(blinkTimer);
+        const delay = (BLINK_INTERVAL_SEC + (Math.random() * 3 - 1)) * 1000;
+        blinkTimer = setTimeout(() => {
+          blink();
+          scheduleBlink();
+        }, Math.max(2000, delay));
+      }
+
+      function scheduleSpeak() {
+        if (speakTimer) clearTimeout(speakTimer);
+        const delay = (SPEAK_INTERVAL_SEC + Math.random() * 10) * 1000;
+
+        speakTimer = setTimeout(() => {
+          if (canIdleSpeak()) {
+            speakRandom();
+          }
+          scheduleSpeak();
+        }, Math.max(5000, delay));
+      }
+
+      function onEyeClick(e) {
+        e.stopPropagation();
+        suppressIdle(3500);
+        showSpeech(randomFrom(CLICK_PHRASES));
+
+        eye.classList.add('poke');
+        setTimeout(() => {
+          eye.classList.remove('poke');
+        }, 120);
+      }
+
+      function onEyePointerEnter() {
+        suppressIdle(1000);
+      }
+
+      function handleResize() {
+        updateMetrics();
+        resetPupilCenter();
+
+        if (
+          lastMouseX !== null &&
+          lastMouseY !== null &&
+          lastMouseX >= 0 && lastMouseX <= window.innerWidth &&
+          lastMouseY >= 0 && lastMouseY <= window.innerHeight
+        ) {
+          movePupil(lastMouseX, lastMouseY);
+        } else {
+          lastMouseX = null;
+          lastMouseY = null;
+        }
+      }
+
+      function init() {
+        updateMetrics();
+        resetPupilCenter();
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        window.addEventListener('touchend', onTouchEnd);
+        window.addEventListener('touchcancel', onTouchEnd);
+
+        document.addEventListener('mouseout', onDocumentMouseOut);
+        document.addEventListener('mouseover', onDocumentMouseOver);
+        window.addEventListener('blur', onWindowBlur);
+
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+        window.addEventListener('scroll', () => {
+          updateMetrics();
+          if (lastMouseX !== null && lastMouseY !== null) {
+            movePupil(lastMouseX, lastMouseY);
+          }
+        }, { passive: true });
+
+        eye.addEventListener('click', onEyeClick);
+        eye.addEventListener('pointerenter', onEyePointerEnter);
+
+        window._mouseOutside = false;
+        scheduleBlink();
+        scheduleSpeak();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 </body>
+
 </html>
