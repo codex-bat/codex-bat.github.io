@@ -1,4 +1,7 @@
 # codex-bat.githubt.io
+
+![codex.batsite logo](https://github.com/codex-bat/codex-bat.github.io/blob/main/assets/website.png)
+
 Websiterr
 
 ---
