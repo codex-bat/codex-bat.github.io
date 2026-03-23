@@ -96,172 +96,250 @@
       padding-top: 1rem;
     }
 
-    /* ===== EYE COMPONENT – human‑like almond shape, eerie glow ===== */
-    .magic-eye {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      /* almond / human‑like proportions (wider than tall) */
-      width: 58px;
-      height: 48px;
-      /* custom border‑radius for realistic eye shape */
-      border-radius: 50% / 45% 45% 55% 55%;
-      background: radial-gradient(ellipse at 35% 40%, #fff6e8, #f0e4d0);
-      box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 16px rgba(0,0,0,0.6), inset 0 0 12px rgba(180, 60, 60, 0.3);
-      cursor: default;
-      z-index: 9999;
-      pointer-events: none;    /* so it never blocks clicks */
-      transition: box-shadow 0.2s ease, transform 0.05s ease;
-      /* eerie red inner glow (pulsing slightly) */
-      animation: eeriePulse 4s infinite alternate;
-    }
-    
-    /* eerie red glow animation */
-    @keyframes eeriePulse {
-      0% { box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 16px rgba(0,0,0,0.6), inset 0 0 10px rgba(180, 40, 40, 0.3); }
-      100% { box-shadow: 0 0 0 3px #1a1a1a, 0 0 0 6px rgba(0,0,0,0.3), 0 6px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(220, 60, 60, 0.6); }
-    }
-    
-    /* subtle moisture / reflection */
-    .magic-eye::before {
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 14px;
-      height: 14px;
-      background: rgba(255, 245, 235, 0.7);
-      border-radius: 50%;
-      filter: blur(2px);
-      pointer-events: none;
-      z-index: 2;
-    }
-    
-    /* second smaller highlight for depth */
-    .magic-eye::after {
-      content: "";
-      position: absolute;
-      bottom: 10px;
-      right: 12px;
-      width: 8px;
-      height: 8px;
-      background: rgba(255, 255, 240, 0.5);
-      border-radius: 50%;
-      filter: blur(1px);
-      pointer-events: none;
-      z-index: 2;
-    }
-    
-    /* pupil – still round, but follows mouse with elliptical constraints */
-    .eye-pupil {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle at 35% 35%, #0a0a1c, #010101);
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(0,0,0,0.8), inset 0 0 2px rgba(255,255,200,0.3);
-      transform: translate(-50%, -50%);
-      will-change: transform;
-      pointer-events: none;
-      transition: transform 0.04s linear;
-      z-index: 3;
-    }
-    
-    /* tiny red glint in pupil (eerie) */
-    .eye-pupil::after {
-      content: "";
-      position: absolute;
-      top: 4px;
-      left: 5px;
-      width: 5px;
-      height: 5px;
-      background: #ffaa88;
-      border-radius: 50%;
-      opacity: 0.8;
-      filter: blur(0.5px);
-      pointer-events: none;
-    }
-    
-    /* BLINK animation – scale Y almost flat + hide pupil briefly */
-    .magic-eye.blink {
-      transform: translateX(-50%) scaleY(0.08);
-      transition: transform 0.08s cubic-bezier(0.2, 1.2, 0.8, 1);
-    }
-    .magic-eye.blink .eye-pupil {
-      opacity: 0;
-      transition: opacity 0.05s;
-    }
-    
-    /* ===== SPEECH BUBBLE (eerie, appears near eye) ===== */
-    .eye-speech {
-      position: fixed;
-      bottom: 85px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0f0f12e6;
-      backdrop-filter: blur(8px);
-      border: 1px solid #aa5555;
-      border-radius: 20px 20px 20px 6px;
-      padding: 8px 16px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      color: #ffcccc;
-      text-shadow: 0 0 4px #aa3333;
-      white-space: nowrap;
-      max-width: 260px;
-      white-space: normal;
-      word-break: keep-all;
-      text-align: center;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 12px rgba(200,60,60,0.3);
-      z-index: 10000;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-    
-    .eye-speech.show {
-      opacity: 1;
-    }
-    
-    /* small arrow pointing to eye */
-    .eye-speech::before {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 14px;
-      height: 14px;
-      background: #0f0f12e6;
-      border-right: 1px solid #aa5555;
-      border-bottom: 1px solid #aa5555;
-      backdrop-filter: blur(8px);
-      pointer-events: none;
-    }
-    
-    /* responsive: smaller screens */
-    @media (max-width: 480px) {
-      .magic-eye {
-        width: 48px;
-        height: 40px;
-        bottom: 20px;
-      }
-      .eye-pupil {
-        width: 16px;
-        height: 16px;
-      }
-      .eye-speech {
-        bottom: 70px;
-        font-size: 0.7rem;
-        max-width: 200px;
-        padding: 6px 12px;
-      }
-    }
+/* ===== EYE COMPONENT – sharper almond shape, cooler tint ===== */
+.magic-eye {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  width: 60px;
+  height: 46px;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+  cursor: default;
+  overflow: hidden;
+
+  /* pointed left/right edges */
+  clip-path: polygon(
+    0% 50%,
+    7% 28%,
+    22% 12%,
+    50% 4%,
+    78% 12%,
+    93% 28%,
+    100% 50%,
+    93% 72%,
+    78% 88%,
+    50% 96%,
+    22% 88%,
+    7% 72%
+  );
+
+  background:
+    radial-gradient(circle at 35% 38%, rgba(255,255,255,0.16), rgba(255,255,255,0) 26%),
+    linear-gradient(145deg, #172131 0%, #0b0f16 72%);
+  border: 1px solid #2a3550;
+  box-shadow:
+    0 0 0 2px rgba(10, 12, 18, 0.95),
+    0 0 0 5px rgba(0, 0, 0, 0.35),
+    0 8px 20px rgba(0, 0, 0, 0.55),
+    inset 0 0 12px rgba(127, 158, 255, 0.10),
+    inset 0 -8px 18px rgba(0, 0, 0, 0.45);
+
+  transition: box-shadow 0.2s ease, transform 0.05s ease;
+  animation: eyePulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes eyePulse {
+  0% {
+    box-shadow:
+      0 0 0 2px rgba(10, 12, 18, 0.95),
+      0 0 0 5px rgba(0, 0, 0, 0.35),
+      0 8px 20px rgba(0, 0, 0, 0.55),
+      inset 0 0 10px rgba(127, 158, 255, 0.08),
+      inset 0 -8px 18px rgba(0, 0, 0, 0.45);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(10, 12, 18, 0.95),
+      0 0 0 5px rgba(0, 0, 0, 0.35),
+      0 8px 24px rgba(0, 0, 0, 0.68),
+      inset 0 0 16px rgba(127, 158, 255, 0.14),
+      inset 0 -8px 18px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* subtle highlights */
+.magic-eye::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 11px;
+  width: 13px;
+  height: 13px;
+  background: rgba(225, 233, 255, 0.18);
+  border-radius: 50%;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.magic-eye::after {
+  content: "";
+  position: absolute;
+  bottom: 9px;
+  right: 13px;
+  width: 7px;
+  height: 7px;
+  background: rgba(210, 220, 255, 0.14);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* pupil */
+.eye-pupil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 35% 35%, #11182a, #020308 72%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 4px rgba(0, 0, 0, 0.8),
+    inset 0 0 2px rgba(127, 158, 255, 0.15);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  pointer-events: none;
+  transition: transform 0.08s linear;
+  z-index: 3;
+}
+
+/* cool glint instead of red */
+.eye-pupil::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  background: rgba(185, 200, 255, 0.72);
+  border-radius: 50%;
+  opacity: 0.65;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+/* blink: eyelid-style instead of squashing the whole eye */
+.magic-eye.blink {
+  animation: eyeBlink 150ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes eyeBlink {
+  0% {
+    clip-path: polygon(
+      0% 50%,
+      7% 28%,
+      22% 12%,
+      50% 4%,
+      78% 12%,
+      93% 28%,
+      100% 50%,
+      93% 72%,
+      78% 88%,
+      50% 96%,
+      22% 88%,
+      7% 72%
+    );
+    transform: translateX(-50%) translateY(0);
+  }
+  45%,
+  55% {
+    clip-path: polygon(
+      0% 50%,
+      10% 47%,
+      92% 47%,
+      100% 50%,
+      92% 53%,
+      10% 53%
+    );
+    transform: translateX(-50%) translateY(1px);
+  }
+  100% {
+    clip-path: polygon(
+      0% 50%,
+      7% 28%,
+      22% 12%,
+      50% 4%,
+      78% 12%,
+      93% 28%,
+      100% 50%,
+      93% 72%,
+      78% 88%,
+      50% 96%,
+      22% 88%,
+      7% 72%
+    );
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ===== SPEECH BUBBLE – matched to page palette ===== */
+.eye-speech {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 11, 17, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(127, 158, 255, 0.28);
+  border-radius: 20px 20px 20px 6px;
+  padding: 8px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #dbe4ff;
+  white-space: normal;
+  word-break: keep-all;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(127, 158, 255, 0.12);
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+.eye-speech.show {
+  opacity: 1;
+}
+
+.eye-speech::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 14px;
+  height: 14px;
+  background: rgba(8, 11, 17, 0.92);
+  border-right: 1px solid rgba(127, 158, 255, 0.28);
+  border-bottom: 1px solid rgba(127, 158, 255, 0.28);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .magic-eye {
+    width: 50px;
+    height: 40px;
+    bottom: 20px;
+  }
+
+  .eye-pupil {
+    width: 15px;
+    height: 15px;
+  }
+
+  .eye-speech {
+    bottom: 70px;
+    font-size: 0.7rem;
+    max-width: 200px;
+    padding: 6px 12px;
+  }
+}
     
     /* fallback: if JS disabled, eye still looks good, no animations, but static */
   </style>
@@ -425,12 +503,12 @@
     
     // ---------- BLINK: adds .blink class then removes it ----------
     function blink() {
-      if (!eye) return;
-      eye.classList.add('blink');
-      setTimeout(() => {
-        eye.classList.remove('blink');
-      }, 140);  // blink duration ~140ms
-    }
+  if (!eye) return;
+  eye.classList.add('blink');
+  setTimeout(() => {
+    eye.classList.remove('blink');
+  }, 150);
+}
     
     // ---------- SPEECH: random phrase from array, show bubble ----------
     let currentSpeechTimeout = null;
