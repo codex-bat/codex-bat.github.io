@@ -61,7 +61,7 @@
             color: #fff;
         }
 
-        /* tgation section — contains both nav links and dropdown button (mobile only) */
+        /* Nagation section — contains both nav links and dropdown button (mobile only) */
         .nav-section {
             margin-top: 0.5rem;
         }
@@ -144,7 +144,34 @@
             padding-top: 1rem;
         }
 
-        /* Mobile dropdown button: hidden on desktop --- YIPpPIEEEEEEE */
+        /* =======YLES: reve r roun====== */
+        /* Remove default focus outline from all interactive elements */
+        a, button, .links a, .mobile-dropdown-arrow, nav a {
+            outline: none;
+        }
+
+        a, button, .links a, .mobile-dropdown-arrow, nav a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom focus ring for keyboard navigation – respects border-radius */
+        a:focus-visible, button:focus-visible, .links a:focus-visible, .mobile-dropdown-arrow:focus-visible, nav a:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(127, 158, 255, 0.5), 0 0 0 1px #7f9eff;
+            border-radius: inherit; /* ensures the glow follows the element's shape */
+        }
+
+        .links a:focus-visible, .mobile-dropdown-arrow:focus-visible {
+            border-radius: 8px; /* matches mobile/desktop border-radius */
+        }
+
+        nav a:focus-visible {
+            border-radius: 4px;
+            background-color: rgba(127, 158, 255, 0.1);
+            box-shadow: 0 0 0 2px #7f9eff;
+        }
+
+        /* Mobile dropdown button: hidden on desktop */
         .mobile-dropdown-arrow {
             display: none;
         }
@@ -179,7 +206,7 @@
                 font-size: 0.95rem;
             }
 
-            /* slow and style the dropdown arrow button */
+            /* show and style the dropdown arrow button */
             .mobile-dropdown-arrow {
                 display: inline-flex;
                 align-items: center;
@@ -347,9 +374,6 @@
                     arrowBtn.textContent = '▼';
                 }
             });
-            
-            // Optional: if the user clicks a link inside the dropdown, we could keep it open,
-            // but it's fine as is. No auto-close needed for simplicity.
         })();
     </script>
 </body>
