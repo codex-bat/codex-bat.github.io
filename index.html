@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/assets/site.webmanifest" />
   <meta name="description" content="Codex.bat's website showcasing posts, socials and other important dets." />
-   <style>
+  <style>
     body {
       background: #000;
       color: #ddd;
@@ -112,45 +112,20 @@
 
   <h2>posts</h2>
   <div id="posts-container">
-    <!-- posts will be rendered here by javascript -->
+    <!-- Posts are now served as static HTML – works with or without JavaScript -->
+    <ul class="post-list">
+      <li>
+        <div class="post-date">March 21, 2026</div>
+        <div class="post-title">
+          <a href="post/first-post">First Post</a>
+        </div>
+      </li>
+    </ul>
   </div>
 
   <footer>
     © 2026 Codex.bat All rights reserved
   </footer>
 </div>
-
-<script>
-      // ========== POSTS DIRECTORY SIMULATION ==========
-     // add posts here. each post:
-    //   title, date, link (where the actual page lives)
-  const posts = [
-    {
-      title: "First Post",
-      date: "March 21, 2026",
-      link: "post/first-post"
-    }
-  ];
-
-  const container = document.getElementById("posts-container");
-
-  if (posts.length === 0) {
-    container.innerHTML = '<div class="empty">no posts yet — check back later</div>';
-  } else {
-    let html = '<ul class="post-list">';
-    for (let post of posts) {
-      html += `
-        <li>
-          <div class="post-date">${post.date}</div>
-          <div class="post-title">
-            <a href="${post.link}">${post.title}</a>
-          </div>
-        </li>
-      `;
-    }
-    html += '</ul>';
-    container.innerHTML = html;
-  }
-</script>
 </body>
 </html>
