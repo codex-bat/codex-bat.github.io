@@ -61,7 +61,8 @@
             color: #fff;
         }
 
-        nav {
+        /* tgation section — contains both nav links and dropdown button (mobile only) */
+        .nav-section {
             margin-top: 0.5rem;
         }
 
@@ -75,7 +76,7 @@
             text-decoration: underline;
         }
 
-        /* ========= LINK BUTTONS (DESKTOP STYLE) ========= */
+        /* desktop link buttons (inline) */
         .links {
             margin: 1rem 0 0 0;
             text-align: left;
@@ -87,12 +88,12 @@
             border: 1px solid #2a2a2a;
             padding: 0.4rem 0.9rem;
             margin-right: 0.8rem;
-            margin-bottom: 0.6rem;    /* prevents crowding when wrapping */
+            margin-bottom: 0.6rem;
             text-decoration: none;
             color: #7f9eff;
             font-family: monospace;
             font-size: 0.95rem;
-            border-radius: 4px;        /* subtle rounding, modern touch */
+            border-radius: 4px;
             transition: all 0.2s ease;
             box-sizing: border-box;
         }
@@ -143,11 +144,15 @@
             padding-top: 1rem;
         }
 
-        /* ========= RESPONSIVE: FIX FOR PHONE DISPLAYS ========= */
-        /* improves tap targets, prevents horizontal overflow, and stacks buttons nicely */
+        /* Mobile dropdown button: hidden on desktop --- YIPpPIEEEEEEE */
+        .mobile-dropdown-arrow {
+            display: none;
+        }
+
+        /* ========= RESPONSIVE: PHONE ONLY DROPDOWN ========= */
         @media (max-width: 640px) {
             body {
-                padding: 1rem;               /* more breathing room on small screens */
+                padding: 1rem;
             }
 
             .container {
@@ -159,20 +164,54 @@
                 word-break: break-word;
             }
 
+            /* make nav section flex row with space-between for arrow button */
+            .nav-section {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
             nav a {
                 display: inline-block;
                 margin-right: 0.8rem;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0;
                 font-size: 0.95rem;
             }
 
-            /* link buttons become full-width, stacked, finger-friendly */
+            /* slow and style the dropdown arrow button */
+            .mobile-dropdown-arrow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: #111;
+                border: 1px solid #2a2a2a;
+                color: #7f9eff;
+                font-size: 1.2rem;
+                padding: 0.3rem 0.7rem;
+                border-radius: 8px;
+                cursor: pointer;
+                font-family: monospace;
+                transition: all 0.2s ease;
+                user-select: none;
+            }
+
+            .mobile-dropdown-arrow:active {
+                background: #2a2a2a;
+                transform: scale(0.96);
+            }
+
+            /* Links container: hidden by default, becomes flex when open */
             .links {
-                margin: 1rem 0 0.5rem 0;
-                display: flex;
+                display: none;
                 flex-direction: column;
                 gap: 0.7rem;
                 width: 100%;
+                margin: 1rem 0 0 0;
+            }
+
+            .links.open {
+                display: flex;
             }
 
             .links a {
@@ -184,12 +223,11 @@
                 text-align: center;
                 font-size: 1rem;
                 letter-spacing: 0.3px;
-                border-radius: 8px;      /* bigger tap area + friendly look */
+                border-radius: 8px;
                 background: #111;
                 border: 1px solid #2f2f2f;
             }
 
-            /* keep hover effect subtle on touch devices, but active state helps */
             .links a:active {
                 background: #2a2a2a;
                 border-color: #7f9eff;
@@ -230,6 +268,11 @@
                 font-size: 0.85rem;
                 margin-right: 0.6rem;
             }
+
+            .mobile-dropdown-arrow {
+                font-size: 1rem;
+                padding: 0.25rem 0.6rem;
+            }
         }
     </style>
 </head>
@@ -238,11 +281,17 @@
     <div class="container">
         <header>
             <h1>Codex.bat</h1>
-            <nav>
-                <a href="/">home</a>
-                <a href="/codex.bat">about me</a>
-            </nav>
-            <!-- oaksdoksaokdaosdkoasodk -->
+            
+            <!-- Navigation row: home/about me + dropdown arrow (only visible on mobile) -->
+            <div class="nav-section">
+                <nav>
+                    <a href="/">home</a>
+                    <a href="/codex.bat">about me</a>
+                </nav>
+                <button class="mobile-dropdown-arrow" aria-label="Toggle social links">▼</button>
+            </div>
+
+            <!-- Social links container (desktop: inline; mobile: hidden until toggled) -->
             <div class="links">
                 <a href="https://github.com/codex-bat">GitHub</a>
                 <a href="https://youtube.com/@codex_bat">YouTube</a>
@@ -276,6 +325,33 @@
             © 2026 Codex.bat All rights reserved
         </footer>
     </div>
+
+    <!-- Simple toggle script for mobile dropdown (only active when arrow exists) -->
+    <script>
+        (function() {
+            // Only needed for mobile – but safe to run on all devices
+            const arrowBtn = document.querySelector('.mobile-dropdown-arrow');
+            const linksContainer = document.querySelector('.links');
+            
+            if (!arrowBtn || !linksContainer) return;
+            
+            // Toggle dropdown and arrow icon on click
+            arrowBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                linksContainer.classList.toggle('open');
+                
+                // Change arrow direction: ▼ when closed, ▲ when open
+                if (linksContainer.classList.contains('open')) {
+                    arrowBtn.textContent = '▲';
+                } else {
+                    arrowBtn.textContent = '▼';
+                }
+            });
+            
+            // Optional: if the user clicks a link inside the dropdown, we could keep it open,
+            // but it's fine as is. No auto-close needed for simplicity.
+        })();
+    </script>
 </body>
 
 </html>
