@@ -16,7 +16,8 @@
     <meta name="twitter:title" content="Codex.bat">
     <meta name="twitter:description" content="Minecraft modder, Discord bot maker, trying to build a real community.">
     <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Improved viewport for better mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Codex.bat — about me</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
@@ -27,6 +28,13 @@
     <link rel="manifest" href="/assets/site.webmanifest" />
     <meta name="description" content="Codex.bat — Minecraft modder, Discord bot maker, community builder." />
     <style>
+        /* Base styles — clean, monospace, dark theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: #000;
             color: #ddd;
@@ -67,6 +75,7 @@
             text-decoration: underline;
         }
 
+        /* ========= LINK BUTTONS (DESKTOP STYLE) ========= */
         .links {
             margin: 1rem 0 0 0;
             text-align: left;
@@ -76,16 +85,27 @@
             display: inline-block;
             background: #111;
             border: 1px solid #2a2a2a;
-            padding: 0.3rem 0.8rem;
+            padding: 0.4rem 0.9rem;
             margin-right: 0.8rem;
+            margin-bottom: 0.6rem;    /* prevents crowding when wrapping */
             text-decoration: none;
             color: #7f9eff;
             font-family: monospace;
+            font-size: 0.95rem;
+            border-radius: 4px;        /* subtle rounding, modern touch */
+            transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
         .links a:hover {
             background: #1a1a1a;
             border-color: #7f9eff;
+            color: #b8d0ff;
+            transform: translateY(-1px);
+        }
+
+        .links a:active {
+            transform: translateY(1px);
         }
 
         .content {
@@ -97,10 +117,21 @@
         h2 {
             border-left: 5px solid #7f9eff;
             padding-left: 0.8rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
         }
 
         ul {
             padding-left: 1.2rem;
+            margin: 0.8rem 0;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
         }
 
         footer {
@@ -110,6 +141,95 @@
             font-size: 0.7rem;
             border-top: 1px dashed #2a2a2a;
             padding-top: 1rem;
+        }
+
+        /* ========= RESPONSIVE: FIX FOR PHONE DISPLAYS ========= */
+        /* improves tap targets, prevents horizontal overflow, and stacks buttons nicely */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;               /* more breathing room on small screens */
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2rem;
+                word-break: break-word;
+            }
+
+            nav a {
+                display: inline-block;
+                margin-right: 0.8rem;
+                margin-bottom: 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            /* link buttons become full-width, stacked, finger-friendly */
+            .links {
+                margin: 1rem 0 0.5rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.7rem;
+                width: 100%;
+            }
+
+            .links a {
+                display: block;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 0;
+                padding: 0.8rem 0.6rem;
+                text-align: center;
+                font-size: 1rem;
+                letter-spacing: 0.3px;
+                border-radius: 8px;      /* bigger tap area + friendly look */
+                background: #111;
+                border: 1px solid #2f2f2f;
+            }
+
+            /* keep hover effect subtle on touch devices, but active state helps */
+            .links a:active {
+                background: #2a2a2a;
+                border-color: #7f9eff;
+                transform: scale(0.98);
+            }
+
+            /* content spacing */
+            .content {
+                padding: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p, li {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                font-size: 0.65rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* extra small devices (<= 480px) fine-tuning */
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .links a {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                margin-right: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -144,6 +264,7 @@
                 <li>running a Discord server that’s actually alive</li>
                 <li>learning bad CSS on purpose</li>
                 <li>posting random dev updates on YouTube</li>
+                <li>also OH MY GAAAHHHH THE GROUNDSLAMMER REPO LOOKS SOOO GOOOD >v<</li>
             </ul>
 
             <h2>why this site exists</h2>
