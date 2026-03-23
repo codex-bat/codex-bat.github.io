@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <!-- Discord, most platforms -->
@@ -26,6 +25,7 @@
   <link rel="manifest" href="/assets/site.webmanifest" />
   <meta name="description" content="Codex.bat's website showcasing posts, socials and other important dets." />
   <style>
+    /* ===== base styles (unchanged, just preserved) ===== */
     body {
       background: #000;
       color: #ddd;
@@ -98,6 +98,101 @@
       border-top: 1px dashed #2a2a2a;
       padding-top: 1rem;
     }
+
+    /* ===== EYE COMPONENT (always visible, mouse-following with JS) ===== */
+    /* container: fixed at bottom center, does NOT block clicks/interaction */
+    .magic-eye {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 52px;
+      height: 52px;
+      background: radial-gradient(circle at 35% 35%, #f9f9fc, #e2e6f0);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 0 3px #1a1a1a;
+      cursor: default;
+      z-index: 9999;
+      /* let all mouse events pass through — buttons/links under the eye stay clickable */
+      pointer-events: none;
+      /* subtle smooth scaling on hover? not needed, but nice */
+      transition: box-shadow 0.2s ease;
+    }
+    
+    /* tiny shine effect for that "alive" look */
+    .magic-eye::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+    
+    /* pupil: absolute inside the eye, initially dead-center */
+    .eye-pupil {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background: #0b0b1f;
+      background: radial-gradient(circle at 35% 35%, #1a1f2e, #03060e);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), inset 0 0 2px rgba(255, 255, 255, 0.4);
+      transform: translate(-50%, -50%);
+      will-change: transform;
+      pointer-events: none;
+      transition: transform 0.03s linear; /* micro-smooth but responsive */
+    }
+    
+    /* inner light reflection (tiny catchlight) */
+    .eye-pupil::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 5px;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    
+    /* if JS is disabled, the eye stays static but looks perfectly normal.
+       no movement, but the design remains intact and page works flawlessly.
+       Also make sure the eye doesn't cause overflow on tiny screens */
+    @media (max-width: 480px) {
+      .magic-eye {
+        width: 46px;
+        height: 46px;
+        bottom: 16px;
+      }
+      .eye-pupil {
+        width: 18px;
+        height: 18px;
+      }
+      .eye-pupil::after {
+        top: 3px;
+        left: 4px;
+        width: 4px;
+        height: 4px;
+      }
+    }
+    
+    /* optional: soft pulse on the eye edge? makes it charming but not invasive */
+    @keyframes subtleGlow {
+      0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 0 3px #1a1a1a; }
+      100% { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 240, 180, 0.3) inset, 0 0 0 3px #2a2a2a; }
+    }
+    .magic-eye {
+      animation: subtleGlow 3s infinite alternate;
+    }
   </style>
 </head>
 <body>
@@ -127,5 +222,211 @@
     © 2026 Codex.bat All rights reserved
   </footer>
 </div>
+
+<!-- ========== THE EYE: visible to everyone, but interactive pupil only with JS ========== -->
+<div class="magic-eye" aria-hidden="true">
+  <div class="eye-pupil" id="eyePupil"></div>
+</div>
+
+<script>
+  (function() {
+    // --- EYE FOLLOWS MOUSE ---
+    // This script only adds the interactive pupil movement. No layout or content depends on it.
+    
+    const pupil = document.getElementById('eyePupil');
+    const eyeContainer = document.querySelector('.magic-eye');
+    
+    // Guard: if for any reason elements don't exist, silently exit
+    if (!pupil || !eyeContainer) return;
+    
+    // ----- geometry & bounds caching -----
+    let eyeRect = { left: 0, top: 0, width: 0, height: 0, centerX: 0, centerY: 0 };
+    let eyeRadius = 0;          // radius of the outer eye (px)
+    let pupilRadius = 0;        // radius of the pupil element (px)
+    let maxMoveDistance = 0;    // how far pupil can travel from center (eyeRadius - pupilRadius)
+    
+    // store last mouse coordinates (for resize correction, if needed)
+    let lastMouseX = null;
+    let lastMouseY = null;
+    
+    // helper: update all metrics (eye size, position, pupil size)
+    function updateEyeMetrics() {
+      if (!eyeContainer || !pupil) return;
+      const rect = eyeContainer.getBoundingClientRect();
+      eyeRect.left = rect.left;
+      eyeRect.top = rect.top;
+      eyeRect.width = rect.width;
+      eyeRect.height = rect.height;
+      eyeRect.centerX = rect.left + rect.width / 2;
+      eyeRect.centerY = rect.top + rect.height / 2;
+      
+      // compute radii: outer eye radius
+      eyeRadius = rect.width / 2;
+      // get pupil actual dimensions (might change on window resize due to media queries)
+      const pupilRect = pupil.getBoundingClientRect();
+      pupilRadius = pupilRect.width / 2;
+      // maximum offset from center before pupil touches eye edge
+      maxMoveDistance = Math.max(0, eyeRadius - pupilRadius);
+    }
+    
+    // reset pupil to exact center (no offset)
+    function resetPupilToCenter() {
+      if (!pupil) return;
+      pupil.style.transform = 'translate(-50%, -50%)';
+    }
+    
+    // move pupil based on mouse coordinates (clamped inside eye boundaries)
+    function movePupilTo(mouseX, mouseY) {
+      if (!pupil || maxMoveDistance <= 0 || !eyeContainer) {
+        // if eye is extremely small or invalid, keep centered
+        return;
+      }
+      
+      // vector from eye center to mouse cursor
+      let deltaX = mouseX - eyeRect.centerX;
+      let deltaY = mouseY - eyeRect.centerY;
+      
+      // distance from eye center to cursor
+      let distance = Math.hypot(deltaX, deltaY);
+      
+      let limitedDeltaX = deltaX;
+      let limitedDeltaY = deltaY;
+      
+      if (distance > maxMoveDistance && distance > 0.01) {
+        // clamp: keep direction but limit to maxMoveDistance
+        const ratio = maxMoveDistance / distance;
+        limitedDeltaX = deltaX * ratio;
+        limitedDeltaY = deltaY * ratio;
+      }
+      
+      // Apply transformation: we keep the default translate(-50%, -50%) and add pixel offset.
+      // pupil default is centered via translate(-50%, -50%).
+      // Additional offsetX, offsetY move the pupil within the eye.
+      // formula: translate( calc(-50% + Xpx), calc(-50% + Ypx) )
+      const xOffset = limitedDeltaX;
+      const yOffset = limitedDeltaY;
+      
+      pupil.style.transform = `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`;
+    }
+    
+    // handler for mouse/touch movement
+    function onPointerMove(clientX, clientY) {
+      if (!eyeContainer) return;
+      // store last known position
+      lastMouseX = clientX;
+      lastMouseY = clientY;
+      // only move pupil if we have valid metrics
+      if (eyeRadius > 0 && maxMoveDistance >= 0) {
+        movePupilTo(clientX, clientY);
+      }
+    }
+    
+    // --- mouse move event (desktop / laptop) ---
+    function onMouseMove(e) {
+      onPointerMove(e.clientX, e.clientY);
+    }
+    
+    // --- touch events for mobile (so the eye follows finger/touch, enhances experience) ---
+    function onTouchMove(e) {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onPointerMove(touch.clientX, touch.clientY);
+        // optional: prevent scrolling while touching the eye area? but pointer-events: none already allows scrolling,
+        // and we don't need to call preventDefault because eye is non-interactive.
+      }
+    }
+    
+    function onTouchEnd() {
+      // when touch ends, reset pupil to center for a clean state
+      resetPupilToCenter();
+      lastMouseX = null;
+      lastMouseY = null;
+    }
+    
+    // when mouse leaves the whole window, reset pupil to center (avoids weird stuck positions)
+    function onMouseLeaveWindow(e) {
+      if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+        resetPupilToCenter();
+        lastMouseX = null;
+        lastMouseY = null;
+      }
+    }
+    
+    // recalc dimensions & recenter pupil on resize/orientation change, and re-apply last known mouse if exists
+    function handleResize() {
+      updateEyeMetrics();
+      // reset pupil to center after layout shift (avoids weird offsets)
+      resetPupilToCenter();
+      // if we have a last known valid mouse position, re-apply movement (optional, improves UX)
+      if (lastMouseX !== null && lastMouseY !== null) {
+        // but ensure coordinates are within window
+        if (lastMouseX >= 0 && lastMouseX <= window.innerWidth && lastMouseY >= 0 && lastMouseY <= window.innerHeight) {
+          // re-calc move with fresh metrics
+          movePupilTo(lastMouseX, lastMouseY);
+        } else {
+          lastMouseX = null;
+          lastMouseY = null;
+        }
+      }
+    }
+    
+    // initialise: get geometry, add event listeners
+    function initEye() {
+      updateEyeMetrics();
+      
+      // only if there's a valid max move distance (eye and pupil exist)
+      if (eyeRadius > 0 && pupilRadius > 0) {
+        // set initial centered state (already default, but enforce)
+        resetPupilToCenter();
+      }
+      
+      // register events
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseleave', onMouseLeaveWindow);
+      // touch events for mobile (provides natural following on phones/tablets)
+      window.addEventListener('touchmove', onTouchMove, { passive: true });
+      window.addEventListener('touchend', onTouchEnd);
+      window.addEventListener('touchcancel', onTouchEnd);
+      window.addEventListener('resize', handleResize);
+      // also listen to orientation change for mobile
+      window.addEventListener('orientationchange', handleResize);
+      // small safeguard: re-check metrics on scroll? not needed for fixed eye,
+      // but sometimes browser UI changes (like address bar) can affect layout.
+      // So we also update on scroll? Actually fixed element relative to viewport isn't affected by scroll,
+      // but if document height changes and address bar hides, recalc on scroll can be safe.
+      // We'll do a lightweight re-check on scroll, just to be robust.
+      window.addEventListener('scroll', function() {
+        // only if there's a last mouse position? but scroll shouldn't affect fixed eye position relative to viewport.
+        // However, some mobile browsers change viewport geometry on scroll (rare), so we update metrics.
+        if (eyeContainer) {
+          updateEyeMetrics();
+          if (lastMouseX !== null && lastMouseY !== null) {
+            movePupilTo(lastMouseX, lastMouseY);
+          }
+        }
+      }, { passive: true });
+    }
+    
+    // wait for DOM fully loaded to ensure elements are ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEye);
+    } else {
+      initEye();
+    }
+  })();
+</script>
+
+<!-- 
+  🧿 (I remmeber you, yuri) EYE BEHAVIOR SUMMARY:
+  - The eye is always visible (center-bottom of every page).
+  - If JavaScript is disabled: the eye stays still with a centered pupil → no movement, 
+    but everything works, looks fine, and no errors appear.
+  - If JavaScript is enabled: the pupil smoothly follows mouse (or finger on touch devices)
+    while staying strictly inside the eyeball. 
+  - Pointer-events: none ensures the eye never blocks any link, button, or text selection.
+  - This snippet is self-contained: add the .magic-eye and .eye-pupil HTML + CSS + script
+    to any page of the site, and it will persist across the whole website with the same 
+    charming tracking behaviour.
+-->
 </body>
 </html>
