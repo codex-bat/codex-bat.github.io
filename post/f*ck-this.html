@@ -224,6 +224,48 @@ body::-webkit-scrollbar-corner {
             padding: 0.5rem;
             overflow-x: auto;
         }
+
+     /* back-to-top button – hidden by default, shown via JS */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    color: #7f9eff;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: #1a1a1a;
+    border-color: #7f9eff;
+}
+
+/* mobile: centered at bottom */
+@media (max-width: 768px) {
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+    }
+}
+
+/* class used by JS to show the button */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
     </style>
 </head>
 
@@ -273,6 +315,35 @@ body::-webkit-scrollbar-corner {
             © 2026 Codex.bat All rights reserved
         </footer>
     </div>
+ <button class="back-to-top" aria-label="Back to top">↑ top</button>
+ <script>
+    (function() {
+        // Get the button element
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+
+        // Show/hide button based on scroll position
+        function toggleButton() {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+
+        // Scroll to top when clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Attach events
+        window.addEventListener('scroll', toggleButton);
+        btn.addEventListener('click', scrollToTop);
+
+        // Initial check in case the page loads scrolled down
+        toggleButton();
+    })();
+</script>
 </body>
 
 </html>
