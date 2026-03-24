@@ -89,6 +89,83 @@
             padding-top: 1rem;
         }
 
+              /* Headers */
+        h1, h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; border-bottom: 2px solid var(--dim); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; color: var(--accent); }
+        
+        /* Syntax Classes (The "Smart" part) */
+        .b { font-weight: bold; }
+        .bi { font-weight: bold; font-style: italic; }
+        .i { font-style: italic; }
+        .u { text-decoration: underline; }
+        .s { text-decoration: line-through; color: var(--dim); }
+        
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* Lists */
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING --- */
+        .highlight { color: var(--accent); font-weight: bold; }
+        .danger { color: var(--error); }
+        .dim { color: var(--dim); }
+
         /* simple styling for post content */
         .post-content p, .post-content li {
             color: #ddd;
@@ -139,7 +216,7 @@
                 <p>I've been outcasted by several societies. I've been through discrimination of many kinds. I'm not complaining, I'm explaining. I hate that I was... well, I wasn't hated. I could never say I was hated. I was the one with hatred. but I hate that I was pushed aside. it led to the point where being see-through was better. And I now no longer feel the ability to rejoin society. I don't want to. it's ridiculous. I cannot maintain conversations about meaningless things until they eventually manage to pull off their desired questions and lead the conversation. huh, 'lead the conversation', again... society just accepts it. people are so good at manipulating each other, why aren't they this good at their professions? society wouldn't be failing if that was the case. so superficial. so fake. so... meaningless. people constantly drain my energy and for what? what do I get in return? I don't get the hormonal hits I assume I'm supposed to and I don't even want to. again, why would I want to maintain connections for the sake of making myself feel better and therefore sustaining myself and securing my survival?</p>
                 <p>fake. fake. fake. all fake. and this is very apparent with the rise of... uhm... artificial "mind-replicant" software. so much effort just got thrown out of the window as soon as this technology was sent to the mainstream channel. oftentimes ppl can't tell the difference, because they don't care to. how can you tell that this writing wasn't generated?!?!? or that anything I've ever made isn't the creation of some evil company-owned large model with a backdoor? is it because of my "passion"? well, guess what, I just sent a similarly passionate manifesto to this new model called "codegeek" and it generated me this. I'm not even the one writing any of this. I'm joking. I'm very clearly joking. I'm currently ignoring 3 messages from one person on discord typing this and it doesn't even matter. none of it does. what does it matter what I spend my small moments on? none of it adds up to anything, my life is so miniscule. even if I killed myself in an attempt to send a message, it'd be forgotten within months at best.</p>
                 <p>there. more dangerous flags tripped. I'm talking about suicide!!!! pay attention!!! BAN ME IF THE POST IS SHARED ON SOCIAL MEDIA APPS. RESTRICT MY ACCESS TO ALL OF MY PROJECTS, FUCK NPM, FUCK SOLARIS, FUCK SO MUCH MORE. FUCK MY LIFE AND EVERYTHING IN IT, RIGHT?! I'M JUST A 19 YEAR OLD SHIT ANYWAY.</p>
-                <p>I feel numb. how did black become the new preferred shade over white? why did we normalize the dark aesthetics? knights used to wear shiny armours made out of steal, several pieces of literature use this to talk about light and some godly non-sense or whatever the fuck. how did we go to black? yes, it's dark in the room and you don't want your monitor to burn your cretins-- "fuck. what was that word again?" was what I thought and decided to search it up. instead, I came across [this post](https://www.reddit.com/r/DestinyTheGame/comments/cpngmp/i_never_understood_the_complaints_about_the_white/). it made me... giggle internally. the author (op) was funny in the way they described everything and the pacing was fitting for any book really. wait. 7 years ago... hm. I wonder if it's real. even if it was 7 years ago, people were still just making shit up for the sake of making shit up. that reminds me-- I wanted to say at some point that another reaction to this post might "get off the internet", "touch grass". this outrage of mine grew the most when I was in school. teachers are fucking morons. studying on my own is more efficient than spending several hours of my life in those institutions, those poorly maintained buildings. classmates are far worse. I've been told several times that I'm too negative, I take life too seriously and some others have told me I'm very mature for my age. I cannot care less about their opinions, why the fuck isn't the rest of the world keeping up? this should be standard. all I'm doing now is write down my observations. my tone, my emotions, my way of sharing that, doesn't matter. it only matters because of how you judge me and how this will stick with you. but I couldn't care less about that, no offense. not because I want to be so cool and dope and not care, but because, again, it's another social convetion to "make yourself look as presentable as possible" and I'm *honestly* **sick and tired of it**. there's no reason for me to be doing that. there's no one I have to impress or to live up to their expectations. my life is mine and only mine. or at least I wish that was the case, again, we're back to corporate talk with this one about evil manipulation bla-bla-bla. you've heard it several times by now.</p>
+                <p>I feel numb. how did black become the new preferred shade over white? why did we normalize the dark aesthetics? knights used to wear shiny armours made out of steal, several pieces of literature use this to talk about light and some godly non-sense or whatever the fuck. how did we go to black? yes, it's dark in the room and you don't want your monitor to burn your cretins-- "fuck. what was that word again?" was what I thought and decided to search it up. instead, I came across <a href="https://www.reddit.com/r/DestinyTheGame/comments/cpngmp/i_never_understood_the_complaints_about_the_white/">this post</a>. it made me... giggle internally. the author (op) was funny in the way they described everything and the pacing was fitting for any book really. wait. 7 years ago... hm. I wonder if it's real. even if it was 7 years ago, people were still just making shit up for the sake of making shit up. that reminds me-- I wanted to say at some point that another reaction to this post might "get off the internet", "touch grass". this outrage of mine grew the most when I was in school. teachers are fucking morons. studying on my own is more efficient than spending several hours of my life in those institutions, those poorly maintained buildings. classmates are far worse. I've been told several times that I'm too negative, I take life too seriously and some others have told me I'm very mature for my age. I cannot care less about their opinions, why the fuck isn't the rest of the world keeping up? this should be standard. all I'm doing now is write down my observations. my tone, my emotions, my way of sharing that, doesn't matter. it only matters because of how you judge me and how this will stick with you. but I couldn't care less about that, no offense. not because I want to be so cool and dope and not care, but because, again, it's another social convetion to "make yourself look as presentable as possible" and I'm *honestly* **sick and tired of it**. there's no reason for me to be doing that. there's no one I have to impress or to live up to their expectations. my life is mine and only mine. or at least I wish that was the case, again, we're back to corporate talk with this one about evil manipulation bla-bla-bla. you've heard it several times by now.</p>
                 <p>btw, does this entertain you? think about that. and if you are shameless, think about it some more. surely you realize...</p>
                 <p>I will stop here. there's no more point in continuing. this can and will be used against me in some way or another at some point. I'm basically ensuring my future failure with this. it's not my intention, but people just really really really don't care about others and I'll probably fall victim to that.</p>
                 <p>last thought: many people still think that social media is another world and what happens there doesn't affect you or your circle of people around you. that's not true and probably never again will be.</p>
