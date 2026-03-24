@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>System Status: Critical</title>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="System Status">
+    <meta property="og:description" content="Codex.bat's website analytics.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="System Status">
+    <meta name="twitter:description" content="Codex.bat's website analytics.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <meta name="description" content="Codex.bat's website analytics." />
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #00ff41; /* Terminal Green */
+            --error: #ff3333;
+            --dim: #555555;
+            --font-stack: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-stack);
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- 1. SMART CONTAINER & TYPOGRAPHY --- */
+
+        /* Headers */
+        h1, h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.5rem; border-bottom: 2px solid var(--dim); padding-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; color: var(--accent); }
+        
+        /* Syntax Classes (The "Smart" part) */
+        .b { font-weight: bold; }
+        .bi { font-weight: bold; font-style: italic; }
+        .i { font-style: italic; }
+        .u { text-decoration: underline; }
+        .s { text-decoration: line-through; color: var(--dim); }
+        
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* Lists */
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING (Optional Visual Polish) --- */
+        .highlight { color: var(--accent); font-weight: bold; }
+        .danger { color: var(--error); }
+        .dim { color: var(--dim); }
+
+    </style>
+</head>
+<body>
+
+    <!-- THE SMART CONTAINER -->
+    <div class="post-container">
+        
+        <h1>SYSTEM ALERT <span class="b">// CRITICAL UPDATE</span></h1>
+
+        <p class="dim">
+            Last updated: <time datetime="2023-10-27">October 27th, 2023</time> • 
+            Source: <a href="#">Internal Logs</a>
+        </p>
+
+        <hr>
+
+        <h2>STATUS REPORT</h2>
+        <p>
+            Current system stability is at <span class="b">98.4%</span>. 
+            Several minor <span class="dim">oscillations</span> detected in the <span class="code">mainframe</span>.
+        </p>
+
+        <h3>Key Findings</h3>
+        <ul>
+            <li>Memory fragmentation <span class="s">resolved</span>.</li>
+            <li>Network latency <span class="u">optimized</span>.</li>
+            <li><span class="highlight">CPU utilization</span> <span class="b">spiking</span> (See below).</li>
+        </ul>
+
+        <blockquote>
+            "The architecture is robust, but the legacy code is holding us back. We need a rewrite."
+            <br><span class="dim">— DevOps Team Lead</span>
+        </blockquote>
+
+        <h2>RECOMMENDED ACTIONS</h2>
+        <ol>
+            <li>Run <code>diagnose --deep</code> on node-04.</li>
+            <li>Clear <span class="b">/tmp</span> cache.</li>
+            <li>Reboot cluster <span class="b">if necessary</span>.</li>
+        </ol>
+
+        <hr>
+
+        <p>
+            If issues persist, please escalate to <span class="u">Level 3 Support</span>.
+            Do not ignore <span class="highlight">error code 0x7F</span>.
+        </p>
+
+    </div>
+
+</body>
+</html>
