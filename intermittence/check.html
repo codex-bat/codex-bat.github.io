@@ -25,7 +25,7 @@
         :root {
             --bg: #0a0a0a;
             --text: #e0e0e0;
-            --accent: #00ff41; /* Terminal Green */
+            --accent: #00ff41;
             --error: #ff3333;
             --dim: #555555;
             --font-stack: 'Courier New', Courier, monospace;
@@ -122,10 +122,19 @@
             overflow-x: auto;
         }
 
-        /* --- 2. DYNAMIC COLORING (Optional Visual Polish) --- */
+        /* --- 2. DYNAMIC COLORING --- */
         .highlight { color: var(--accent); font-weight: bold; }
         .danger { color: var(--error); }
         .dim { color: var(--dim); }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
 
     </style>
 </head>
@@ -176,6 +185,9 @@
         </p>
 
     </div>
-
+    
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
 </body>
 </html>
