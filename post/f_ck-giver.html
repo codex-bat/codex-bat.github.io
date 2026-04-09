@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="f*ck giver">
+    <meta property="og:description" content="I take life, and everything in it, too seriously.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/f*ck-giver.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="f*ck giver">
+    <meta name="twitter:description" content="I take life, and everything in it, very seriously.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>f*ck giver — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #f5f5f5 #000;
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #f2f2f2 35%,
+      #d0d0d0 70%,
+      #a8a8a8 100%);
+  border: 2px solid #000;
+  border-radius: 999px;
+  min-height: 26px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #ffffff 28%,
+      #e7e7e7 68%,
+      #bebebe 100%);
+}
+
+body::-webkit-scrollbar-corner {
+  background: #000;
+}
+    
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #7f9eff;
+            padding-left: 0.5rem;
+        }
+
+        .content {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-left: 5px solid #7f9eff;
+            padding-left: 0.8rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+              /* Headers */
+        h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 { font-size: 1.5rem; color: var(--accent); }
+        
+        /* Syntax Classes (The "Smart" part) */
+        .b { font-weight: bold; }
+        .bi { font-weight: bold; font-style: italic; }
+        .i { font-style: italic; }
+        .u { text-decoration: underline; }
+        .s { text-decoration: line-through; color: var(--dim); }
+        
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* Lists */
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING --- */
+        .highlight { color: var(--accent); font-weight: bold; }
+        .danger { color: var(--error); }
+        .dim { color: var(--dim); }
+
+        /* simple styling for post content */
+        .post-content p, .post-content li {
+            color: #ddd;
+        }
+        .post-content a {
+            color: #7f9eff;
+        }
+        .post-content pre {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+     /* back-to-top button – hidden by default, shown via JS */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    color: #7f9eff;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: #1a1a1a;
+    border-color: #7f9eff;
+}
+
+/* mobile: centered at bottom */
+@media (max-width: 768px) {
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+    }
+}
+
+/* class used by JS to show the button */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- post title and date -->
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">f*ck giver</h1>
+            <div class="post-meta">📅 April 8, 2026</div>
+
+            <!-- main post content -->
+            <div class="post-content">
+                <p># DISCLAIMER: PROFRANITIES</p>
+                <p>---</p>
+                <p>nobody around me ever gives a fuck. I have given some people large parts of myself. people who should care about me. and all they did was tell me how to play by the rules. I don't want to play by the rules. it doesn't benefit me in any way.</p>
+                <p>nobody ever played by the rules wiht me, os why should I carE? it's so fucking pathetic that people think it's their right to enforce their will upon others, just because they think they know better and disregard any evidence to the contrary. that's some sociopathic behaviour.</p>
+                <P>I'm sick and tired of the world. I've been broken and I've been isolated. I don't even want to be like the others anymore. I don't want to be normal anymore, it'd be unfair. it would be unfair to all of my memories and all of my experiences. It would be unfair to those times I couldn't handle myself anymore. to wake up early in the morning, drink a coffee and look out at the sun as if I was just another regular person living a normal life with all of the good and bad opportunities everyone else got? a joke. that's not who I am and I never want to be that. I'm carrying these scars to my grave. and it's not because I want to. I'm trying so hard not to turn more and more bitter. I'm really trying to being naive again. I'm trying to be forgiving and give everyone the benefit of the doubt. but somehow I always end up sucking a fat one doing that. I don't see any merit with upholding the most basic of courtesies. not even in family. especially not in family, I cannot even expect it from strangers, but family... man.</p>
+                <p>why am I even here then? everybody around me always only cares about something I do or say if it directly benefits them in a way? they might think it's for the greater cause, but goddamn it why is it that they never care enough unless it ends up aiding in their own goals?</p>
+                <p>and let's look at the political situation of any country-- no, any corporation-- no, any large team-- any institution-- any social network. all of it--- I mean, ALL OF IT built on fragile large teams with no direction, no competent leadership, no enginuity.</p>
+                <p>i'm going fucking mental. wtf is wrong with the- I can't take it anymore. i can't control anything. I'm completely powerless for all of time. I just goddamn wish I could live my own life. why can't anybody let me fucking go?</p>
+                <p>people tell me "don't be that guy", why not??? why doesn't anybody ever want to say the problems outloud? why does nobody ever want to take life seriously and change things? why doesn't anybody give enough of a fuck about ANYTHING?!? I get some people won't care about me, I'm getting used to it, contrary to my previous statements [it's been some days since I wrote the other sutff], but what about anyone else? the rest of society? the world is looking wrong. so wrong. so much wickedness and ignorance around us.</p>
+                <p>did I do something wrong? just fucking tell me what I did to deserve any of this... was I sinning periodically? even if with fluctuation? I don't see it. I don't remember it. so then why? all anybody cares to do "constructively" is degrade me and tell me to "play fair". I'm so tired, it's incredible. there's only one wonder right now that I can be happy for and it's of my own making. he's... amazing. I never thought about it until just 2 days ago, it's really magnificent.</p>
+                <p><small>— end of line —</small></p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+ <button class="back-to-top" aria-label="Back to top">↑ top</button>
+ <script>
+    (function() {
+        // Get the button element
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+
+        // Show/hide button based on scroll position
+        function toggleButton() {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+
+        // Scroll to top when clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Attach events
+        window.addEventListener('scroll', toggleButton);
+        btn.addEventListener('click', scrollToTop);
+
+        // Initial check in case the page loads scrolled down
+        toggleButton();
+    })();
+</script>
+</body>
+
+</html>
