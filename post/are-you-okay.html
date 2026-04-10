@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="are you okay?">
+    <meta property="og:description" content="are you!?!?!?">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/are-you-okay.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="are you okay?">
+    <meta name="twitter:description" content="are you really?!!?!?">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>are you okay? — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     html {
+  scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+}
+
+body {
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #f5f5f5 #000;
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #f2f2f2 35%,
+      #d0d0d0 70%,
+      #a8a8a8 100%);
+  border: 2px solid #000;
+  border-radius: 999px;
+  min-height: 26px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #ffffff 28%,
+      #e7e7e7 68%,
+      #bebebe 100%);
+}
+
+body::-webkit-scrollbar-corner {
+  background: #000;
+}
+    
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #7f9eff;
+            padding-left: 0.5rem;
+        }
+
+        .content {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-left: 5px solid #7f9eff;
+            padding-left: 0.8rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+              /* Headers */
+        h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 { font-size: 1.5rem; color: var(--accent); }
+        
+        /* Syntax Classes (The "Smart" part) */
+        .b { font-weight: bold; }
+        .bi { font-weight: bold; font-style: italic; }
+        .i { font-style: italic; }
+        .u { text-decoration: underline; }
+        .s { text-decoration: line-through; color: var(--dim); }
+        
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* Lists */
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING --- */
+        .highlight { color: var(--accent); font-weight: bold; }
+        .danger { color: var(--error); }
+        .dim { color: var(--dim); }
+
+        /* simple styling for post content */
+        .post-content p, .post-content li {
+            color: #ddd;
+        }
+        .post-content a {
+            color: #7f9eff;
+        }
+        .post-content pre {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+     /* back-to-top button – hidden by default, shown via JS */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    color: #7f9eff;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: #1a1a1a;
+    border-color: #7f9eff;
+}
+
+/* mobile: centered at bottom */
+@media (max-width: 768px) {
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+    }
+}
+
+/* class used by JS to show the button */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- post title and date -->
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">are you okay?</h1>
+            <div class="post-meta">📅 April 10, 2026</div>
+
+            <!-- main post content -->
+            <div class="post-content">
+                <p>"are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" "are you okay?" </p>
+                <p>are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? are you okay? </p>
+                <p>are you though...?</p>
+                <p><small>— ^ —</small></p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All okays (rights) reserved
+        </footer>
+    </div>
+ <button class="back-to-top" aria-label="Back to top">↑ top</button>
+ <script>
+    (function() {
+        // Get the button element
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+
+        // Show/hide button based on scroll position
+        function toggleButton() {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+
+        // Scroll to top when clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Attach events
+        window.addEventListener('scroll', toggleButton);
+        btn.addEventListener('click', scrollToTop);
+
+        // Initial check in case the page loads scrolled down
+        toggleButton();
+    })();
+</script>
+</body>
+
+</html>
