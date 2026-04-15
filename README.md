@@ -11,7 +11,7 @@ Websiterr
 I see you found my repository for my super-static website.
 I made it in a rush, because I was getting ready for my mod-uploads. Hope you're looking forward to seeing it change in many shapes and forms! ^^
 
-You can access it [here](https://codex-bat.github.io)!
+You can access it [here](https://codexbat.dev)!
 
 ---
 
