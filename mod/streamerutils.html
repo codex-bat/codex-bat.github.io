@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>StreamerUtils — Fabric mod for Twitch integration</title>
-  <meta name="description" content="StreamerUtils is a server‑side Fabric mod that supercharges chat and Twitch integration for streamers and their communities." />
+  <meta name="description"
+    content="StreamerUtils is a server‑side Fabric mod that supercharges chat and Twitch integration for streamers and their communities." />
   <meta property="og:title" content="StreamerUtils" />
-  <meta property="og:description" content="Server‑side Fabric mod for Twitch integration, nameplate icons, live status and interactive chat commands." />
-  <meta property="og:image" content="https://cdn.modrinth.com/data/cached_images/529895d205d8a771bf9c9ca4e6658dfe6da6b0e1.png" />
+  <meta property="og:description"
+    content="Server‑side Fabric mod for Twitch integration, nameplate icons, live status and interactive chat commands." />
+  <meta property="og:image"
+    content="https://cdn.modrinth.com/data/cached_images/529895d205d8a771bf9c9ca4e6658dfe6da6b0e1.png" />
   <meta property="og:image:alt" content="StreamerUtils logo: split-colour (dark blue/grey) title with mod icon" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -22,7 +26,9 @@
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <!-- Google Fonts: Inter + JetBrains Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -30,9 +36,22 @@
       box-sizing: border-box;
       user-select: none;
       -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    p, h1, h2, h3, li, blockquote, .tagline, .note-box, summary, .version-badge, .pill, .side-link, .info-card {
+    p,
+    h1,
+    h2,
+    h3,
+    li,
+    blockquote,
+    .tagline,
+    .note-box,
+    summary,
+    .version-badge,
+    .pill,
+    .side-link,
+    .info-card {
       user-select: text;
       -webkit-user-select: text;
     }
@@ -218,6 +237,33 @@
       border-color: #2C55DC;
     }
 
+    a:active .pill,
+    .pill:active {
+      background: #4a6ee8;
+      transform: scale(0.96);
+    }
+
+    .side-link:active {
+      background: #3a52c0;
+      transform: scale(0.97);
+    }
+
+    summary:active {
+      background: rgba(44, 85, 220, 0.15);
+      border-radius: 20px;
+    }
+
+    .main-content a:active {
+      background: rgba(44, 85, 220, 0.15);
+      border-radius: 6px;
+      padding: 0 2px;
+      margin: 0 -2px;
+    }
+
+    .version-badge:active {
+      background: #4a6ee8;
+    }
+
     .info-card .side-link {
       display: inline-flex;
       align-items: center;
@@ -314,149 +360,183 @@
       body {
         padding: 1rem;
       }
+
       .project-header {
         padding: 1rem 1.2rem;
       }
+
       .mod-logo {
         width: 65px;
         height: 65px;
       }
+
       .project-title h1 {
         font-size: 2rem;
       }
+
       .main-content {
         padding: 1.2rem;
       }
     }
   </style>
 </head>
+
 <body>
-<div class="modrinth-container">
-  <div class="project-header">
-    <img class="mod-logo" src="https://cdn.modrinth.com/data/gbHqKlUz/60f2f1e0f803703b55d91a2155f9bab1f8a27ee7.png" alt="StreamerUtils logo" />
-    <div class="project-title">
-      <h1>StreamerUtils</h1>
-      <div class="tagline">server‑side Fabric mod — chat & Twitch streaming integration</div>
-    </div>
-  </div>
-
-  <div class="project-layout">
-    <div class="main-content">
-      <img class="seamless-logo" src="https://cdn.modrinth.com/data/cached_images/529895d205d8a771bf9c9ca4e6658dfe6da6b0e1.png" alt="StreamerUtils banner: split-colour dark blue/grey title with icon" />
-
-      <p>
-        <strong>StreamerUtils</strong> is a <strong>server‑side Fabric mod</strong> that supercharges chat and Twitch integration
-        for streamers and their communities. It adds <strong>custom nameplate icons, coloured usernames, live status,
-        follow alerts, and interactive chat commands</strong> – all configurable per player and saved across sessions.
-      </p>
-
-      <h2>Showcase</h2>
-      <blockquote style="color:#b1b6da; margin: 0.2rem 0 0.8rem 1rem;">(Those annoying advertisements plugins used to always shove in my face when I was hosting my friends' servers)</blockquote>
-
-      <details>
-        <summary>Spoiler</summary>
-        <img class="showcase-img" src="https://cdn.modrinth.com/data/cached_images/73bf236c10cf1c53713b5e887108df4b4c0e4d54.png" alt="Minecraft chat preview showing StreamerUtils interactive commands" />
-      </details>
-
-      <p>
-        Whether you run a streamer‑friendly server or just want a unique nametag, this mod gives you (and your viewers) a
-        more interactive experience. Viewers can use <code class="version-badge" style="background:#1c1c24;">!highlight</code>
-        to make you glow, <code class="version-badge" style="background:#1c1c24;">!firework</code> to launch a rocket,
-        and you get sound alerts for every new follower – all without any client mods (though a companion resource pack
-        makes icons actually visible).
-      </p>
-
-      <p>
-        I plan to add more platform icons (Discord or whatever other random platforms you are interested in),
-        but the current version is fully functional and stable already.
-      </p>
-
-      <p>
-        If you want to inspect the code or verify its safety, the source is available on
-        <a href="https://github.com/codex-bat/StreamerUtils" target="_blank" style="color:#2C55DC; text-decoration:none;">GitHub</a>.
-        The mod currently packages <a href="https://modrinth.com/mod/twitch4j" target="_blank" style="color:#2C55DC; text-decoration:none;">Twitch4J</a>
-        with it too, which is actually the main reason it's around 17k KBs. I plan on adding it as a dependency instead, later.
-      </p>
-
-      <p>
-        Supports Minecraft <strong>1.21.11</strong> (other versions may work with updated mappings). Future updates will target
-        26.1/2 (or perhaps some requested versions, if people are interested) and add more features.
-      </p>
-
-      <p>
-        If you have any questions or suggestions, hit me up on
-        <a href="https://codexbat.dev/discord" target="_blank" style="color:#2C55DC; text-decoration:none;">Discord</a> (as usual)!
-      </p>
-
-      <div class="note-box">
-        <strong>IMPORTANT!</strong> This project is in no way, shape or form, endorsed or sponsored by Twitch, Youtube, Kick or any other company which might be represented in this mod. Any icons included with this mod, or its resource pack, are purely for aesthetic, cosmetic purposes. Furthermore, the Twitch integration is simply using an open-source library as a dependency.
-      </div>
-
-      <div class="note-box" style="border-left-color:#585858;">
-        <strong>Note:</strong> This mod is open‑source under <strong>GPL-3.0-or-later</strong>. Its use must comply with the license terms. It includes MIT‑licensed Twitch4J‑fabric and Apache 2.0 commons‑logging – full notices are inside the <strong>JAR</strong>.
+  <div class="modrinth-container">
+    <div class="project-header">
+      <img class="mod-logo" src="https://cdn.modrinth.com/data/gbHqKlUz/60f2f1e0f803703b55d91a2155f9bab1f8a27ee7.png"
+        alt="StreamerUtils logo" />
+      <div class="project-title">
+        <h1>StreamerUtils</h1>
+        <div class="tagline">server‑side Fabric mod — chat & Twitch streaming integration</div>
       </div>
     </div>
 
-    <div class="metadata-panel">
-      <div class="info-card">
-        <h3><i class="fas fa-download" style="margin-right: 6px;"></i> Download</h3>
-        <div class="pill-list">
-          <a href="https://fabricmc.net/" target="_blank"><span class="pill">Fabric 1.21.11</span></a>
-          <span class="pill">JAR (~191 KB)</span>
+    <div class="project-layout">
+      <div class="main-content">
+        <img class="seamless-logo"
+          src="https://cdn.modrinth.com/data/cached_images/529895d205d8a771bf9c9ca4e6658dfe6da6b0e1.png"
+          alt="StreamerUtils banner: split-colour dark blue/grey title with icon" />
+
+        <p>
+          <strong>StreamerUtils</strong> is a <strong>server‑side Fabric mod</strong> that supercharges chat and Twitch
+          integration
+          for streamers and their communities. It adds <strong>custom nameplate icons, coloured usernames, live status,
+            follow alerts, and interactive chat commands</strong> – all configurable per player and saved across
+          sessions.
+        </p>
+
+        <h2>Showcase</h2>
+        <blockquote style="color:#b1b6da; margin: 0.2rem 0 0.8rem 1rem;">(Those annoying advertisements plugins used to
+          always shove in my face when I was hosting my friends' servers)</blockquote>
+
+        <details>
+          <summary>Spoiler</summary>
+          <img class="showcase-img"
+            src="https://cdn.modrinth.com/data/cached_images/73bf236c10cf1c53713b5e887108df4b4c0e4d54.png"
+            alt="Minecraft chat preview showing StreamerUtils interactive commands" />
+        </details>
+
+        <p>
+          Whether you run a streamer‑friendly server or just want a unique nametag, this mod gives you (and your
+          viewers) a
+          more interactive experience. Viewers can use <code class="version-badge"
+            style="background:#1c1c24;">!highlight</code>
+          to make you glow, <code class="version-badge" style="background:#1c1c24;">!firework</code> to launch a rocket,
+          and you get sound alerts for every new follower – all without any client mods (though a companion resource
+          pack
+          makes icons actually visible).
+        </p>
+
+        <p>
+          I plan to add more platform icons (Discord or whatever other random platforms you are interested in),
+          but the current version is fully functional and stable already.
+        </p>
+
+        <p>
+          If you want to inspect the code or verify its safety, the source is available on
+          <a href="https://github.com/codex-bat/StreamerUtils" target="_blank"
+            style="color:#2C55DC; text-decoration:none;">GitHub</a>.
+          The mod currently packages <a href="https://modrinth.com/mod/twitch4j" target="_blank"
+            style="color:#2C55DC; text-decoration:none;">Twitch4J</a>
+          with it too, which is actually the main reason it's around 17k KBs. I plan on adding it as a dependency
+          instead, later.
+        </p>
+
+        <p>
+          Supports Minecraft <strong>1.21.11</strong> (other versions may work with updated mappings). Future updates
+          will target
+          26.1/2 (or perhaps some requested versions, if people are interested) and add more features.
+        </p>
+
+        <p>
+          If you have any questions or suggestions, hit me up on
+          <a href="https://codexbat.dev/discord" target="_blank"
+            style="color:#2C55DC; text-decoration:none;">Discord</a> (as usual)!
+        </p>
+
+        <div class="note-box">
+          <strong>IMPORTANT!</strong> This project is in no way, shape or form, endorsed or sponsored by Twitch,
+          Youtube, Kick or any other company which might be represented in this mod. Any icons included with this mod,
+          or its resource pack, are purely for aesthetic, cosmetic purposes. Furthermore, the Twitch integration is
+          simply using an open-source library as a dependency.
         </div>
-        <a href="https://modrinth.com/mod/streamerutils/versions" target="_blank" class="side-link" style="margin-top: 0.8rem;">
-          <i class="fas fa-external-link-alt"></i> Modrinth page
-        </a>
+
+        <div class="note-box" style="border-left-color:#585858;">
+          <strong>Note:</strong> This mod is open‑source under <strong>GPL-3.0-or-later</strong>. Its use must comply
+          with the license terms. It includes MIT‑licensed Twitch4J‑fabric and Apache 2.0 commons‑logging – full notices
+          are inside the <strong>JAR</strong>.
+        </div>
       </div>
 
-      <div class="info-card">
-        <h3><i class="fas fa-code-branch"></i> Versions & loaders</h3>
-        <div class="pill-list">
-          <a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11" target="_blank"><span class="pill">Minecraft 1.21.11</span></a>
-          <a href="https://fabricmc.net/" target="_blank"><span class="pill">Fabric</span></a>
-          <a href="https://cybrancee.com/blog/minecraft-client-side-and-server-side-explained/" target="_blank"><span class="pill">Server‑side</span></a>
+      <div class="metadata-panel">
+        <div class="info-card">
+          <h3><i class="fas fa-download" style="margin-right: 6px;"></i> Download</h3>
+          <div class="pill-list">
+            <a href="https://fabricmc.net/" target="_blank"><span class="pill">Fabric 1.21.11</span></a>
+            <span class="pill">JAR (~191 KB)</span>
+          </div>
+          <a href="https://modrinth.com/mod/streamerutils/versions" target="_blank" class="side-link"
+            style="margin-top: 0.8rem;">
+            <i class="fas fa-external-link-alt"></i> Modrinth page
+          </a>
         </div>
-      </div>
 
-      <div class="info-card">
-        <h3><i class="fas fa-plug"></i> Dependencies</h3>
-        <div class="pill-list">
-          <a href="https://modrinth.com/mod/twitch4j" target="_blank"><span class="pill">Twitch4J (embedded)</span></a>
-          <a href="https://modrinth.com/mod/fabric-api/version/0.141.3+1.21.11" target="_blank"><span class="pill">Fabric API (optional)</span></a>
+        <div class="info-card">
+          <h3><i class="fas fa-code-branch"></i> Versions & loaders</h3>
+          <div class="pill-list">
+            <a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11" target="_blank"><span
+                class="pill">Minecraft 1.21.11</span></a>
+            <a href="https://fabricmc.net/" target="_blank"><span class="pill">Fabric</span></a>
+            <a href="https://cybrancee.com/blog/minecraft-client-side-and-server-side-explained/" target="_blank"><span
+                class="pill">Server‑side</span></a>
+          </div>
         </div>
-      </div>
 
-      <div class="info-card">
-        <h3><i class="fas fa-link"></i> Links</h3>
-        <div>
-          <a href="https://github.com/codex-bat/StreamerUtils" target="_blank" class="side-link">
-            <i class="fab fa-github"></i> Source code
-          </a>
-          <a href="https://codexbat.dev/discord" target="_blank" class="side-link" style="margin-top: 0.6rem;">
-            <i class="fab fa-discord"></i> Join Discord
-          </a>
-          <a href="https://modrinth.com/mod/streamerutils" target="_blank" class="side-link" style="margin-top: 0.6rem;">
-            <i class="fas fa-external-link-alt"></i> Modrinth project
-          </a>
+        <div class="info-card">
+          <h3><i class="fas fa-plug"></i> Dependencies</h3>
+          <div class="pill-list">
+            <a href="https://modrinth.com/mod/twitch4j" target="_blank"><span class="pill">Twitch4J
+                (embedded)</span></a>
+            <a href="https://modrinth.com/mod/fabric-api/version/0.141.3+1.21.11" target="_blank"><span
+                class="pill">Fabric API (optional)</span></a>
+          </div>
         </div>
-      </div>
 
-      <div class="info-card">
-        <h3><i class="fas fa-balance-scale"></i> License</h3>
-        <div class="pill-list">
-          <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
-            <span class="pill">GPL‑3.0‑or‑later</span>
-          </a>
+        <div class="info-card">
+          <h3><i class="fas fa-link"></i> Links</h3>
+          <div>
+            <a href="https://github.com/codex-bat/StreamerUtils" target="_blank" class="side-link">
+              <i class="fab fa-github"></i> Source code
+            </a>
+            <a href="https://codexbat.dev/discord" target="_blank" class="side-link" style="margin-top: 0.6rem;">
+              <i class="fab fa-discord"></i> Join Discord
+            </a>
+            <a href="https://modrinth.com/mod/streamerutils" target="_blank" class="side-link"
+              style="margin-top: 0.6rem;">
+              <i class="fas fa-external-link-alt"></i> Modrinth project
+            </a>
+          </div>
         </div>
-        <div style="font-size: 0.7rem; color: #aaa; margin-top: 6px;">Open source, includes MIT / Apache 2.0 components</div>
+
+        <div class="info-card">
+          <h3><i class="fas fa-balance-scale"></i> License</h3>
+          <div class="pill-list">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
+              <span class="pill">GPL‑3.0‑or‑later</span>
+            </a>
+          </div>
+          <div style="font-size: 0.7rem; color: #aaa; margin-top: 6px;">Open source, includes MIT / Apache 2.0
+            components</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="site-footer">
-    StreamerUtils — built for streamers by Codex.bat<br />
-    © 2026 Codex.bat All rights reserved
+    <div class="site-footer">
+      StreamerUtils — built for streamers by Codex.bat<br />
+      © 2026 Codex.bat All rights reserved
+    </div>
   </div>
-</div>
 </body>
+
 </html>
