@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta property="og:title" content="Codex.bat">
-    <meta property="og:description" content="AHHHHHHHHHHHH, I HATE. I HATE. WHAT AM I DOING... IT'S 4 AM. F*CK THIS. F*CK EVERYTHNIG">
+    <meta property="og:description"
+        content="AHHHHHHHHHHHH, I HATE. I HATE. WHAT AM I DOING... IT'S 4 AM. F*CK THIS. F*CK EVERYTHNIG">
     <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
     <meta property="og:url" content="https://codex-bat.github.io/codex.bat">
     <meta property="og:type" content="website">
@@ -31,9 +32,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        a, a * {
+        a,
+        a * {
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -246,12 +249,14 @@
             background: #1c1c1c;
             border: 1px solid #3f3f3f;
             padding: 0.6rem 1rem;
-            border-radius: 40px;          /* consistent rounded corners */
+            border-radius: 40px;
+            /* consistent rounded corners */
             text-decoration: none;
             color: #e0e0e0;
             font-size: 0.9rem;
             font-weight: 500;
-            overflow: hidden;              /* prevents any sharp overflow */
+            overflow: hidden;
+            /* prevents any sharp overflow */
         }
 
         .mobile-links a i,
@@ -264,6 +269,27 @@
         .mobile-links a:hover {
             background: #2a2a2a;
             border-color: #7a7a7a;
+        }
+
+        .links a:active {
+            background: #333;
+            border-color: #888;
+            transform: scale(0.96);
+            transition: none;
+        }
+
+        .mobile-links a:active {
+            background: #333;
+            border-color: #888;
+            transform: scale(0.96);
+            transition: none;
+        }
+
+        .mobile-dropdown-btn:active {
+            background: #333;
+            border-color: #888;
+            transform: scale(0.96);
+            transition: none;
         }
 
         .content {
@@ -446,14 +472,14 @@
                 </p>
 
                 <h2>what i'm up to <a>(spoiler alert: nothing)</a></h2>
-                 <ul>
+                <ul>
                     <li>modding Minecraft (still fabric gang although... Quilt?)</li>
                     <li>running a Discord server that's as dead as my soul. man, I'm not even joking I've been rotting
                         for years now. worst decision of my life. never again. never again. never again.</li>
                     <li>everything here is so cringe-worthy. gosh, this sucks</li>
                     <li>I make <a href="/mod/streamerutils">useless mods</a> and sites for them ^^</li>
                     <li>posting random dev updates on YouTube (not... I really should do, that was so much fun)</li>
-                    <li>also OH MY GAAAHHHH THE GROUNDSLAMM- NOW THE STREAMERUTILS REPO LOOKS SOOO GOOOD (now) >v<</li>
+                    <li>also OH MY GAAAHHHH THE GROUNDSLAMM- NOW THE STREAMERUTILS REPO LOOKS SOOO GOOOD (now) >v<< /li>
                     <li><a href="https://www.youtube.com/watch?v=-qDrQcyf6x8&list=RDb3ZhW_AxfOc&index=22">this</a> is
                         how I feel right now.</li>
                 </ul>
