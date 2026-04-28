@@ -3,71 +3,44 @@
 
 <head>
     <meta charset="utf-8">
-    
-    <!-- Discord, most platforms -->
     <meta property="og:title" content="Codex.bat">
-    <meta property="og:description" content="Minecraft modder, Discord bot maker, trying to build a real community.">
+    <meta property="og:description" content="AHHHHHHHHHHHH, I HATE. I HATE. WHAT AM I DOING... IT'S 4 AM. F*CK THIS. F*CK EVERYTHNIG">
     <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
     <meta property="og:url" content="https://codex-bat.github.io/codex.bat">
     <meta property="og:type" content="website">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Codex.bat">
     <meta name="twitter:description" content="Minecraft modder, Discord bot maker, trying to build a real community.">
     <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
-    <!-- Improved viewport for better mobile scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Codex.bat — about me</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
-    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/site.webmanifest" />
-    <meta name="description" content="Codex.bat — Minecraft modder, Discord bot maker, community builder." />
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="description" content="Codex.bat — Minecraft mods, Discord bots, community-first development.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
-        /* Base styles — clean, monospace, dark theme */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            background: #000;
-            color: #ddd;
-            font-family: 'Courier New', monospace;
-            margin: 0;
-            padding: 2rem;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            border-bottom: 2px solid #2a2a2a;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            color: #fff;
-        }
-
-        /* Nagation section — contains both nav links and dropdown button (mobile only) */
-        .nav-section {
-            margin-top: 0.5rem;
+        a, a * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         nav a {
-            color: #7f9eff;
+            color: #d4d4d4;
             text-decoration: none;
             margin-right: 1rem;
         }
@@ -76,304 +49,456 @@
             text-decoration: underline;
         }
 
-        /* desktop link buttons (inline) */
+        a {
+            color: #111111;
+            text-decoration: none;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: #757575;
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: none;
+            text-decoration-color: #5f5d69;
+        }
+
+        body {
+            background: #050505;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #f0f0f0;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/codex-bat/codex-bat.github.io/main/assets/BG.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            z-index: -2;
+        }
+
+        .tiled-logo {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url('https://raw.githubusercontent.com/codex-bat/codex-bat.github.io/main/assets/LOGO.png');
+            background-repeat: repeat;
+            background-size: 150px;
+            transform: rotate(-35deg);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .outer-nav {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto 0.25rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 15;
+            padding-left: 2.2rem;
+            padding-right: 2.2rem;
+        }
+
+        .nav-link {
+            color: #cccccc;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: color 0.15s;
+            letter-spacing: -0.2px;
+            background: transparent;
+            padding: 0.25rem 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            max-width: 880px;
+            width: 100%;
+            background: #111111;
+            border: 2px solid #3a3a3a;
+            border-radius: 24px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            padding: 2rem 2.2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #3a3a3a;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
         .links {
-            margin: 1rem 0 0 0;
-            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0 1rem 0;
         }
 
         .links a {
-            display: inline-block;
-            background: #111;
-            border: 1px solid #2a2a2a;
-            padding: 0.4rem 0.9rem;
-            margin-right: 0.8rem;
-            margin-bottom: 0.6rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
             text-decoration: none;
-            color: #7f9eff;
-            font-family: monospace;
-            font-size: 0.95rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
+            color: #e0e0e0;
+            transition: all 0.1s linear;
+        }
+
+        .links a i,
+        .links a img {
+            font-size: 1rem;
+            width: 18px;
+            height: 18px;
         }
 
         .links a:hover {
-            background: #1a1a1a;
-            border-color: #7f9eff;
-            color: #b8d0ff;
-            transform: translateY(-1px);
+            background: #2a2a2a;
+            border-color: #7a7a7a;
+            color: white;
         }
 
-        .links a:active {
-            transform: translateY(1px);
+        .custom-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            filter: grayscale(0.2);
+        }
+
+        .mobile-dropdown-btn {
+            display: none;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            color: #e0e0e0;
+            font-size: 1rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            gap: 8px;
+            align-items: center;
+            margin: 1rem 0 0.5rem 0;
+            width: fit-content;
+        }
+
+        .mobile-dropdown-btn i {
+            font-size: 0.9rem;
+            transition: transform 0.1s;
+        }
+
+        .mobile-dropdown-btn:hover {
+            background: #2a2a2a;
+            border-color: #7a7a7a;
+        }
+
+        .mobile-links {
+            display: none;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .mobile-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .mobile-links a i,
+        .mobile-links a img {
+            width: 20px;
+            height: 20px;
+            font-size: 1rem;
+        }
+
+        .mobile-links a:hover {
+            background: #2a2a2a;
+            border-color: #7a7a7a;
         }
 
         .content {
-            background: #0c0c0c;
-            border: 1px solid #2a2a2a;
-            padding: 1.5rem;
+            margin: 1.8rem 0 1rem 0;
         }
 
         h2 {
-            border-left: 5px solid #7f9eff;
-            padding-left: 0.8rem;
-            margin-top: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-left: 4px solid #6a6a6a;
+            padding-left: 1rem;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #f5f5f5;
         }
 
         h2:first-of-type {
             margin-top: 0;
         }
 
+        p {
+            font-size: 1rem;
+            color: #cfcfcf;
+            margin-bottom: 0.8rem;
+        }
+
         ul {
-            padding-left: 1.2rem;
-            margin: 0.8rem 0;
+            padding-left: 1.6rem;
+            margin: 0.6rem 0 1rem 0;
         }
 
         li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            color: #cacaca;
         }
 
         footer {
-            margin-top: 2rem;
+            margin-top: 2.2rem;
             text-align: center;
-            color: #555;
             font-size: 0.7rem;
-            border-top: 1px dashed #2a2a2a;
-            padding-top: 1rem;
+            color: #8a8a8a;
+            border-top: 1px solid #2c2c2c;
+            padding-top: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        /* =======YLES: reve r roun====== */
-        /* Remove default focus outline from all interactive elements */
-        a, button, .links a, .mobile-dropdown-arrow, nav a {
-            outline: none;
-        }
-
-        a, button, .links a, .mobile-dropdown-arrow, nav a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Custom focus ring for keyboard navigation – respects border-radius */
-        a:focus-visible, button:focus-visible, .links a:focus-visible, .mobile-dropdown-arrow:focus-visible, nav a:focus-visible {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(127, 158, 255, 0.5), 0 0 0 1px #7f9eff;
-            border-radius: inherit; /* ensures the glow follows the element's shape */
-        }
-
-        .links a:focus-visible, .mobile-dropdown-arrow:focus-visible {
-            border-radius: 8px; /* matches mobile/desktop border-radius */
-        }
-
-        nav a:focus-visible {
-            border-radius: 4px;
-            background-color: rgba(127, 158, 255, 0.1);
-            box-shadow: 0 0 0 2px #7f9eff;
-        }
-
-        /* Mobile dropdown button: hidden on desktop */
-        .mobile-dropdown-arrow {
-            display: none;
-        }
-
-        /* ========= RESPONSIVE: PHONE ONLY DROPDOWN ========= */
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
             body {
                 padding: 1rem;
             }
 
             .container {
-                width: 100%;
+                padding: 1.5rem;
+            }
+
+            .outer-nav {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
             }
 
             h1 {
-                font-size: 2rem;
-                word-break: break-word;
-            }
-
-            /* make nav section flex row with space-between for arrow button */
-            .nav-section {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            nav a {
-                display: inline-block;
-                margin-right: 0.8rem;
-                margin-bottom: 0;
-                font-size: 0.95rem;
-            }
-
-            /* show and style the dropdown arrow button */
-            .mobile-dropdown-arrow {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                background: #111;
-                border: 1px solid #2a2a2a;
-                color: #7f9eff;
-                font-size: 1.2rem;
-                padding: 0.3rem 0.7rem;
-                border-radius: 8px;
-                cursor: pointer;
-                font-family: monospace;
-                transition: all 0.2s ease;
-                user-select: none;
-            }
-
-            .mobile-dropdown-arrow:active {
-                background: #2a2a2a;
-                transform: scale(0.96);
-            }
-
-            /* Links container: hidden by default, becomes flex when open */
-            .links {
-                display: none;
-                flex-direction: column;
-                gap: 0.7rem;
-                width: 100%;
-                margin: 1rem 0 0 0;
-            }
-
-            .links.open {
-                display: flex;
-            }
-
-            .links a {
+                font-size: 2.2rem;
                 display: block;
                 width: 100%;
-                margin-right: 0;
-                margin-bottom: 0;
-                padding: 0.8rem 0.6rem;
-                text-align: center;
-                font-size: 1rem;
-                letter-spacing: 0.3px;
-                border-radius: 8px;
-                background: #111;
-                border: 1px solid #2f2f2f;
             }
 
-            .links a:active {
-                background: #2a2a2a;
-                border-color: #7f9eff;
-                transform: scale(0.98);
+            .desktop-links {
+                display: none;
             }
 
-            /* content spacing */
-            .content {
-                padding: 1.2rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            p, li {
-                font-size: 0.95rem;
-            }
-
-            footer {
-                font-size: 0.65rem;
-                margin-top: 1.5rem;
+            .mobile-dropdown-btn {
+                display: inline-flex;
+                margin-top: 0.75rem;
+                margin-bottom: 0.25rem;
             }
         }
 
-        /* extra small devices (<= 480px) fine-tuning */
-        @media (max-width: 480px) {
-            body {
-                padding: 0.8rem;
+        @media (max-width: 550px) {
+            .outer-nav {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
             }
 
-            .links a {
-                padding: 0.75rem 0.5rem;
-                font-size: 0.95rem;
+            h2 {
+                font-size: 1.4rem;
             }
+        }
 
-            nav a {
-                font-size: 0.85rem;
-                margin-right: 0.6rem;
-            }
-
-            .mobile-dropdown-arrow {
-                font-size: 1rem;
-                padding: 0.25rem 0.6rem;
-            }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #aaaaaa;
+            outline-offset: 2px;
+            border-radius: 6px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Codex.bat</h1>
-            
-            <!-- Navigation row: home/about me + dropdown arrow (only visible on mobile) -->
-            <div class="nav-section">
-                <nav>
-                    <a href="/">home</a>
-                    <a href="/codex.bat">about me</a>
-                </nav>
-                <button class="mobile-dropdown-arrow" aria-label="Toggle social links">▼</button>
-            </div>
+    <div class="tiled-logo"></div>
 
-            <!-- Social links container (desktop: inline; mobile: hidden until toggled) -->
-            <div class="links">
-                <a href="https://github.com/codex-bat">GitHub</a>
-                <a href="https://youtube.com/@codex_bat">YouTube</a>
-                <a href="https://www.twitch.tv/codex_bat">Twitch</a>
-                <a href="/discord">Discord</a>
-                <a href="https://x.com/codex_bat">Twitter</a>
-                <a href="https://bsky.app/profile/codex-bat.bsky.social">Bsky</a>
-            </div>
-        </header>
-
-        <div class="content">
-            <h2>who am i</h2>
-            <p>Hi, I’m Codex.bat. I make Minecraft mods, Discord bots, and other little things when inspiration hits. I
-                like music, building communities, and writing code that doesn’t take itself too seriously.</p>
-
-            <h2>what i’m up to</h2>
-            <ul>
-                <li>modding Minecraft (fabric gang)</li>
-                <li>running a Discord server that’s actually alive</li>
-                <li>learning bad CSS on purpose</li>
-                <li>posting random dev updates on YouTube</li>
-                <li>also OH MY GAAAHHHH THE GROUNDSLAMMER REPO LOOKS SOOO GOOOD >v<</li>
-            </ul>
-
-            <h2>why this site exists</h2>
-            <p>just a simple place to share my stuff and maybe make the internet feel a bit smaller. I just need a break
-            </p>
-        </div>
-
-        <footer>
-            © 2026 Codex.bat All rights reserved
-        </footer>
+    <div class="outer-nav">
+        <a href="/" class="nav-link">home</a>
+        <a href="/codex.bat" class="nav-link">about me</a>
     </div>
 
-    <!-- Simple toggle script for mobile dropdown (only active when arrow exists) -->
+    <div class="card">
+        <div class="container">
+            <header>
+                <h1>Codex.bat</h1>
+
+                <div class="links desktop-links">
+                    <a href="https://github.com/codex-bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://youtube.com/@codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://www.twitch.tv/codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitch"></i> Twitch
+                    </a>
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                    <a href="https://x.com/codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="https://bsky.app/profile/codex-bat.bsky.social" target="_blank" rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/bluesky/cccccc" alt="bluesky">
+                        Bsky
+                    </a>
+                    <a href="https://modrinth.com/user/Codex_bat" target="_blank" rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/modrinth/cccccc" alt="modrinth">
+                        Modrinth
+                    </a>
+                    <a href="https://www.curseforge.com/members/codex_bat/projects" target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/curseforge/cccccc" alt="curseforge">
+                        CurseForge
+                    </a>
+                </div>
+
+                <button class="mobile-dropdown-btn" id="mobileDropdownBtn" aria-label="Show links">
+                    <i class="fas fa-chevron-down"></i> Links
+                </button>
+                <div class="mobile-links" id="mobileLinks">
+                    <a href="https://github.com/codex-bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://youtube.com/@codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://www.twitch.tv/codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitch"></i> Twitch
+                    </a>
+                    <a href="/discord" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                    <a href="https://x.com/codex_bat" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="https://bsky.app/profile/codex-bat.bsky.social" target="_blank" rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/bluesky/cccccc" alt="bluesky">
+                        Bsky
+                    </a>
+                    <a href="https://modrinth.com/user/Codex_bat" target="_blank" rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/modrinth/cccccc" alt="modrinth">
+                        Modrinth
+                    </a>
+                    <a href="https://www.curseforge.com/members/codex_bat/projects" target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="custom-icon" src="https://cdn.simpleicons.org/curseforge/cccccc" alt="curseforge">
+                        CurseForge
+                    </a>
+                </div>
+            </header>
+
+            <div class="content">
+                <h2>who am i</h2>
+                <p>Hi, I'm Codex.bat. I make Minecraft mods, Discord bots, and other little things when inspiration
+                    hits. I like music, building communities, and writing code that doesn't take itself too seriously.
+                </p>
+
+                <h2>what i'm up to <a>(spoiler alert: nothing)</a></h2>
+                <ul>
+                    <li>modding Minecraft (still fabric gang although... Quilt?)</li>
+                    <li>running a Discord server that's as dead as my soul. man, I'm not even joking I've been rotting
+                        for years now. worst decision of my life. never again. never again. never again.</li>
+                    <li>everything here is so cringe-worthy. gosh, this sucks</li>
+                    <li>posting random dev updates on YouTube (not... I really should do, that was so much fun)</li>
+                    <li>also OH MY GAAAHHHH THE GROUNDSLAMM- NOW THE STREAMERUTILS REPO LOOKS SOOO GOOOD (now) >v<< /li>
+                    <li><a href="https://www.youtube.com/watch?v=-qDrQcyf6x8&list=RDb3ZhW_AxfOc&index=22">this</a> is
+                        how I feel right now.</li>
+                </ul>
+
+                <h2>why this site exists</h2>
+                <p>just a simple place to share my stuff and maybe make the internet feel a bit smaller. I just need a
+                    break</p>
+            </div>
+
+            <footer>
+                © 2026 Codex.bat All rights reserved
+            </footer>
+        </div>
+    </div>
+
     <script>
-        (function() {
-            // Only needed for mobile – but safe to run on all devices
-            const arrowBtn = document.querySelector('.mobile-dropdown-arrow');
-            const linksContainer = document.querySelector('.links');
-            
-            if (!arrowBtn || !linksContainer) return;
-            
-            // Toggle dropdown and arrow icon on click
-            arrowBtn.addEventListener('click', function(e) {
+        (function () {
+            const btn = document.getElementById('mobileDropdownBtn');
+            const mobileMenu = document.getElementById('mobileLinks');
+            if (!btn || !mobileMenu) return;
+
+            mobileMenu.style.display = 'none';
+            let isOpen = false;
+
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                linksContainer.classList.toggle('open');
-                
-                // Change arrow direction: ▼ when closed, ▲ when open
-                if (linksContainer.classList.contains('open')) {
-                    arrowBtn.textContent = '▲';
+                if (isOpen) {
+                    mobileMenu.style.display = 'none';
+                    btn.innerHTML = '<i class="fas fa-chevron-down"></i> Links';
+                    isOpen = false;
                 } else {
-                    arrowBtn.textContent = '▼';
+                    mobileMenu.style.display = 'flex';
+                    btn.innerHTML = '<i class="fas fa-chevron-up"></i> Links';
+                    isOpen = true;
                 }
             });
+
+            const handleResize = () => {
+                if (window.innerWidth > 720) {
+                    if (isOpen) {
+                        mobileMenu.style.display = 'none';
+                        btn.innerHTML = '<i class="fas fa-chevron-down"></i> Links';
+                        isOpen = false;
+                    }
+                }
+            };
+            window.addEventListener('resize', handleResize);
         })();
     </script>
 </body>
