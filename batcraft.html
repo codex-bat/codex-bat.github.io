@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Batcraft SMP">
+    <meta property="og:description" content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
+    <meta property="og:image" content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
+    <meta property="og:url" content="https://codex-bat.github.io/batcraft">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Batcraft SMP">
+    <meta name="twitter:description" content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
+    <meta name="twitter:image" content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Batcraft SMP — messy survival, infinite evolution</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="description" content="Batcraft SMP — Fabric survival server that evolves with the community. Build, break, repeat.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a, a * {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+
+        body {
+            background: #050505;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #f0f0f0;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/codex-bat/codex-bat.github.io/main/assets/server_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        .outer-nav {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 0.25rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 15;
+            padding-left: 2.2rem;
+            padding-right: 2.2rem;
+        }
+
+        .nav-link {
+            color: #cccccc;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: color 0.15s;
+            letter-spacing: -0.2px;
+            background: transparent;
+            padding: 0.25rem 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .main-card {
+            flex: 2;
+            min-width: 260px;
+            background: #111111;
+            border: 2px solid #3a3a3a;
+            border-radius: 24px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        .sidebar-card {
+            flex: 1;
+            min-width: 240px;
+            background: #111111;
+            border: 2px solid #3a3a3a;
+            border-radius: 24px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+            height: fit-content;
+            padding: 1.5rem;
+        }
+
+        .container {
+            padding: 2rem 2.2rem;
+        }
+
+        .server-header {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid #3a3a3a;
+            padding-bottom: 1rem;
+        }
+
+        .server-gif {
+            width: 110px;
+            height: auto;
+            border-radius: 20px;
+            border: 1px solid #5a5a5a;
+            background: #0a0a0a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+            display: inline-block;
+            margin-top: 0.25rem;
+        }
+
+        .content {
+            margin: 1rem 0;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-left: 4px solid #6a6a6a;
+            padding-left: 1rem;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #f5f5f5;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #cfcfcf;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.6rem 0 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #cacaca;
+        }
+
+        details {
+            background: #1a1c22;
+            border: 1px solid #2e3440;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            margin: 1.2rem 0;
+        }
+
+        summary {
+            font-weight: 600;
+            color: #b0b8d0;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        summary:hover {
+            color: white;
+        }
+
+        .stack-badge {
+            display: inline-block;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            padding: 0.3rem 0.8rem;
+            border-radius: 32px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            margin-right: 0.6rem;
+            margin-bottom: 0.4rem;
+            transition: 0.1s;
+            text-decoration: none;
+            color: #e0e0e0;
+        }
+
+        .stack-badge:hover {
+            background: #2a2a2a;
+            border-color: #7a7a7a;
+            color: white;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #f0f0f0;
+            border-left: 4px solid #6a6a6a;
+            padding-left: 0.8rem;
+        }
+
+        .sidebar-section {
+            margin-bottom: 1.2rem;
+        }
+
+        .sidebar-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #9a9a9a;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .version-tag {
+            display: inline-block;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: #ddd;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 0.2rem;
+            transition: 0.1s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .copy-btn:hover {
+            color: white;
+        }
+
+        .divider {
+            height: 1px;
+            background: #2a2a2a;
+            margin: 1.2rem 0;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1c1c1c;
+            border: 1px solid #3f3f3f;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #e0e0e0;
+            transition: 0.1s;
+            width: fit-content;
+        }
+
+        .sidebar-links a:hover {
+            background: #2a2a2a;
+            border-color: #7a7a7a;
+            color: white;
+        }
+
+        .global-footer {
+            width: 100%;
+            max-width: 1100px;
+            margin: 1.5rem auto 0 auto;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #8a8a8a;
+            border-top: 1px solid #2c2c2c;
+            padding-top: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 800px) {
+            .content-wrapper {
+                gap: 0;
+                flex-direction: column;
+            }
+            .main-card {
+                border-radius: 24px 24px 0 0;
+                border-bottom: none;
+            }
+            .sidebar-card {
+                border-radius: 0 0 24px 24px;
+                border-top: none;
+                margin-top: -2px;
+                box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .outer-nav {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .server-gif {
+                width: 80px;
+            }
+            .server-header {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .outer-nav {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .server-gif {
+                width: 65px;
+            }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #aaaaaa;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-nav">
+        <a href="/" class="nav-link">home</a>
+        <a href="/codex.bat" class="nav-link">about me</a>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="main-card">
+            <div class="container">
+                <div class="server-header">
+                    <img class="server-gif" src="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif" alt="Batcraft logo">
+                    <h1>Batcraft SMP [🦇]<br><span>goofy ass emoji</span></h1>
+                </div>
+
+                <div class="content">
+                    <p>Welcome to <strong>Batcraft SMP</strong> — a Fabric-powered survival world built for builders, weirdos, and mod enjoyers (same thing).</p>
+                    <p>Batcraft starts simple: clean survival, collaborative builds, and long-term progression.<br>
+                    But this server is designed to <strong>evolve</strong>.</p>
+                    <p>New features, mechanics, and quality-of-life improvements are introduced over time as the modpack grows alongside the world — turning Batcraft into a living SMP shaped by the players who build it.</p>
+
+                    <details>
+                        <summary>buzzwords (click if you dare)</summary>
+                        <div style="padding: 0.8rem 0; color: #aaa; font-size: 0.85rem; line-height: 1.4;">
+                            buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words
+                        </div>
+                    </details>
+
+                    <p>planning on a <em>very</em> bloated kitchen-sink pack where you can't tell what to get rid of and what to keep (oh yeah).<br>
+                    chaos for the sake of chaos.<br>
+                    steadily expanding world with room to create, experiment, and leave your mark (and die over and over again like Silvi- <strong>MEGAMIND</strong>. like megamind).</p>
+
+                    <h2>Current Stack</h2>
+                    <div>
+                        <a class="stack-badge" href="https://modrinth.com/mod/streamerutils" target="_blank" rel="noopener noreferrer">streamerutils-1.1.0-1.21.11</a>
+                        <a class="stack-badge" href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener noreferrer">fabric-api-0.141.3+1.21.11</a>
+                    </div>
+
+                    <h2>What to Expect</h2>
+                    <ul>
+                        <li>Long-term survival</li>
+                        <li>Community-focused progression</li>
+                        <li>Evolving Fabric modpack</li>
+                        <li>Builder-friendly gameplay</li>
+                        <li>Gradual content expansion</li>
+                    </ul>
+
+                    <details>
+                        <summary>spoiler: my dictatorship</summary>
+                        <div style="padding: 0.8rem 0; color: #ccc;">yes, i run this circus. but the builds are worth it. probably.</div>
+                    </details>
+
+                    <p><strong>build something worth returning to</strong> (that means <em>please stop building dihs and among us characters</em>).</p>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;"># THANK YOU.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-card">
+            <h3>Server details</h3>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Server address</div>
+                <div class="sidebar-value">
+                    <span class="version-tag" id="serverAddressText">play.codexbat.dev</span>
+                    <button class="copy-btn" id="copyServerBtn" aria-label="Copy server address">
+                        <i class="far fa-copy"></i>
+                    </button>
+                    <span id="copyFeedback" style="display: none; font-size: 0.7rem; color: #7f9eff;">Copied!</span>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Required content</div>
+                <div class="sidebar-value"><span class="version-tag">Batcraft 0.0.1</span></div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Minecraft: Java Edition</div>
+                <div class="sidebar-value"><span class="version-tag">1.21.11</span></div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Mod loader</div>
+                <div class="sidebar-value"><span class="version-tag">Fabric</span></div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Region</div>
+                <div class="sidebar-value"><span class="version-tag">Europe</span></div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-label">Languages</div>
+                <div class="sidebar-value"><span class="version-tag">English</span></div>
+            </div>
+            <div class="divider"></div>
+            <div class="sidebar-links">
+                <a href="/discord" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-discord"></i> Join Discord server
+                </a>
+                <a href="https://modrinth.com/user/Codex_bat" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Visit Modrinth page
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="global-footer">
+        Batcraft SMP — evolve or perish. <br>
+        © 2026 Codex.bat All rights reserved
+    </div>
+
+    <script>
+        (function() {
+            const copyBtn = document.getElementById('copyServerBtn');
+            const feedbackSpan = document.getElementById('copyFeedback');
+            if (!copyBtn) return;
+            const serverText = 'play.codexbat.dev';
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(serverText);
+                    if (feedbackSpan) {
+                        feedbackSpan.style.display = 'inline-block';
+                        setTimeout(() => {
+                            feedbackSpan.style.display = 'none';
+                        }, 1500);
+                    } else {
+                        alert('Copied: ' + serverText);
+                    }
+                } catch (err) {
+                    console.warn('Copy failed', err);
+                    alert('Press Ctrl+C to copy: ' + serverText);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
