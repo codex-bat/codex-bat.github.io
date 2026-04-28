@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta property="og:title" content="Batcraft SMP">
-    <meta property="og:description" content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
-    <meta property="og:image" content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
+    <meta property="og:description"
+        content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
+    <meta property="og:image"
+        content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
     <meta property="og:url" content="https://codex-bat.github.io/batcraft">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Batcraft SMP">
-    <meta name="twitter:description" content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
-    <meta name="twitter:image" content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
+    <meta name="twitter:description"
+        content="Fabric-powered survival SMP — chaotic, evolving, for builders and weirdos.">
+    <meta name="twitter:image"
+        content="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Batcraft SMP — messy survival, infinite evolution</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/batcraft/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/batcraft/favicon-96x96.png" />
-    <link rel="icon" type="image/png" href="/assets/favicons/batcraft/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicons/batcraft/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/favicons/batcraft/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/batcraft/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/favicons/batcraft/site.webmanifest" />
-
-    <meta name="description" content="Batcraft SMP — Fabric survival server that evolves with the community. Build, break, repeat.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="description"
+        content="Batcraft SMP — Fabric survival server that evolves with the community. Build, break, repeat.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        a, a * {
+        a,
+        a * {
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -144,7 +153,7 @@
             border-radius: 20px;
             border: 1px solid #5a5a5a;
             background: #0a0a0a;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         h1 {
@@ -323,13 +332,48 @@
             color: #e0e0e0;
             transition: 0.1s;
             width: fit-content;
-            overflow: hidden;
         }
 
         .sidebar-links a:hover {
             background: #2a2a2a;
             border-color: #7a7a7a;
             color: white;
+        }
+
+        .sidebar-links a:active {
+            background: #333;
+            border-color: #888;
+            transform: scale(0.96);
+            transition: none;
+        }
+
+        .stack-badge:active {
+            background: #333;
+            border-color: #888;
+            transform: scale(0.96);
+            transition: none;
+        }
+
+        .nav-link:active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            margin: -0.25rem -0.5rem;
+            transition: none;
+        }
+
+        .copy-btn:active {
+            color: #fff;
+            transform: scale(0.92);
+            transition: none;
+        }
+
+        summary:active {
+            color: white;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            transition: none;
         }
 
         .global-footer {
@@ -349,10 +393,12 @@
                 gap: 0;
                 flex-direction: column;
             }
+
             .main-card {
                 border-radius: 24px 24px 0 0;
                 border-bottom: none;
             }
+
             .sidebar-card {
                 border-radius: 0 0 24px 24px;
                 border-top: none;
@@ -365,19 +411,24 @@
             body {
                 padding: 1rem;
             }
+
             .container {
                 padding: 1.5rem;
             }
+
             .outer-nav {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
+
             h1 {
                 font-size: 2rem;
             }
+
             .server-gif {
                 width: 80px;
             }
+
             .server-header {
                 gap: 1rem;
             }
@@ -388,21 +439,25 @@
                 padding-left: 1.2rem;
                 padding-right: 1.2rem;
             }
+
             h2 {
                 font-size: 1.4rem;
             }
+
             .server-gif {
                 width: 65px;
             }
         }
 
-        a:focus-visible, button:focus-visible {
+        a:focus-visible,
+        button:focus-visible {
             outline: 2px solid #aaaaaa;
             outline-offset: 2px;
             border-radius: 6px;
         }
     </style>
 </head>
+
 <body>
     <div class="outer-nav">
         <a href="/" class="nav-link">home</a>
@@ -413,31 +468,48 @@
         <div class="main-card">
             <div class="container">
                 <div class="server-header">
-                    <img class="server-gif" src="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif" alt="Batcraft logo">
+                    <img class="server-gif"
+                        src="https://cdn.modrinth.com/data/8Lqrhl0i/1bff7e7b630f4c9ca79257ad43f64d757805a931.gif"
+                        alt="Batcraft logo">
                     <h1>Batcraft SMP [🦇]<br><span>goofy ass emoji</span></h1>
                 </div>
 
                 <div class="content">
-                    <p>Welcome to <strong>Batcraft SMP</strong> — a Fabric-powered survival world built for builders, weirdos, and mod enjoyers (same thing).</p>
+                    <p>Welcome to <strong>Batcraft SMP</strong> — a Fabric-powered survival world built for builders,
+                        weirdos, and mod enjoyers (same thing).</p>
                     <p>Batcraft starts simple: clean survival, collaborative builds, and long-term progression.<br>
-                    But this server is designed to <strong>evolve</strong>.</p>
-                    <p>New features, mechanics, and quality-of-life improvements are introduced over time as the modpack grows alongside the world — turning Batcraft into a living SMP shaped by the players who build it.</p>
+                        But this server is designed to <strong>evolve</strong>.</p>
+                    <p>New features, mechanics, and quality-of-life improvements are introduced over time as the modpack
+                        grows alongside the world — turning Batcraft into a living SMP shaped by the players who build
+                        it.</p>
 
                     <details>
                         <summary>buzzwords (click if you dare)</summary>
                         <div style="padding: 0.8rem 0; color: #aaa; font-size: 0.85rem; line-height: 1.4;">
-                            buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words
+                            buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words buzz
+                            words buzz words buzz words buzz words buzz words buzz words buzz words buzz words
                         </div>
                     </details>
 
-                    <p>planning on a <em>very</em> bloated kitchen-sink pack where you can't tell what to get rid of and what to keep (oh yeah).<br>
-                    chaos for the sake of chaos.<br>
-                    steadily expanding world with room to create, experiment, and leave your mark (and die over and over again like Silvi- <strong>MEGAMIND</strong>. like megamind).</p>
+                    <p>planning on a <em>very</em> bloated kitchen-sink pack where you can't tell what to get rid of and
+                        what to keep (oh yeah).<br>
+                        chaos for the sake of chaos.<br>
+                        steadily expanding world with room to create, experiment, and leave your mark (and die over and
+                        over again like Silvi- <strong>MEGAMIND</strong>. like megamind).</p>
 
                     <h2>Current Stack</h2>
                     <div>
-                        <a class="stack-badge" href="/mod/streamerutils" target="_blank" rel="noopener noreferrer">streamerutils-1.1.0-1.21.11</a>
-                        <a class="stack-badge" href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener noreferrer">fabric-api-0.141.3+1.21.11</a>
+                        <a class="stack-badge" href="https://modrinth.com/mod/streamerutils" target="_blank"
+                            rel="noopener noreferrer">streamerutils-1.1.0-1.21.11</a>
+                        <a class="stack-badge" href="https://modrinth.com/mod/fabric-api" target="_blank"
+                            rel="noopener noreferrer">fabric-api-0.141.3+1.21.11</a>
                     </div>
 
                     <h2>What to Expect</h2>
@@ -451,10 +523,12 @@
 
                     <details>
                         <summary>spoiler: my dictatorship</summary>
-                        <div style="padding: 0.8rem 0; color: #ccc;">yes, i run this circus. but the builds are worth it. probably.</div>
+                        <div style="padding: 0.8rem 0; color: #ccc;">yes, i run this circus. but the builds are worth
+                            it. probably.</div>
                     </details>
 
-                    <p><strong>build something worth returning to</strong> (that means <em>please stop building dihs and among us characters</em>).</p>
+                    <p><strong>build something worth returning to</strong> (that means <em>please stop building dihs and
+                            among us characters</em>).</p>
                     <p style="font-size: 1.2rem; margin-top: 1rem;"># THANK YOU.</p>
                 </div>
             </div>
@@ -510,7 +584,7 @@
     </div>
 
     <script>
-        (function() {
+        (function () {
             const copyBtn = document.getElementById('copyServerBtn');
             const feedbackSpan = document.getElementById('copyFeedback');
             if (!copyBtn) return;
@@ -534,4 +608,5 @@
         })();
     </script>
 </body>
+
 </html>
