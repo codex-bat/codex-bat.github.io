@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="welcome back">
+    <meta property="og:description" content="I welcome myself back">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/welcome-back.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="welcome back">
+    <meta name="twitter:description" content="I welcome myself back">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>welcome back — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     html {
+  scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+}
+
+body {
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #f5f5f5 #000;
+}
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #f2f2f2 35%,
+      #d0d0d0 70%,
+      #a8a8a8 100%);
+  border: 2px solid #000;
+  border-radius: 999px;
+  min-height: 26px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: radial-gradient(circle at 35% 35%,
+      #ffffff 0%,
+      #ffffff 28%,
+      #e7e7e7 68%,
+      #bebebe 100%);
+}
+
+body::-webkit-scrollbar-corner {
+  background: #000;
+}
+    
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #7f9eff;
+            padding-left: 0.5rem;
+        }
+
+        .content {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-left: 5px solid #7f9eff;
+            padding-left: 0.8rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+              /* Headers */
+        h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 { font-size: 1.5rem; color: var(--accent); }
+        
+        /* Syntax Classes (The "Smart" part) */
+        .b { font-weight: bold; }
+        .bi { font-weight: bold; font-style: italic; }
+        .i { font-style: italic; }
+        .u { text-decoration: underline; }
+        .s { text-decoration: line-through; color: var(--dim); }
+        
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* Lists */
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING --- */
+        .highlight { color: var(--accent); font-weight: bold; }
+        .danger { color: var(--error); }
+        .dim { color: var(--dim); }
+
+        /* simple styling for post content */
+        .post-content p, .post-content li {
+            color: #ddd;
+        }
+        .post-content a {
+            color: #7f9eff;
+        }
+        .post-content pre {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+     /* back-to-top button – hidden by default, shown via JS */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    color: #7f9eff;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: #1a1a1a;
+    border-color: #7f9eff;
+}
+
+/* mobile: centered at bottom */
+@media (max-width: 768px) {
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+    }
+}
+
+/* class used by JS to show the button */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- post title and date -->
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">welcome back</h1>
+            <div class="post-meta">📅 June 4, 2026</div>
+
+            <!-- main post content -->
+            <div class="post-content">
+                <!-- text goes here -->
+                <p># Disclaimer: Profanities, suicidal speech and such --- oh my gosh, look at me... I was configuring this page and everything when I should've already been writing.</p>
+                <p>---</p>
+                <p>a lot has happened since I've shared some more of myself here. when I was home, I met with people and it felt oddly good... yet distant despite being right there! it felt weird. but I should be used to it by now. i always left the environments I was growing attached to. I never got to stay close to plple. I always just saw their lives change as a spectator, no longer relevant.</p>
+                <p>nevermind, this doesn't even matter! what has been new with me though? well, let's see... family sit is making my guts growl. things are... separating. the truth has been spilled and now I fear every night, irrationally, that blood will be spilled too. it's non-sense. it won't happen. but I fear it.</p>
+                <p>and I met with others recently. I told them I feel like I have this darkness insid of me --- and I know that sounds cringe, but it feels like it's not a part of me, or not meant to be. it sound so unserious and ridiculous when I say this, but it's as if creepypastas live rent-free in my mind. it's not even funny. it scares the shit out of me. I'm fucking 19. I consumed... nevemrind, let's not get traction onto that place (it's a subreddit, no I'm not consuming drugs, nothing can and will be used against me, stfu). they just laughed... they didn't really take it seriously. nobody ever does. how can anyone ever understand my deep and constant paranoia? I literally can't live together with others, because of fear for my life... "you watched too many movies", alright then, tell me how to stop being paranoid. I do my own thing, I'm writing code, I care about other things. it doesn't mean my paranoia isn't there. it's almost always there. this is slightly unrelated, but I can barely get myself to ease my muscles. I'm destroying my body. my entire body, jaw, arms, tense, at all times. never letting go. I can't. I don't even know when I fall asleep, because I'm tense. sometimes I wake up with hurting teeth or jaw line.</p>
+                <p>it's currently 3:49. I'm listening to the other side of paradise again, hoping that it'll keep me in-check with my younger self.</p>
+                <p>unlike usually, nothing I'm saying right now is coherent or understandable. they're words, but there's no significance behind them on a surface-value and I'm not being cryptic. I'm not hinting at my inner world with some convoluted thought-paths. my inner world is in suhc shambles... I am occassionally at peace with myself, and yet strings are pulling at my heart violently. just saying that contradicted me and my confidence in my own knowledge of myself and it didn't add anything to anything. everything I'm currently typing feels so unimportant. I'm this close to erasing this entire draft, there's no archival value to this.</p>
+                <p>I'm not making as many grammatical mistakes as I'd like... idk, it feels fake to be able to type well rn, I'm not feeling well, my typing should reflect it. I cannot think of anything other than sorrow, why can't my words reflect that? except they do... I just want to ignore it, otherwise it'd hurt to see it. but I can't unsee it. I've already talked about it before, I can't be ignorant. I can't afford it. I cannot be right with myself that way. even just talking about the darkness feels wrong and scary. I feel things being there over my shoulder. there's nothing ever there, but I'm constantly checking anyway. it was like this in 2022. I missed it a bit, honestly... so welcome back. I didn't even think about using the title that way, I just thought "since I came back, I'll welcome myself back", ig i'm not the only person that came back this ti--- I really can't. I cannot think of smart, intellectually sophisticated and intricate sentences.</p>
+                <p>I started writing in my diary again... I haven't maintained one since I was 15. I did write a few lines maybe a 2 years ago, but that's where it ended. I went back to it and it really just... it felt... it felt like I'm disappointing my younger self. and I'm sorry.</p>
+                <p>I keep telling people around me that I need an escape. I cannot handle it here. I really just want to go home. I have nothing here. nothing's tying me down here except the literal ground, the soil I stand and lay on. if only the home case file wasn't telling the truth. I despise the clouds with all of my heart. I cannot stand them. several times I thought it was the end for me. it feels like I've seen my life flash before my eyes at least once. I blame. I blame. I blame. it feels like all I'm doing is blaming. people can't keep up. people can't care. and yeah, there's a truth to it. obviously there is, everybody has a truth, but it hurts. I try to do things differently, not even for my own benefit. but I never benefit from it anyway, not even indirectly. I do things right and hope they change and all I can feel is that people might just say 2 sweeter lines at my funeral rather than 1. "damned if you, damned if you don't", I really don't like that quote, because it lacks all compassion... but, it is that way. if you kill yourself, whoever you left behind will be mourning and they'll be the victim. if you stay around and hurt those around you, you'll make them into victims. you'll never be the victim. and you shouldn't be anyway. you should be happy, but is it even in our nature to be happy? "we're just meant to survive" is what I'm constantly being told. at the same time I'm also told other propaganda such as "you have to do things you don't like", "you have to follow the system", "you have to be a good guinea pig and listen"... why? to contribute to a society that just uses you and gives you breadcrumbs?</p>
+                <p>don't think I'll ever be able to reintegrate into society properly... even though I never left. just slowly, painfully isolated myself. why... why couldn't it have been different?! </p>
+                <p>I'm not going anywhere with anything. I'm not achieving anything with my life. I'm so self-deprecating. I try so much to build a space for myself to be comfortable in, and I... actually can be... but never with others around. I cannot share this with anyone, because it then all crumbles. people ruin everything I've built. all of my naivety, all of my aspirations... all  that brings me joy... I don't wan--- I want to involve others, someone else*... but I can't.</p>
+                <p>I've been working on mods. or my websites. or a wee bit of music. or just wasting my time on useless information I'll never use. what's any of it for..? what am I doing... I had goals... I had Opdolpha. I had Bothunter. they were goals. they were stories I needed to share under any circumstance and yet now I can barely get myself out of bed. I just wanted for someone to recognize me and help me up. sometimes I feel like I've achieved everything I've ever wanted already just by simply trying and am fully content and at peace and other times I can't even see the reason to continue my insignificant, little spec of a life. hah, calling my 19 years a spec is VERY generous. I'm nothing. none of us are... I'm not killing myself, not now... but gosh, what's the point?</p>
+                <p>despite this post containing several instances of the words: "I'm", "I" or "me" (there's no "me", is there? I can't recall). i'm irrelevant.</p>
+                <p><small>— end of line —</small></p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+ <button class="back-to-top" aria-label="Back to top">↑ top</button>
+ <script>
+    (function() {
+        // Get the button element
+        var btn = document.querySelector('.back-to-top');
+        if (!btn) return;
+
+        // Show/hide button based on scroll position
+        function toggleButton() {
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+
+        // Scroll to top when clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Attach events
+        window.addEventListener('scroll', toggleButton);
+        btn.addEventListener('click', scrollToTop);
+
+        // Initial check in case the page loads scrolled down
+        toggleButton();
+    })();
+</script>
+</body>
+
+</html>
