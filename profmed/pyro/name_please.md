@@ -1,0 +1,11 @@
+# Name:
+- Age
+- Height
+- Third Rotational Relation To Name
+- Axis
+- Body-Type
+- Secondary Name
+- Date Of Birth
+- Family Name
+- Relational Name
+- Emenacants
