@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="heatstroke — simple template">
+    <meta property="og:description" content="minimal heatstroke demo, vibrant & white-ish">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/archives/heatstroke-simple.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>heatstroke · plain template — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', 'Courier', monospace;
+            margin: 0;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #f5f5f5 #000;
+        }
+
+        body::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f2f2f2 35%, #d0d0d0 70%, #a8a8a8 100%);
+            border: 2px solid #000;
+            border-radius: 999px;
+            min-height: 26px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffffff 28%, #e7e7e7 68%, #bebebe 100%);
+        }
+
+        body::-webkit-scrollbar-corner {
+            background: #000;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+        /* ------ vibrant / white-ish container (like original home post) ------ */
+        .case-file {
+            position: relative;
+            background: #fefaf2;
+            background-image:
+                linear-gradient(rgba(230, 180, 120, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 160, 110, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px, 32px 32px;
+            color: #2c1e12;
+            border-radius: 3px;
+            padding: 2rem 2.2rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.08) inset, 0 0 0 2px rgba(255, 245, 225, 0.6) inset;
+            transition: all 0.2s;
+        }
+
+        /* subtle tape accents (same as original but lighter) */
+        .tape-side {
+            position: absolute;
+            background: linear-gradient(145deg, rgba(210, 200, 180, 0.45), rgba(170, 155, 130, 0.35));
+            backdrop-filter: blur(1px);
+            border-radius: 18px 3px 18px 3px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 245, 0.3);
+            width: 28px;
+            height: 110px;
+            z-index: 12;
+            opacity: 0.7;
+        }
+
+        .tape-left {
+            left: -12px;
+            top: 22%;
+            transform: rotate(-4deg);
+        }
+
+        .tape-left-bottom {
+            left: -10px;
+            top: 62%;
+            width: 26px;
+            height: 85px;
+            transform: rotate(3deg);
+            opacity: 0.6;
+        }
+
+        .tape-right {
+            right: -12px;
+            top: 35%;
+            transform: rotate(5deg);
+            border-radius: 2px 20px 2px 20px;
+        }
+
+        .tape-right-bottom {
+            right: -10px;
+            top: 72%;
+            width: 26px;
+            height: 90px;
+            transform: rotate(-2deg);
+            opacity: 0.6;
+        }
+
+        .tape-side::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 10px);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #ebd5b0;
+            padding-bottom: 0.6rem;
+        }
+
+        .file-id {
+            background: #f3ede4;
+            color: #b45f2b;
+            padding: 0.2rem 0.9rem;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .stamp-light {
+            border: 2px solid #dd8c4a;
+            color: #dd8c4a;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.2rem 1rem;
+            background: rgba(221, 140, 74, 0.08);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transform: rotate(-5deg) translateY(4px);
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .case-file h1 {
+            color: #b25724;
+            font-size: 2rem;
+            margin: 0.5rem 0 0.25rem;
+            border-left: 5px solid #dd8c4a;
+            padding-left: 1rem;
+            font-weight: 600;
+        }
+
+        .post-meta-case {
+            font-size: 0.7rem;
+            color: #b67b48;
+            background: #fdf3e6;
+            display: inline-block;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 1.4rem;
+        }
+
+        /* ---- text styling (markers, redacted, handwritten, scribble) ---- */
+        .marker,
+        .marker-yellow {
+            background: linear-gradient(105deg, rgba(255, 230, 130, 0.9) 0%, rgba(255, 210, 80, 0.95) 80%);
+            color: #3a2000;
+            padding: 0 0.2rem;
+            border-radius: 8px 2px 8px 2px;
+            font-weight: 600;
+            display: inline-block;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        .marker-pink {
+            background: linear-gradient(105deg, rgba(255, 150, 160, 0.85), rgba(255, 100, 120, 0.85));
+            color: #3c0e0e;
+        }
+
+        .marker-blue {
+            background: linear-gradient(105deg, rgba(150, 200, 255, 0.85), rgba(90, 160, 245, 0.85));
+            color: #001f3f;
+        }
+
+        .marker-green {
+            background: linear-gradient(105deg, rgba(130, 220, 150, 0.85), rgba(70, 180, 100, 0.85));
+            color: #13451a;
+        }
+
+        .marker-orange {
+            background: linear-gradient(105deg, rgba(255, 190, 100, 0.9), rgba(255, 140, 50, 0.9));
+            color: #3f2206;
+        }
+
+        .scribble {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-color: #f3a683;
+            text-underline-offset: 4px;
+            font-weight: 600;
+        }
+
+        .redacted {
+            background: #e5d9cc;
+            color: transparent;
+            text-shadow: none;
+            padding: 0 0.3rem;
+            border-radius: 3px;
+            user-select: none;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .redacted:hover {
+            background: #cabca8;
+            color: #a1876b;
+        }
+
+        .handwritten {
+            font-family: 'Courier New', 'Segoe UI', cursive;
+            background: #fff3e2;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            display: inline-block;
+            transform: rotate(-0.6deg);
+            font-size: 0.75rem;
+        }
+
+        .field-note {
+            background: #fef6ea;
+            border-left: 4px solid #e2813b;
+            padding: 0.6rem 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        /* simplified vitals */
+        .vitals-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: #fff9f0;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            border: 1px solid #f5e2cb;
+        }
+
+        .vital-unit {
+            font-size: 0.8rem;
+        }
+
+        .vital-unit strong {
+            color: #c25c2c;
+        }
+
+        .evidence-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            justify-content: center;
+        }
+
+        .exhibit-card {
+            flex: 1;
+            min-width: 140px;
+            background: #fffcf5;
+            border: 1px solid #f3e0ca;
+            padding: 0.5rem;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .exhibit-card svg {
+            width: 100%;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .exhibit-card figcaption {
+            font-size: 0.65rem;
+            margin-top: 0.4rem;
+            color: #b5703a;
+        }
+
+        hr {
+            margin: 1.2rem 0;
+            border: none;
+            border-top: 1px dashed #eedbc4;
+        }
+
+        .case-file p {
+            margin-bottom: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            color: #7f9eff;
+            font-family: monospace;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            border-radius: 4px;
+        }
+
+        .back-to-top:hover {
+            background: #1a1a1a;
+            border-color: #7f9eff;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 760px) {
+            body { padding: 1rem; }
+            .case-file { padding: 1.5rem; }
+            .tape-side { display: none; }
+            .evidence-grid { flex-direction: column; }
+            .case-file h1 { font-size: 1.6rem; }
+            .stamp-light { font-size: 0.7rem; white-space: normal; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <!-- SIMPLE / MINIMAL HEATSTROKE TEMPLATE - only stylings demo -->
+        <div class="case-file">
+            <!-- tiny tape accents (like original) -->
+            <div class="tape-side tape-left"></div>
+            <div class="tape-side tape-left-bottom"></div>
+            <div class="tape-side tape-right"></div>
+            <div class="tape-side tape-right-bottom"></div>
+
+            <div class="case-header">
+                <span class="file-id">🌡️ June 6 Incident</span>
+                <span class="stamp-light">hipaa /jk</span>
+            </div>
+
+            <h1>heatstroke — <span class="marker">hospital visit</span></h1>
+            <div class="post-meta-case">📅 june 9, 2026 · demo</div>
+
+            <div class="post-content">
+                <p>Here's everything related to the hospital visit on June 6 (bleeding into june 7):</p>
+
+                            <!-- mini vitals panel (less official) -->
+                <div class="vitals-mini">
+                    <div class="vital-unit"><strong>🌡️ temp</strong> 39.3-4°C</div>
+                    <div class="vital-unit"><strong>💓 hr/hb</strong> probably like 146</div>
+                    <div class="vital-unit"><strong>🧊 intervention</strong> used ice packs from freezer</div>
+                </div>
+
+                <p><span class="handwritten">initial</span></p>
+                <p>so at about 21:00-22:00 I checked my fever, as it was starting to worry me. Good instinct, because it said 39.3. I tried cooling myself and was shaking from freezing. I checked again with a blanket... 39.4. I started calling my mother desperately to find out if the thermometer was somehow in some dumb way broken. I kept calling... I wrote tons of messages. I called the person whose house we live in... none of them answered me, because they were at a get-together and my mother's phone is silent past 10PM apparently (so I must've been calling after 10PM, actually I never checked this- I was caling around 10:09). then the other excuse was "oh, I didn't realize it was past 10PM"... honestly... this is really great. they left me at home with a fever and completely forgot about me. after 30+ minutes I was fed up and decided to go to the nearest clinic and that's exactly when my mom got home, so she got to confirm it. going to the clinic, they saw my temperate still being 38.5+ and told me to go to a hospital tonight, as I cannot handle this at home. I asked just to ensure I got it right. I tried calling a taxi, none around. I walked around aimlessly, and was really struggling to: walk, talk, think... and yet my dad would ask me what to do... I'd be the one calling my mom... it felt surreal. I was literally not feeling good, I was actually confused, I couldn't tell what I was doing or saying sometimes and yet they still were looking at me to plan everything out... besides the point~ my mom picked us up with someone else's car and drove us. I arrived, got checked, my fever was 37.8 I assume, although I was no longer paying attention anymore. I tried to be kind and talkitive. they sent me to the waiting room and waited there about an hour, 1.5, maybe more. at some point an emergency alarm blared, people rushed, so we needed to wait longer as our doctors also rushed there to help. poor soul(s), hope they're doing well now. may God watch over them...</p>
+                <p>eventually our turn arrived at around 1AM. the doctress asked questions, physically examined me, etc. at this point, I was already walking like a father who's had too many bottles of beer, but no matter. after this and some more waiting, I was invited into another room to have me prepared for my IV setup. oral hydration wasn't enough, they needed to send it straight into my system. the needle/syringe goes, pricks my left arm... the lady messes around with it a bit, pulls, pushes... I was watching in amusement then, but now... I'm feeling it my left arm being weird... limp, like it was just invaded by that metal again... what the fuck? I'm not making this up, this doesn't even make sense... my mind has been really acting up.. and my body's been hurting more. I'm really fragile right now, in all senses... <span class="redacted" title="secret, shhh">I wish someone would help</span>. Following this tiny failure, I apologized to the lady, assuming it was my lack of tension that caused it. again, very talkitive. the lady said it wasn't my fault, not sure if she apologized, that wouldn't be great for the hospital she works at... but she did it on my right arm instead, took 3 tubes of blood samples... never really figured out why (the colours, if I remember right were: green, orange, blue (or more cyan)... or perhaps there was red too... it's a bit of a haze) and setup a gate thing for the IV flow control. after this, I went back to my seat and I'm just so thankful I had my father there, because my vision worsened, it was "impaired" or whatever the word... my ears started ringing, but not equally it was all so leaning to the left. and I also felt nauseous, but I didn't have the strength to go until the bathroom taht was right next to us, so even if I would've wanted to vomit, I would've been still like a doll. my words either slurred or were so quiet they were incoherent to anyone except me. I might've mentioned earlier that I was hungry, so my dad asked if he should go get something for me, go ask for a doctor or something idk, and I mustered all my strength to say with such a loud (sarcasm) volume that only the ants could've heard it <span class="marker-yellow">"no, stay with me please. please."</span>. I was really not managing, couldn't pull it together, I was a victim of my... I don't remember the right word to use. victim of my... NOT STATUS. stop... not status, no. STATE! of my state. my body's state. finally... wow. that wasn't more than a minute or two, but that's abnormally slow for my standards. anyway~ I decided to melt away on my father, I couldn't even hold the blouse/sweater/jersey I was having as my limbs went quite limp. I was really struggling. possibly could've fainted, but eventually the lady checked on me, took that thing where the bags are hanged and dripping from and puleld it (me following along --- and also holding onto it for just a bit of aid in coordination and balance --- with slow, old-man steps) to a room just a few steps away from us, where I was laid down so I can recover. they briefly explained why that happened to me to my dad and what they were doing right now. my dad was just following along and nodding, he doesn't fucking know the language :sob: - he got the general idea though. as if shuddering, shaking violently, ripples going through my entire body that, over time, made my muscles hurt in the waiting room wasn't enough... this room was just a gentle bit cooler (I think...? i really don't fucking know, I was having a heatstroke dude, i was just assuming cuz of context clues) and here, after some of the water, and whatever the other bag was, had already passed into my system... I felt better almost instantly. I started shaking more here as well, but despite freezing, I was sweating buckets. I was sweating a lot, even with goosebumps (which didn't want to go away, as my body was in a constant, rapid shiver-entrapped mode). they eventuall also injected something else into the water bag and I curiously asked what it was... they said it was for my vomitting, just so I don't vomit. although that has subsided as soon as I started recovering from my mind-melted (kinky sex tattoo reference?) state.</p>
+                <p>after having 1.5 bags of water consumed by my arteries (and whatever that other bag was...), I could stand and went back to the waiting hall. this entire time, besides me being more talkitive and optimistically careless with my grammatical mistakes, everyone else also treated me with kindness and took my situation seriously. perhaps this is the least that should be expected, but I was really happy in the moment, as I haven't gotten this type of good treatment as an independen't adult before, not here.</p>
+                <p>I just got interrupted... it was a really ugly argument, as you can tell it's day 3 since the incident and my personal choice was honestly to still just stay at home as I'm not comfortable going out yet. as I probably will have written in the main post concerning this incident, I'm really mentally weak right now. there're so many things that are still foggy to me. I think I've experienced confusion, because there are stuff that should've made sense and don't and so many details got washed up... I mean yeah, it's probably part of being sick, but I just really struggled to remember some specific things. I got into a nice argument with my parents over going to the lesser-hospital as I am not comfortable going yet, but do want to... like... we're kind of on the same page, in fact, I think I wanted it more than them until just now and now they're just forcing it down my throat like I'm a cocksleeve... like I'm nothing.</p>
+                <p>after my fever has diminished, they took an EKG test, as they've noted that my heartbeat was abnormally fast, like super. I mentioned it could just be stress and at the lesser-hospital, the clinic, they said it could be correlated to the fever and they seemed to have been right. my heartrate/heartbeat must've been stabilizing as they did not require another test, despite leaving the EKG patches on me just in case (I got to take them home :p). my face and hands were numbing from time to time--- OH and my significant other was balling their eyes out this entire time.</p>
+                <p><span class="handwritten">post-hospital</span></p>
+                <p>going home was tricky. my dad had told my mom that she could go sleep, however when I asked for a taxi, they just put me on a list and only on the second call they explained that there are no available taxis currently. I inquired as to how I could follow my status and they said "call in 10 minutes". despite having recovered at this point... I was still walking like a tipsy boy and I was sometimes slurring my words a bit. my mom ended up waking up and used the same car to come back and pick us up. I called the taxi service provider again to cancel my waiting list and apogolized to and thanked them. by the time the car reached our apartment, my vision has started playing tricks on me. I was seeing sparkling stars, weird movement... the types of things you see when you are low on sugar. so again, I could barely walk. I was really thankful for them at that moment for being there for me, I vocalized it too. they held my hand from each side and walked to the apartment quite a bit. I really felt unstable, unsafe, because I couldn't trust anything. Now my speech was completely fine, however my vision was entirely impaired. This messed with my balance and hearing and it was really terrible. but I finally got home and at 4AM, I finally... got... to go to sleep with 1g paracetamol being given to me, as my fever still loved me and wanted to stick around.</p>
+                <p><span class="handwritten">recovery at home</span></p>
+                <p>the next day was still not great. I couldn't walk right. I was still in a bad shape, my fever was unstable but would range anywhere from 37.7 to 38.7 during the day. it was really not great. I had to constantly monitor myself and everything I did. I couldn't rest at all. thankfully, this time my mother actually helped me hydrate and stuff. at 3:30AM, I had to wake my mother up, because my fever had unfortunately risen to 39.1 and I was panicking. thankfully I was close enough to my scheduled paracetamol/h to take the next dose, but she disapproved of my choice and said I should've taken another medication. however, constant cooling from my side, I managed to push it down to 38 and by morning it was 37.5</p>
+                <p>⬤ thank you for having read this. it means quite a lot to me ^^</p>
+        
+    
+                <div class="evidence-grid">
+                    <figure class="exhibit-card">
+                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="40" r="18" fill="#FFF3E0" stroke="#e67e22" stroke-width="2" />
+                            <path d="M50 15 L50 22 M50 58 L50 65 M23 40 L30 40 M70 40 L77 40 M32 28 L37 33 M63 47 L68 52 M32 52 L37 47 M63 33 L68 28" stroke="#e67e22" stroke-width="2" stroke-linecap="round" />
+                            <text x="44" y="44" font-size="10" fill="#b45f2b" font-weight="bold">🌡️</text>
+                        </svg>
+                        <figcaption><span class="marker-green">this is</span> where I draw the line.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="field-note">
+                    ✦ <span class="marker">experience note</span> : 10/10, wouldn't recommend.
+                </div>
+
+                <div style="text-align: right; font-size: 0.7rem; margin-top: 1rem;">
+                    <span class="handwritten">— quite possibly almost the end of me —</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+
+    <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+    <script>
+        (function () {
+            const btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+            function toggleButton() {
+                window.scrollY > 300 ? btn.classList.add('show') : btn.classList.remove('show');
+            }
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            window.addEventListener('scroll', toggleButton);
+            toggleButton();
+        })();
+    </script>
+</body>
+
+</html>
