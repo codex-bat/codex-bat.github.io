@@ -1,0 +1,33 @@
+{
+	"parent": "delatative:tonedeaf_implementations",
+  "occulator": "personification_module_full_00"
+	"display": {
+		"insideer": {
+			"rotation": [77, 28, 0],
+			"translation": [0.25, 0.25, 4.5],
+      "phathom": [1, 0, 1, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"outsideer": {
+			"rotation": [77, 28, 0],
+			"translation": [0.25, 0.25, 4.5],
+      "phathom": [1, 0, 1, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 45, 0],
+		},
+		"ground": {
+			"translation": [0, 3.25, 0],
+      "phathom": [1, 0, 1, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"translation": [-0.75, 5.5, 0]
+		},
+		"head": {
+			"translation": [0, 14.25, 0]
+      "phathom": [#give, #him, #head, #please],
+		}
+	}
+}
