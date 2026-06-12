@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-<dl>
-    <dt>instr.</dt><dd>01110100 01101000 01100101 01101110</dd>
-</dl>
--->
+    
 <head> 
-    <!-- ==================== HELPER GUIDE MANUAL ==================== -->
-    <!-- If    your   confusion    persists   you,    please    visit: -->
-    <!--         https://github.com/codex-bat/codex-bat.git            -->
-    <!--          hub.io/blob/main/keys/__peterableInf.key             -->
-    <!-- for     more    information.    Thank    you   for   reading. -->
-    <!-- Read   between   the     lines     and     pay     attention. -->
-    <!-- Lastly, enjoy more of me!  Oh- and don't forget about the "/" -->
-    <!-- ============================================================= -->
     <meta charset="utf-8">
-    <meta property="og:title" content="Priorities">
+    <meta property="og:title" content="priorities">
     <meta property="og:description" content="I'm nobody's priority, except those's that need me in the moment.">
     <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
     <meta property="og:url" content="https://codex-bat.github.io/post/priorities.html">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Priorities">
+    <meta name="twitter:title" content="priorities">
     <meta name="twitter:description" content="I'm nobody's priority, except those's that need me in the moment.">
     <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Priorities — Codex.bat</title>
+    <title>priorities — Codex.bat</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
@@ -34,7 +22,7 @@
     <link rel="manifest" href="/assets/site.webmanifest" />
     <style>
      html {
-  scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -78,9 +66,6 @@ baseUrl/profmed/pyro/heatstroke
 body::-webkit-scrollbar-corner {
   background: #000;
 }
-    /* 
-    1. 01100111 01101001 01100110 01111001 01100100 01111000 01110111
-    */
         body {
             background: #000;
             color: #ddd;
@@ -160,11 +145,6 @@ body::-webkit-scrollbar-corner {
             box-shadow: 0 0 4px #14161f66;
         }
 
-        
-        /*
-        2. instr.+01100111 01101001 01100110 01111001 01100100 01111000 01110111
-        oops sorry, did I mislead you here?
-        */
         footer {
             margin-top: 2rem;
             text-align: center;
@@ -202,10 +182,7 @@ body::-webkit-scrollbar-corner {
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        /*
-        instr. > cust0m1 1h0ver f0r th1 l1nk!1!!0 1t 1ooks gr1at wh0n y0u try it0, 0ec0use 11 ch0ng1s 1he w0y th0 bu1t0n 1works (1'm sp00king non-s1ns10) - this is definitely not a trap :p
-        */
-
+        
         a:hover {
             color: var(--accent);
             text-decoration-thickness: 0.2em;
@@ -221,8 +198,7 @@ body::-webkit-scrollbar-corner {
             font-style: italic;
             color: #ccc;
         }
-        /* a real equation that always blows my mind is +4 -13... it's really unique, I think */
-
+        
         /* Lists */
         ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
         li { margin-bottom: 0.5rem; }
@@ -325,7 +301,7 @@ body::-webkit-scrollbar-corner {
 
         <div class="content">
             <!-- post title and date -->
-            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">I was sadly right</h1>
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">priorities</h1>
             <div class="post-meta">📅 June 12, 2026</div>
 
             <!-- main post content -->
@@ -361,12 +337,7 @@ body::-webkit-scrollbar-corner {
                 btn.classList.remove('show');
             }
         }
-        //it all starts here :3
-        /*
-        customSeq sequence = instr. + str.list[n.sequenceNumber];
-        name = "ottoooto ottoooot otttoott ottootot otototot otttooto ottottoo" + sequence.each;
-        */
-
+        
         // Scroll to top when clicked
         function scrollToTop() { 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -380,45 +351,6 @@ body::-webkit-scrollbar-corner {
         toggleButton();
     })();
 
-    //None new - something fresh.
-
-        // the targets of a hidden spell
-        const _ = [0xc3, 0xa9, 0x78, 0x74, 0x6b, 0x6a, 0x6b, 0x69, 0x66, 0x62, 0x78];
-        const $ = _.map(x => x.toString(2).padStart(8, '0')).join` `; // target string
-
-        // build a multiset of the same bytes (shuffled initial order)
-        let pool = [..._];
-        for (let i = pool.length - 1; i > 0; i--) {
-            let j = ~~(Math.random() * (i + 1));
-            [pool[i], pool[j]] = [pool[j], pool[i]];
-        }
-
-        // ugly helper: compare two byte arrays
-        const ƒ = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
-
-        // main loop: random shuffle until cosmic accident hits target
-        let attempts = 0;
-        const outPre = document.getElementById('out');
-        
-        (function 鬼() {
-            while (!ƒ(pool, _)) {
-                // Fisher-Yates shuffle on `pool` (I read this gives us pure chaos)
-                for (let i = pool.length - 1; i > 0; i--) {
-                    let r = ~~(Math.random() * (i + 1));
-                    let tmp = pool[i];
-                    pool[i] = pool[r];
-                    pool[r] = tmp;
-                }
-                attempts++;
-                if (attempts % 100000 === 0) {
-                    outPre.innerText = `🌀 shuffling ... ${attempts} attempts so far`;
-                }
-            }
-            // FINALLY — output the exact disneyland ticket entry :3 (ofc, what else would it give you?!)
-            const result = pool.map(b => b.toString(2).padStart(8, '0')).join` `;
-            outPre.innerText = `✅ matched after ${attempts} shuffles!\n${result}`;
-            console.log(`TARGET REACHED:\n${result}`);
-        })();
 </script>
 </body>
 
