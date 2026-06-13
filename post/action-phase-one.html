@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Action: Phase 1">
+    <meta property="og:description" content="Surreal thought-cycles.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Action: Phase 1">
+    <meta name="twitter:description" content="Surreal thought-cycles.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Action: Phase 1 — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     /* ----- GLOBAL DESIGN VARIABLES (ensuring consistent accent/dim colors) ----- */
+     :root {
+        --accent: #7f9eff;
+        --dim: #6c6f78;
+        --text: #ddd;
+        --error: #ff5c5c;
+        --bg-deep: #0c0c0c;
+     }
+
+     html {
+        scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+     }
+
+     body {
+        overflow-y: auto;
+        background: #000;
+        color: #ddd;
+        font-family: 'Courier New', monospace;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.5;
+        /* Firefox scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: #f5f5f5 #000;
+     }
+
+     /* Chrome, Edge, Safari scrollbar */
+     body::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+     }
+
+     body::-webkit-scrollbar-track {
+        background: #000;
+     }
+
+     body::-webkit-scrollbar-thumb {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #f2f2f2 35%,
+            #d0d0d0 70%,
+            #a8a8a8 100%);
+        border: 2px solid #000;
+        border-radius: 999px;
+        min-height: 26px;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+     }
+
+     body::-webkit-scrollbar-thumb:hover {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #ffffff 28%,
+            #e7e7e7 68%,
+            #bebebe 100%);
+     }
+
+     body::-webkit-scrollbar-corner {
+        background: #000;
+     }
+
+     .container {
+        max-width: 800px;
+        margin: 0 auto;
+     }
+
+     header {
+        border-bottom: 2px solid #2a2a2a;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+     }
+
+     h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #fff;
+     }
+
+     nav {
+        margin-top: 0.5rem;
+     }
+
+     nav a {
+        color: #7f9eff;
+        text-decoration: none;
+        margin-right: 1rem;
+     }
+
+     nav a:hover {
+        text-decoration: underline;
+     }
+     
+     /* Inline code */
+     code:not(pre code) {
+        background: #0f0f12;
+        color: #c3cae0;
+        padding: 0.2rem 0.4rem;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-family: 'Courier New', 'Fira Code', monospace;
+        border: 1px solid #2a2a3a;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.3);
+        transition: all 0.1s ease;
+     }
+
+     code:not(pre code):hover {
+        background: #16161d;
+        border-color: #90a2da;
+        color: #90a2da;
+        box-shadow: 0 0 4px #14161f66;
+     }
+
+     .post-meta {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #7f9eff;
+        padding-left: 0.5rem;
+     }
+
+     .content {
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        padding: 1.5rem;
+     }
+
+     h2 {
+        border-left: 5px solid var(--accent);
+        padding-left: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        font-size: 1.5rem;
+        color: var(--accent);
+     }
+
+     h3 {
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+        font-size: 1.25rem;
+        border-left: 3px solid var(--accent);
+        padding-left: 0.7rem;
+        color: #f0f0f0;
+     }
+
+     footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: #555;
+        font-size: 0.7rem;
+        border-top: 1px dashed #2a2a2a;
+        padding-top: 1rem;
+     }
+
+     /* Syntax classes (smart styling) */
+     .b { font-weight: bold; }
+     .bi { font-weight: bold; font-style: italic; }
+     .i { font-style: italic; }
+     .u { text-decoration: underline; }
+     .s { text-decoration: line-through; color: var(--dim); }
+     
+     /* Links */
+     a {
+        color: var(--text);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+     }
+     a:hover {
+        color: var(--accent);
+        text-decoration-thickness: 0.2em;
+        text-decoration-line: underline;
+        text-decoration-color: var(--accent);
+     }
+
+     /* Blockquotes */
+     blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #ccc;
+     }
+
+     /* Lists */
+     ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+     li { margin-bottom: 0.5rem; }
+     
+     /* Horizontal Rules */
+     hr {
+        border: 0;
+        border-top: 1px solid var(--dim);
+        margin: 3rem 0;
+     }
+
+     /* Code blocks */
+     pre {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        overflow-x: auto;
+     }
+
+     /* dynamic color helpers */
+     .highlight { color: var(--accent); font-weight: bold; }
+     .danger { color: var(--error); }
+     .dim { color: var(--dim); }
+
+     /* post content base */
+     .post-content p, .post-content li {
+        color: #ddd;
+     }
+     .post-content a {
+        color: #7f9eff;
+     }
+     .post-content pre {
+        background: #111;
+        border: 1px solid #2a2a2a;
+        padding: 0.5rem;
+        overflow-x: auto;
+     }
+
+     /* ----^^^---- NEW FEATURE: centered title fields (accompanies <p>text</p>) ----^^^----
+        weoowwww!
+     */
+     .centered-title {
+        text-align: center;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        margin: 1.8rem 0 1rem 0;
+        font-weight: 700;
+        font-size: 1.7rem;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        background: transparent;
+        text-transform: uppercase;
+        font-family: 'Courier New', monospace;
+        word-break: keep-all;
+        display: block;
+        width: 100%;
+        clear: both;
+        transition: all 0.2s ease;
+     }
+
+     .centered-title:hover {
+        text-shadow: 0 0 6px rgba(127,158,255,0.3);
+        letter-spacing: 0.5px;
+     }
+
+     .centered-title.small {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: normal;
+        margin: 1.2rem 0 0.8rem 0;
+     }
+
+     /* back-to-top button */
+     .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        color: #7f9eff;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+     }
+
+     .back-to-top:hover {
+        background: #1a1a1a;
+        border-color: #7f9eff;
+     }
+
+     @media (max-width: 768px) {
+        .back-to-top {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+        }
+     }
+
+     .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+     }
+
+     /* little extra polish for content */
+     .post-content hr {
+        margin: 2rem 0;
+        border-color: #2a2a2a;
+     }
+
+     .post-content .dim {
+        color: #8a8a8a;
+     }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">Action: Phase 1</h1>
+            <div class="post-meta">📅 June 13, 2026</div>
+
+            <div class="post-content">
+                <!-- FIRST CENTERED TITLE FIELD (brand new style) -->
+                <div class="centered-title">Chapter 4̸̨̡̢͚͔̯̻̮̬̉̓̆͜͜ͅ5̸̢̡͍͔͇̼̬̭̘̘̦͕͊̀͒͆̐͘͠͝ͅ</div>
+                <div class="centered-title small">—</div>
+                <div class="centered-title small">Action: Phase 1</div>
+                <p>
+                ⠀ ⠀ ⠀He woke in an abandoned facility. A divergent hallway, sending him down different paths. But he didn’t have to choose, the world chose him. All corridors collapsed towards him and now he was hearing synthetic plucky keys dancing along a scale. Was it in his mind? Was it somewhere behind these walls? Steps. One foot after the other. Hand on the trigger. Sensory device on the rifle’s iron sight. He was walking in a large concert hall, the red carpet beneath his metal indicating his path forward. He looked around for any threats. The plucky sounds continued their movements. It was all in his head, but it felt real. The sound: distorted, washed out by reverb — it was somewhere, but not here. It felt like each note cut through his wires with harsh slashes. The steps lined up with the rhythm — mid-tempo. A perfect coincidence. He could no longer break the pattern— there was no longer a red carpet beneath him. He wasn’t even in an art hall anymore.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“You know I believe in you…” a fatherly voice echoed throughout the empty airport as the bot continued its path, searching for anything that could compromise his mission. The voice was inside his mind. It had to be. It was familiar. It was… the German father of one of his… his… dreams— the music stopped. Pure silence. He stopped in his steps, something wasn’t right. He looked up. Gun held down, pointing at the ground. Pitch black environment. It felt surreal and yet somehow… real. This was a fallacy, but it didn’t trigger any shutdown systems for him, in him. A paradox… couldn’t break him? It didn’t matter.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀Looking ahead, he spotted a red door, an emergency door. I— he approached it. Th— Then he opened it and— a white flower. Intent to touch it, feel it, caress it seemed ever-more favourable. The bot was crouching, untelling eyes full of [undefined]. Grass. Nature. Sunshine. The sound of the grass’s movement seemed harsh. It was violent and he could hear it right in his left ear, as if it wasn’t stipulated by space; or the audio services could just somehow misdirect his spatial navigation. But just one touch… the flower’s texture seemed so pure. Henceforth he extended his arm for it. From just one touch the flower withered away.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀A twitch in the finger tips. Finally he went through the fire emergency door. It led him to an industrial corridor. The walls, concrete. Everything: narrow, claustrophobic. He went through it, stairs to the right — insignificant. He turned around a corner and suddenly, he was looking down at the iron sight of his primary rifle; he was engaging. He looked around the corners of the new, modern, sleek corridors. Wide, spacious. A blink — and he was looking through the window of a large skyscraper. He could see his own reflection on the glass panel, he was a… man, an overlord. There was a desk behind him. Nobody could get behind him without him noticing. As he looked out the window, he could see the ruins brought upon them by a great war. “Humans. They’re the problem. Eradicate—”
+                </p>
+                <p>
+                He felt a sudden touch on his shoulders. Pressure and— glass broke through him. His skin, cut by the shards. He was flying— no, falling. He felt blood leaving his body through apertures in the tissue. Beauty. Wonder. To brace for the impact, to minimize distress: eyes were closed shut. But the air was gone. He opened his eyes and found himself in a familiar greenery. He looked ahead of him and pulled his pistons to look down. “Russian Charango”. The man lied there… limp. He was dead. Bothunter crouched down to see him better and reached with his right arm to caress him. Vision blurred— things became fuzzy and—. The bot was running, gun held with both arms. He aimed down the sight and shot. One shot, one kill. Two shots, two kills. He was rushing through the other bots, evading their shots with high-functioning precision. He let go of the trigger of the rifle, held it with his right hand by the mag. He was running out of time. Took out the sharp cyberknife from his left-side holster and cut through two bots as he crouched behind their bodies. 3… milliseconds. A large ship hovered low over the ground, far from them. 2… milliseconds. Vehicle weapons engaged, ready to shoot. 1… millisecond. Its propellers orchestrated the air flow, creating a pressure over the entire ground and its surrounding area. 0.5… milli— The grass and the trees waved rapidly, the wind rippling through— Now. He struck. He peeked over their shoulders to shoot the ones further back. No wasted bullets. Each and every one of them hit the targets exactly where he needed them to. A hover drone got caught in the crossfire. With its blades damaged, it strayed away from its calculated path, heading straight for the trees and crashing. This caused a significant 2 meter radius explosion. He stood up from behind the other bot and kept shooting, walking forward calmly to keep his aim precise. Bullets kept coming for him, but he didn’t eat any of them. Except a bullet, striking straight at the rifle— now a broken rifle. Bothunter inspected it, before quickly discarding it and wiping out the rest of the bots with his backup pistol. Deadly force. Cannot demolish him. But suddenly, a bullet came… out of nowhere. Or was it the ship he’d dismissed? No matter. Bullet— straight to his hea— It felt so real… floating through dark void… colourful trails of light seemed to pass by him. Rhythmic noises guided his attention, carrying weight and harmony. It was all in suspense, none of this gave him ease. It didn’t help him calm down. A low frequency rumbled through his skull, a bass. Everything was hanging in the air. Nothing felt right, nothing settled. His sensory devices flickered. He couldn’t even tell if he was dead or alive. His mechanical limbs rose and fell with grace. The untouchable force around him pulled at him. A flicker— he finally touched the man’s face. He could see his fingertips reach the face’s bloody cheek. It was almost as if he could feel the texture of the man’s skin and his blood. He felt a tear run down his own cheek, but it couldn’t be… the metal. He felt the metal, but it was actually his skin.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“What is this?” He couldn’t process it all. Another flicker — purple lights died out and lit up again. It was too much. He couldn’t have tears, he wasn’t… he— a hum… he wasn’t h— hu— humour… n— an— hu… human.
+                </p>
+                
+                <hr>
+                <p>fun fact: I was listening to <a href="https://www.youtube.com/watch?v=_XGN5WtacjY" target="_blank">this track by NIN</a> and had a piss break when I was violently shot right in my head with a flash of this idea.</p>
+                <p><small>— end of line —</small></p>
+                <p class="dim" style="margin-top: 1.2rem; text-align: center;">
+                    <em>do not fucking take this work of mine. it's precious.</em>
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+
+    <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+    <script>
+        (function() {
+            // back-to-top button logic
+            var btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+            function toggleButton() {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            }
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            window.addEventListener('scroll', toggleButton);
+            btn.addEventListener('click', scrollToTop);
+            toggleButton();
+        })();
+    </script>
+</body>
+
+</html>
