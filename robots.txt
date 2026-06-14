@@ -1,0 +1,12 @@
+# Block all bots from private/admin areas
+User-agent: *
+Disallow: /assets/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /intermittence/
+Disallow: /tmp/
+Disallow: /logs/
+
+# hey search engines
+Sitemap: https://codexbat.dev/sitemap.xml
