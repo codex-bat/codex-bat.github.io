@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Action: Phase 1">
+    <meta property="og:description" content="Surreal thought-cycles.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Action: Phase 1">
+    <meta name="twitter:description" content="Surreal thought-cycles.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Action: Phase 1 — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     /* ----- GLOBAL DESIGN VARIABLES (ensuring consistent accent/dim colors) ----- */
+     :root {
+        --accent: #7f9eff;
+        --dim: #6c6f78;
+        --text: #ddd;
+        --error: #ff5c5c;
+        --bg-deep: #0c0c0c;
+     }
+
+     html {
+        scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+     }
+
+     body {
+        overflow-y: auto;
+        background: #000;
+        color: #ddd;
+        font-family: 'Courier New', monospace;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.5;
+        /* Firefox scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: #f5f5f5 #000;
+     }
+
+     /* Chrome, Edge, Safari scrollbar */
+     body::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+     }
+
+     body::-webkit-scrollbar-track {
+        background: #000;
+     }
+
+     body::-webkit-scrollbar-thumb {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #f2f2f2 35%,
+            #d0d0d0 70%,
+            #a8a8a8 100%);
+        border: 2px solid #000;
+        border-radius: 999px;
+        min-height: 26px;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+     }
+
+     body::-webkit-scrollbar-thumb:hover {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #ffffff 28%,
+            #e7e7e7 68%,
+            #bebebe 100%);
+     }
+
+     body::-webkit-scrollbar-corner {
+        background: #000;
+     }
+
+     .container {
+        max-width: 800px;
+        margin: 0 auto;
+     }
+
+     header {
+        border-bottom: 2px solid #2a2a2a;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+     }
+
+     h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #fff;
+     }
+
+     nav {
+        margin-top: 0.5rem;
+     }
+
+     nav a {
+        color: #7f9eff;
+        text-decoration: none;
+        margin-right: 1rem;
+     }
+
+     nav a:hover {
+        text-decoration: underline;
+     }
+     
+     /* Inline code */
+     code:not(pre code) {
+        background: #0f0f12;
+        color: #c3cae0;
+        padding: 0.2rem 0.4rem;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-family: 'Courier New', 'Fira Code', monospace;
+        border: 1px solid #2a2a3a;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.3);
+        transition: all 0.1s ease;
+     }
+
+     code:not(pre code):hover {
+        background: #16161d;
+        border-color: #90a2da;
+        color: #90a2da;
+        box-shadow: 0 0 4px #14161f66;
+     }
+
+     .post-meta {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #7f9eff;
+        padding-left: 0.5rem;
+     }
+
+     .content {
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        padding: 1.5rem;
+     }
+
+     h2 {
+        border-left: 5px solid var(--accent);
+        padding-left: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        font-size: 1.5rem;
+        color: var(--accent);
+     }
+
+     h3 {
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+        font-size: 1.25rem;
+        border-left: 3px solid var(--accent);
+        padding-left: 0.7rem;
+        color: #f0f0f0;
+     }
+
+     footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: #555;
+        font-size: 0.7rem;
+        border-top: 1px dashed #2a2a2a;
+        padding-top: 1rem;
+     }
+
+     /* Syntax classes (smart styling) */
+     .b { font-weight: bold; }
+     .bi { font-weight: bold; font-style: italic; }
+     .i { font-style: italic; }
+     .u { text-decoration: underline; }
+     .s { text-decoration: line-through; color: var(--dim); }
+     
+     /* Links */
+     a {
+        color: var(--text);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+     }
+     a:hover {
+        color: var(--accent);
+        text-decoration-thickness: 0.2em;
+        text-decoration-line: underline;
+        text-decoration-color: var(--accent);
+     }
+
+     /* Blockquotes */
+     blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #ccc;
+     }
+
+     /* Lists */
+     ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+     li { margin-bottom: 0.5rem; }
+     
+     /* Horizontal Rules */
+     hr {
+        border: 0;
+        border-top: 1px solid var(--dim);
+        margin: 3rem 0;
+     }
+
+     /* Code blocks */
+     pre {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        overflow-x: auto;
+     }
+
+     /* dynamic color helpers */
+     .highlight { color: var(--accent); font-weight: bold; }
+     .danger { color: var(--error); }
+     .dim { color: var(--dim); }
+
+     /* post content base */
+     .post-content p, .post-content li {
+        color: #ddd;
+     }
+     .post-content a {
+        color: #7f9eff;
+     }
+     .post-content pre {
+        background: #111;
+        border: 1px solid #2a2a2a;
+        padding: 0.5rem;
+        overflow-x: auto;
+     }
+
+     /* ----^^^---- NEW FEATURE: centered title fields (accompanies <p>text</p>) ----^^^----
+        weoowwww!
+     */
+     .centered-title {
+        text-align: center;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        margin: 1.8rem 0 1rem 0;
+        font-weight: 700;
+        font-size: 1.7rem;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        background: transparent;
+        text-transform: uppercase;
+        font-family: 'Courier New', monospace;
+        word-break: keep-all;
+        display: block;
+        width: 100%;
+        clear: both;
+        transition: all 0.2s ease;
+     }
+
+     .centered-title:hover {
+        text-shadow: 0 0 6px rgba(127,158,255,0.3);
+        letter-spacing: 0.5px;
+     }
+
+     .centered-title.small {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: normal;
+        margin: 1.2rem 0 0.8rem 0;
+     }
+
+     /* back-to-top button */
+     .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        color: #7f9eff;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+     }
+
+     .back-to-top:hover {
+        background: #1a1a1a;
+        border-color: #7f9eff;
+     }
+
+     @media (max-width: 768px) {
+        .back-to-top {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+        }
+     }
+
+     .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+     }
+
+     /* little extra polish for content */
+     .post-content hr {
+        margin: 2rem 0;
+        border-color: #2a2a2a;
+     }
+
+     .post-content .dim {
+        color: #8a8a8a;
+     }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">protests</h1>
+            <div class="post-meta">📅 June 16, 2026</div>
+
+            <div class="post-content">
+               <!-- FIRST CENTERED TITLE FIELD (brand new style) -->
+               
+               <p># DISCLAIMER: PROFRANITIES, suicide AND 0THER SENSITIVE TOPICS. Viewer discretion is advised.</p>
+
+               <div class="centered-title small">when did this all happen?</div>
+               
+               <p>
+               Today is a Monday. It's going to be a big day, as I had had to prepare a presentation to potential investors for the company I'm at. If I get this right, I'll get a big promotion, that would fundamentally change my career moving forward, even if I got fired. I've been excited all weekend about this. When my boss told me about it, I was dumbfounded. I couldn't beleive it.
+               </p>
+               <p>
+               I get ouf of bed and start brushing my teeth. For a second, I think about it and wonder how strange it is to see yourself in the mirror while doing such a basic task, a routine. No matter, I get myself prepped visually. I start dressing, picking a distinct navy blue suit, to make an impression other than my usual office-work fit. I had picked this suit specifically for this occassion, renting it for the time being. Since the store was going to be closed on Sunday, I had to pick it up on Friday, which made my rental a bit longer than necessary. I wonder if this is all set up like this on purpose... having pitches for investors specifically on Mondays to boost the economy of these rental clothing stores. Perhaps they have some sort of hush-hush deal to keep all businesses in the loop. I don't know, but it makes sense. I prepare myself some breakfast, as I can feel my body getting ready to pass out if I don't. Why did I get this opportunity anyway? Well, I mean it makes sense! I'm one of the more ambitious guys around the office, but I'm grounded in reality. If I set my mind to it, I can get it done and my boss likes that. Ferdinand (such a silly name for a serious authority figure), or as I like to call him "Ferdi", likes that I have vision. He can trust me with important details, knowing I understand the implications and gravity of what he's sharing. Some of my co-workers like to call me "kiss-ass" because of this, but they can't argue with my effectiveness and they know I care a lot about my work. More than any of them could even care about their wives. I don't have a wife, but that's okay. I have to get ready for one first, I'll get one later with everything it entails --- and more. I know it. I get my shoes on and head out the door.
+               </p>
+               <p>
+               Oh dang! I forgot my car keys... A little bit of panic, but I know where they are. I just need to get them. Extra, precious time wasted. Silly me. Anywho, I found them! I get to the car and put on my playlist. I have to commute everyday to work, considering I don't live in the main city. But having a car makes that infinitely easier! By the way, I had a chat with the numbers in my wallet and realized that about 0.2% of my income goes to subscriptions. It's fun! I feel like I'm part of the world; I was really searching for this feeling when I was in my pubescent age --- and later too. I think I have a pretty unique taste for the late 20's in the 21st century. I mean, who still listens to Skrillex nowadays? Lemme actually che- Oh, ok... 23milly other people. Alright, I take it back! We a strong and durable fandom. "FOM! WOAAAAAMMM" I sigh when suddenly I jolt forward as my foot steps on the break hard enough to push me forward. I get shocked before realizing my body acted faster than my mind could pick up on what's happening. There are... protesters blocking the exit I need. Shit. I'm forced to change lanes. I'll have to choose the other exit. I notice police officers rushing in and aggressively pushing the protesters back, but it's not enough. It won't clear up in time. Oh, not today! It's fine. I turn off the music. I need to focus now. Which exit could be useful right about now? Perhaps the next one... S109 near the RAI... but it could lead me to quite a detour. I'd need to loop back through Europa. F#ck... it's my quickest, next-best option. It's alright, I will only arrive with a... let me think. I will arrive 13 minutes late. That's... doable. I'll just have to summarize slide 6-8, maybe skip out on slide... 11. Yeah, that slide seemed to be the least important. Numbers matter more over impressions for these people anyway. That should put my pitch for this project at around 49 minutes, which should be doable with this lost time, right? The project isn't even mine, I'm just pitching it. A co-worker has been calling me the "pitching boy", possibly out of jealousy for climbing the ladder without them.
+               </p>
+               <p>
+               With panic eating away at my heart's core, I drive through the detour. A construction work is underway in one of the turns I needed... DAMN IT! Add 2 more minutes to the clock. I think "maybe this pitching opportunity isn't my destiny...", but nah... my destiny is in my hands. I stop at a red light after a turn and I wait. I wait and wait... wait, this red light is one of the few in the city that's currently misconfigured. WHY TODAY!? F#ck. Add another minute. Every minute starts mattering more now. I get closer and closer to my office. I'm almost there. Each and every red light right now feels like a trap --- BUT I MANAGE! I manage to get there with a... 21 minute delay?! When did... what? Doesn't matter. I scan my card at the reception and rush towards the elevator. Before I even arrive at the elevator, I realize it will only slow me down. I'm fit enough to handle one desperate run. I pass the elevator with cinematic velocity and rush straight for the staircase. I do double-steps as I climb the floors with as much speed as I can safely muster. Actually, fuck safety. I can manage without stepping badly. All I can think is how badass this would all be with a bit of music. Why am I thinking that? It doesn't matter right now. I rush into it more and I arrive on my floor, but now I have to-- I abruptly stop. Right in front of the door leading to the office-space, I stop and take deep breaths. I take out a handkerchief to wipe my forehead as I ready myself for the world right behind this door. I step in and the overwhelming quietness of the office sets in. People whisper quietly here and there, but it's barely anything. Everyone is looking at me with a seriously panicked face. Even those who usually do their tasks as instructed, on the right beat, seem shook. Despite this weird panic setting in, I feel at home. This is my work-place. It's quite calming in a way, especially the carpet floor. I don't even know how we can afford it. I go to the meeting room, which is only separated from the rest of the office with glass panels. There... there is no-one there. The investors haven't arrived. Perhaps they're being held up by the protesters too. I head for my boss's office and someone stops me, grabbing my arm. It's janie, they look into my eyes with determinism. "Do not talk to him now. He's not having it today", she says "Why, what happened?" I inquire. "Just don't." Janie presses on not talking to Ferdi, but I don't get why. She finally lets go of my arm and I knock at the boss's office. He, indeed, seems quite upset, so I decide to initiate with a rational plan "My main route was held up by protesters, but I can easily adapt the presentation to fit the significantly less time I now have. I got it covered, I expect slide 11 to be discarded and slides 6 through 8 can be easily summarized for brevity without losing the essentials." He looks at me. It's a scary look, in fact. "Do you remember what I said on Thursday? I said "everything has to be perfect. You have to look presentable and capable, without that, we'll reach nothing.", remember?!" I gulp, this seems bad. "Yes, sir. I really couldn't account for the--- there were no reports of it yet as of this mornin---" I get cut off by him "You're fired."; "W-what?"; "You're fired! Get out of here."; "Do I go back to my desk?"; "No. You're fired. Get your shit and leave."; "But sir, you can't d---"; "Of course, I fuckin' can. You worthless worm. We have contingency plans. An employee becomes an unusable asset, we can flip 'em off just like that." he snaps his fingers "You signed a very crucial contract that let us do this. Now get the fuck out of my office, twirp." So this is... it? I'm done for? I get teary eyes in the car. Even leaving the premise of the office building was messy, my card was already having difficulties at the scanner. I don't know why that happened, because I'm sure it was still active, but it was a really nasty coincidence. It embarrassed me. I bang my head against the steering wheel. Silly me. I should've thought about that... I was so naive and careless when I got that contract back then...
+               </p>
+               <p>
+               Well... there was nothing left for me to do, except go home. I tried sending my resume to the rival company, but they were already over-staffed and couldn't afford another asset. Fuck. "What now?" was what I thought to myself when I first got home, but by now (dinner-time), I'm already melted into the couch, miserably munching whatever food I have and drowning my day with alcohol. I slowly merge with the couch, becoming one entity. I smell like shit, even though it's only been a few hours since my misery-arc. I smell like a person who hasn't showered since months. I watch whatever shit I can find on the TV. I only ever had the TV as a decorative piece to make the house feel complete. Now I'm actually using it... I never thought I would.
+               </p>
+               <p>
+               
+               </p>
+
+               <!-- by the time I post this post, I assume I chose one of the two words, but just a fun fact: I couldn't decide between "shift" and "variant"-->
+               <p>
+               <span class="b">✦ temporal breakage 1 (fancy word for option A):</span>
+               </p>
+               <p>
+               23News reports on protests happening in that one district where my blocked exit was. Now, at 9pm? It's kind of pointless already. Oh, wait... no they're just discussing it again. What's there left to fucking discuss?! It's fucking over, just let it go already. Everyone at the protest seemed aggressive. The police was pushing the protesters to the ground, and the protesters were really poorly prepared and some of them seemed quite weak. What do these people think they achieve with any of this? "Ahhhh, fuck you allll!!" I yell as I throw the bottle of beer I had in my grip at the TV. I probably did some damage, but I cannot really assess it from here. It doesn't fucking matter anymore. Who's gonna fix it anyway if I have no money?
+               After hours of watching the news, I get so drunk I pass out. During the night, I must've drooled all over my shirt, because it had so many stains on it. When I wake up, my head hurts. My arms hurt. Everything hurts. I stand up to turn off the TV that's been on all night and I step into a glass shard. OW! Where the fuck did this come from...? Oh... I forgot about my outrage from last night and just my luck for me not to wear anything. I slump around my house with a bleeding foot, leaving a blood trail all around  the house as I go to the fridge and get another beer. Why am I doing this to myself? What about my dreams? Well... actually, my dreams are all over. Without this job, I've got nowhere to go. My degree is only useful for accounting, business and other such jobs and being fired from one of the big local sharks is going to sting. There's no salvation here. My memories, all of them are forgotten as I drown my sorrows. None of them can help pull me back. None of them are enough to be anchors. There's nothing left for me and this becomes obvious as this goes on for several days, weeks, almost a month. I get an eviction notice, further clarifying that I'm losing everything I once had and it just drives me further into misery. I stopped answering my mom. She must be worried, but I don't care about the world anymore. I'm thinking about joining my dad. My condition gets so bad I have a heartstroke. My body must've been really pushing itself to the limit to handle my drinking... I wasn't ever really a heavy-drinker, so it makes sense. I wake up in the hospital on a bed, with an IV set up and I look around. What happened? The doctors explain to me the gravity of the situation and I get shocked. So this is all that life has left to offer me? This is it for me? I've lived my best years and haven't even realized? What a joke. When I get discharged from the hospital, my mom sanitizes my entire house of alcohol. However she forgot to tlel me she has taken care of my eviction notice and paid upfront for some months to get me on my feet. Not knowing this, I just leave the house for the streets. I live my days in misery, cold and shit. I cannot stand it, but I need more alcohol. I beg for money and with the little money I get, I buy alcohol. I drink myself to sleep under random bridges and highways, just to feel some resemblance of peace.
+               I imagine this is the end for me. I will probablly die on these streets as some unknown John Doe. And that's okay... there's nothing for me to be remembered by. I'll probably die of some stroke and never be found in time. 
+               </p>
+
+               <p>
+               <span class="b">✦ temporal breakage 2:</span>
+               </p>
+               <p>
+               As I watch the TV, I keep thinking what the fucking point of it all is if I can lose it all in just an instance. People think they are making the country better by being loud and obnoxious, but they just got me fired from my fucking job. I keep trying to rationalize it. Maybe God had other plans for me. Maybe this just wasn't meant to be. But as I think through the day, I come across 23News, reporting the protest blocking the S108 off-ramp and the adjacent Amstelveenseweg. I lean in, interested in a resemblance of an idea I just had sparkle from seeing this... what's the idea? There's something, something came up. I think. I think and think... and there it is... I need to go to one of these protests. I need to pose as them. I lean closer to the TV and look at the signs and shirts of these protesters. They are the same ones from this morning. "We care" is their slogan... I research them on my laptop. They care about climate, housing, farmers driving tractors into cities and some foreign conflicts. I don't just need to pose as them... I have an idea. I need a gun. I check the clock and it's 11:43PM, I could still get one. This cannot require more than a day of prepping, it'll be too late. I need this done now. I put on a jacket, shoes and leave. I know just the store to go to. There's a vintage store with some guns displayed at the crystal counter. If only I could get one of them... I reach the store. I notice a camera staring right at me. Luckily, I had a mask in my jacket's pocket, which is now sitting on my face. I find a brick on the floor and throw it at the camera. I manage to get it on the first try, turning it and breaking its lenses a bit. I break into the store and retrieve the gun. The alarm goes off and I run away. None of this will matter by tomorrow. And nobody can directly suspect me. I don't live closeby. I never visit this store. I just happened to know it's there, because I've passed this street once or twice. I then take several metros to random parts of the city, wasting up about 30-60minutes of my time buying random things at random stores. Sure, they could trace the flow of the money by their serializer, but it won't matter soon. The gun isn't with me as I shop, I made sure to have it hidden away at the river-side, under a bridge. Not even a homeless person could find it there. When I feel police might've slowed down their search, I go home and prepare everything else. I find a listing for one of the protester's shirt on Ebay. It's possible they want to have nothing to do with the protesters now and want to get rid of it quickly. But this is useless... they probably wouldn't be awake at this hour to give it to me. I research more. I end up sticking with making the signs first. In order not to seem like a larper, I compose unique sentences and issues that are strongly related to all of the slogans and demands I've seen on their posters and signs. "UNPLUG THE ZUIDAS!". Perfect, this pretty much aligns with them and is just a heavier and bolder demand on their ideologies. I understand why they would want to do this. This makes sense, right? We all care about climate. But most of us choose not to disrupt the lives of those around us. As I scoop through resources for my signs, I notice they have some select people, right besides the protesters with more shirts, caps and other clothing the protesters were wearing. This is perfect! This is my way in. When they see my sign, they won't want to turn me away. They'll think I'm truly part of them. But wait, I should... what if people look into me? I decide the best course of action right now, is to leave a few hate-speech comments on some governmental posts, sounding just like one of the many protesters.
+               </p>
+               <p>
+               The morning sun's light shines through my window as I finish setting everything up. I'm not feeling that sleepy, even though the alcohol has yet to leave my body entirely. I check the protester's subforum and find out that they'll be having a protest in 3 hours, but some are already there. Everything is lining up so well for me. This is all going to work out so well! I first go to the protesters with my signs and ask one of the guys for a shirt to be a part of them. He first searches me, not trusting me blindly despite my "very clear" motives lining up with theirs. The equipment is free, but I give them my remaining hundred bucks to thank them anyway. They don't realize how happy they've made me. I go under the bridge from last night and retrieve my gun and put on the bright lime shirt and cap of the protesters. They won't check me if I'm already one of them. They just won't. As I reach the protesters again, now with a gun behind me, I overhear one group's conversation and decide to join them. I pose as one of them and actually the conversation goes pleasantly well. Based on the things they've said about the companies and government involved in all of this, it's right that they'd be protesting. It's not doing enough, even. But as the conversation goes on, some of their points start to fall apart. They don't seem well-educated on some other things, including grammar. It seems this is one of the only things they know, as if their collage exams depended on these protests. I pick up on the fact that they seem to make some of the things seem far more important than they actually are. I understand that everything piling up together paints a bad picture, but isolating these instances makes them seem far less relevant. They also seem to hate my kind. They despise those that work for these types of companies or any like it. They want my type beheaded if possible. I'm sure it's just the emotions speaking. Well... I'm not sure, with these people. I don't know what they could be thinking. I only have simulated possibilites.
+               </p>
+               <p>
+               The protesters start marching, they're blocking off several roads and shops. They're blocking off S108, because "the corps at Zuidas are poluting our planet". I march with them, but stay in the back for now. I yell from behind, raising my sign high in the air and thrusting it upwards, making sure I'm seen and heard, just like the rest of us. Pretty quickly, police shows up, pushing us back from the front. Almost as if they were expecting it already. People start yelling at them to stop being so aggressive. I hear my protesters yelling "Hey! Leave her alone. Get out of our faces, we have the right to be here." and other things like that. I yell once or twice myself as I start pushing through the overly-compressed crowd. I reach the front, I start reaching for my gun. I approach one of the many officers. I point the gun at them, my hands are shaky from the tension. Everything is just so messy, but I need to stay calm. I need to focus on what my idea was. I need to remember and continue with it. In the confusion others feel, I need to be the one with a clear plan. I have to find a spot where the armour isn't thick enough... or where there's exposed skin... The neckline, it's exposed. It's very precise and hard to hit, but I could try. I point it at the officer and--- everybody's body flinches violently, not expecting the loud, deafening sound of the pistol. The targetted officer's reflexes kick in, pulling his arm to the spot where the bullet pierced his skin. His neck bleeds out and after some steps taken, as adrenaline pumped through his body, his knees give in. He falls limp to the ground. I watch in horror, my eyes widening in shock and fear, as the realization of my actions kicks in. But I quickly pull myself together. This is what I wanted, after all. There's no going back now. This is just as I intended. I start backing up, dropping the gun to the floor once I'm surrounded by the heavy crowd again and I kick it away from me. The officers were too busy with the other protesters to notice who exactly shot the gun. The few protesters around me who were attentive enough to notice the gun, egged me on and wanted it to happen. Clearly there was a reason they were in the front. Most of the protesters, however, never knew what exactly happened. Confusion looms over everyone as the cops' aggression intensifies, the crowd responding with equal, if not more violence. Soon, people start brutally fighting, breaking teeth, bones even equipment... some people even broke their signs and started stabbing officers with the sharp wood until it broke, like a toothpick. This is the true colours of these imbeciles. I laugh manically as I see my plan unfold exactly as I had planned it just hours ago in my sleep-deprived state. Nobody gives a shit about me laughing. It's not suspicious at this point. Chaos is too great for people to notice the odd-one-out. In fact, perhaps this is exactly how I fit right in. Anyway, it is time for me to make my leave. Coppers aren't the only ones dying either. Several protesters are being shot down too. Some normal by-passers even got confused as protesters and are also being apprehended. Entirely their fault for walking around these parts. No survival instincts. Meanwhile, I'm just leaving to quieter streets, leaving behind all of the chaos and confusion to unfold on its own as I, the initiatior, leave it all for them to figure out.
+               </p>
+               <p>
+               I knew the gun would eventually be found and I'd be busted, so I wanted to take measures into my own hands. I started writing a manifesto as soon as I got home, speaking in the voice of a protester and now I'm preparing to do what needs to be done.
+               </p>
+
+               <hr>
+
+               <p>
+               <span class="i">
+                  - The outbreak at A10 was such a violent turning point for all sides involved. Only happening 3 days ago, it was something that shook the entire community to its core and left scars reminding everyone of how terribly fast these situations can get out of control, turning the streets into a bloodbath. After clearing up the scene, cops have encountered a 18th-century flintlock, hidden in a trash can. The gun was identified as a stolen vintage from the "Series" store down at Berenstraat, which was robbed just the day before the protests took place. The forensics team identified the gun as primarily being handled by one Stephen Namary and a Devan Jeffreson. Namary was arrested shortly after these findings and is currently being processed for trials, after some witnesses have emerged. However Devan Jeffreson was found dead in his apartment. Beside him, he has left a manifesto confessing to having shot the officer starting the initial conflict at the protests. Information on Jeffreson is limited, however the Amsterdam County Police Department has determined that he had lost his job just a day prior to the protests.
+               </span>
+               </p>
+               <p>
+               <span class="i">
+                  - If that is true,
+               </span>
+               <span class="bi">
+                  Emily,
+               </span>
+               <span class="i">
+                  why didn't the guy just shoot a protester instead? It makes no sense for him to actively side himself with protesters who caused him to get fired from his job-- Sorry, most of y'all probably don't know what I'm referring to. Devan Jeffreson was fired from his job at RuiTechnologie on June 19. According to the termination letter, he was fired after having missed an important pitch that could've saved the company from bankrupcy. The company alleges this late-arrival was a direct, deliberate assassination of the company's reputation. This is further supported by a report from ZuiTechnologie's rival company, Drijven, stating that Devan supposedly sent them his resume right after his termination. The company, however, admitted no involvement in RuiTechnologie's unfortunate circumstances. Devan's justification for his late arrival, according to the termination letter was basically "There was a protest on the A10 and I was unprepared for it". All of this information was made public by the company he worked at, trying their best to save themselves as they sail a sinking ship.
+                  Considering this, it really baffles me that someone like Jeffreson would shoot an officer. Perhaps he lost it when he was fir......
+               </span>
+               </p>
+
+               <p>
+               <span class="b">✦ temporal breakage 3:</span>
+               </p>
+               <p>
+               As I am pulling out my gun, I, apparently, make the mistake of bringing it before me too soon. The officer closest to me doesn't yet notice, but another one does and quickly exclaimes "he has a gun!" as I, and everyone else around me, flinch at the sudden loud bang of a shot. I feel... a jolt in me, but nothing else... nothing physical. Except soon I feel a warmth pooling at my abdomen. Blood has been spilled. I think it hit my intestines... or something else that must be vital. I can't really blame the officer, it's a messy situation to shoot precisely in, but damn it... I look up at him as I fall to my knees. The life starts to drain out from my eyes, soon all I'll see will be void. The protesters around me start marching, aggressively pushing onto the cops in front of them. "Cops that have just claimed one of their protester allies". Some try to help me up, but I stumble and fall again, bleeding out on the floor.
+               </p>
+               
+               <hr>
+
+               <p>
+               <span class="i">
+                  - The outbreak at A10 was such a violent turning point for all sides involved. Only happening 3 days ago, it was something that shook the entire community to its core and left scars reminding everyone of how terribly fast these situations can get out of control, turning the streets into a bloodbath. The protest turned violent after a cop has shot down a protester, claiming they had a gun on them. Officer Savenero, the cop responsible for firing the shot, reported that they read the protester's intent and realized they wanted to shoot one of the cops closer to the crowd. After clearing up the scene, cops have yet to encounter the gun this officer claimed to have spotted. Devan Jeffreson, the protester who lost their life to this shot, was found limp in the middle of the crowd. Some protesters, during the altrecation have attempted getting him help, however it was too late. Several protesters have been arrested during this incident and they have yet to be released, expected to be sent to trial for sentencing.
+               </span>
+               </p>
+               <p>
+               <span class="i">
+                  - Yes. Thank you,
+               </span>
+               <span class="bi">
+                  Emily.
+               </span>
+               <span class="i">
+                  This is Dave speaking and, interestingly enough, just the night before a vintage was robbed with several objects going missing! One of which-- one of which? Is that correct? -- was a gun! That's right! A gun! Although this store is nowhere close to where the protest has taken place and could be entirely unrelated, police suspect the gun missing from this store was the one officer Savanero saw. The "Humanitarians" activists, however, obviously call bluff on this claim, considering no gun was spotted and there are no witnesses contributing to this gun's existence.
+               </span>
+               </p>
+               <p>
+               <span class="i">
+                  - It's just such a delicate situation--
+               </span>
+               </p>
+               <p>
+               <span class="i">
+                  - Yes, it really is, isn't it? It's so messy... things don't add up. Everything smells sketchy, it's almost like one of the parties involved isn't being truthful here! Right, folks? We know everyone here made mistakes, but who was truly responsible for all of th......
+               </span>
+               </p>
+
+               <p>
+               <span class="b">✦ temporal breakage 4:</span>
+               </p>
+               <p>
+                  As I start thinking about this plan and the implications of it... I realize I'm just fantasizing. A powerful dread washes over me. The realization that I've just lost everything and I can no longer get any of it back with having lost my job hits harder than I anticipated. I wasn't ready for this powerful push. It's a sort of push for me to do something... it's like pushing me into doing something I wouldn't normally think about. But there's just so little I can think of to get me back on my feet... I cannot salvage this situation anymore and I cannot stand this any longer. I go to the kitchen and drink one last bottle of beer. Just one more. I start crying, sobbing... I'm so pathetic. This is so inexcusable. None of this should've happened. There's no way to fight this. Life has beaten me and I've got no more health to offer.
+               </p>
+
+               <hr>
+
+               <p>
+               <span class="i">
+                  - ... we're back at TragedicMedia to bring you the newest and most relevant tragedies. It's a tuesday, July 5th. Yesterday was America's national holiday, although we don't care about that over here in Ams--
+               </span>
+               </p>
+               <p>
+               <span class="i">
+                  - Yes, but let's get the boring stuff out of the way and get down to serious business. A man was found dead in his apartment! That's right. Devan Jeffreson, a 27-year-old, recently-fired, dutch-national office-worker was found hanging by his ceiling just this morning. Forensic experts said they have found the body relatively quick, only within a few days. We have one of the neighbours to thank for this, who has tried their best to get Devan's attention the past few days, but to no avail. More for you at the pro... from 23News...
+               </span>
+               </p>
+               
+               <p><small>— end of line —</small></p>
+               <p class="dim" style="margin-top: 1.2rem; text-align: center;">
+                    <em>all of this happened, yet it never actually did.</em>
+               </p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+
+    <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+    <script>
+        (function() {
+            // back-to-top button logic
+            var btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+            function toggleButton() {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            }
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            window.addEventListener('scroll', toggleButton);
+            btn.addEventListener('click', scrollToTop);
+            toggleButton();
+        })();
+    </script>
+</body>
+
+</html>
