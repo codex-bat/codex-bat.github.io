@@ -37,8 +37,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codexbat.dev/post/action-phase-one</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://codexbat.dev/story/protests</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://codexbat.dev/story/action-phase-one</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
