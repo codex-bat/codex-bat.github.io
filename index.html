@@ -114,6 +114,58 @@
       padding-top: 1rem;
     }
 
+    .section-header {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #ddd;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0c0c0c;
+      border: 1px solid #2a2a2a;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      z-index: 10;
+      min-width: 110px;
+    }
+
+    .dropdown-menu li {
+      padding: 0.5rem 1rem;
+      color: #7f9eff;
+      cursor: default;
+      font-size: 0.9rem;
+    }
+
+    .dropdown-menu li:hover {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .section-header.open .dropdown-menu {
+      display: block;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     /* ===== EYE COMPONENT – smoother shape + cleaner blink ===== */
     .magic-eye {
       position: fixed;
@@ -335,112 +387,139 @@
       </nav>
     </header>
 
-    <h2>posts</h2>
-    <div id="posts-container">
-      <ul class="post-list">
-        <li>
-          <div class="post-date">June 13, 2026</div>
-          <div class="post-title">
-          <a href="post/action-phase-one">Action: Phase 1</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 13, 2026</div>
-          <div class="post-title">
-          <a href="post/second-thoughts">second thoughts</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 12, 2026</div>
-          <div class="post-title">
-          <a href="post/priorities">priorities</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 10, 2026</div>
-          <div class="post-title">
-          <a href="post/i-was-right">I was sadly right</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 5, 2026</div>
-          <div class="post-title">
-          <a href="post/silence-on-our-end">silence on our end</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 4, 2026</div>
-          <div class="post-title">
-          <a href="post/effort">effort</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">June 4, 2026</div>
-          <div class="post-title">
-          <a href="post/pirates">pirates</a>
-          </div>
-        </li>
-         <li>
-          <div class="post-date">June 4, 2026</div>
-          <div class="post-title">
-          <a href="post/welcome-back">welcome back!</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">April 13, 2026</div>
-          <div class="post-title">
-          <a href="post/oh-dear">oh dear</a>
-          </div>
-        </li>
-         <li>
-          <div class="post-date">April 10, 2026</div>
-          <div class="post-title">
-          <a href="post/are-you-okay">are you okay?</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">April 9, 2026</div>
-          <div class="post-title">
-          <a href="post/monetary-worth">monetary worth</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">April 9, 2026</div>
-          <div class="post-title">
-          <a href="post/f*ck-giver">f*ck giver</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">April 2, 2026</div>
-          <div class="post-title">
-          <a href="archives/home-archive">home</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">March 24, 2026</div>
-          <div class="post-title">
-          <a href="post/cicacaicac">Cicacai cac</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">March 24, 2026</div>
-          <div class="post-title">
-          <a href="post/orangedogsandclark">Orange dogs and Clark, the mouse</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">March 23, 2026</div>
-          <div class="post-title">
-          <a href="post/f*ck-this">f*ck this</a>
-          </div>
-        </li>
-        <li>
-          <div class="post-date">March 21, 2026</div>
-          <div class="post-title">
-          <a href="post/first-post">First Post</a>
-          </div>
-        </li>
+    <div class="section-header">
+      <h2 id="sectionTitle">posts</h2>
+      <ul class="dropdown-menu" id="dropdownMenu">
+        <li data-tab="posts">posts</li>
+        <li data-tab="stories">stories</li>
+        <li data-tab="updates">updates</li>
       </ul>
+    </div>
+
+    <div class="tab-content active" id="content-posts">
+      <div id="posts-container">
+        <ul class="post-list">
+          <li>
+            <div class="post-date">June 13, 2026</div>
+            <div class="post-title">
+              <a href="post/second-thoughts">second thoughts</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 12, 2026</div>
+            <div class="post-title">
+              <a href="post/priorities">priorities</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 10, 2026</div>
+            <div class="post-title">
+              <a href="post/i-was-right">I was sadly right</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 5, 2026</div>
+            <div class="post-title">
+              <a href="post/silence-on-our-end">silence on our end</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 4, 2026</div>
+            <div class="post-title">
+              <a href="post/effort">effort</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 4, 2026</div>
+            <div class="post-title">
+              <a href="post/pirates">pirates</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 4, 2026</div>
+            <div class="post-title">
+              <a href="post/welcome-back">welcome back!</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">April 13, 2026</div>
+            <div class="post-title">
+              <a href="post/oh-dear">oh dear</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">April 10, 2026</div>
+            <div class="post-title">
+              <a href="post/are-you-okay">are you okay?</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">April 9, 2026</div>
+            <div class="post-title">
+              <a href="post/monetary-worth">monetary worth</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">April 9, 2026</div>
+            <div class="post-title">
+              <a href="post/f*ck-giver">f*ck giver</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">April 2, 2026</div>
+            <div class="post-title">
+              <a href="archives/home-archive">home</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">March 24, 2026</div>
+            <div class="post-title">
+              <a href="post/cicacaicac">Cicacai cac</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">March 24, 2026</div>
+            <div class="post-title">
+              <a href="post/orangedogsandclark">Orange dogs and Clark, the mouse</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">March 23, 2026</div>
+            <div class="post-title">
+              <a href="post/f*ck-this">f*ck this</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">March 21, 2026</div>
+            <div class="post-title">
+              <a href="post/first-post">First Post</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-content" id="content-stories">
+        <div id="posts-container">
+        <ul class="post-list">
+          <li>
+            <div class="post-date">June 16, 2026</div>
+            <div class="post-title">
+              <a href="story/protests">protests</a>
+            </div>
+          </li>
+          <li>
+            <div class="post-date">June 13, 2026</div>
+            <div class="post-title">
+              <a href="story/action-phase-one">Action: Phase 1</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-content" id="content-updates">
+      <div class="empty">nothing here yet</div>
     </div>
 
     <footer>
@@ -605,12 +684,10 @@
           window._mouseOutside = true;
           resetPupilCenter();
           suppressIdle(1200);
-          // no speech here
         }
       }
 
       function onDocumentMouseOver(e) {
-        // only trigger if coming from outside the window
         if (pointerOutside && !e.relatedTarget) {
           pointerOutside = false;
           window._mouseOutside = false;
@@ -729,6 +806,34 @@
         window._mouseOutside = false;
         scheduleBlink();
         scheduleSpeak();
+
+        const sectionHeader = document.querySelector('.section-header');
+        const sectionTitle = document.getElementById('sectionTitle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        sectionTitle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sectionHeader.classList.toggle('open');
+        });
+
+        dropdownMenu.addEventListener('click', (e) => {
+          const li = e.target.closest('li');
+          if (!li) return;
+          const tab = li.getAttribute('data-tab');
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === 'content-' + tab) {
+              content.classList.add('active');
+            }
+          });
+          sectionTitle.textContent = tab;
+          sectionHeader.classList.remove('open');
+        });
+
+        document.addEventListener('click', () => {
+          sectionHeader.classList.remove('open');
+        });
       }
 
       if (document.readyState === 'loading') {
