@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Eye-collecter">
+    <meta property="og:description" content="Oh, how wonderful it can be to be with him.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eye-collecter">
+    <meta name="twitter:description" content="Oh, how wonderful it can be to be with him.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eye-collecter — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+     /* ----- GLOBAL DESIGN VARIABLES (ensuring consistent accent/dim colors) ----- */
+     :root {
+        --accent: #7f9eff;
+        --dim: #6c6f78;
+        --text: #ddd;
+        --error: #ff5c5c;
+        --bg-deep: #0c0c0c;
+     }
+
+     html {
+        scrollbar-gutter: stable; /* keeps layout from shifting when scrollbar appears */
+     }
+
+     body {
+        overflow-y: auto;
+        background: #000;
+        color: #ddd;
+        font-family: 'Courier New', monospace;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.5;
+        /* Firefox scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: #f5f5f5 #000;
+     }
+
+     /* Chrome, Edge, Safari scrollbar */
+     body::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+     }
+
+     body::-webkit-scrollbar-track {
+        background: #000;
+     }
+
+     body::-webkit-scrollbar-thumb {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #f2f2f2 35%,
+            #d0d0d0 70%,
+            #a8a8a8 100%);
+        border: 2px solid #000;
+        border-radius: 999px;
+        min-height: 26px;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+     }
+
+     body::-webkit-scrollbar-thumb:hover {
+        background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%,
+            #ffffff 28%,
+            #e7e7e7 68%,
+            #bebebe 100%);
+     }
+
+     body::-webkit-scrollbar-corner {
+        background: #000;
+     }
+
+     .container {
+        max-width: 800px;
+        margin: 0 auto;
+     }
+
+     header {
+        border-bottom: 2px solid #2a2a2a;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+     }
+
+     h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #fff;
+     }
+
+     nav {
+        margin-top: 0.5rem;
+     }
+
+     nav a {
+        color: #7f9eff;
+        text-decoration: none;
+        margin-right: 1rem;
+     }
+
+     nav a:hover {
+        text-decoration: underline;
+     }
+     
+     /* Inline code */
+     code:not(pre code) {
+        background: #0f0f12;
+        color: #c3cae0;
+        padding: 0.2rem 0.4rem;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-family: 'Courier New', 'Fira Code', monospace;
+        border: 1px solid #2a2a3a;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.3);
+        transition: all 0.1s ease;
+     }
+
+     code:not(pre code):hover {
+        background: #16161d;
+        border-color: #90a2da;
+        color: #90a2da;
+        box-shadow: 0 0 4px #14161f66;
+     }
+
+     .post-meta {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #7f9eff;
+        padding-left: 0.5rem;
+     }
+
+     .content {
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        padding: 1.5rem;
+     }
+
+     h2 {
+        border-left: 5px solid var(--accent);
+        padding-left: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        font-size: 1.5rem;
+        color: var(--accent);
+     }
+
+     h3 {
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+        font-size: 1.25rem;
+        border-left: 3px solid var(--accent);
+        padding-left: 0.7rem;
+        color: #f0f0f0;
+     }
+
+     footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: #555;
+        font-size: 0.7rem;
+        border-top: 1px dashed #2a2a2a;
+        padding-top: 1rem;
+     }
+
+     /* Syntax classes (smart styling) */
+     .b { font-weight: bold; }
+     .bi { font-weight: bold; font-style: italic; }
+     .i { font-style: italic; }
+     .u { text-decoration: underline; }
+     .s { text-decoration: line-through; color: var(--dim); }
+     
+     /* Links */
+     a {
+        color: var(--text);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+     }
+     a:hover {
+        color: var(--accent);
+        text-decoration-thickness: 0.2em;
+        text-decoration-line: underline;
+        text-decoration-color: var(--accent);
+     }
+
+     /* Blockquotes */
+     blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #ccc;
+     }
+
+     /* Lists */
+     ul, ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+     li { margin-bottom: 0.5rem; }
+     
+     /* Horizontal Rules */
+     hr {
+        border: 0;
+        border-top: 1px solid var(--dim);
+        margin: 3rem 0;
+     }
+
+     /* Code blocks */
+     pre {
+        background: #111;
+        padding: 1rem;
+        border: 1px solid #333;
+        overflow-x: auto;
+     }
+
+     /* dynamic color helpers */
+     .highlight { color: var(--accent); font-weight: bold; }
+     .danger { color: var(--error); }
+     .dim { color: var(--dim); }
+
+     /* post content base */
+     .post-content p, .post-content li {
+        color: #ddd;
+     }
+     .post-content a {
+        color: #7f9eff;
+     }
+     .post-content pre {
+        background: #111;
+        border: 1px solid #2a2a2a;
+        padding: 0.5rem;
+        overflow-x: auto;
+     }
+
+     /* ----^^^---- NEW FEATURE: centered title fields (accompanies <p>text</p>) ----^^^----
+        weoowwww!
+     */
+     .centered-title {
+        text-align: center;
+        border-left: 0 !important;
+        padding-left: 0 !important;
+        margin: 1.8rem 0 1rem 0;
+        font-weight: 700;
+        font-size: 1.7rem;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        background: transparent;
+        text-transform: uppercase;
+        font-family: 'Courier New', monospace;
+        word-break: keep-all;
+        display: block;
+        width: 100%;
+        clear: both;
+        transition: all 0.2s ease;
+     }
+
+     .centered-title:hover {
+        text-shadow: 0 0 6px rgba(127,158,255,0.3);
+        letter-spacing: 0.5px;
+     }
+
+     .centered-title.small {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: normal;
+        margin: 1.2rem 0 0.8rem 0;
+     }
+
+     /* back-to-top button */
+     .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: #0c0c0c;
+        border: 1px solid #2a2a2a;
+        color: #7f9eff;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+     }
+
+     .back-to-top:hover {
+        background: #1a1a1a;
+        border-color: #7f9eff;
+     }
+
+     @media (max-width: 768px) {
+        .back-to-top {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+        }
+     }
+
+     .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+     }
+
+     /* little extra polish for content */
+     .post-content hr {
+        margin: 2rem 0;
+        border-color: #2a2a2a;
+     }
+
+     .post-content .dim {
+        color: #8a8a8a;
+     }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">Eye-collector</h1>
+            <div class="post-meta">📅 June 18, 2026</div>
+
+            <div class="post-content">
+                <!-- FIRST CENTERED TITLE FIELD (brand new style) -->
+                <div class="centered-title">Chapter NaN</div>
+                <div class="centered-title small">—</div>
+                <div class="centered-title small">The Eye-collecting man</div>
+                <p>
+                ⠀ ⠀ ⠀I was sitting at the booth, drinking some whiskey; probably Irish. I didn’t care to ask. The light was faint. Everything had a moody yellow tint to it. Across the long bar’s counter, I noticed another curious soul, drinking — although, in moderation. His hair was a dark blonde, slightly uplifted. His hands, despite their meaty shape, seemed to have a soft— no, delicate— skin, shielding their inner tissue. There was even a flat handbag hanging off of the short backplate of his elevated bar chair. Clearly, he had good education and took care of himself. He was reading the newspaper. “Huh, the Times wrote another striking piece,” I thought and that’s when I noticed his eyes; green. They looked to glow darkly in the dim light of the bar — it was just such a sight to behold! 
+                </p>
+                <p>
+                ⠀ ⠀ ⠀After some intense minutes of second-guessing myself and eying him, I decided to walk over to him and sit down beside him. He looked at me, smiled gleefully and then dropped his gaze back at the newspaper.
+                </p>
+                ⠀ ⠀ ⠀“How can such tragic things happen in this day and age?” he asked nervously, one hand on the glass of whatever alcoholic beverage he must’ve fancied — how cute. “It beats me how the rest of British society can’t see through this terrible scheme—” A sudden pause; then eye-contact again “Hi, my name’s Hanrick.” He reached out with his hand to shake mine, before quickly diverting his regard back to the paper below. Without beating around the bush, he continued, “What do you think of the events from last week that we just found out about?”
+                <p>
+                ⠀ ⠀ ⠀I politely shook his hand — although, with much needed gentleness; appropriate for a connoisseur such as myself. “Janett.” I replied graciously as I then glanced at his paper and, once again, back at his pretty green eyes. “Political talk and a narcissistic self-image, how very typical of young, inexperienced men. At least he knew to acquire my name,” was what I thought to myself in an amused tone, interested in this youth displayed so naively. I couldn’t deny how intriguing he was to me. The old, dusty jukebox clicked and a piece came alive in it. It was so fitting for our little, virtuous interaction — though my intentions were far more entertaining than this boy’s. Wait; what piece was it again? Maybe… oh right! It was Frank Sinatra’s naughty voice ringing through the room… like he knew exactly what we were about to do. He sang “I’ve Got You Under My Skin” so merrily. In the moment, it felt like it was the voice of the same man in front of me at the time, singing it.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀The article ‘Hanrick’ was digesting headlined “Terrible fire hits the Reichstag a fourth time! The incident of 05/11/1975 shocks the Oriental world again!”. How strange, I hadn’t thought the German people would be so openly against their own oppressors. How swell!
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“I don’t like to form an opinion on such things. The article is a sanitized version of the events anyway,” I said as I downed my drink, winking at him as I set it down on the table “Of you, however, I have so many scenarios imagined.” I said in a tipsy mood, clearly aroused and eager. His face gently lit up — oh, what a humble, young gentleman. I giggled. I held out my hand as I stood up, straightening my crimson-red dress. No words uttered, just a bunch of fantasies shared in intense gazes; he took my hand and followed me up to the bar’s one-night salons.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀As we entered the only available room with keys, he dropped his bag and turned towards me so suddenly I couldn’t even think of what he was going to do next. Such exciting thrills rushed through me! Oh my; young man… He rushed to me and kissed me with so much passion — I clearly just unlocked this poor guy’s suppressed love confessions and longing. Oh, what thrill! My body was heating up. I was so hot and bothered — just thinking about it again is getting me worked up! Just him, just the present.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀I was breathless between kisses as I looked in the bed’s direction, hinting at something.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀That night I said so many things I’d normally regret. Things a woman like me should never let slip out of their mouths. But with him, I didn’t feel any penitence for anything I’ve said! His touch; my hands on him, made me forget about my worries. I wasn’t even concerned about tomorrow. His lips were so wet, trembling at times. He was so cute and so much humbler than I could’ve ever imagined. His touch was so gentle and my hands felt the heat radiating off of his body whenever I held him. His hair was so silky smooth, despite how spikey they seemed. Wrestling in them was so much fun, it tingled my fingertips.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀His breath was warm against my neck — and then birdsong filled the air. I woke up 15 minutes ago; I haven’t the singlest clue where he’s gone. Hey, but just now… what was that sound?
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Hey, honey,” he greets me with a smile on his cute face, holding a tray with food in his hands. Bringing breakfast to the bed for a woman; this is unheard of! Can he come with more surprises? It almost breaks my heart to see him being such a pleasing man and oh — his fresh scent is so pleasant.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Morning, handsome.” I giggle as I rub my eyes.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Oh, please! Don’t call me handsome. Call me your beloved instead.” he shifts to a whisper, as if telling me a secret. So joyful!
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“You got it, my beloved” I oblige; with a teasing, yet innocent, giggle and just as I finish my sentence, breakfast appears in front of me and oh — it looks delish! He’s a man of his craft, this one.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Thank you, darling,” I hear in a satisfied tone.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“You’re more than welcome.” I reply swiftly, but apparently not quick enough, because the next thing he says just reassures his child-like energy and wit.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Of course I am! I’m a whole human being,” and with that, a kiss. A soft kiss on the cheek, to make my breakfast just that much more pleasant. “Eat up, honey bunny.”
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“But I should hide my form, it’s inappropriate.” I pull up the blanket against me as if to hide myself just as I say that.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Nonsense! You shouldn’t hide… grow out of your shell!” with that he pauses, looking away — at nothing. He then kisses me again suddenly and jumps up. “The choice is yours. Either way, I’ll go shower. Kisses!” and then he runs off, disappearing into parts of this apartment I haven’t yet explored.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀I push the tray away gently, so it doesn’t end up on the floor when I pull from the blanket. I stand up and stretch a bit, the sun rushing in from the windows, shining against me. As I peek outside the window, I see across the building. On the other side, a hanger can be seen on the terrasse, a single, dark corset drying itself with the Sun’s rays. The walls have a bit of mold on them, but it’s not important — It’s already impressive enough that a bar would have such a fine French bed. The sheets look well-taken care of too. The flowery patterns on them are very typical, but frankly, comforting and familiar. Across the bed, in the corner of the room is a bookshelf. One specific book lay there — a worn 1984 paperback edition. I wonder whose it could’ve been. Did Hanrick leave it there? Or perhaps it’s the bar’s? Maybe someone else, who’s been here, forgot about it?
+                </p>
+                <p>
+                ⠀ ⠀ ⠀No matter. As I stretch, I feel a sudden urge to look down at my own hands and as I do, I feel something… unusual. Suddenly, I’m in a forest— a dilapidated forest. 
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“W— where… am I? What is this place?” But just like that, it’s gone. The forest; a figment of my imagination, however the atrocious smell of the insects and rubbish there stay in my nostrils for a bit longer than I’d be comfortable with. Perhaps I should take my meds, rest a bit more… eat the nice breakfast Hanrick prepared for me so generously. 
+                </p>
+                <p>
+                ⠀ ⠀ ⠀I turn around and see the light shining through the door. Isn’t that where the bar’s second-floor hallway was? The hallway lights cannot be that bright, can they? I go towards it. To see what it is, but as I do, the walls melt away. The walls… melt… away? What!? I’m in the forest again.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“What the fuck is going on?” I look down at my hands and they’re not flesh; they’re not organic at all.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Am I… am I a machine?” I am horrified. “What even is this place? Why do I look like this?” I look back up at the forest, confused, searching for answers. I cannot find anything to make sense of what’s going on, except I can. There’s a specific type of bird, chirping. A bird that can only be found in the Witlands. I don’t understand; how did I get here? I look back down at the mechanical hands, but suddenly, they’re mine again. No— I was wrong, they’re a robot’s hands again. Why do they look so familiar? I don’t… Suddenly I hear a voice in my head, a feminine voice.
+                </p>
+                <p>
+                ⠀ ⠀ ⠀“Memory feed latency detected. Psyche unstable. Initiating last resort reboot.” — the voice stated. Before it happened, the bot looked up from its hands, standing up straight once again and readjusting its visual devices. It overrode the reboot and assessed the situation cautiously. It stood in the middle of the forest, without doing anything for several minutes, trying to logically assess this anomaly in the system. It hit an API (Application Programming Interface) endpoint and received countless articles about maintaining composure and on different techniques to administer brain functionality with full jurisdiction.
+                <p> 
+                </p>
+                ⠀ ⠀ ⠀“Understood. Initializing a countdown integration with a periodic sound queue to maintain and monitor mental state.” — the high-pitched voice spoke again, responding to a thought-command initiated by the bot. It knew how to manage itself, but still, this anomaly was beyond a problem. If it appeared during combat, the system could completely collapse in on itself. It couldn’t entirely define what had happened either. Perhaps it had had a daydream — or at least something of that sort. The bot had, perhaps, unintentionally opened a doorway to something far scarier and powerful.
+                </p>
+                
+                <hr>
+                <p>fun fact: I was listening to <a href="https://www.youtube.com/watch?v=_XGN5WtacjY" target="_blank">this track by NIN</a> and had a piss break when I was violently shot right in my head with a flash of this idea.</p>
+                <p><small>— end of line —</small></p>
+                <p class="dim" style="margin-top: 1.2rem; text-align: center;">
+                    <em>do not fucking take this work of mine. it's precious.</em>
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+
+    <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+    <script>
+        (function() {
+            // back-to-top button logic
+            var btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+            function toggleButton() {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            }
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            window.addEventListener('scroll', toggleButton);
+            btn.addEventListener('click', scrollToTop);
+            toggleButton();
+        })();
+    </script>
+</body>
+
+</html>
