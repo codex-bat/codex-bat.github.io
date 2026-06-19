@@ -375,90 +375,87 @@
          color: #8a8a8a;
       }
 
-/* Watchdogs-style label */
-.watchdogs-tag {
-    display: inline-block;
-    position: relative;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent 5px,
-        transparent 11px,
-        #000 5px,
-        #000 20px
-    );
-    color: rgba(255, 255, 255, 0.72);
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    padding: 0.2em 0.7em;
-    margin-bottom: 0.8rem;
-    border: none;
-    transform: rotate(-1deg);
-    transform-origin: top left;
-    clip-path: polygon(
-        0 10px,
-        10px 0,
-        100% 0,
-        100% calc(100% - 10px),
-        calc(100% - 10px) 100%,
-        0 100%,
-        0 10px
-    );
-}
+      /* Watchdogs-style label */
+      .watchdogs-tag {
+         display: inline-block;
+         position: relative;
+         background: repeating-linear-gradient(-45deg,
+               transparent 5px,
+               transparent 11px,
+               #000 5px,
+               #000 20px);
+         color: rgba(255, 255, 255, 0.72);
+         font-family: 'Courier New', monospace;
+         font-size: 0.75rem;
+         font-weight: bold;
+         letter-spacing: 0.08em;
+         padding: 0.2em 0.7em;
+         margin-bottom: 0.8rem;
+         border: none;
+         transform: rotate(-1deg);
+         transform-origin: top left;
+         clip-path: polygon(0 10px,
+               10px 0,
+               100% 0,
+               100% calc(100% - 10px),
+               calc(100% - 10px) 100%,
+               0 100%,
+               0 10px);
+      }
 
-/* shared base for all three glitch layers */
-.watchdogs-tag::before,
-.watchdogs-tag::after,
-.watchdogs-tag span::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    padding: 0.2em 0.7em;
-    box-sizing: border-box;
-    color: rgba(255, 255, 255, 0.72);
-    font-family: 'Courier New', monospace;
-    font-size: 0.75rem;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent 0px,
-        transparent 10px,
-        #000 10px,
-        #000 20px
-    );
-}
+      /* shared base for all three glitch layers */
+      .watchdogs-tag::before,
+      .watchdogs-tag::after,
+      .watchdogs-tag span::before {
+         content: attr(data-text);
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         padding: 0.2em 0.7em;
+         box-sizing: border-box;
+         color: rgba(255, 255, 255, 0.72);
+         font-family: 'Courier New', monospace;
+         font-size: 0.75rem;
+         font-weight: bold;
+         letter-spacing: 0.08em;
+         white-space: nowrap;
+         pointer-events: none;
+         background: repeating-linear-gradient(-45deg,
+               transparent 0px,
+               transparent 10px,
+               #000 10px,
+               #000 20px);
+      }
 
-/* slice 1: "Watch_Dogs" — upper band, shifts left */
-.watchdogs-tag::before {
-    clip-path: inset(20% 4% 50% 55%);
-    transform: translateX(-4px);
-}
+      /* slice 1: "Watch_Dogs" */
+      .watchdogs-tag::before {
+         clip-path: inset(20% 4% 50% 55%);
+         transform: translateX(-4px);
+      }
 
-/* slice 2: "like" — lower band, shifts right */
-.watchdogs-tag::after {
-    clip-path: inset(62% 67% 8% 24%);
-    transform: translateX(5px);
-}
+      /* slice 2: "like" */
+      .watchdogs-tag::after {
+         clip-path: inset(62% 67% 8% 24%);
+         transform: translateX(5px);
+      }
 
-/* span: third pseudo-element anchor — reads its own data-text */
-.watchdogs-tag span {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: block;
-    pointer-events: none;
-}
+      .watchdogs-tag span {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         display: block;
+         pointer-events: none;
+      }
 
-/* slice 3: super thin strip across "like in" — mid-height, shifts left */
-.watchdogs-tag span::before {
-    clip-path: inset(46% 44% 44% 24%);
-    transform: translateX(-5px);
-}
+      /* slice 3: */
+      .watchdogs-tag span::before {
+         clip-path: inset(46% 44% 44% 24%);
+         transform: translateX(-5px);
+      }
    </style>
 </head>
 
@@ -478,22 +475,119 @@
          <div class="watchdogs-tag" data-text="just like in Watch_Dogs">just like in Watch_Dogs</div>
          <div class="post-content">
             <!-- FIRST CENTERED TITLE FIELD (brand new style) -->
-            <p># DISCLAIMER: ALL OF THIS IS SUPPOSEDLY FICTIONAL. AND NO, I'M NOT SUICIDAL. I DO NOT LIKE SLEEPING IN WATER. I DO NOT HAVE SEXUAL FANTASIES WITH A ROPE WITH A NOOSE. I'M VERY OPTIMISTIC THAT THINGS WILL BE GOIN' UP EVENTUALLY.</p>
+            <p># DISCLAIMER: ALL OF THIS IS SUPPOSEDLY FICTIONAL. AND NO, I'M NOT SUICIDAL. I DO NOT LIKE SLEEPING IN
+               WATER. I DO NOT HAVE SEXUAL FANTASIES WITH A ROPE WITH A NOOSE. I'M VERY OPTIMISTIC THAT THINGS WILL BE
+               GOIN' UP EVENTUALLY.</p>
             <p><span class="b">this was a very fun thought-experiment I had.</span></p>
-            <p>I had this idea just this monday. the idea is a profiler. think something like the profile in WATCH_DOGS. the system/tech behind is relatively simple. what's hard is actually achieving it.</p>
-            <p>obviously forgot to start with the most important stuff. preparation: you absolutely will need a NAS. A Network-Attached Storage. And a LARGE ONE, at that. It would be super expensive, but worth it in the long run if you think about it. if you have the social networking skills this operation requires, you'd be able to reuse those same skills to pick targets using your profiler to sweeten up to ppl with enough financial stability to get your heavy investment back to 0. besides a NAS, you should also sanitize your entire habitat of any electronics you are not PRIMARILY in control of. downgrade to old equipment: flipphones, old dell laptops or whatever is easiest to open up and reassemble. obviously a PC wouldn't be great (despite my insistence on a NAS --- btw build taht yourself too. don't buy a commercial one) as it would restrict you from travelling with your evidence. if you can find a modern, smart phone that you KNOW FOR A FACT yo ucan modify to get rid of any bugs, go for it. for the BIOS, OS, always go for open-source and make sure you know what's in it (or have someone you trust with this search it for you. someone who's well-versed with the dark web could be potentially useful). basically apply the same philosophy of open-source-first to everything you own, because it'll greatly affect your digital venture. and this operation isn't exclusively digital anyway, your very life could be at risk here. avoid eSims (obviously) and any other modern alternative to old tech that worked well. I'm very obviously not a luddite, but I'm wary of surveillance and big folks like to obfuscate modern tech to hide that. you possibly will also need a separate server (dedicated PC) for all scripts and backend work. this also will be expensive, because your code will not be entirely clean/easy on the processor. and for fast results, you really need the fast server.</p>
-            <p>my idea starts here: using basic social networking skills, infiltrate large social media bulldogs. these skills will never cease to work, they just need stronger adaptation. sure, there are more security measures with each vulnerability, but vulnerabilities will never be erased as long as there are humans involved. and there will always be humans involved as long as they still live. once you're in, over several cycles, download AS MUCH FROM THEIR DATABASES AS POSSIBLE. entirely ignore passwords or other sensitive data that ultimately doesn't serve you unless it's an important figure. make an algorithm that downloads the most information on the specific targets you choose. otherwise, focus on credit cards, hidden addresses, nicks, aliases, hidden friends; anything that's private. DOWNLOAD IT ALL. but really be very precise with how much and when you download. perhaps disguise your process as a periodic data-updater or whatever other things seem realistic and plausible within the company's network. it'll be pretty believable if it seems like it's just another department/district making sure data is fresh and consistent across databases. obviously, I'm making all of this sound pretty indie and doable, and while I'm sure you could get away with downloading a few megabytes (if optimistic, maybe even one or two gigs) this way, you'd definitely need to scatter your operation across SEVERAL locations. do EXTENSIVE research on locations, laws, city outline, connections there, etc. you can stay oblivious to where your servers operate, but that could bite you in the ass too. the best is to be able to maintain all of those locations yourself through either trusted associate means or automated means. travelling yourself could also work if you officialize a "backpacker" lifestyle of sorts. otherwise, a lot of "vacations" would start looking suspicious for someone who, I assume, is most likely an introvert (aren't you?).</p>
-            <p>don't get me wrong, all of this already will be quite difficult from the ground-up and it'll take months if not years. not to mention the time of preparation it'd require (assuming you immediately have the money required for a NAS through whatever means necessary, a loan even; remember, this is a crime you're committing to, so there's no going back. it's this or the cells. so you gotta make it work. a loan won't be suspicious if you are a young person struggling to find a job around the range 15-30). but once it's all done and you're still not under anyone's radar, you're good for the next step. otherwise, you have to hide immediately and scatter all of your resources further across several networks, friends, systems and locations. whatever is the most effective, most efficient and you trust most (careful, trust is a dangerous game under these circumstances. friends and family, no matter how supportive, won't be able to see your vision. they never really do, in fact).</p>
-            <p>their db should now be residing in your NAS and you can start working on formalizing your profiler. a mobile app, a UI interface on a custom glasses... so many options. you could already connect your facebook to your phone's camera back in 2016- with the ability to recognize you in selfies before you even take them and others if they're registered on facebook. what I refer to, by now, is a piece of cake in comparison. there's enough documentation that you could self-teach this. if you really wanted to be quick, you could already setup a dummy frontend shell of all of this and just hook it up to the backend once you've got your illegally-obtained data.</p>
-            <p>the next part is probably the safest in this entire thing, but it's still bordering on legality and likely breaks several contracts/agreements. the database you collected shouldn't be complete, not at all. it'd be ridiculous for you to actively scrape their db of information you could otherwise obtain freely yourself, with simple scripts. so for any public information, you need to design a very capable and adaptive algorithm that scrapes the web (crawls through several websites through connections) to find out all information about the target (the target is whichever person/profile has been identified by the profiler --- you know, this is all defined, figured out by the profiler app itself you make, that would also contain facial recognition and other "advanced" methods of recognition). you just need to be careful about one thing: websites have robots.txt and sitemap.xml to point such software like yours to what they can safely crawl without restrictions. you could get blocked or rate-limited if you start massively crawling and especially if you go against their dedicated instructions for automated processes (robots.txt). to avoid this, you really need to make your crawling algorithm smart enough to know when the threshold hits (maybe ask a friend to try a very aggressive script to determine the threhold[s]. obviously most website would randomize their security a bit to obfuscate its functions, so you'd need to gather enough data to reverse-engineer it. or just have a broader threshold anticipator, but you'd lose some efficiency. your choice!) and outsource it to another process that's in another location, managed by you or your associate --- OR develop your own, smart VPN that automatically gets triggered upon these threshold hits. but again, you'd need to trust the servers you're connecting to. you can reuse assets by using the same locations, but it'd be a bit risky if investigations BTS start unfolding and gathering information on you. because despite you no longer actively commiting a serious crime, you hold illegally obtained data and are making a sort of weapon that could threaten anyone in power. even if that's not your intention (and isn't mine with making this brainstorming exercise).</p>
-            <p>so your crawler should be super apt for this type of operation. the next step is a way to prioritize information, because you obviously don't want to overwhelm yourself on your user interface with bloated non-sense. perhaps you could have a locally trained LLM model that scrapes through all of the crawled pages and the db and gathers what's most important (this is specifically good for posts or other things needing some level of "comprehension", simple parameter data like age, location, job, income could still be found by these models, or rather a specialized, smart algorithm that searches for common combinations of identifiers to find the common demoninator across information. whichever is more costly, drop it. you need efficiency, after all. you have to pay attention to your processes staying fast and reliable, while also maintaining a high level of functionality).</p>
-            <p>once all of this is done, you're essentially done and just need to make a modular front-facing shell that's spoonfed all of this. this would be the same frontend integration/app I have mentioned before. and now you should be having a working profiler. this should mainly be used to help you feel safer in overcrowded areas and to know who to avoid (with facts, there's no need to assume or judge. this basically simplifies your life as an overthinker by greatly reducing the amount of energy you'd spend assessing your environment). obviously, another relatively harmless use would be to use this to your advantage when striking up conversations and creating new connections. it's the equivalent of doing extensive research before meeting someone you've heard of ( and I'm not referring to stalking here). if that's socially acceptable, this should be a more paranoia-driven version of that (let's ignore all of the illegal shit you would have had to go through to get here :') if you decide to use "meta" type of "smart" glasses for this, please have the same pre-caution I advised for other electronics in the preparation section. make sure you know exactly what's inside those glasses technologically and get rid of any bugs (without raising suspicion or breaking laws. try finding open-source glass models).</p>
+            <p>I had this idea just this monday. the idea is a profiler. think something like the profile in WATCH_DOGS.
+               the system/tech behind is relatively simple. what's hard is actually achieving it.</p>
+            <p>obviously forgot to start with the most important stuff. preparation: you absolutely will need a NAS. A
+               Network-Attached Storage. And a LARGE ONE, at that. It would be super expensive, but worth it in the long
+               run if you think about it. if you have the social networking skills this operation requires, you'd be
+               able to reuse those same skills to pick targets using your profiler to sweeten up to ppl with enough
+               financial stability to get your heavy investment back to 0. besides a NAS, you should also sanitize your
+               entire habitat of any electronics you are not PRIMARILY in control of. downgrade to old equipment:
+               flipphones, old dell laptops or whatever is easiest to open up and reassemble. obviously a PC wouldn't be
+               great (despite my insistence on a NAS --- btw build taht yourself too. don't buy a commercial one) as it
+               would restrict you from travelling with your evidence. if you can find a modern, smart phone that you
+               KNOW FOR A FACT yo ucan modify to get rid of any bugs, go for it. for the BIOS, OS, always go for
+               open-source and make sure you know what's in it (or have someone you trust with this search it for you.
+               someone who's well-versed with the dark web could be potentially useful). basically apply the same
+               philosophy of open-source-first to everything you own, because it'll greatly affect your digital venture.
+               and this operation isn't exclusively digital anyway, your very life could be at risk here. avoid eSims
+               (obviously) and any other modern alternative to old tech that worked well. I'm very obviously not a
+               luddite, but I'm wary of surveillance and big folks like to obfuscate modern tech to hide that. you
+               possibly will also need a separate server (dedicated PC) for all scripts and backend work. this also will
+               be expensive, because your code will not be entirely clean/easy on the processor. and for fast results,
+               you really need the fast server.</p>
+            <p>my idea starts here: using basic social networking skills, infiltrate large social media bulldogs. these
+               skills will never cease to work, they just need stronger adaptation. sure, there are more security
+               measures with each vulnerability, but vulnerabilities will never be erased as long as there are humans
+               involved. and there will always be humans involved as long as they still live. once you're in, over
+               several cycles, download AS MUCH FROM THEIR DATABASES AS POSSIBLE. entirely ignore passwords or other
+               sensitive data that ultimately doesn't serve you unless it's an important figure. make an algorithm that
+               downloads the most information on the specific targets you choose. otherwise, focus on credit cards,
+               hidden addresses, nicks, aliases, hidden friends; anything that's private. DOWNLOAD IT ALL. but really be
+               very precise with how much and when you download. perhaps disguise your process as a periodic
+               data-updater or whatever other things seem realistic and plausible within the company's network. it'll be
+               pretty believable if it seems like it's just another department/district making sure data is fresh and
+               consistent across databases. obviously, I'm making all of this sound pretty indie and doable, and while
+               I'm sure you could get away with downloading a few megabytes (if optimistic, maybe even one or two gigs)
+               this way, you'd definitely need to scatter your operation across SEVERAL locations. do EXTENSIVE research
+               on locations, laws, city outline, connections there, etc. you can stay oblivious to where your servers
+               operate, but that could bite you in the ass too. the best is to be able to maintain all of those
+               locations yourself through either trusted associate means or automated means. travelling yourself could
+               also work if you officialize a "backpacker" lifestyle of sorts. otherwise, a lot of "vacations" would
+               start looking suspicious for someone who, I assume, is most likely an introvert (aren't you?).</p>
+            <p>don't get me wrong, all of this already will be quite difficult from the ground-up and it'll take months
+               if not years. not to mention the time of preparation it'd require (assuming you immediately have the
+               money required for a NAS through whatever means necessary, a loan even; remember, this is a crime you're
+               committing to, so there's no going back. it's this or the cells. so you gotta make it work. a loan won't
+               be suspicious if you are a young person struggling to find a job around the range 15-30). but once it's
+               all done and you're still not under anyone's radar, you're good for the next step. otherwise, you have to
+               hide immediately and scatter all of your resources further across several networks, friends, systems and
+               locations. whatever is the most effective, most efficient and you trust most (careful, trust is a
+               dangerous game under these circumstances. friends and family, no matter how supportive, won't be able to
+               see your vision. they never really do, in fact).</p>
+            <p>their db should now be residing in your NAS and you can start working on formalizing your profiler. a
+               mobile app, a UI interface on a custom glasses... so many options. you could already connect your
+               facebook to your phone's camera back in 2016- with the ability to recognize you in selfies before you
+               even take them and others if they're registered on facebook. what I refer to, by now, is a piece of cake
+               in comparison. there's enough documentation that you could self-teach this. if you really wanted to be
+               quick, you could already setup a dummy frontend shell of all of this and just hook it up to the backend
+               once you've got your illegally-obtained data.</p>
+            <p>the next part is probably the safest in this entire thing, but it's still bordering on legality and
+               likely breaks several contracts/agreements. the database you collected shouldn't be complete, not at all.
+               it'd be ridiculous for you to actively scrape their db of information you could otherwise obtain freely
+               yourself, with simple scripts. so for any public information, you need to design a very capable and
+               adaptive algorithm that scrapes the web (crawls through several websites through connections) to find out
+               all information about the target (the target is whichever person/profile has been identified by the
+               profiler --- you know, this is all defined, figured out by the profiler app itself you make, that would
+               also contain facial recognition and other "advanced" methods of recognition). you just need to be careful
+               about one thing: websites have robots.txt and sitemap.xml to point such software like yours to what they
+               can safely crawl without restrictions. you could get blocked or rate-limited if you start massively
+               crawling and especially if you go against their dedicated instructions for automated processes
+               (robots.txt). to avoid this, you really need to make your crawling algorithm smart enough to know when
+               the threshold hits (maybe ask a friend to try a very aggressive script to determine the threhold[s].
+               obviously most website would randomize their security a bit to obfuscate its functions, so you'd need to
+               gather enough data to reverse-engineer it. or just have a broader threshold anticipator, but you'd lose
+               some efficiency. your choice!) and outsource it to another process that's in another location, managed by
+               you or your associate --- OR develop your own, smart VPN that automatically gets triggered upon these
+               threshold hits. but again, you'd need to trust the servers you're connecting to. you can reuse assets by
+               using the same locations, but it'd be a bit risky if investigations BTS start unfolding and gathering
+               information on you. because despite you no longer actively commiting a serious crime, you hold illegally
+               obtained data and are making a sort of weapon that could threaten anyone in power. even if that's not
+               your intention (and isn't mine with making this brainstorming exercise).</p>
+            <p>so your crawler should be super apt for this type of operation. the next step is a way to prioritize
+               information, because you obviously don't want to overwhelm yourself on your user interface with bloated
+               non-sense. perhaps you could have a locally trained LLM model that scrapes through all of the crawled
+               pages and the db and gathers what's most important (this is specifically good for posts or other things
+               needing some level of "comprehension", simple parameter data like age, location, job, income could still
+               be found by these models, or rather a specialized, smart algorithm that searches for common combinations
+               of identifiers to find the common demoninator across information. whichever is more costly, drop it. you
+               need efficiency, after all. you have to pay attention to your processes staying fast and reliable, while
+               also maintaining a high level of functionality).</p>
+            <p>once all of this is done, you're essentially done and just need to make a modular front-facing shell
+               that's spoonfed all of this. this would be the same frontend integration/app I have mentioned before. and
+               now you should be having a working profiler. this should mainly be used to help you feel safer in
+               overcrowded areas and to know who to avoid (with facts, there's no need to assume or judge. this
+               basically simplifies your life as an overthinker by greatly reducing the amount of energy you'd spend
+               assessing your environment). obviously, another relatively harmless use would be to use this to your
+               advantage when striking up conversations and creating new connections. it's the equivalent of doing
+               extensive research before meeting someone you've heard of ( and I'm not referring to stalking here). if
+               that's socially acceptable, this should be a more paranoia-driven version of that (let's ignore all of
+               the illegal shit you would have had to go through to get here :') if you decide to use "meta" type of
+               "smart" glasses for this, please have the same pre-caution I advised for other electronics in the
+               preparation section. make sure you know exactly what's inside those glasses technologically and get rid
+               of any bugs (without raising suspicion or breaking laws. try finding open-source glass models).</p>
             <p>done! thank you for joining my ted talk :3</p>
             <hr>
-            <p>this is sort of a joke, but: meta and the other seriously big sm companies will definitely want my head for this lmao.</p>
+            <p>this is sort of a joke, but: meta and the other seriously big sm companies will definitely want my head
+               for this lmao.</p>
             <p><small>— end of line —</small></p>
             <p class="dim" style="margin-top: 1.2rem; text-align: center;">
-               <em>pay close attention to commit inconsistencies. and this warning is not confined to this one post.</em>
+               <em>pay close attention to commit inconsistencies. and this warning is not confined to this one
+                  post.</em>
             </p>
          </div>
       </div>
