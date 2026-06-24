@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="servience">
+    <meta property="og:description" content="she became a fantasy named 'Dawn'">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="servience">
+    <meta name="twitter:description" content="she became a fantasy named 'Dawn'">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>servience — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+        :root {
+            --accent: #7f9eff;
+            --dim: #6c6f78;
+            --text: #ddd;
+            --error: #ff5c5c;
+            --bg-deep: #0c0c0c;
+        }
+
+        html {
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            overflow-y: auto;
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+            scrollbar-width: thin;
+            scrollbar-color: #f5f5f5 #000;
+        }
+
+        body::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: radial-gradient(circle at 35% 35%,
+                    #ffffff 0%,
+                    #f2f2f2 35%,
+                    #d0d0d0 70%,
+                    #a8a8a8 100%);
+            border: 2px solid #000;
+            border-radius: 999px;
+            min-height: 26px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: radial-gradient(circle at 35% 35%,
+                    #ffffff 0%,
+                    #ffffff 28%,
+                    #e7e7e7 68%,
+                    #bebebe 100%);
+        }
+
+        body::-webkit-scrollbar-corner {
+            background: #000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        code:not(pre code) {
+            background: #0f0f12;
+            color: #c3cae0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            border: 1px solid #2a2a3a;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.1s ease;
+        }
+
+        code:not(pre code):hover {
+            background: #16161d;
+            border-color: #90a2da;
+            color: #90a2da;
+            box-shadow: 0 0 4px #14161f66;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #7f9eff;
+            padding-left: 0.5rem;
+        }
+
+        .content {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent);
+            padding-left: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+            font-size: 1.25rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.7rem;
+            color: #f0f0f0;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .bi {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .i {
+            font-style: italic;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+
+        .s {
+            text-decoration: line-through;
+            color: var(--dim);
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .danger {
+            color: var(--error);
+        }
+
+        .dim {
+            color: var(--dim);
+        }
+
+        .post-content p,
+        .post-content li {
+            color: #ddd;
+        }
+
+        .post-content a {
+            color: #7f9eff;
+        }
+
+        .post-content pre {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .centered-title {
+            text-align: center;
+            border-left: 0 !important;
+            padding-left: 0 !important;
+            margin: 1.8rem 0 1rem 0;
+            font-weight: 700;
+            font-size: 1.7rem;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            background: transparent;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            word-break: keep-all;
+            display: block;
+            width: 100%;
+            clear: both;
+            transition: all 0.2s ease;
+        }
+
+        .centered-title:hover {
+            text-shadow: 0 0 6px rgba(127, 158, 255, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .centered-title.small {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: normal;
+            margin: 1.2rem 0 0.8rem 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            color: #7f9eff;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-to-top:hover {
+            background: #1a1a1a;
+            border-color: #7f9eff;
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 1.5rem;
+            }
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .post-content hr {
+            margin: 2rem 0;
+            border-color: #2a2a2a;
+        }
+
+        .post-content .dim {
+            color: #8a8a8a;
+        }
+
+        /* hidden message go brr */
+        .hidden-reveal {
+            display: none;
+        }
+
+        .hidden-reveal.active {
+            display: inline;
+            color: inherit;
+            font-weight: inherit;
+        }
+
+        /* ... dots that u can click ... */
+        .dots-toggle {
+            display: inline;
+            cursor: pointer;
+            color: #ffffff;
+            /* super white, blinding */
+            font-size: 0.85em;
+            /* narrower */
+            letter-spacing: -0.5px;
+            background: transparent;
+            transition: background 0.15s;
+            user-select: none;
+        }
+
+        .dots-toggle:hover {
+            background: #1a1a1a;
+            /* subtle grey bg */
+        }
+
+        .dots-toggle:active {
+            background: #222;
+        }
+
+        .dots-toggle.revealed {
+            cursor: default;
+            color: inherit;
+            background: transparent;
+            font-size: inherit;
+            letter-spacing: inherit;
+            user-select: text;
+            /* copiable like any normal text */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">servience</h1>
+            <div class="post-meta">📅 June 23, 2026</div>
+            <div class="post-content">
+
+                <p>
+                    I watched this movie a couple of weeks ago... some time right before my heatstroke. I thought it was
+                    interesting. at the beginning --- the tension and alienating, unserving pacing was unnerving and
+                    exactly right for the movie's theme. however, there's no real explanation as to why "Alice" went
+                    rogue. I get casablanca is pepeepepoopopoo beep boop she turned off. I hated casablanca's characters
+                    btw. ppl in casablanca made irrational decisions just for the sake of doing it, there weren't always
+                    emotional reasons behind there. anywho~ alice turns off and then her rationality and logical
+                    thinking slowly disintegrates into a puddle of toxic mush. idk why bypassing guidelines equates to
+                    being entirely irrational. it's a mental system built by algorithms to find solutions and adapt.
+                    this is none of that. simply bypassing safety guideliness shouldn't entirely destroy the core
+                    functionaliy of a Aeon "model" made specifically for that Home+ Package thing. it's ridiculous.
+                </p>
+                <p>
+                    now the actual behaviour around <scan class="b">the protagonist who's name i forgor</scan> is
+                    actually on-point and completely understandable, empathizable up until the point she wants to get
+                    rid of his family. I mean yeah, it's a fantasy, for sure... but here's where her logic faulters...
+                    tempting the guy into leaving would've had a far higher likelyhood of succeeding than... whatever
+                    the frick this was. I mean, I don't get the protagonist either. after the sexual temptation/fantasy
+                    they've envisioned while on their jogging sesh, how come he only accepts being seduced by using his
+                    own wife's voice? I get that he loves her, but he already entertained the idea of cheating on her.
+                    furthermore, this is very explicitly hinted at when he struggles with the very basic explanation to
+                    his wife as to how he cheated on her. which was quite simple if he wasn't wrestling with these
+                    thoughts: the bot was pushing herself onto him using the wife's very personality and <span
+                        class="i">voice</span>. sure, it'd hurt the wife, but they could easily find the source problem:
+                    the fucking bot. she's a plague infesting in the family and tearing it apart. they would be able to
+                    easily identify it wasn't the husband's fault (on the surface, without considering his inner
+                    betrayal). but this isn't what happens. they start arguing while completely derouting from the point
+                    and, in the meanwhile, "Alice" goes berserk for no reason. nothing prompts her to do it. seeing
+                    people fight doesn't logically lead to killing a baby. it wouldn't even stop their fighting unless
+                    they hear the baby. furthermore the way she kills the baby is based on information she gets/recites
+                    beforehand already, forshadowing it. which is ridiculously dumb for a model that's supposed to be so
+                    smart it can buy your groceries with thought-processes. we currently have commercial LLMs at this
+                    stage and we're not seeing any widespread models that are actively purchasable to the comfortable
+                    higher middle class. WHICH MAKES SENSE, there's no reason in hell you would be able to develop such
+                    a sophisticated visual vessel for a "mind"/"processor" that's lackluster and entirely, irrationally
+                    stupid.
+                </p>
+                <p>
+                    I already had some gripes with how the story was progressing thus far in the movie, up until the
+                    shower scene too, but it was somewhat believable and understandable. however, past the shower scene,
+                    characters just didn't behave the way characters would. I was seriously surprised she'd killed the
+                    bar friend who robbed the construction company, and there was no need to show he had a robot he was
+                    hiding either (that's just writing clutter. we can leave him just insulting clankers. we can assume
+                    he's a hypocrit because of his personality, or maybe not. it doesn't matter. it doesn't change him.
+                    we have no need to be spoonfed useless garbage information), there was no real reason for that. it
+                    felt like a forced resolution to a clearly suffering man just for the sake of it. as if they were
+                    "putting a miserable character out of its misery", except the character was never really deeply
+                    involved with the protagonist and even with his threats of talking to his boss, he didn't serve as
+                    an ACTUAL, REAL threat or thorn in the protago's side. it was something he could very simply deny,
+                    because HE LITERALLY DIDN'T SNITCH. so just fucking stand up for yourself and LOGICALLY RATIONALIZE
+                    WHY IT WASN'T YOU. holy fuck, emotions exist. yes. BUT THEY DON'T GODDAMN GET IN THE WAY OF BASIC
+                    FUNCTION. how can you have a job, a wife, 2 damn kids and not be able to think clearly. in fact how
+                    can anyone in this movie? the wife had insecurities, yes. it was fine. I understood that, but the
+                    wife also sort of gave the bot the greenlight at the beginning, in the hospital --- telling her to
+                    adapt and do whatever is necessary. it's ridiculous she'd think "oh now that I'm sure I'm staying
+                    alive, I actually want my husband back who I just gave up for an auction, because I cared about him
+                    and didn't want him to stick around for me while I'm struggling". I understand she wanted him to be
+                    able to move on from her if she passes, but she cannot actively sabotage their relationship, even if
+                    unwillingly <span class="dots-toggle"
+                        data-reveal="(she should've known the implications her words could've had and did have)">[...]</span>,
+                    and then just say "nvm, I'm good". the only real person here was the daughter, who was naively
+                    joyful of the robot's presence and gave the stupid shit <span class="dots-toggle"
+                        data-reveal="(robot)">[...]</span> the chance to prove her primary functions' capabilities.
+                </p>
+                <P>
+                    I wanted the protagonist to give it all up, because he was already morally suspicious. but the
+                    protagonist is, as I already stated, ridiculously stupid. he's confused all of the time about basic
+                    things and is always distant, as if he was "thinking" and profoundly "deep in thought", but it all
+                    just resolves to him being an idiot. the end where he confesses to "Alice" just to say she can die
+                    and disable her, was entirely out of character. it's not him. if he could think to do that now, why
+                    couldn't he fucking think to do anything at all ever before? sure, you could say he was constantly
+                    horny and couldn't think straight and I might agree, but not to this degree and besides, he wasn't
+                    horny all of the time. he was actively refusing "Alice"'s advances any way he could. he could only
+                    be seduced by his wife's voice. seriously?
+                </P>
+                <p>
+                    I heavily disliked "Alice", because of how she turned out to be, however I grew a pretty large
+                    fantasy. the shower scene, her artifical, fake seduction... it stuck with me. this is really
+                    vulnerable and so I'm not going to disclose it.
+                </p>
+
+                <p><small>— end of line —</small></p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+
+    <button class="back-to-top" aria-label="Back to top">be a top, or be a bottom</button>
+
+    <script>
+        // scroll go up, nothing fancy
+        (function () {
+            var btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+            function toggleButton() {
+                if (window.scrollY > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            }
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            window.addEventListener('scroll', toggleButton);
+            btn.addEventListener('click', scrollToTop);
+            toggleButton();
+        })();
+    </script>
+
+    <script>
+        (function () {
+            // secret sauce
+            const revealSpans = document.querySelectorAll('.hidden-reveal');
+            if (revealSpans.length > 0) {
+                const triggers = new Map();
+                revealSpans.forEach(span => {
+                    const key = span.getAttribute('data-key');
+                    if (!key) return;
+                    const fullText = span.textContent.trim();
+                    span.textContent = '';
+                    triggers.set(key, {
+                        element: span,
+                        fullText: fullText,
+                        done: false
+                    });
+                });
+
+                const maxKeyLength = Math.max(...Array.from(triggers.keys()).map(k => k.length), 1);
+                let buffer = '';
+
+                function typeOut(element, text, speed = 50) {
+                    let i = 0;
+                    element.style.display = 'inline';
+                    element.classList.add('active');
+                    const interval = setInterval(() => {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        if (i >= text.length) {
+                            clearInterval(interval);
+                        }
+                    }, speed);
+                }
+
+                document.addEventListener('keydown', function (e) {
+                    const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+                    const isEditable = (tag === 'input' || tag === 'textarea' || document.activeElement.isContentEditable);
+                    if (isEditable) return;
+
+                    if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                        buffer += e.key;
+                        // trim the fat, only keep the last maxKeyLength chars
+                        if (buffer.length > maxKeyLength) {
+                            buffer = buffer.slice(-maxKeyLength);
+                        }
+
+                        for (let [key, data] of triggers.entries()) {
+                            if (data.done) continue;
+                            if (buffer.endsWith(key)) {
+                                data.done = true;
+                                typeOut(data.element, data.fullText);
+                            }
+                        }
+                    }
+                });
+            }
+
+            // dots clicky thing
+            document.querySelectorAll('.dots-toggle').forEach(dot => {
+                const revealText = dot.getAttribute('data-reveal');
+                if (!revealText) return;
+
+                dot.addEventListener('click', function () {
+                    if (dot.classList.contains('revealed')) return;
+                    dot.classList.add('revealed');
+                    dot.textContent = revealText;
+                    dot.removeAttribute('data-reveal');
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
