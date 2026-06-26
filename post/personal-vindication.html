@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta property="og:title" content="personal vindication">
+   <meta property="og:description" content="a july I won't forget.">
+   <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+   <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="personal vindication">
+   <meta name="twitter:description" content="the hardest july I have ever suffered through.">
+   <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>personal vindication — Codex.bat</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+   <link rel="shortcut icon" href="/assets/favicon.ico" />
+   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+   <link rel="manifest" href="/assets/site.webmanifest" />
+   <style>
+      :root {
+         --accent: #7f9eff;
+         --dim: #6c6f78;
+         --text: #ddd;
+         --error: #ff5c5c;
+         --bg-deep: #0c0c0c;
+      }
+
+      html {
+         scrollbar-gutter: stable;
+      }
+
+      body {
+         overflow-y: auto;
+         background: #000;
+         color: #ddd;
+         font-family: 'Courier New', monospace;
+         margin: 0;
+         padding: 2rem;
+         line-height: 1.5;
+         scrollbar-width: thin;
+         scrollbar-color: #f5f5f5 #000;
+      }
+
+      body::-webkit-scrollbar {
+         width: 10px;
+         height: 10px;
+      }
+
+      body::-webkit-scrollbar-track {
+         background: #000;
+      }
+
+      body::-webkit-scrollbar-thumb {
+         background: radial-gradient(circle at 35% 35%,
+               #ffffff 0%,
+               #f2f2f2 35%,
+               #d0d0d0 70%,
+               #a8a8a8 100%);
+         border: 2px solid #000;
+         border-radius: 999px;
+         min-height: 26px;
+         box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+      }
+
+      body::-webkit-scrollbar-thumb:hover {
+         background: radial-gradient(circle at 35% 35%,
+               #ffffff 0%,
+               #ffffff 28%,
+               #e7e7e7 68%,
+               #bebebe 100%);
+      }
+
+      body::-webkit-scrollbar-corner {
+         background: #000;
+      }
+
+      .container {
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      header {
+         border-bottom: 2px solid #2a2a2a;
+         margin-bottom: 2rem;
+         padding-bottom: 1rem;
+      }
+
+      h1 {
+         font-size: 2.5rem;
+         margin: 0;
+         color: #fff;
+      }
+
+      nav {
+         margin-top: 0.5rem;
+      }
+
+      nav a {
+         color: #7f9eff;
+         text-decoration: none;
+         margin-right: 1rem;
+      }
+
+      nav a:hover {
+         text-decoration: underline;
+      }
+
+      code:not(pre code) {
+         background: #0f0f12;
+         color: #c3cae0;
+         padding: 0.2rem 0.4rem;
+         border-radius: 6px;
+         font-size: 0.9em;
+         font-family: 'Courier New', 'Fira Code', monospace;
+         border: 1px solid #2a2a3a;
+         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
+         transition: all 0.1s ease;
+      }
+
+      code:not(pre code):hover {
+         background: #16161d;
+         border-color: #90a2da;
+         color: #90a2da;
+         box-shadow: 0 0 4px #14161f66;
+      }
+
+      .post-meta {
+         color: #888;
+         font-size: 0.85rem;
+         margin-bottom: 1rem;
+         border-left: 3px solid #7f9eff;
+         padding-left: 0.5rem;
+      }
+
+      .content {
+         background: #0c0c0c;
+         border: 1px solid #2a2a2a;
+         padding: 1.5rem;
+      }
+
+      h2 {
+         border-left: 5px solid var(--accent);
+         padding-left: 0.8rem;
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: -0.05em;
+         margin-top: 2rem;
+         margin-bottom: 1rem;
+         line-height: 1.2;
+         font-size: 1.5rem;
+         color: var(--accent);
+      }
+
+      h3 {
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: -0.05em;
+         margin-top: 1.8rem;
+         margin-bottom: 0.8rem;
+         line-height: 1.2;
+         font-size: 1.25rem;
+         border-left: 3px solid var(--accent);
+         padding-left: 0.7rem;
+         color: #f0f0f0;
+      }
+
+      footer {
+         margin-top: 2rem;
+         text-align: center;
+         color: #555;
+         font-size: 0.7rem;
+         border-top: 1px dashed #2a2a2a;
+         padding-top: 1rem;
+      }
+
+      .b {
+         font-weight: bold;
+      }
+
+      .bi {
+         font-weight: bold;
+         font-style: italic;
+      }
+
+      .i {
+         font-style: italic;
+      }
+
+      .u {
+         text-decoration: underline;
+      }
+
+      .s {
+         text-decoration: line-through;
+         color: var(--dim);
+      }
+
+      a {
+         color: var(--text);
+         text-decoration: underline;
+         text-underline-offset: 4px;
+         position: relative;
+         cursor: pointer;
+         transition: all 0.2s ease;
+      }
+
+      a:hover {
+         color: var(--accent);
+         text-decoration-thickness: 0.2em;
+         text-decoration-line: underline;
+         text-decoration-color: var(--accent);
+      }
+
+      blockquote {
+         border-left: 3px solid var(--accent);
+         padding-left: 1rem;
+         margin: 1.5rem 0;
+         font-style: italic;
+         color: #ccc;
+      }
+
+      ul,
+      ol {
+         margin-left: 1.5rem;
+         margin-bottom: 1.5rem;
+      }
+
+      li {
+         margin-bottom: 0.5rem;
+      }
+
+      hr {
+         border: 0;
+         border-top: 1px solid var(--dim);
+         margin: 3rem 0;
+      }
+
+      pre {
+         background: #111;
+         padding: 1rem;
+         border: 1px solid #333;
+         overflow-x: auto;
+      }
+
+      .highlight {
+         color: var(--accent);
+         font-weight: bold;
+      }
+
+      .danger {
+         color: var(--error);
+      }
+
+      .dim {
+         color: var(--dim);
+      }
+
+      .post-content p,
+      .post-content li {
+         color: #ddd;
+      }
+
+      .post-content a {
+         color: #7f9eff;
+      }
+
+      .post-content pre {
+         background: #111;
+         border: 1px solid #2a2a2a;
+         padding: 0.5rem;
+         overflow-x: auto;
+      }
+
+      .centered-title {
+         text-align: center;
+         border-left: 0 !important;
+         padding-left: 0 !important;
+         margin: 1.8rem 0 1rem 0;
+         font-weight: 700;
+         font-size: 1.7rem;
+         letter-spacing: -0.02em;
+         color: #ffffff;
+         background: transparent;
+         text-transform: uppercase;
+         font-family: 'Courier New', monospace;
+         word-break: keep-all;
+         display: block;
+         width: 100%;
+         clear: both;
+         transition: all 0.2s ease;
+      }
+
+      .centered-title:hover {
+         text-shadow: 0 0 6px rgba(127, 158, 255, 0.3);
+         letter-spacing: 0.5px;
+      }
+
+      .centered-title.small {
+         font-size: 1.3rem;
+         font-weight: 600;
+         text-transform: none;
+         letter-spacing: normal;
+         margin: 1.2rem 0 0.8rem 0;
+      }
+
+      .back-to-top {
+         position: fixed;
+         bottom: 2rem;
+         right: 2rem;
+         background: #0c0c0c;
+         border: 1px solid #2a2a2a;
+         color: #7f9eff;
+         font-family: 'Courier New', monospace;
+         font-size: 1rem;
+         padding: 0.5rem 1rem;
+         cursor: pointer;
+         z-index: 1000;
+         opacity: 0;
+         visibility: hidden;
+         transition: opacity 0.2s ease, visibility 0.2s;
+         border-radius: 4px;
+         text-decoration: none;
+         display: inline-block;
+      }
+
+      .back-to-top:hover {
+         background: #1a1a1a;
+         border-color: #7f9eff;
+      }
+
+      @media (max-width: 768px) {
+         .back-to-top {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+         }
+      }
+
+      .back-to-top.show {
+         opacity: 1;
+         visibility: visible;
+      }
+
+      .post-content hr {
+         margin: 2rem 0;
+         border-color: #2a2a2a;
+      }
+
+      .post-content .dim {
+         color: #8a8a8a;
+      }
+
+      /* hidden message go brr */
+      .hidden-reveal {
+         display: none;
+      }
+
+      .hidden-reveal.active {
+         display: inline;
+         color: inherit;
+         font-weight: inherit;
+      }
+
+      /* ... dots that u can click ... */
+      .dots-toggle {
+         display: inline;
+         cursor: pointer;
+         color: #ffffff;
+         /* super white, blinding */
+         font-size: 0.85em;
+         /* narrower */
+         letter-spacing: -0.5px;
+         background: transparent;
+         transition: background 0.15s;
+         user-select: none;
+      }
+
+      .dots-toggle:hover {
+         background: #1a1a1a;
+         /* subtle grey bg */
+      }
+
+      .dots-toggle:active {
+         background: #222;
+      }
+
+      .dots-toggle.revealed {
+         cursor: default;
+         color: inherit;
+         background: transparent;
+         font-size: inherit;
+         letter-spacing: inherit;
+         user-select: text;
+         /* copiable like any normal text */
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <h1>Codex.bat</h1>
+         <nav>
+            <a href="/">home</a>
+            <a href="/codex.bat">about me</a>
+         </nav>
+      </header>
+
+      <div class="content">
+         <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">personal vindication</h1>
+         <div class="post-meta">📅 June 26, 2026</div>
+         <div class="post-content">
+
+            <p>
+               # DISCLAIMER: sensitive topics.
+            </p>
+
+            <p>
+               there have been many things I was pondering on writing about. <code>redoubt</code> started feeling overly anxious about her "perception of reality", especially because of "realistic dreams she'd have in the morning", which would result in her being unable to differentiate between memories and dreams. this specifically became relevant for her and more "active", once she found the post I begged the powers not to let her <a href="https://codexbat.dev/post/today">find it</a>. which is a bit odd... but everybody deserves the benefit of doubt.
+            </p>
+
+            <p>
+                however, as the end of June approaches, I'm remembering what happened just last year from now. and the pressure is slowly creeping in again.
+            </p>
+            <p>
+                last year, at the beginning of June I went to take on a 20h safety course for construction work, so I could work together with <code>quixotic idealist</code> north from the capital (where he lives). things were aligning and the contract was being "prepared" for me to start work on the first of July! and so I did. I started working, without a contract under <code>evader</code>. I already warned <code>quixotic idealist</code> several times about his environment, but he wouldn't listen; always came with the promises of leaving it in the future. the first day I worked, I believe was a Monday or Wednesday. upon checking the calendar, it was apparently a "Tuesday", which could be. I haven't checked my notes in months. on that very first day, <code>evader</code> wasn't there, so there was only three of us (one of us being another worker). I believe <code>evader</code> arrived on Thursday and that's when I first met him. we were working on making "chimneys", if you could call those plastic tubes that (i'd hardly do so). I was already cautioned about this; but he proceeded to slowly isolate me from the other two to get to know me, just being a bit further away. it was supposed to be just normal chats, getting acquainted, however things took a turn pretty quick --- but let's not get ahead of ourselves. to start with: it was really working against me that I was really anxious, nervous and socially awkward, because I was in an entirely foreign environment with no connections other than <code>quixotic idealist</code>. we were in the middle of nowhere, at some farm, out in the sun-
+            </p>
+            <p>
+                hi, this is me from just a few minutes ahead. I found my folder with my "investigations"/notes and figured that the day I met <code>evader</code> was on wednesday, not Thursday. which actually makes sense with my memory: tuesday was the only day I worked without the boss and he came the very next day, because he was on a trip until then. anyway, back to topic-
+            </p>
+            <p>
+                as we conversed, he started making comments about the ppl I know. he mentioned that in my situation, he'd hire a "hitman" of sorts to take out the associate of <code>playwright</code>. this is information he knew of because of <code>quixotic idealist</code>'s unrealistically foolish mouth that cannot stay shut. I was trying to be polite the entire time, so I said it would be too expensive and he offered to "pay for it", obviously joking. the joke didn't sit well with me, because I was ready to be a normal employee to my employer who was going to work under him for a month, get paid and go back to classes, not a body he can plot funny things with or make ridiculously inappropriate jokes with. still, I didn't say anything, because, obviously, he was my boss. btw, I will need some assistance from my old notes to recount the exact words used, because I can no longer recall, I aplogize in advance. also to be noted: this is all, very obviously, informally translated by me rn. right! <code>evader</code> was feeling ill that day, but came to work anyway. and before our conversation started getting messy, I was first a witness to his preferred work-method: brute-force over anything else, maybe with a few seconds of thought given to it and then blaming the newbie for it not working. we were supposed to be the ones assembling the cylindrical base of the chimneys with these flat, plastic plates. the plates clearly had slidable, cog-like teeth made to stick together, but he much preferred slamming it with the hammer at the connection part. it was really scary seeing a muscular, large piece of meat hammering away at a plastic plate for no reason. he wasn't insane or anything, just... not the brightest. he blamed me for not doing my job properly by holding the plate down while he slammed it aggressively. yes, I was, in fact, still a twink back then and that hasn't changed, but even if I would've held onto the plate, we wouldn't have gotten that thing in and he had several plates to go through.
+            </p>
+            <p> 
+                this is when our conversation started, after he figured out he needed to use a lubricant and try sliding it (with a bit more hammering ofc, for good measure). his first comment was quite sexual, about the lubricant regarding someone I know. for obvious reasons, I'd much prefer not directly describing the comment. he also told me to "watch out for [the unnamed third employee], who's a <span class="b">women's magnet</span>" and that he could potentially pull this person I know. I obviously said this person only had eyes for me, however he told me "all men think that and wish for it to be true" and called me naive. the conversation was pretty one-sided by this point. I was being undermined regarding my connections, unprompted. I was simply wishing to do my work. I also happened to have a mosquito bite on my neck, close to where someone left a hickey on me just a week prior. I was, of course, asked about it and, not knowing what he was referring to, I nonchalantly said it could be a mosquito bite or the hickey, "I'm not sure" to which he started laughing at me; apparently there wasn't a hickey there and I didn't feel mosquito bites either. it would've been an awkward but understandable misunderstanding, but he started laughing loudly and repeating the word "hickeys" over and over again, adding unnecesary words like "unc"/"dude" and looking back at the other coworkers for an audience while laughing, although our conversation couldn't be heard from their point. this went on for minutes, while calling my partner a "vampire" and crazy for giving me hickeys. it felt a bit condescending, but I just thought I had made a mistake by misunderstanding what he was referring to previously. when I proved my claim by showing my shoulder, which had a hickey (how foolish of me to try and reason) he proceeded to laugh at the "absurdity of someone giving a hickey on the shoulder". it was a long and painful session where he kept poking at me for entertainment, like I was some rotten grapefruit he was hitting with a stick for entertainment. I was even called a "soso" for some odd reason --- an identifier for those who have "no taste".
+            </p>
+            <p>
+                this went on, and on Thursday I got a really nasty mosquito bite that got inflamed pretty heavily. when I went to the pharmacy, the pharmacist had quite wide eyes at the sight before giving me a cream for it. I stayed home on Friday, which started brewing a huge fallout with <code>quixotic idealist</code>, who didn't approve at all and kept pushing me to go. I stood my ground, saying I will be of no use. on Monday I did go, although my inflammation was still quite very visible and still paining a bit. lifting heavy things really costed me and on that day. the others climbed to the roof (without any safety equipment, there were so many safety construction laws being broken and <code>quixotic idealist</code>, together with some friend of his was just reassuring me it's normal...), while I isolated their left-overs to the garbage from beneat. at some point, I needed to tie a piece with rope, because it was difficult to lift and this, in itself, also hurt my inflammed forearm more. at the end of that day, it was really bothering me. we were also working at a new site on this day, where they asked us to sign a form with information about the company we work under, which was ridiculous in my case, as I was still uncontracted on paper, only having a faint "verbal" contract. also, <code>quixotic idealist</code> instructed to write down "white lies" about having visited the site before, so the company seems cleaner or more formal? idk... but I had to recite an earlier date there that I was not a part of. it's also worth to be noted, that after our unpleasant conversation on wednesday, I started documenting the very questionable working environment more with pictures, audio recordings, etc. to document my experience, just in case I plan on doing smt with it or need it.
+            </p>
+            <p>
+                because of my hurting inflammation (and because they were planning on working in a really dusty room and I heavily suspect I have a dust allergy much like <code>playwright</code>), I stayed on yet again on Tuesday... however this resulted in an INFORMAL termination notice (together with the termination papers that I had to acknowledge) from <code>evader</code>, given to me only through <code>quixotic idealist</code>, not directly. his INFORMAL reasoning was that he was worried I might get sick, because of the inflammation and what not and he didn't want to carry that responsibility. which was funny, because besides one or two questions on Monday, he didn't care at all about my state. I checked laws in the country, and apparently he was capable of firing me without a notice, because I was technically still in a "10 day" hired program/state. however, this wasn't serving him well, as I technically wasn't hired yet either. I was deffinitely written up as an employee for the company, because it's what allowed me to get my healthcare insurance sorted, but I was never handed my contract. only the next day or a few days later was I given the contract to sign retroactively after I expressed concerns and unwillingness to sign termination papers without a contract, proving I worked there. my idea here, was that signing the contract could mess with my documentation, therefore invalidating my experience, which quite frankly felt like harassment back then. this is what truly stirred the pot. by now I was "fired" and at home, getting things in order, playing, writing code and whatever. my dad would continue being the intermediary between us, communicating in person with both of us separately. <code>evader</code> said he'd pay me in cash through <code>quixotic idealist</code> once I've given him (through <code>quixotic idealist</code>) the signed papers. I denied, especially the fact that I'd be paid in cash THROUGH someone else. no matter who that person is, I want to have a direct link. thankfully, I had a fully configured revolute account as I was an adult by now for a year. in the meanwhile, (this was already all the second week, I'm realizing now upon reading my notes) I wanted to get myself to a hospital to get formally checked for my inflammation, at least as an acknowledgement that it existed so I had a paper proving it to further help my case. however I was no longer having healthcare insurance according to some of the hospital centers I went to in the city. so I was running around the city from one place to another with <code>redoubt</code>, trying to figure out what's going on, because one of them said I did have it until the end of August. another checked, said I didn't, I insisted, they called, were told I did and they still didn't give me my public health card, so I can easily check myself in. it was a bureaucratic nightmare, because of a silly, early-firing. meanwhile, <code>evader</code> eventually contacted me directly (or I contacted them first? not sure...). he contacted me on whatsapp and tried calling me. I was anxiously, with shaking hands, holding the phone, contemplating it. I was worried this could be twisted to make me seem like I was "avoiding clear communication", accountability or responsibilty. I realized it'd be more difficult to capture our conversation and it'd become a "he said, she said" and to avoid reframing the reality of the situation, I even texted him saying I wasn't currently available, but we can discuss things in text. he proceeded to turn on disappearing messages and told me I had to sign the papers and that I'll get paid. I composed myself, thought about it, searched online for a bunch of stuff and told him I want to be paid for my work and that I won't be signing the papers. I told him if I wasn't going to get paid, I would go to the work inspection body. maybe, this was when he turned on disappearing messages actually, I don't remember. either way, he got quite frustrated and said things like "and what will you tell them? I cannot pay you unless you sign the papers" (which, in fact wasn't true for our country). and he even said "you didn't even have the contract signed, I'll just say you didn't work for me. who are you?", yikes... big yikes. I wish none of this was real, but seriously my first ever experience working was for the most corrupt and self-righteous person I ever met. I was quite appalled, but I did quite expect that from him already. I kind of ignored that he said that and continued pressing that I want to get paid for my work. I told him clearly what bank serializer I expect the money sent to (officially) and that I also want the proof of payment accompanying it. this was a horrible turn of events. thankfully I had <code>redoubt</code> with me, otherwise I would've shattered. with each passing day, as I was strugglign to get myself checked in the hospital and with my inflammation healing very slowly (but still, healing), I kept growing more paranoid. I was honestly worried that <code>evader</code> might show up at the apartment and "tie up a loose end" or something. I would wake up in the middle of the night and start balling my eyes out and sobbing. all of us slept in the same room (<code>quixotic idealist</code> on an inflatable mattress, <code>redoubt</code> and me). the situation got to the point that <code>quixotic idealist</code> overheard from his coworker, that the boss was planning on firing <span class="b">him</span> if I didn't sign. it would be super illegal, yes... but I was actively affecting his life and I didn't want that. I was only doing this, because I didn't want some other future employee to get the same treatment I got and furthermore: I didn't want anybody getting hurt. someone literally fell of an illegally, make-shift platform exactly on that week I was working there and didn't come back to work --- the son of the guy had to drive him to a hospital, despite not having a license. even <code>playwright</code> called me several times, scolding me, lecturing me about how selfish I was and how I was ruining <code>quixotic idealist</code>'s life. <code>quixotic idealist</code> was begging me to sign the documents and kept calling me names in frustration, yelling at me even. it was all so much pressure and I was starting to figure out ways to sign the documents without messing with my rights. I thought "perhaps I could record it, clearly stating I'm doing this because the environmental variables are forcing me and not because I agree or felt safe in the working environment". idk, anything to just make everyone happy. after weeks of torment, one random weekend, <code>evader</code> finally sent me a proof of payment of 470 something euros for my messy one-week labour. I never sent the papers signed. I was always right. <code>quixotic idealist</code> and <code>playwright</code> kept telling me <code>evader</code> couldn't pay me without the papers signed; something I knew not to be true, as everything was within my rights and I made sure of it. I extensively dug deep into things and even showed it to them, but they wouldn't listen and would just always take <code>evader</code>'s side as <span class="i">the side that's a necessary evil</span>. they didn't agree with him or anything, but the "law was in his favour", according to them and I was "breaking the law". it didn't matter how much I kept proving to them that I was right, they wouldn't stop lecturing me and scolding me. I felt unloved, ashamed for thinking I was doing the right thing and really broken. <code>redoubt</code> tried to help and she was a nice help in this intense environment, but it wasn't enough to keep me from constantly breaking down.
+            </p>
+            <p>
+                what worried me the most was that after this, everything would be forgotten and go back to normal. and that's quite exactly what happened. however, before that: after being paid, there was one last thing left to do... report him. now, having been paid and having no loose ends with <code>evader</code>, I thought the next-best step was to report him and get just a small sense of justice, if even possible... but this continued stirring the pot. despite <code>quixotic idealist</code> apologizing to me for everything after I got paid, he went back to his previous, enraged, selfish self that couldn't care less about my principles and my worries for a better world. he was mad that I wanted to report <code>evader</code> to the work inspection body for everything, because that would mean he would get fired. so after I searched it up, I found out I had about a year to report him. I wanted to report him within a few months, so I gave <code>quixotic idealist</code> that notice. he is still working under that guy and I'm still in limbo with my case and now I'm nearing the beginning of July, which is when it all happened. I have to get this done now... <code>quixotic idealist</code> and his empty fucking promises. I want to cut all ties to them both when I leave. they undermine me. they don't take me seriously. they mock me. they think I'm always selfish. they think I'm doing too much. I hate that... it's also one of the many things that contributed to my superficial relationship with them. I could never forget this; that in time of need, I was having them work against me. instead of listening to me and my rational, logical debunks... they'd rather conform to societal norms. break under the sheer pressure of what's considered "normal".
+            </p>
+
+
+            <hr>
+
+            <p>
+                so this is it... I might lose my case that could help so many others. and I really wish I wouldn't. perhaps I'll still manage to make it. I planned on reporting it with my full name, because that would help the legitimacy of the case and it would be taken more seriously, but seeing as how <code>quixotic idealist</code> is still there and my name would be publicly accessible and therefore directly tie back to him... I guess I'll have to go for the lesser "anonymous" report. which might as well be swept underr the rug.
+            </p>
+            <p>
+                see? I tried fighting the system. I tried conforming to the system and chased down institutions throughout an entire city, just to be told I have to go to the capital, because it's where my residency points to (they could've done it, it was within their power... but they didn't want to research the law and find that out, because I was an odd-ball in the rigid system. I was in a different city and they thought that meant I had to go back for bureaucratic work) and yet... despite all of that, it kept failing me. no matter what I tried. so yes, I was serious when I said I was done with this place and the 25th of July is my time to leave.
+            </p>
+
+            <p><small>— end of line —</small></p>
+         </div>
+      </div>
+
+      <footer>
+         © 2026 Codex.bat All rights reserved
+      </footer>
+   </div>
+
+   <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+   <script>
+      // scroll go up, nothing fancy
+      (function () {
+         var btn = document.querySelector('.back-to-top');
+         if (!btn) return;
+         function toggleButton() {
+            if (window.scrollY > 300) {
+               btn.classList.add('show');
+            } else {
+               btn.classList.remove('show');
+            }
+         }
+         function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         }
+         window.addEventListener('scroll', toggleButton);
+         btn.addEventListener('click', scrollToTop);
+         toggleButton();
+      })();
+   </script>
+
+   <script>
+      (function () {
+         // secret sauce
+         const revealSpans = document.querySelectorAll('.hidden-reveal');
+         if (revealSpans.length > 0) {
+            const triggers = new Map();
+            revealSpans.forEach(span => {
+               const key = span.getAttribute('data-key');
+               if (!key) return;
+               const fullText = span.textContent.trim();
+               span.textContent = '';
+               triggers.set(key, {
+                  element: span,
+                  fullText: fullText,
+                  done: false
+               });
+            });
+
+            const maxKeyLength = Math.max(...Array.from(triggers.keys()).map(k => k.length), 1);
+            let buffer = '';
+
+            function typeOut(element, text, speed = 50) {
+               let i = 0;
+               element.style.display = 'inline';
+               element.classList.add('active');
+               const interval = setInterval(() => {
+                  element.textContent += text.charAt(i);
+                  i++;
+                  if (i >= text.length) {
+                     clearInterval(interval);
+                  }
+               }, speed);
+            }
+
+            document.addEventListener('keydown', function (e) {
+               const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+               const isEditable = (tag === 'input' || tag === 'textarea' || document.activeElement.isContentEditable);
+               if (isEditable) return;
+
+               if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                  buffer += e.key;
+                  // trim the fat, only keep the last maxKeyLength chars
+                  if (buffer.length > maxKeyLength) {
+                     buffer = buffer.slice(-maxKeyLength);
+                  }
+
+                  for (let [key, data] of triggers.entries()) {
+                     if (data.done) continue;
+                     if (buffer.endsWith(key)) {
+                        data.done = true;
+                        typeOut(data.element, data.fullText);
+                     }
+                  }
+               }
+            });
+         }
+
+         // dots clicky thing
+         document.querySelectorAll('.dots-toggle').forEach(dot => {
+            const revealText = dot.getAttribute('data-reveal');
+            if (!revealText) return;
+
+            dot.addEventListener('click', function () {
+               if (dot.classList.contains('revealed')) return;
+               dot.classList.add('revealed');
+               dot.textContent = revealText;
+               dot.removeAttribute('data-reveal');
+            });
+         });
+      })();
+   </script>
+</body>
+
+</html>
