@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta property="og:title" content="poker">
+   <meta property="og:description" content="this is ridonculous">
+   <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+   <meta property="og:url" content="https://codex-bat.github.io/post/first-post.html">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="poker">
+   <meta name="twitter:description" content="this is ridonculous">
+   <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>poker — Codex.bat</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+   <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+   <link rel="shortcut icon" href="/assets/favicon.ico" />
+   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+   <link rel="manifest" href="/assets/site.webmanifest" />
+   <style>
+      :root {
+         --accent: #7f9eff;
+         --dim: #6c6f78;
+         --text: #ddd;
+         --error: #ff5c5c;
+         --bg-deep: #0c0c0c;
+      }
+
+      html {
+         scrollbar-gutter: stable;
+      }
+
+      body {
+         overflow-y: auto;
+         background: #000;
+         color: #ddd;
+         font-family: 'Courier New', monospace;
+         margin: 0;
+         padding: 2rem;
+         line-height: 1.5;
+         scrollbar-width: thin;
+         scrollbar-color: #f5f5f5 #000;
+      }
+
+      body::-webkit-scrollbar {
+         width: 10px;
+         height: 10px;
+      }
+
+      body::-webkit-scrollbar-track {
+         background: #000;
+      }
+
+      body::-webkit-scrollbar-thumb {
+         background: radial-gradient(circle at 35% 35%,
+               #ffffff 0%,
+               #f2f2f2 35%,
+               #d0d0d0 70%,
+               #a8a8a8 100%);
+         border: 2px solid #000;
+         border-radius: 999px;
+         min-height: 26px;
+         box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+      }
+
+      body::-webkit-scrollbar-thumb:hover {
+         background: radial-gradient(circle at 35% 35%,
+               #ffffff 0%,
+               #ffffff 28%,
+               #e7e7e7 68%,
+               #bebebe 100%);
+      }
+
+      body::-webkit-scrollbar-corner {
+         background: #000;
+      }
+
+      .container {
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      header {
+         border-bottom: 2px solid #2a2a2a;
+         margin-bottom: 2rem;
+         padding-bottom: 1rem;
+      }
+
+      h1 {
+         font-size: 2.5rem;
+         margin: 0;
+         color: #fff;
+      }
+
+      nav {
+         margin-top: 0.5rem;
+      }
+
+      nav a {
+         color: #7f9eff;
+         text-decoration: none;
+         margin-right: 1rem;
+      }
+
+      nav a:hover {
+         text-decoration: underline;
+      }
+
+      code:not(pre code) {
+         background: #0f0f12;
+         color: #c3cae0;
+         padding: 0.2rem 0.4rem;
+         border-radius: 6px;
+         font-size: 0.9em;
+         font-family: 'Courier New', 'Fira Code', monospace;
+         border: 1px solid #2a2a3a;
+         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
+         transition: all 0.1s ease;
+      }
+
+      code:not(pre code):hover {
+         background: #16161d;
+         border-color: #90a2da;
+         color: #90a2da;
+         box-shadow: 0 0 4px #14161f66;
+      }
+
+      .post-meta {
+         color: #888;
+         font-size: 0.85rem;
+         margin-bottom: 1rem;
+         border-left: 3px solid #7f9eff;
+         padding-left: 0.5rem;
+      }
+
+      .content {
+         background: #0c0c0c;
+         border: 1px solid #2a2a2a;
+         padding: 1.5rem;
+      }
+
+      h2 {
+         border-left: 5px solid var(--accent);
+         padding-left: 0.8rem;
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: -0.05em;
+         margin-top: 2rem;
+         margin-bottom: 1rem;
+         line-height: 1.2;
+         font-size: 1.5rem;
+         color: var(--accent);
+      }
+
+      h3 {
+         font-weight: 800;
+         text-transform: uppercase;
+         letter-spacing: -0.05em;
+         margin-top: 1.8rem;
+         margin-bottom: 0.8rem;
+         line-height: 1.2;
+         font-size: 1.25rem;
+         border-left: 3px solid var(--accent);
+         padding-left: 0.7rem;
+         color: #f0f0f0;
+      }
+
+      footer {
+         margin-top: 2rem;
+         text-align: center;
+         color: #555;
+         font-size: 0.7rem;
+         border-top: 1px dashed #2a2a2a;
+         padding-top: 1rem;
+      }
+
+      .b {
+         font-weight: bold;
+      }
+
+      .bi {
+         font-weight: bold;
+         font-style: italic;
+      }
+
+      .i {
+         font-style: italic;
+      }
+
+      .u {
+         text-decoration: underline;
+      }
+
+      .s {
+         text-decoration: line-through;
+         color: var(--dim);
+      }
+
+      a {
+         color: var(--text);
+         text-decoration: underline;
+         text-underline-offset: 4px;
+         position: relative;
+         cursor: pointer;
+         transition: all 0.2s ease;
+      }
+
+      a:hover {
+         color: var(--accent);
+         text-decoration-thickness: 0.2em;
+         text-decoration-line: underline;
+         text-decoration-color: var(--accent);
+      }
+
+      blockquote {
+         border-left: 3px solid var(--accent);
+         padding-left: 1rem;
+         margin: 1.5rem 0;
+         font-style: italic;
+         color: #ccc;
+      }
+
+      ul,
+      ol {
+         margin-left: 1.5rem;
+         margin-bottom: 1.5rem;
+      }
+
+      li {
+         margin-bottom: 0.5rem;
+      }
+
+      hr {
+         border: 0;
+         border-top: 1px solid var(--dim);
+         margin: 3rem 0;
+      }
+
+      pre {
+         background: #111;
+         padding: 1rem;
+         border: 1px solid #333;
+         overflow-x: auto;
+      }
+
+      .highlight {
+         color: var(--accent);
+         font-weight: bold;
+      }
+
+      .danger {
+         color: var(--error);
+      }
+
+      .dim {
+         color: var(--dim);
+      }
+
+      .post-content p,
+      .post-content li {
+         color: #ddd;
+      }
+
+      .post-content a {
+         color: #7f9eff;
+      }
+
+      .post-content pre {
+         background: #111;
+         border: 1px solid #2a2a2a;
+         padding: 0.5rem;
+         overflow-x: auto;
+      }
+
+      .centered-title {
+         text-align: center;
+         border-left: 0 !important;
+         padding-left: 0 !important;
+         margin: 1.8rem 0 1rem 0;
+         font-weight: 700;
+         font-size: 1.7rem;
+         letter-spacing: -0.02em;
+         color: #ffffff;
+         background: transparent;
+         text-transform: uppercase;
+         font-family: 'Courier New', monospace;
+         word-break: keep-all;
+         display: block;
+         width: 100%;
+         clear: both;
+         transition: all 0.2s ease;
+      }
+
+      .centered-title:hover {
+         text-shadow: 0 0 6px rgba(127, 158, 255, 0.3);
+         letter-spacing: 0.5px;
+      }
+
+      .centered-title.small {
+         font-size: 1.3rem;
+         font-weight: 600;
+         text-transform: none;
+         letter-spacing: normal;
+         margin: 1.2rem 0 0.8rem 0;
+      }
+
+      .back-to-top {
+         position: fixed;
+         bottom: 2rem;
+         right: 2rem;
+         background: #0c0c0c;
+         border: 1px solid #2a2a2a;
+         color: #7f9eff;
+         font-family: 'Courier New', monospace;
+         font-size: 1rem;
+         padding: 0.5rem 1rem;
+         cursor: pointer;
+         z-index: 1000;
+         opacity: 0;
+         visibility: hidden;
+         transition: opacity 0.2s ease, visibility 0.2s;
+         border-radius: 4px;
+         text-decoration: none;
+         display: inline-block;
+      }
+
+      .back-to-top:hover {
+         background: #1a1a1a;
+         border-color: #7f9eff;
+      }
+
+      @media (max-width: 768px) {
+         .back-to-top {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+         }
+      }
+
+      .back-to-top.show {
+         opacity: 1;
+         visibility: visible;
+      }
+
+      .post-content hr {
+         margin: 2rem 0;
+         border-color: #2a2a2a;
+      }
+
+      .post-content .dim {
+         color: #8a8a8a;
+      }
+
+      /* hidden message go brr */
+      .hidden-reveal {
+         display: none;
+      }
+
+      .hidden-reveal.active {
+         display: inline;
+         color: inherit;
+         font-weight: inherit;
+      }
+
+      /* ... dots that u can click ... */
+      .dots-toggle {
+         display: inline;
+         cursor: pointer;
+         color: #ffffff;
+         /* super white, blinding */
+         font-size: 0.85em;
+         /* narrower */
+         letter-spacing: -0.5px;
+         background: transparent;
+         transition: background 0.15s;
+         user-select: none;
+      }
+
+      .dots-toggle:hover {
+         background: #1a1a1a;
+         /* subtle grey bg */
+      }
+
+      .dots-toggle:active {
+         background: #222;
+      }
+
+      .dots-toggle.revealed {
+         cursor: default;
+         color: inherit;
+         background: transparent;
+         font-size: inherit;
+         letter-spacing: inherit;
+         user-select: text;
+         /* copiable like any normal text */
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <h1>Codex.bat</h1>
+         <nav>
+            <a href="/">home</a>
+            <a href="/codex.bat">about me</a>
+         </nav>
+      </header>
+
+      <div class="content">
+         <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">poker</h1>
+         <div class="post-meta">📅 June 27, 2026</div>
+         <div class="post-content">
+
+            <p>
+                this is tragic. it's 5:43 and I'm still just trying to win ONE SINGLE poker game where I drain out all other NPCs in Watch_Dogs... why is this so fricking hard to do!?!? some ppl online say "it's easy"; some say the opposite. the NPCs sometimes are predictable, other times no. how the frick can I lose a 60-70% chance hand just because of a river...?! why couldn't that silly NPC just fold mid-game?! it's so silly... hoping on the river or turn to save you is silly. I forgot how to play poker so I spent about one hour just relearning it. after that, it was just my bad luck. now, it's just unfair at this point. I win, but I also lose.
+            </p>
+
+            <p>
+                and the way I win is by raising early as crap. it gets me there most of the time, but when I'm in a risky situation, it's usually too much to pull out.
+            </p>
+
+            <hr>
+
+            <p>
+                HAHAHA THAT'S WHAT I'M TALKING ABOUT. LEFT-SIDE IS AT 16K (100K entry), FRONT AT 41K AND THE ONLY RIVAL IS 145k ON THE RIGHT-HAND SIDE. I'm king at 196k. I cannot lose this. RIHGT?!?!?! oh and btw it's 6:03AM now. Joker of Spades and 3 of Diamonds, I wonder how this goes. 27%. If I raise ridiculously high rn, the remaning two will fold (rival folded alr). Raised 34k. Left-hand dropped out, but front CALLED! WITH HIS 41K HE CALLED. should I worry? should I suck this man dry? woah- that sounded bad. but my odds are now 43%... hmmm. seems like someone's going out! the pot is good, it could be setting itself up for a- AFTER A HUGE RAISE FROM ME HE WENT ALL IN. wow. I keep pausing the game to write this btw, sorry. HE DID HAVE AN ACE, but I got a pair!!!!! his ace was supposed to be the only thing saving him. I won the 50-50 and got a player out. left-side should also be easy. I'm sitting at 240k, I haven't reached such amount before. left is struggling at 11k. rival folded immediately and I have a 5 and 10 of spades, my chances are 50-50 again. I raised far beyond left's budget and surprisingly, he went all in. I GOT A PAIR OF 10 AND HE DIDN'T. I now just eliminated 2 players with fifty-fifties. down to the last player with a credit of 255k. I cannot lose now. I kept slowly draining this guy, but it was so slow... but now he was sitting at around ~130k and he just lended me a juicy 56k! I'm sitting at 321k. that's great ^^
+            </p>
+            <p>
+                and all of this just for achievements on Steam... im silly. I just lost 87k to him... my chances were 57%. wth. he had two pairs and an ace while I had two pairs and a king. this is stupid. THE POT THICKENS WITH 336K. HOLY. I DECIDED "50% chance = raising  to 160k to challenge the guy" AND HE TOOK IT. he's left with only 2k. holy... I sure hope I win now. HE HAD A FUCKING ACE AGIAN. SAME FUCKING ROUND PLAYED TWICE. bro this isn't luck, holy fuck the game doesn't know how to randomize. I just lost 170k. I'm playing against someone with 336k... I want to kill myself, wtf is this. the sun is up already. well, it's coming up. you fold with 336k?! that's... oh my bloody days. he's at 188k, I'm at 200k. I went all in after a lucky 3 of a kind. now we reversed roles. and now a cycle of folding occurs. he's folding unprompted 70% of the times and after a tiny raise or call, folding again. it's been 4-5 rounds like this, wth. YESSSSSSSSSSSS
+            </p>
+            <p>
+                I WON. YES, I WON! IT'S 6:35AM. FINALLLYYYYY!!!!!!!!!!!!! oh my bloody... this took 4 hours just from this session and let's not even talk about the other one... and now, last mission for the time being: Power Cycle (play 5 different City Games). I just played the slot machines. but I wonder... did I really have to finish playing Poker? since I was playing the super high stakes mode, I didn't even use the camera; rightfully so, as it was only distracting me. and often when I used it, it would be facing the wall, so I'd have to painfully shuffle my mouse over the mousepad several times to do a full rotation onto my rivals. such a silly game, I still can't hate it though (entirely).
+            </p>
+            <p>
+                sleep it is for me now. was this worth it? should I have stopped? probably... but I'm not unhappy with the results. I finished something I set out to do
+            </p>
+
+            <p><small>— end of line —</small></p>
+         </div>
+      </div>
+
+      <footer>
+         © 2026 Codex.bat All rights reserved
+      </footer>
+   </div>
+
+   <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+   <script>
+      // scroll go up, nothing fancy
+      (function () {
+         var btn = document.querySelector('.back-to-top');
+         if (!btn) return;
+         function toggleButton() {
+            if (window.scrollY > 300) {
+               btn.classList.add('show');
+            } else {
+               btn.classList.remove('show');
+            }
+         }
+         function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         }
+         window.addEventListener('scroll', toggleButton);
+         btn.addEventListener('click', scrollToTop);
+         toggleButton();
+      })();
+   </script>
+
+   <script>
+      (function () {
+         // secret sauce
+         const revealSpans = document.querySelectorAll('.hidden-reveal');
+         if (revealSpans.length > 0) {
+            const triggers = new Map();
+            revealSpans.forEach(span => {
+               const key = span.getAttribute('data-key');
+               if (!key) return;
+               const fullText = span.textContent.trim();
+               span.textContent = '';
+               triggers.set(key, {
+                  element: span,
+                  fullText: fullText,
+                  done: false
+               });
+            });
+
+            const maxKeyLength = Math.max(...Array.from(triggers.keys()).map(k => k.length), 1);
+            let buffer = '';
+
+            function typeOut(element, text, speed = 50) {
+               let i = 0;
+               element.style.display = 'inline';
+               element.classList.add('active');
+               const interval = setInterval(() => {
+                  element.textContent += text.charAt(i);
+                  i++;
+                  if (i >= text.length) {
+                     clearInterval(interval);
+                  }
+               }, speed);
+            }
+
+            document.addEventListener('keydown', function (e) {
+               const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+               const isEditable = (tag === 'input' || tag === 'textarea' || document.activeElement.isContentEditable);
+               if (isEditable) return;
+
+               if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                  buffer += e.key;
+                  // trim the fat, only keep the last maxKeyLength chars
+                  if (buffer.length > maxKeyLength) {
+                     buffer = buffer.slice(-maxKeyLength);
+                  }
+
+                  for (let [key, data] of triggers.entries()) {
+                     if (data.done) continue;
+                     if (buffer.endsWith(key)) {
+                        data.done = true;
+                        typeOut(data.element, data.fullText);
+                     }
+                  }
+               }
+            });
+         }
+
+         // dots clicky thing
+         document.querySelectorAll('.dots-toggle').forEach(dot => {
+            const revealText = dot.getAttribute('data-reveal');
+            if (!revealText) return;
+
+            dot.addEventListener('click', function () {
+               if (dot.classList.contains('revealed')) return;
+               dot.classList.add('revealed');
+               dot.textContent = revealText;
+               dot.removeAttribute('data-reveal');
+            });
+         });
+      })();
+   </script>
+</body>
+
+</html>
