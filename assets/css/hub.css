@@ -1,0 +1,111 @@
+body {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* post list */
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-list li {
+    border: 1px solid #2a2a2a;
+    background: #0c0c0c;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.post-date {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.post-title {
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+}
+
+.post-title a {
+    color: #7f9eff;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    text-decoration: underline;
+}
+
+.empty {
+    text-align: center;
+    color: #888;
+    padding: 2rem;
+    border: 1px dashed #2a2a2a;
+}
+
+/* section header (tab title) */
+.section-header {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: default;
+    display: inline-block;
+
+    /* reset universal h2 styles (but keep font-weight bold) */
+    border-left: none;
+    /* remove accent stripe */
+    text-transform: none;
+    /* don't uppercase */
+    letter-spacing: normal;
+    /* remove tight spacing */
+    padding-left: 0;
+    /* remove extra padding */
+
+    /* font-weight inherits from universal h2 (800) = bold */
+}
+
+/* dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    min-width: 110px;
+}
+
+.dropdown-menu li {
+    padding: 0.5rem 1rem;
+    color: #7f9eff;
+    cursor: default;
+    font-size: 0.9rem;
+}
+
+.dropdown-menu li:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.section-header.open .dropdown-menu {
+    display: block;
+}
+
+/* tab content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
