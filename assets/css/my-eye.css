@@ -151,6 +151,10 @@
     opacity: 1;
 }
 
+.magic-eye.near-footer~.eye-speech {
+    opacity: 0.35;
+}
+
 .eye-speech::before {
     content: "";
     position: absolute;
@@ -190,7 +194,7 @@
     }
 
     .eye-speech::before {
-        left: -6px;
+        left: -4px;
         right: auto;
         top: 50%;
         transform: translateY(-50%) rotate(-45deg);
