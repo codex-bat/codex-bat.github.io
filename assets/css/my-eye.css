@@ -151,7 +151,7 @@
     opacity: 1;
 }
 
-.magic-eye.near-footer~.eye-speech {
+.magic-eye.near-footer~.eye-speech.show {
     opacity: 0.35;
 }
 
