@@ -1,0 +1,364 @@
+/* global reset (not in universal) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body fine‑tuning (overrides universal) */
+body {
+    font-family: 'Courier New', 'Courier', monospace;
+    /* adds fallback */
+    padding: 2rem 1rem;
+    /* different from universal */
+}
+
+/* container wider */
+.container {
+    max-width: 900px;
+    /* universal: 800px */
+}
+
+/* nav link weight (not in universal cuz why else would it be here) */
+nav a {
+    font-weight: 500;
+}
+
+/* redacted override (warm tones) */
+.redacted {
+    background: #e5d9cc;
+    color: transparent;
+    text-shadow: none;
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    user-select: none;
+    display: inline-block;
+    cursor: help;
+    transition: none;
+    /* remove universal transition */
+}
+
+.redacted:hover {
+    background: #cabca8;
+    color: #a1876b;
+}
+
+/* horizontal rule override (warm + spacing) */
+hr {
+    border: none;
+    border-top: 1px dashed #eedbc4;
+    margin: 1.2rem 0;
+}
+
+/* make sure warm hr also works inside post-content (which has a more specific rule in universal) */
+.post-content hr,
+.case-file .post-content hr {
+    border-top: 1px dashed #eedbc4;
+    margin: 1.2rem 0;
+}
+
+/* back‑to‑top transition polish (match original) */
+.back-to-top {
+    transition: 0.2s;
+    font-family: monospace;
+    /* original used just 'monospace' */
+}
+
+.case-file .post-content,
+.case-file .post-content p,
+.case-file .post-content li {
+    color: inherit;
+    /* ignore universal #ddd */
+}
+
+/* links inside the case-file - use a warm accent */
+.case-file .post-content a {
+    color: #b25724;
+}
+
+.case-file .post-content a:hover {
+    color: #dd8c4a;
+    text-decoration-color: #dd8c4a;
+}
+
+/* case file itself 0.1 !!!!!!!!!!!!!!!!! */
+.case-file {
+    position: relative;
+    background: #fefaf2;
+    background-image:
+        linear-gradient(rgba(230, 180, 120, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 160, 110, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px, 32px 32px;
+    color: #2c1e12;
+    border-radius: 3px;
+    padding: 2rem 2.2rem;
+    margin: 1.8rem 0;
+    box-shadow:
+        0 20px 35px -12px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(0, 0, 0, 0.08) inset,
+        0 0 0 2px rgba(255, 245, 225, 0.6) inset;
+    transition: all 0.2s;
+}
+
+/* tape accents */
+.tape-side {
+    position: absolute;
+    background: linear-gradient(145deg, rgba(210, 200, 180, 0.45), rgba(170, 155, 130, 0.35));
+    backdrop-filter: blur(1px);
+    border-radius: 18px 3px 18px 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 245, 0.3);
+    width: 28px;
+    height: 110px;
+    z-index: 12;
+    opacity: 0.7;
+}
+
+.tape-left {
+    left: -12px;
+    top: 22%;
+    transform: rotate(-4deg);
+}
+
+.tape-left-bottom {
+    left: -10px;
+    top: 62%;
+    width: 26px;
+    height: 85px;
+    transform: rotate(3deg);
+    opacity: 0.6;
+}
+
+.tape-right {
+    right: -12px;
+    top: 35%;
+    transform: rotate(5deg);
+    border-radius: 2px 20px 2px 20px;
+}
+
+.tape-right-bottom {
+    right: -10px;
+    top: 72%;
+    width: 26px;
+    height: 90px;
+    transform: rotate(-2deg);
+    opacity: 0.6;
+}
+
+.tape-side::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 10px);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* case header */
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed #ebd5b0;
+    padding-bottom: 0.6rem;
+}
+
+.file-id {
+    background: #f3ede4;
+    color: #b45f2b;
+    padding: 0.2rem 0.9rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.stamp-light {
+    border: 2px solid #dd8c4a;
+    color: #dd8c4a;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 0.2rem 1rem;
+    background: rgba(221, 140, 74, 0.08);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transform: rotate(-5deg) translateY(4px);
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* title inside case file */
+.case-file h1 {
+    color: #b25724;
+    font-size: 2rem;
+    margin: 0.5rem 0 0.25rem;
+    border-left: 5px solid #dd8c4a;
+    padding-left: 1rem;
+    font-weight: 600;
+}
+
+.post-meta-case {
+    font-size: 0.7rem;
+    color: #b67b48;
+    background: #fdf3e6;
+    display: inline-block;
+    padding: 0.2rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.4rem;
+}
+
+/* text accents !!!!!!!!!!! */
+.cast-name {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: #f4ede2;
+    color: #8a4b20;
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.marker,
+.marker-yellow {
+    background: linear-gradient(105deg, rgba(255, 230, 130, 0.9) 0%, rgba(255, 210, 80, 0.95) 80%);
+    color: #3a2000;
+    padding: 0 0.2rem;
+    border-radius: 8px 2px 8px 2px;
+    font-weight: 600;
+    display: inline-block;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.marker-pink {
+    background: linear-gradient(105deg, rgba(255, 150, 160, 0.85), rgba(255, 100, 120, 0.85));
+    color: #3c0e0e;
+}
+
+.marker-blue {
+    background: linear-gradient(105deg, rgba(150, 200, 255, 0.85), rgba(90, 160, 245, 0.85));
+    color: #001f3f;
+}
+
+.marker-green {
+    background: linear-gradient(105deg, rgba(130, 220, 150, 0.85), rgba(70, 180, 100, 0.85));
+    color: #13451a;
+}
+
+.marker-orange {
+    background: linear-gradient(105deg, rgba(255, 190, 100, 0.9), rgba(255, 140, 50, 0.9));
+    color: #3f2206;
+}
+
+.scribble {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #f3a683;
+    text-underline-offset: 4px;
+    font-weight: 600;
+}
+
+.handwritten {
+    font-family: 'Courier New', 'Segoe UI', cursive;
+    background: #fff3e2;
+    padding: 0.1rem 0.6rem;
+    border-radius: 30px;
+    display: inline-block;
+    transform: rotate(-0.6deg);
+    font-size: 0.75rem;
+}
+
+/* field note */
+.field-note {
+    background: #fef6ea;
+    border-left: 4px solid #e2813b;
+    padding: 0.6rem 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+/* vitals panel */
+.vitals-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: #fff9f0;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border: 1px solid #f5e2cb;
+}
+
+.vital-unit {
+    font-size: 0.8rem;
+}
+
+.vital-unit strong {
+    color: #c25c2c;
+}
+
+/* evidence grid */
+.evidence-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.2rem 0;
+    justify-content: center;
+}
+
+.exhibit-card {
+    flex: 1;
+    min-width: 140px;
+    background: #fffcf5;
+    border: 1px solid #f3e0ca;
+    padding: 0.5rem;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.02);
+    text-align: center;
+}
+
+.exhibit-card svg {
+    width: 100%;
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.exhibit-card figcaption {
+    font-size: 0.65rem;
+    margin-top: 0.4rem;
+    color: #b5703a;
+}
+
+/* paragraph inside case file (already inherits color, but set for safety) */
+.case-file p {
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 1rem;
+    }
+
+    .case-file {
+        padding: 1.5rem;
+    }
+
+    .tape-side {
+        display: none;
+    }
+
+    .evidence-grid {
+        flex-direction: column;
+    }
+
+    .case-file h1 {
+        font-size: 1.6rem;
+    }
+
+    .stamp-light {
+        font-size: 0.7rem;
+        white-space: normal;
+    }
+}
