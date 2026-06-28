@@ -1,4 +1,4 @@
-# codex-bat.githubt.io
+# codexbat.dev/
 
 ![codex.batsite logo](https://github.com/codex-bat/codex-bat.github.io/blob/main/assets/website.png)
 
