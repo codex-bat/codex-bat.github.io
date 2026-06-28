@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+<dl>
+    <dt>instr.</dt><dd>01110100 01101000 01100101 01101110</dd>
+</dl>
+-->
+
+<head>
+    <!-- ==================== HELPER GUIDE MANUAL ==================== -->
+    <!-- If    your   confusion    persists   you,    please    visit: -->
+    <!--         https://github.com/codex-bat/codex-bat.git            -->
+    <!--          hub.io/blob/main/keys/__peterableInf.key             -->
+    <!-- for     more    information.    Thank    you   for   reading. -->
+    <!-- Read   between   the     lines     and     pay     attention. -->
+    <!-- Lastly, enjoy more of me!  Oh- and don't forget about the "/" -->
+    <!-- ============================================================= -->
+    <meta charset="utf-8">
+    <meta property="og:title" content="I was sadly right">
+    <meta property="og:description" content="June 6 is the turning point.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io/post/i-was-right.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="I was sadly right">
+    <meta name="twitter:description" content="June 6 is the turning point.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>I was sadly right — Codex.bat</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <style>
+        html {
+            scrollbar-gutter: stable;
+            /* keeps layout from shifting when scrollbar appears */
+        }
+
+        body {
+            overflow-y: auto;
+
+            /* Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: #f5f5f5 #000;
+        }
+
+        /* Chrome, Edge, Safari */
+        body::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: radial-gradient(circle at 35% 35%,
+                    #ffffff 0%,
+                    #f2f2f2 35%,
+                    #d0d0d0 70%,
+                    #a8a8a8 100%);
+            border: 2px solid #000;
+            border-radius: 999px;
+            min-height: 26px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: radial-gradient(circle at 35% 35%,
+                    #ffffff 0%,
+                    #ffffff 28%,
+                    #e7e7e7 68%,
+                    #bebebe 100%);
+        }
+
+        body::-webkit-scrollbar-corner {
+            background: #000;
+        }
+
+        /* 
+    1. 01100111 01101001 01100110 01111001 01100100 01111000 01110111
+    */
+        body {
+            background: #000;
+            color: #ddd;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid #2a2a2a;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #7f9eff;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #7f9eff;
+            padding-left: 0.5rem;
+        }
+
+        .content {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+        }
+
+        h2 {
+            border-left: 5px solid #7f9eff;
+            padding-left: 0.8rem;
+        }
+
+        /* Inline code */
+        code:not(pre code) {
+            background: #0f0f12;
+            color: #c3cae0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            border: 1px solid #2a2a3a;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.1s ease;
+        }
+
+        code:not(pre code):hover {
+            background: #16161d;
+            border-color: #90a2da;
+            color: #90a2da;
+            box-shadow: 0 0 4px #14161f66;
+        }
+
+
+        /*
+        2. instr.+01100111 01101001 01100110 01111001 01100100 01111000 01110111
+        oops sorry, did I mislead you here?
+        */
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.7rem;
+            border-top: 1px dashed #2a2a2a;
+            padding-top: 1rem;
+        }
+
+        /* Headers */
+        h2,
+        h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Syntax Classes (The "Smart" part) */
+        .b {
+            font-weight: bold;
+        }
+
+        .bi {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .i {
+            font-style: italic;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+
+        .s {
+            text-decoration: line-through;
+            color: var(--dim);
+        }
+
+        /* Links */
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /*
+        instr. > cust0m1 1h0ver f0r th1 l1nk!1!!0 1t 1ooks gr1at wh0n y0u try it0, 0ec0use 11 ch0ng1s 1he w0y th0 bu1t0n 1works (1'm sp00king non-s1ns10) - this is definitely not a trap :p
+        */
+        a:hover {
+            color: var(--accent);
+            text-decoration-thickness: 0.2em;
+            text-decoration-line: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* a real equation that always blows my mind is +4 -13... it's really unique, I think */
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Horizontal Rules */
+        hr {
+            border: 0;
+            border-top: 1px solid var(--dim);
+            margin: 3rem 0;
+        }
+
+        /* Utility: Code/Block */
+        code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--accent);
+        }
+
+        pre {
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* --- 2. DYNAMIC COLORING --- */
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .danger {
+            color: var(--error);
+        }
+
+        .dim {
+            color: var(--dim);
+        }
+
+        /* simple styling for post content */
+        .post-content p,
+        .post-content li {
+            color: #ddd;
+        }
+
+        .post-content a {
+            color: #7f9eff;
+        }
+
+        .post-content pre {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+
+        /* back-to-top button – hidden by default, shown via JS */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            color: #7f9eff;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-to-top:hover {
+            background: #1a1a1a;
+            border-color: #7f9eff;
+        }
+
+        /* mobile: centered at bottom */
+        @media (max-width: 768px) {
+            .back-to-top {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 1.5rem;
+            }
+        }
+
+        /* class used by JS- check lines 4-6 */
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Codex.bat</h1>
+            <nav>
+                <a href="/">home</a>
+                <a href="/codex.bat">about me</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- post title and date -->
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.2rem;">I was sadly right</h1>
+            <div class="post-meta">📅 June 10, 2026</div>
+
+            <!-- main post content -->
+            <div class="post-content">
+                <!-- text goes here -->
+                <p># DISCLAIMER: PROFRANITIES, SUICIDE AND WHATEVER THE **FUCK** ELSE I WANT TO TALK ABOUT.</p>
+                <p>---</p>
+                <p>I'm sorry, I'm tired of always having to put this disclaimer, I wish I didn't talk about these
+                    things, but I fear I'll have no witnesses at all when I go (in whatever state that may be).</p>
+                <p>- psst! look at my source... you'll know what I mean, you just have to look deeper ;) -</p>
+                <p>I'm really grateful for everything that I'm capable of doing. I'm really grateful of everything I
+                    conceptually have. however... <a href="https://www.codexbat.dev/post/f*ck-giver">this post</a> was
+                    sadly terribly right. all of my pent-up, passive struggles finally turned active. I wish it didn't.
+                    but it did in a combination of everything clashing down on me. it was June 6th. I stayed up late
+                    doing fuck-all, probably another all-nighter or whatever... but I had to wake up early, because my
+                    <code>quixotic idealist</code> was visiting me again! im... I'm really trying to find a way to talk
+                    about this openly and fully without involving others too much, but if I'm too vague, it'll
+                    statistically sound exaggerated... I can always edit it anyway- our time together was short-lived as
+                    it was interrupted by my system slowly breaking down. we were in the sun too much. I didn't sleep
+                    enough. I didn't get to eat breakfast, because I had to reach my <code>quixotic idealist</code> in
+                    time, for his stupid fucking net-interview that never occurred anyway. wait no... this isn't like
+                    me. I'd normally come up with crpytic identifiers for the people involved. ofc! what you've been
+                    reading probably has already been edited although I don't really like proof-reading my posts too
+                    much, so I can give the most raw version of it. in this particular case, I think it'd be quirkier
+                    and more considerate to only hint at them. these nicks are subject to change. back to topic~</p>
+                <p>because of that interview, I didn't get time to eat, which this time I would've loved to, to make up
+                    for my lack of sleep. no matter, we walked around about an hour in the sun and by halfway through
+                    our time together, I was already struggling. I couldn't even eat. all of this eventually lead to me
+                    being hospitalized, because I got a heatstroke! <code>quixotic idealist</code> was blaming me for
+                    it. "I should've went to sleep earlier. I knew he was coming". and "I wasn't ok already when I left
+                    the house", no I was. I really was fine. as fine as any other day. occassional loss of balance? yes,
+                    but I've gotten used ot it... it became part of my life. reaching the hospital phase was fucking
+                    hard too. I was left with my fever alone. I kept trying to call people... my <code>redoubt</code>'s
+                    father even said I should just stay home at rest... with a fever of 39.4. I wanted to scream, I
+                    wanted to cry... I wanted to feel something for this lack of care, but I couldn't. in this moment, I
+                    really needed to make a decision and act, so I couldn't bring the emotions out. something kept me
+                    from feeling anything other than concern, so I acted. I trusted my diagnosis of the situation.
+                    <code>quixotic idealist</code> did answer and we planned a meet-up to go to a clinic nearby, but he
+                    alone wasn't enough. he had no ties here, so it wasn't much use to get me from A to B. thankfully
+                    <code>playwright</code>, one of the people I was desperately trying to call, finally arrived home
+                    and I asked if the thermometer was somehow stupidly malfunctioning, cuz my fever really wasn't
+                    great, as I mentioned before, and I didn't have any proper symptoms I could pinpoint (I don't get
+                    why, I was dizzy, lightheaded, was bedridden).</p>
+                <p>when I arrived to the nearest clinic, my fever was down to 38.7, but I believe I saw my
+                    heartrate/beat being 140+... I think they even mentioned it being high and attributing it to the
+                    fever. I'm not sure. it's all a bit of a haze now... after that, I left... I was strolling around
+                    aimlessly, as if I was part of the street with nowhere to go. I had <code>quixotic idealist</code>
+                    beside me, but it was almost inconsequential. and I'm really, really sorry about how I speak of this
+                    entire event, because despite my annoyance, I was trying to overlook these things and forgive the
+                    people in the moment, I just wanted to live honestly. it shook me a bit, this experience. the
+                    experience itself was exciting, but the aftermath of it... seeing it in hindsight it scared me.
+                    anyway... with the help of <code>playwright</code>, I got to the hospital. I got blood samples
+                    taken, IV set up, EKG done and got sent home fine. and I was in recovery phase...</p>
+                <p>but thank gosh I decided to go at all... they said this couldn't wait. and I had noone at home for
+                    me. I was forgotten about. they went to a party and <code>quixotic idealist</code> was only by
+                    chance still awake and available to come. I wouldn't have gotten the heatstroke if he wasn't here in
+                    the first place. I'm not blaming him, but I wouldn't have gotten a heatstroke on Saturday, June 6 if
+                    I wasn't having plans with him. and yet when I was otw home, to try and recover after our plans have
+                    concluded, he said that I should've thought it through and go sleep earlier, because I knew he was
+                    coming. because now our weekend together was shortened because of this little heat exhaustion (at
+                    this time in the afternoon, we assumed it was that). he also kept insisting that I was already not
+                    feeling okay when I left the house and when I arrived to meet him. well no, I was feeling good. I
+                    cannot have caused a heatstroke at home. now, 3 days since then, he asked me over the phone what it
+                    was that caused this... DESPITE BEING THERE in the hospital with me... despite literally being there
+                    and seeing me, he still assumed it wasn't because we were MAYBE ON THE SUN TOO MUCH!?!?!? or I
+                    DIDN'T GET TO DRINK ENOUGH BECAUSE WE KEPT WALKING AROUND AIMLESSLY?!?!? the doctors were a bit
+                    shocked for having been out so much at such a ridiculous time. because it's the worst time to be
+                    out. and jfyi, I was the only one with a heatstroke there that entire day. I asked.</p>
+                <p>when everything settled, the next day I told <code>playwright</code> that I could've potentially died
+                    from all of this... and she was saying "oh, come on. stop kidding around" or something along those
+                    lines and when I woke her up the next day at 3AM with a fever of 39, wanting to have her around as I
+                    try to cool myself, she was annoyed at me for taking the 1g paracetamol that I was supposed to take
+                    roughly at that time. furthermore, <code>playwright</code>'s manchil- I mean... associate allegedly
+                    gave her usable money, however allegedly, strictly forbade her from buying my prescribed medication
+                    with it... what. the. fuck? you're joking...? she doesn't have a lot of other money tho... if she
+                    wouldn't have had enough... then what? I just stay sick and die? I'm using <span
+                        class="i">allegedly</span>, btw, because this was told to me by <code>playwright</code>, who
+                    could potentially be biased, considering she's trying to get him to sign a collective-agreement
+                    where he lets <code>playwright</code> and the <span class="b">2.0 release of it</span> move back to
+                    the country with the <span class="b">T-less Clean</span> as the party ruling gov. seriously though,
+                    I felt really overlooked and helpless.</p>
+                <p>this experience shook me quite a bit. I stopped joking around about death the past few days and I was
+                    watching my actions more closely. death felt like it was far closer than I realized. it sucks.
+                    and... as an addition to that.. I realized how miserably I live. my room's a mess. my life's a mess.
+                    I am dying and rotting from the inisde (I mean, mentally... let's hope not physically rottin ;-;).
+                    my upbeat, quirky personality here... it's all worthless and useless if I disappear (stop posting),
+                    because I died for some reason... especially if it's because of neglicence... gosh, I felt so
+                    neglected. and my <code>playwright</code> took more care of me now more than ever, but... there was
+                    still such a disconnect. she wasn't there emotionally. like she was trying to give me emotional
+                    support without actually listening to my emotions. I don't get it... it felt so off.</p>
+                <p>last night I woke her up again... it was because I was having visual hallucinations when trying to
+                    sleep and not the normal geometry-repeating-patterns-related one, but hyper-realistic ones... they
+                    were scary, they were super surreal and they would melt much like broken, messed up AI videos. it
+                    scared me. sometimes my eyes would twitch and kinda try to look at my nose WITH MY EYES CLOSED and
+                    it'd cause uncomfort, like they weren't in their place. I had no idea how to describe this to her...
+                    I also felt like I was either sinking or floating in the bed. I knew I was still in the bed, I could
+                    feel the bed... I was sinking against the bed and I would sink further and further, below the bed,
+                    defying gravity despite the resistance that my side was feeling as I sank. when I'd open my eyes,
+                    the feeling would be gone. I honestly didn't mind that one, I actually enjoyed sinking. it was a bit
+                    scary, but it was exciting. I enjoyed it. and I think I was also extremely exhausted, as I was
+                    starting to experience signs of sleep-paralysis. I couldn't move when I decided to go sleep, like
+                    instantly, and then when I woke up, it was like I instantly switched states. two worlds were
+                    separated by one switch, that's the feeling I felt. and I know why sleep-paralysis happens. I know
+                    how it works even though I've never experienced it, but I always imagined it's more passive. it
+                    happens when you're either going to sleep or waking up... not... at your literal command? like I
+                    couldn't move or open my eyes, I'm telling you... but with strong willpower I managed. like I had to
+                    try different almost... it's still hard to grasp how it worked. and the visual hallucinations would
+                    last a bit in real life too... well not proper ones like the ones with my eyes closed, but I saw
+                    shining objects or reflections of things that weren't really there. it was odd and worrisome, but it
+                    all just... stopped when I woke up <code>playwright</code>. I stupidly started by explaining that I
+                    was "seeing things" and after some elaboration, she said with the most compassion in her heart as
+                    she cuddled me in bed "I don't know what kind of help to offer you... maybe a psychologist?"... and
+                    she'd ask if I was schizophrenic... despite my extreme paranoia, I have never experienced anything
+                    like this before. and I was certain (and right) that it was only sleep depravation, however I was
+                    terribly worried I could be having a brain seizure during the night, considering I had a heatstroke
+                    recently... so I really really wanted someone by my side.</p>
+                <p>looking back at her saying that really broke me, because it pushed my feeling of being overlooked. on
+                    top of taht it made me feel like im always either not taken seriously, ridiculed or seen as crazy,
+                    unstable or manic... I can handle myself really well... anything related to the hospital, I was the
+                    one doing all of the talking and basically pulling the strings, despite my state. if I wasn't
+                    stable, coherent or reasonable I wouldn't have been able to do that. but right now I'm in a
+                    seriously vulnerable state, that's true. I'm mentally vulnerable and just yesterday was still
+                    physically vulnerable too... I ain't alright, and calling me schizo does not help.</p>
+                <p>I'll never forget this hospital visit... I still have the patches from the EKG. I'll remember this
+                    hospital point as the turning point in my life. since that is when I decided this environment is
+                    definitely harming me. it's so messy. it's so chaotic and there's not enough to redeem it. it's not
+                    worth it... now afterwards, <code>playwright</code> was blaming me for the heatstroke. I should've
+                    used sprays, drank water, etc. etc... what about <code>quixotic idealist</code> who was literally
+                    with me and didn't do enough and instead pinned it on me?! and what about her not picking up my
+                    calls when I possibly needed it the most to make a decision or to help me get there... I really
+                    doubted the thermometer was correct. I fear wasting hospital resources so much- I hate being a
+                    burder so much, that I would rather believe the thermometer is wrong... even though it's the old
+                    type, not even electric. and there's no comfort for that. not from anyone.</p>
+                <p>I'm mostly recovered, although I think I have momentary ataxia. sometimes I'd get a sudden moment of
+                    dizziness and lack of spacial-awareness. I'm constantly stressing about not being healthy.</p>
+                <p>anyway~ I fear I overshared... goodbye friends. for now...</p>
+
+                <p><small>— end of line —</small></p>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 Codex.bat All rights reserved
+        </footer>
+    </div>
+    <button class="back-to-top" aria-label="Back to top">↑ top</button>
+
+    <script src="../assets/scripts/scroll-up.js"></script>
+    <script>
+        //it all starts here :3
+        /*
+        customSeq sequence = instr. + str.list[n.sequenceNumber];
+        name = "ottoooto ottoooot otttoott ottootot otototot otttooto ottottoo" + sequence.each;
+        */
+    </script>
+    <script>
+
+        //None new - something fresh.
+
+        // the targets of a hidden spell
+        const _ = [0xc3, 0xa9, 0x78, 0x74, 0x6b, 0x6a, 0x6b, 0x69, 0x66, 0x62, 0x78];
+        const $ = _.map(x => x.toString(2).padStart(8, '0')).join` `; // target string
+
+        // build a multiset of the same bytes (shuffled initial order)
+        let pool = [..._];
+        for (let i = pool.length - 1; i > 0; i--) {
+            let j = ~~(Math.random() * (i + 1));
+            [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+
+        // ugly helper: compare two byte arrays
+        const ƒ = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
+
+        // main loop: random shuffle until cosmic accident hits target
+        let attempts = 0;
+        const outPre = document.getElementById('out');
+
+        (function 鬼() {
+            while (!ƒ(pool, _)) {
+                // Fisher-Yates shuffle on `pool` (I read this gives us pure chaos)
+                for (let i = pool.length - 1; i > 0; i--) {
+                    let r = ~~(Math.random() * (i + 1));
+                    let tmp = pool[i];
+                    pool[i] = pool[r];
+                    pool[r] = tmp;
+                }
+                attempts++;
+                if (attempts % 100000 === 0) {
+                    outPre.innerText = `🌀 shuffling ... ${attempts} attempts so far`;
+                }
+            }
+            // FINALLY — output the exact disneyland ticket entry :3 (ofc, what else would it give you?!)
+            const result = pool.map(b => b.toString(2).padStart(8, '0')).join` `;
+            outPre.innerText = `✅ matched after ${attempts} shuffles!\n${result}`;
+            console.log(`TARGET REACHED:\n${result}`);
+        })();
+    </script>
+</body>
+
+</html>
