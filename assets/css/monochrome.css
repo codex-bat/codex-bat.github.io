@@ -269,6 +269,18 @@ summary:hover {
     text-decoration-color: #5f5d69;
 }
 
+.codexbat-page .content a.widget-link {
+    color: #9b9b9b;
+    text-decoration-color: #8e8b9e;
+    text-underline-offset: 4px;
+    transition: all 0.2s ease;
+}
+
+.codexbat-page .content a.widget-link:hover {
+    color: #757575;
+    text-decoration-color: #5f5d69;
+}
+
 /* badges and tags (batcraft) */
 .stack-badge {
     display: inline-block;
