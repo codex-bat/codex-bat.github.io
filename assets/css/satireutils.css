@@ -1,0 +1,364 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     user-select: none;
+     -webkit-user-select: none;
+     -webkit-tap-highlight-color: transparent;
+ }
+
+ p,
+ h1,
+ a,
+ h2,
+ code,
+ h3,
+ strong,
+ blockquote,
+ .tagline,
+ .note-box {
+     user-select: text;
+     -webkit-user-select: text;
+ }
+
+ body {
+     background: #050505;
+     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+     color: #eaeaef;
+     line-height: 1.5;
+     min-height: 100vh;
+     padding: 2rem;
+     position: relative;
+ }
+
+ body::before {
+     content: "";
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image: url('https://raw.githubusercontent.com/codex-bat/codex-bat.github.io/main/assets/bg_streamerutils.png');
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     opacity: 1;
+     z-index: -2;
+ }
+
+ body::after {
+     content: "";
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.65);
+     z-index: -1;
+     pointer-events: none;
+ }
+
+ .modrinth-container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 1rem;
+ }
+
+ .project-header {
+     display: flex;
+     align-items: center;
+     gap: 1.8rem;
+     flex-wrap: wrap;
+     margin-bottom: 2rem;
+     background: rgba(15, 15, 15, 0.85);
+     backdrop-filter: blur(2px);
+     border-radius: 28px;
+     padding: 1.2rem 2rem;
+     border: 1px solid rgba(44, 85, 220, 0.25);
+ }
+
+ .mod-logo {
+     width: 90px;
+     height: 90px;
+     object-fit: contain;
+     background: #242d3b;
+     border-radius: 22px;
+     padding: 0.4rem;
+     border: 1px solid #6DA9F7;
+ }
+
+ .project-title {
+     flex: 1;
+ }
+
+ .project-title h1 {
+     font-size: 2.8rem;
+     font-weight: 700;
+     background: linear-gradient(135deg, #ffffff 0%, #b0c4ff 100%);
+     background-clip: text;
+     -webkit-background-clip: text;
+     color: transparent;
+     letter-spacing: -0.02em;
+ }
+
+ .project-title .tagline {
+     font-size: 0.9rem;
+     color: #a7b2df;
+     font-family: 'JetBrains Mono', monospace;
+     margin-top: 0.3rem;
+ }
+
+ .seamless-logo {
+     width: 100%;
+     margin-bottom: 1.5rem;
+     border-radius: 0;
+     background: none;
+     padding: 0;
+     display: block;
+ }
+
+ .project-layout {
+     display: flex;
+     gap: 2rem;
+     flex-wrap: wrap;
+     margin: 1rem 0 2rem 0;
+ }
+
+ .main-content {
+     flex: 2.5;
+     min-width: 260px;
+     background: #0d0d12;
+     border-radius: 28px;
+     padding: 2rem;
+     border: 1px solid #252a36;
+     box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+ }
+
+ .metadata-panel {
+     flex: 1.2;
+     min-width: 240px;
+     background: #0d0d12;
+     border-radius: 28px;
+     padding: 1.6rem;
+     border: 1px solid #252a36;
+     height: fit-content;
+     box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+ }
+
+ .info-card {
+     background: #0a0a0e;
+     border-radius: 20px;
+     padding: 1rem 1.2rem;
+     margin-bottom: 1.4rem;
+     border: 1px solid #1f232e;
+ }
+
+ .info-card h3 {
+     font-size: 1rem;
+     font-weight: 600;
+     text-transform: uppercase;
+     letter-spacing: 0.03em;
+     color: #2C55DC;
+     margin-bottom: 0.7rem;
+     border-left: 3px solid #2C55DC;
+     padding-left: 0.6rem;
+ }
+
+ .version-badge {
+     background: #1a1c26;
+     color: #2C55DC;
+     font-family: monospace;
+     padding: 0.2rem 0.6rem;
+     border-radius: 30px;
+     font-size: 0.75rem;
+     border: 1px solid #2C55DC;
+ }
+
+ code {
+     background: #1a1c26;
+     color: #657197;
+     font-family: 'JetBrains Mono', monospace;
+     font-size: 0.85rem;
+     padding: 0.15em 0.4em;
+     border-radius: 4px;
+     border: 1px solid #40444b;
+     white-space: nowrap;
+     user-select: text;
+     -webkit-user-select: text;
+ }
+
+ .pill-list {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.5rem;
+     margin: 0.8rem 0 0.2rem;
+ }
+
+ .pill-list a {
+     text-decoration: none;
+ }
+
+ .pill {
+     background: #1c1c24;
+     padding: 0.25rem 0.8rem;
+     border-radius: 50px;
+     font-size: 0.7rem;
+     font-weight: 500;
+     color: #cfd5ff;
+     border: 1px solid #2C55DC;
+     transition: all 0.1s;
+ }
+
+ .pill:hover {
+     background: #2C55DC;
+     color: white;
+     border-color: #2C55DC;
+ }
+
+ a:active .pill,
+ .pill:active {
+     background: #4a6ee8;
+     transform: scale(0.96);
+ }
+
+ .side-link:active {
+     background: #3a52c0;
+     transform: scale(0.97);
+ }
+
+ summary:active {
+     background: rgba(44, 85, 220, 0.15);
+     border-radius: 20px;
+ }
+
+ .main-content a:active {
+     background: rgba(44, 85, 220, 0.15);
+     border-radius: 6px;
+     padding: 0 2px;
+     margin: 0 -2px;
+ }
+
+ .version-badge:active {
+     background: #4a6ee8;
+ }
+
+ .info-card .side-link {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     background: #1c1c24;
+     border: 1px solid #2C55DC;
+     padding: 0.45rem 1rem;
+     border-radius: 40px;
+     font-size: 0.8rem;
+     font-weight: 500;
+     text-decoration: none;
+     color: #e0e4ff;
+     transition: 0.1s;
+     width: fit-content;
+     margin-top: 0.4rem;
+     overflow: hidden;
+ }
+
+ .info-card .side-link:hover {
+     background: #2C55DC;
+     color: white;
+ }
+
+ .side-link,
+ .pill-list a {
+     user-select: none;
+     -webkit-user-select: none;
+ }
+
+ .main-content h2 {
+     font-size: 1.8rem;
+     font-weight: 600;
+     margin: 1.8rem 0 0.8rem 0;
+     border-left: 4px solid #2C55DC;
+     padding-left: 1rem;
+     color: #f0f2ff;
+ }
+
+ .main-content h2:first-of-type {
+     margin-top: 0;
+ }
+
+ .main-content p {
+     font-size: 1rem;
+     color: #cfd3ec;
+     margin-bottom: 1rem;
+ }
+
+ .showcase-img {
+     max-width: 100%;
+     border-radius: 20px;
+     margin: 1rem 0;
+     border: 1px solid #2C55DC;
+     background: #010103;
+     padding: 0.2rem;
+ }
+
+ details {
+     background: #0d0f18;
+     border: 1px solid #2a2e3c;
+     border-radius: 20px;
+     padding: 0.7rem 1.2rem;
+     margin: 1.2rem 0;
+ }
+
+ summary {
+     font-weight: 600;
+     color: #bbc3f0;
+     cursor: pointer;
+     font-family: 'JetBrains Mono', monospace;
+ }
+
+ .note-box {
+     background: #0a0b10;
+     border-left: 4px solid #2C55DC;
+     padding: 1rem;
+     font-size: 0.85rem;
+     border-radius: 14px;
+     margin-top: 1.8rem;
+ }
+
+ hr {
+     border: none;
+     height: 1px;
+     background: #232837;
+     margin: 1rem 0;
+ }
+
+ .site-footer {
+     text-align: center;
+     font-size: 0.7rem;
+     color: #8F94B0;
+     border-top: 1px solid #1f2533;
+     padding-top: 1.5rem;
+     margin-top: 2.5rem;
+     font-family: 'JetBrains Mono', monospace;
+ }
+
+ @media (max-width: 800px) {
+     body {
+         padding: 1rem;
+     }
+
+     .project-header {
+         padding: 1rem 1.2rem;
+     }
+
+     .mod-logo {
+         width: 65px;
+         height: 65px;
+     }
+
+     .project-title h1 {
+         font-size: 2rem;
+     }
+
+     .main-content {
+         padding: 1.2rem;
+     }
+ }

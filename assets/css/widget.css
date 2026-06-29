@@ -1,0 +1,45 @@
+ body.widget-page .outer-nav,
+ body.widget-page .card {
+     max-width: 700px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ body.widget-page .card {
+     position: relative;
+     z-index: 10;
+ }
+
+ body.widget-page .container {
+     padding: 2rem 2.2rem;
+ }
+
+ /* Batcraft background */
+body.widget-page::before {
+    background-image: url("https://raw.githubusercontent.com/codex-bat/codex-bat.github.io/main/assets/server_bg.png");
+}
+
+ .widget-preview {
+     width: 100%;
+     height: auto;
+     border-radius: 16px;
+     border: 1px solid #3a3a3a;
+     margin-bottom: 1.8rem;
+     display: block;
+ }
+
+ body.widget-page .content a {
+     color: #8f8f8f;
+     text-decoration: none;
+     text-underline-offset: 4px;
+     position: relative;
+     cursor: pointer;
+     transition: all 0.2s ease;
+ }
+
+ body.widget-page .content a:hover {
+     color: #757575;
+     text-decoration-thickness: 0.2em;
+     text-decoration-line: none;
+     text-decoration-color: #5f5d69;
+ }

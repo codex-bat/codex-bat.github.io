@@ -1,0 +1,58 @@
+/* copy‑to‑clipboard button */
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    transition: color 0.1s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.copy-btn:hover {
+    color: white;
+}
+
+.copy-btn:active {
+    color: #fff;
+    transform: scale(0.92);
+}
+
+/* feedback text (hidden by default, script shows it) */
+.copy-feedback {
+    display: none;
+    font-size: 0.7rem;
+    color: #7f9eff;
+    margin-left: 0.3rem;
+}
+
+/* Positioning variants */
+
+/* 1. inline (default) – right‑side, vertically centred next to text */
+.copy-wrapper--inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 2. corner – absolute top‑right of A relativelz-positioned parent */
+.copy-wrapper--corner {
+    position: relative;
+}
+
+.copy-wrapper--corner>.copy-btn {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    z-index: 5;
+}
+
+/* container has enough padding for the icon */
+.copy-wrapper--corner.has-copy-icon {
+    padding-right: 1.8rem;
+    /* space for the icon */
+}
