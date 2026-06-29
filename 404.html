@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>404 — Page Not Found</title>
-<style>
-  body {
-    background: #000;
-    color: #ddd;
-    font-family: 'Courier New', monospace;
-    margin: 0;
-    padding: 2rem;
-    line-height: 1.5;
-  }
-  .container { max-width: 800px; margin: 0 auto; text-align: center; }
-  header { border-bottom: 2px solid #2a2a2a; margin-bottom: 2rem; padding-bottom: 1rem; }
-  h1 { font-size: 2.5rem; margin: 0; color: #fff; }
-  a { color: #7f9eff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer { margin-top: 2rem; color: #555; font-size: 0.7rem; border-top: 1px dashed #2a2a2a; padding-top: 1rem; }
-</style>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="40404040404.bat">
+    <meta property="og:description" content="idk what link these silly fella tried sending you, but this ain't it.">
+    <meta property="og:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta property="og:url" content="https://codex-bat.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="4040404040404.bat">
+    <meta name="twitter:description"
+        content="idk what link these silly fella tried posting ov' he', but this ain't it.">
+    <meta name="twitter:image" content="https://codex-bat.github.io/assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <meta name="description" content="Codex.bat's website showcasing posts, socials and other important dets." />
+    <title>404 — Page Not Found</title>
+    <link rel="stylesheet" href="assets/css/deffinitely-found.css">
 </head>
+
 <body>
-<div class="container">
-  <header><h1>Codex.bat</h1></header>
-  <h2>404 — Page Not Found</h2>
-  <p>Oops! The page you were looking for doesn’t exist.</p>
-  <p><a href="/">Go back home</a></p>
-  <footer>© 2026 Codex.bat All rights reserved</footer>
-</div>
+    <button id="secret-btn" class="secret-button" title="?">.</button>
+
+    <div class="container" id="main-content">
+        <header>
+            <h1>Codex.bat</h1>
+        </header>
+
+        <h2 id="page-title">404 — Page Not Found</h2>
+        <p id="page-msg">Oops! The page you were looking for doesn't exist.</p>
+
+        <!-- game lives here, hidden at first -->
+        <div id="game-wrapper" class="game-wrapper hidden">
+            <div id="scoreboard">
+                <span>you (X): <span id="player-score">0</span></span>
+                <span>AI (O): <span id="ai-score">0</span></span>
+            </div>
+            <div id="game-message"></div>
+            <div id="tictactoe-board" class="board"></div>
+            <button id="reset-game" class="reset-btn">new game</button>
+            <button id="hide-game" class="hide-game-btn">✕</button>
+            <span id="brewing-msg" class="brewing-msg hidden">something has been brewing beneath the surface…</span>
+        </div>
+
+        <p id="back-link"><a href="/">Go back home</a></p>
+        <footer>© 2026 Codex.bat All rights reserved</footer>
+    </div>
+
+    <script src="assets/scripts/fymtictactoe.js"></script>
 </body>
+
 </html>
