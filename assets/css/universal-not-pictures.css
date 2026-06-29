@@ -337,7 +337,8 @@
              left: 50%;
              transform: translateX(-50%);
              bottom: 1.5rem;
-             opacity: 0.1; /* very low base – will be overridden by JS, but prevents full 1.0 flash */
+             opacity: 0.1;
+             /* very low base – will be overridden by JS, but prevents full 1.0 flash */
          }
      }
 
