@@ -349,7 +349,7 @@ function unlockFocus() {
   $viewport.classList.remove("locked-focus");
 }
 
-/* --- mobile context menu --- */
+/* --- mobile context menu – now correctly positioned & sized --- */
 function showContextMenu(nodeEl, id) {
   // remove any existing menu
   if ($contextMenu) {
@@ -358,8 +358,8 @@ function showContextMenu(nodeEl, id) {
   }
 
   var rect = nodeEl.getBoundingClientRect();
-  var x = rect.left + rect.width / 2;
-  var y = rect.top + rect.height / 2;
+  var nodeCenterX = rect.left + rect.width / 2;
+  var nodeCenterY = rect.top + rect.height / 2;
 
   $contextMenu = document.createElement("div");
   $contextMenu.className = "node-ctx-menu";
@@ -367,24 +367,30 @@ function showContextMenu(nodeEl, id) {
     '<button data-action="cumulative">Cumulative Lock</button>' +
     '<button data-action="strict">Strict Lock</button>';
 
-  // style it (minimal, can be overwritten by map.css)
+  // base styles, no hardcoded size
   $contextMenu.style.cssText =
     "position:fixed;background:rgba(10,10,10,0.95);border:1px solid #333;" +
     "border-radius:6px;padding:4px 0;z-index:999;font-family:monospace;" +
-    "font-size:0.75rem;color:#ccc;box-shadow:0 4px 12px rgba(0,0,0,0.8);";
+    "font-size:0.75rem;color:#ccc;box-shadow:0 4px 12px rgba(0,0,0,0.8);" +
+    "overflow:hidden;-webkit-tap-highlight-color:transparent;opacity:0;";
 
-  // position it so it doesn't go off screen
-  var menuW = 150,
-    menuH = 68; // rough
-  var left = x - menuW / 2;
-  var top = y + 30;
+  // append to body to measure natural size
+  document.body.appendChild($contextMenu);
+  var menuRect = $contextMenu.getBoundingClientRect();
+  var menuW = menuRect.width;
+  var menuH = menuRect.height;
+
+  // position it, avoiding screen edges
+  var left = nodeCenterX - menuW / 2;
+  var top = nodeCenterY + 24; // a bit below the node
   if (left < 4) left = 4;
   if (left + menuW > window.innerWidth - 4)
     left = window.innerWidth - menuW - 4;
-  if (top + menuH > window.innerHeight - 4) top = y - menuH - 15;
+  if (top + menuH > window.innerHeight - 4) top = nodeCenterY - menuH - 10;
 
   $contextMenu.style.left = left + "px";
   $contextMenu.style.top = top + "px";
+  $contextMenu.style.opacity = "1";
 
   // button styles
   var buttons = $contextMenu.querySelectorAll("button");
@@ -392,7 +398,9 @@ function showContextMenu(nodeEl, id) {
     buttons[i].style.cssText =
       "display:block;width:100%;background:transparent;border:none;" +
       "padding:6px 12px;text-align:left;color:inherit;cursor:pointer;" +
-      "font-family:inherit;font-size:0.75rem;";
+      "font-family:inherit;font-size:0.75rem;" +
+      "-webkit-tap-highlight-color:transparent;outline:none;";
+    // hover effect for desktop
     buttons[i].addEventListener("mouseenter", function () {
       this.style.background = "#222";
     });
@@ -401,7 +409,7 @@ function showContextMenu(nodeEl, id) {
     });
   }
 
-  // handle clicks on the menu buttons
+  // handle menu clicks
   $contextMenu.addEventListener("click", function (e) {
     e.stopPropagation();
     var action = e.target.getAttribute("data-action");
@@ -413,7 +421,10 @@ function showContextMenu(nodeEl, id) {
     closeContextMenu();
   });
 
-  document.body.appendChild($contextMenu);
+  // prevent touchstart from bubbling and closing the menu prematurely
+  $contextMenu.addEventListener("touchstart", function (e) {
+    e.stopPropagation();
+  });
 
   // tap outside to close
   setTimeout(function () {
@@ -429,7 +440,7 @@ function closeContextMenu() {
   }
 }
 
-/* --- event delegation for nodes (updated for mobile long press) --- */
+/* --- event delegation for nodes (mobile uses only touch events) --- */
 function setupNodeEvents() {
   $world.removeEventListener("click", onNodeClick);
   $world.removeEventListener("mouseenter", onNodeEnter, true);
@@ -438,21 +449,21 @@ function setupNodeEvents() {
   $world.removeEventListener("touchend", onNodeTouchEnd, true);
   $world.removeEventListener("touchmove", onNodeTouchMove, true);
 
-  $world.addEventListener("click", onNodeClick);
-  $world.addEventListener("mouseenter", onNodeEnter, true);
-  $world.addEventListener("mouseleave", onNodeLeave, true);
-
-  // mobile touch events only if touch device
-  if (isTouchDevice) {
+  // desktop only – click and hover
+  if (!isTouchDevice) {
+    $world.addEventListener("click", onNodeClick);
+    $world.addEventListener("mouseenter", onNodeEnter, true);
+    $world.addEventListener("mouseleave", onNodeLeave, true);
+  } else {
+    // mobile – only touch events
     $world.addEventListener("touchstart", onNodeTouchStart, true);
     $world.addEventListener("touchend", onNodeTouchEnd, true);
     $world.addEventListener("touchmove", onNodeTouchMove, true);
   }
 }
 
-/* --- click handler (now respects mobile context menu and lock taps) --- */
+/* --- desktop click handler (unchanged, works with shift keys) --- */
 function onNodeClick(e) {
-  // ignore if it was a right‑click or from the context menu
   if (e.button && e.button !== 0) return;
   if (e.target.closest(".node-ctx-menu")) return;
 
@@ -463,52 +474,16 @@ function onNodeClick(e) {
   var post = postMap[id];
   if (!post) return;
 
-  // if a long press just happened, ignore the click that follows
-  if (longPressFired) {
-    longPressFired = false;
-    e.preventDefault();
-    return;
-  }
-
-  // mobile lock interaction – tapping nodes while locked
-  if (isTouchDevice && lockNodeId) {
-    e.preventDefault();
-    if (id === lockNodeId) {
-      unlockFocus();
-      return;
-    }
-    if (lockMode === "cumulative") {
-      // toggle this node's connections
-      if (highlightedNodes.hasOwnProperty(id)) {
-        delete highlightedNodes[id];
-      } else {
-        highlightedNodes[id] = true;
-      }
-      refreshHighlights();
-    }
-    // strict mode – do nothing
-    return;
-  }
-
   // lock/unlock with shift / ctrl+shift (desktop only)
   if (e.shiftKey) {
     e.preventDefault();
-    var isCtrl = e.ctrlKey || e.metaKey; // works on mac too
-
+    var isCtrl = e.ctrlKey || e.metaKey;
     if (isCtrl) {
-      // ctrl+shift+click = strict mode
-      if (lockNodeId === id) {
-        unlockFocus();
-      } else {
-        lockFocus(id, "strict");
-      }
+      if (lockNodeId === id) unlockFocus();
+      else lockFocus(id, "strict");
     } else {
-      // shift+click = cumulative mode
-      if (lockNodeId === id) {
-        unlockFocus();
-      } else {
-        lockFocus(id, "cumulative");
-      }
+      if (lockNodeId === id) unlockFocus();
+      else lockFocus(id, "cumulative");
     }
     return;
   }
@@ -517,7 +492,7 @@ function onNodeClick(e) {
   if (post.href) window.location.href = post.href;
 }
 
-/* --- mobile touch events for long press – now highlights before menu --- */
+/* --- mobile touch events – long press, lock taps, and navigation --- */
 function onNodeTouchStart(e) {
   var nodeEl = e.target.closest(".map-node");
   if (!nodeEl || nodeEl.classList.contains("filter-hidden")) return;
@@ -526,18 +501,16 @@ function onNodeTouchStart(e) {
   longPressNode = nodeEl;
   var id = nodeEl.dataset.id;
 
-  // start a timer for long press
+  // start timer for long press
   longPressTimer = setTimeout(function () {
     if (longPressNode === nodeEl) {
       longPressFired = true;
-      // highlight this node's connections (like desktop hover)
-      highlightConns(id);
-      showContextMenu(nodeEl, id);
+      highlightConns(id); // show connections
+      showContextMenu(nodeEl, id); // show lock options
     }
     longPressTimer = null;
   }, 500);
 
-  // store touch start position to detect movement
   nodeEl._touchStartX = touch.clientX;
   nodeEl._touchStartY = touch.clientY;
 }
@@ -548,19 +521,55 @@ function onNodeTouchMove(e) {
   var nodeEl = longPressNode;
   var dx = touch.clientX - nodeEl._touchStartX;
   var dy = touch.clientY - nodeEl._touchStartY;
-  // cancel if moved more than 10px
   if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
     clearTimeout(longPressTimer);
     longPressTimer = null;
     longPressNode = null;
+    // reset connection highlight if it was a long press that got cancelled
+    resetConns();
   }
 }
 
 function onNodeTouchEnd(e) {
+  if (!longPressNode) return;
+
+  var nodeEl = longPressNode;
+  var id = nodeEl.dataset.id;
+
+  // short tap – timer still running
   if (longPressTimer) {
     clearTimeout(longPressTimer);
     longPressTimer = null;
+
+    // if we are locked, handle lock toggles
+    if (lockNodeId) {
+      e.preventDefault(); // no navigation
+      if (id === lockNodeId) {
+        unlockFocus();
+      } else if (lockMode === "cumulative") {
+        // toggle this node's connections
+        if (highlightedNodes.hasOwnProperty(id)) {
+          delete highlightedNodes[id];
+        } else {
+          highlightedNodes[id] = true;
+        }
+        refreshHighlights();
+      }
+      // strict mode does nothing
+    } else {
+      // normal tap – open the post
+      e.preventDefault(); // prevent the click that won't happen anyway
+      var post = postMap[id];
+      if (post && post.href) {
+        window.location.href = post.href;
+      }
+    }
+  } else {
+    // long press already fired, reset the fired flag after a short delay
+    // so that the next click won't be eaten (but there is no click anyway)
+    longPressFired = false;
   }
+
   longPressNode = null;
 }
 
@@ -574,14 +583,11 @@ function onNodeEnter(e) {
   showTip(post, e.clientX, e.clientY);
 
   if (lockNodeId) {
-    // cumulative mode: add hovered node's connections too
     if (lockMode === "cumulative" && id !== lockNodeId) {
       highlightedNodes[id] = true;
       refreshHighlights();
     }
-    // strict mode: don't touch the highlights
   } else {
-    // normal hover just highlights that one node
     highlightConns(id);
   }
 }
@@ -594,12 +600,10 @@ function onNodeLeave(e) {
   hideTip();
 
   if (lockNodeId) {
-    // cumulative mode: remove the hovered node from the set
     if (lockMode === "cumulative" && id !== lockNodeId) {
       delete highlightedNodes[id];
       refreshHighlights();
     }
-    // strict mode: still nothing
   } else {
     resetConns();
   }
@@ -614,14 +618,10 @@ document.addEventListener("keydown", function (e) {
 });
 
 $viewport.addEventListener("click", function (e) {
-  // ignore clicks from the context menu – they shouldn't trigger unlock
   if (e.target.closest(".node-ctx-menu")) return;
-
-  // close the context menu if tapping outside
   if ($contextMenu && !e.target.closest(".node-ctx-menu")) {
     closeContextMenu();
   }
-  // unlock on empty space (but not when menu was just closed)
   if (
     !e.target.closest(".map-node") &&
     !e.target.closest(".node-ctx-menu") &&
@@ -649,7 +649,6 @@ function runLayout() {
     }
   });
 
-  // fewer iterations on mobile – still looks okay, much faster
   var maxIter = isTouchDevice ? 60 : 200;
 
   for (var iter = 0; iter < maxIter; iter++) {
@@ -816,7 +815,6 @@ function useData(data) {
   var allNodes = data.nodes || [];
   var allLinks = data.connections || data.links || [];
 
-  // filter out nodes hidden on map
   nodes = allNodes.filter(function (n) {
     return !n.hideOnMap;
   });
@@ -826,12 +824,10 @@ function useData(data) {
     postMap[p.id] = p;
   });
 
-  // filter links so only existing nodes remain
   links = allLinks.filter(function (l) {
     return postMap[l.source] && postMap[l.target];
   });
 
-  // update filter badge counts
   var types = { post: 0, story: 0, dreg: 0 };
   nodes.forEach(function (n) {
     if (types[n.type] !== undefined) types[n.type]++;
@@ -844,7 +840,6 @@ function useData(data) {
   });
 
   var n = nodes.length || 1;
-  // initial world size – smaller on mobile to help the layout engine
   if (isTouchDevice) {
     worldW = Math.max(600, n * 80);
     worldH = Math.max(400, n * 60);
