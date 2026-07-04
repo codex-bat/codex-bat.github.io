@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex.bat — map</title>
+    <meta name="description" content="A connection map of every post, story, and dreg on Codex.bat." />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+
+    <link rel="stylesheet" href="assets/css/universal-not-pictures.css" />
+    <link rel="stylesheet" href="assets/css/map.css" />
+</head>
+
+<body class="map-page">
+
+    <!-- top bar with the brand and nav -->
+    <header id="map-topbar">
+        <div class="map-brand">
+            <span class="map-brand-name"><a href="/">Codex.bat</a></span>
+            <span class="map-brand-sep">·</span>
+            <span class="map-brand-sub">map</span>
+        </div>
+
+        <nav class="map-nav">
+            <a href="/">home</a>
+            <a href="/codex.bat">about me</a>
+            <a href="/map" class="nav-current">map</a>
+        </nav>
+
+        <div class="map-legend">
+            <span class="leg-item"><span class="leg-dot ld-post"></span>post</span>
+            <span class="leg-item"><span class="leg-dot ld-story"></span>story</span>
+            <span class="leg-item"><span class="leg-dot ld-dreg"></span>dreg</span>
+        </div>
+    </header>
+
+    <!-- the big zoomable pannable map area -->
+    <div id="map-viewport">
+        <div id="map-world">
+            <svg id="world-svg" width="3600" height="2400" viewBox="0 0 3600 2400" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <defs>
+                    <pattern id="dot-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                        <circle cx="0" cy="0" r="1.1" fill="rgba(255,255,255,0.055)" />
+                    </pattern>
+                    <filter id="bloom" x="-150%" y="-150%" width="400%" height="400%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <rect width="3600" height="2400" fill="#000" />
+                <rect width="3600" height="2400" fill="url(#dot-grid)" />
+                <rect x="1" y="1" width="3598" height="2398" fill="none" stroke="rgba(255,255,255,0.045)"
+                    stroke-width="1.2" stroke-dasharray="6 16" />
+                <g id="connections-group"></g>
+            </svg>
+        </div><!-- /map-world -->
+    </div><!-- /map-viewport -->
+
+    <!-- slidey filter panel on the right -->
+    <div id="filter-panel">
+        <div class="panel-header">
+            <h4>Categories</h4>
+            <button class="panel-close" aria-label="Close filter panel">✕</button>
+        </div>
+        <div class="panel-body">
+            <div class="filter-group">
+                <label data-type="post">
+                    <input type="checkbox" data-type="post" checked>
+                    <span class="color-swatch" style="background:#7f9eff;"></span>
+                    <span class="label-text">Posts</span>
+                    <span class="count-badge">12</span>
+                </label>
+                <label data-type="story">
+                    <input type="checkbox" data-type="story" checked>
+                    <span class="color-swatch" style="background:#ffb36b;"></span>
+                    <span class="label-text">Stories</span>
+                    <span class="count-badge">7</span>
+                </label>
+                <label data-type="dreg">
+                    <input type="checkbox" data-type="dreg" checked>
+                    <span class="color-swatch" style="background:#6c6f78;"></span>
+                    <span class="label-text">Dregs</span>
+                    <span class="count-badge">4</span>
+                </label>
+            </div>
+            <div class="panel-divider"></div>
+            <button class="reset-filters-btn" id="reset-filters">Reset all</button>
+        </div>
+    </div>
+
+    <!-- the little tab you click to slide the panel open -->
+    <div id="filter-handle" role="button" aria-label="Toggle categories">
+        <span class="handle-icon">☰</span>
+        <span class="handle-label">Filter</span>
+    </div>
+
+    <!-- tooltip that follows your mouse around -->
+    <div id="node-tip" role="tooltip" aria-live="polite"></div>
+
+    <!-- bottom HUD with hints and zoom buttons -->
+    <div id="map-hud">
+        <span id="map-hint">drag to pan · scroll to zoom · click a node to open</span>
+        <div id="zoom-bar">
+            <button class="zoom-btn" id="btn-zoom-out" title="Zoom out">−</button>
+            <span id="zoom-pct">68%</span>
+            <button class="zoom-btn" id="btn-zoom-in" title="Zoom in">+</button>
+            <button class="zoom-btn zoom-fit-btn" id="btn-fit" title="Fit all nodes">fit</button>
+        </div>
+    </div>
+
+    <!-- load scripts in order: data, interaction, builder -->
+    <script src="config/map-data.js"></script>
+    <script src="assets/scripts/map-interaction.js"></script>
+    <script src="assets/scripts/map-builder.js"></script>
+</body>
+
+</html>
