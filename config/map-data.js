@@ -259,6 +259,13 @@ window.__MAP_DATA = {
       href: "dreg/tnr",
       type: "dreg",
     },
+    {
+      id: "chemicals",
+      title: "chemicals",
+      date: "Jul 6, 2026",
+      href: "dreg/chemicals",
+      type: "dreg",
+    },
   ],
 
   connections: [
