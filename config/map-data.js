@@ -273,6 +273,13 @@ window.__MAP_DATA = {
       href: "post/me-nothing",
       type: "post",
     },
+    {
+      id: "untitled",
+      title: "untitled",
+      date: "Jul 6, 2026",
+      href: "story/untitled",
+      type: "story",
+    },
   ],
 
   connections: [
