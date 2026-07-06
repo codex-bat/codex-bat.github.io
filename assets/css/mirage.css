@@ -1,0 +1,513 @@
+/* ============================================================
+   Mirage – A unified desert-night palette for code & prose
+   ============================================================ */
+
+:root {
+    /* mirage core: the distant blue oasis */
+    --accent: #7f9eff;
+    /* heat‑haze grey */
+    --dim: #6c6f78;
+    /* sunlight on sand */
+    --text: #ddd;
+    /* secondary text – old parchment */
+    --text-secondary: #9a9a9a;
+    /* sun‑scorched warning */
+    --error: #ff5c5c;
+    /* deep desert night */
+    --bg-deep: #050508;
+    /* sand‑worn card */
+    --bg-card: #0f0f14;
+    /* card hover – cooler shade of illusion */
+    --bg-card-hover: #16161d;
+    /* dry riverbed border */
+    --border: #2a2a3a;
+    /* shimmer border on hover */
+    --border-hover: #4a4a5a;
+    /* shadow under a dune (inline code) */
+    --code-bg: #111118;
+    /* code border – mirage edge */
+    --code-border: #2a2a3a;
+    /* codeblock surface – deep desert with violet mirage */
+    --codeblock-bg: #16161d;
+    /* codeblock label – dry air */
+    --codeblock-label: #a6adc8;
+    /* codeline hover – a faint oasis reflection */
+    --codeline-hover: rgba(255, 255, 255, 0.05);
+    /* subtle zebra striping – heat distortion */
+    --codeline-stripe: rgba(255, 255, 255, 0.02);
+}
+
+/* --------------------------------------------------------------------------
+   Global reset & base mirage
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-gutter: stable;
+    /* stable horizon */
+}
+
+body {
+    background: var(--bg-deep);
+    /* endless desert night */
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+    overflow-y: auto;
+    padding: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #f5f5f5 var(--bg-deep);
+}
+
+/* Mirage scrollbar: a phantom track under the blazing sun */
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%, #f2f2f2 35%, #d0d0d0 70%, #a8a8a8 100%);
+    border: 2px solid var(--bg-deep);
+    border-radius: 999px;
+    min-height: 26px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.10);
+    /* mirage glow */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: radial-gradient(circle at 35% 35%,
+            #ffffff 0%, #ffffff 28%, #e7e7e7 68%, #bebebe 100%);
+}
+
+body::-webkit-scrollbar-corner {
+    background: var(--bg-deep);
+}
+
+/* Container – centered like a mirage always ahead */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Typography & text mirages
+   -------------------------------------------------------------------------- */
+header {
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    /* blinding overhead sun */
+    margin: 0;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Inline code – tiny mirage fragments */
+code:not(pre code) {
+    background: var(--code-bg);
+    color: #c3cae0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    border: 1px solid var(--code-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+}
+
+code:not(pre code):hover {
+    background: var(--bg-card-hover);
+    border-color: #90a2da;
+    /* oasis edge */
+    color: #90a2da;
+    box-shadow: 0 0 4px #14161f66;
+}
+
+/* --------------------------------------------------------------------------
+   Post container – the Discord‑like mirage oasis
+   -------------------------------------------------------------------------- */
+.content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    /* soft mirage bubble */
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+    border-left: 3px solid var(--accent);
+    /* trail of mirage blue */
+    padding-left: 0.5rem;
+}
+
+.post-content p,
+.post-content li {
+    color: var(--text);
+}
+
+.post-content a {
+    color: #00aff4;
+    /* tempting water */
+}
+
+.post-content a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Traditional <pre> inside post – keeps its own desert‑rock look */
+.post-content pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    overflow-x: auto;
+}
+
+.post-content hr {
+    margin: 2rem 0;
+    border-color: #40444b;
+    /* sand‑worn line */
+}
+
+.post-content .dim {
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   AI‑esque Codeblock & Codeline – Mirage of Logic
+   -------------------------------------------------------------------------- */
+
+/* The codeblock: a hallucination of pristine logic in the desert */
+.codeblock {
+    background: var(--codeblock-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+/* Mirage label – the faint “Code” shimmer */
+.codeblock::before {
+    content: "> Code";
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--codeblock-label);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+}
+
+/* Each codeline: a separate mirage strand */
+.codeline {
+    margin: 0;
+    padding: 0.15rem 0.5rem;
+    white-space: pre-wrap;
+    /* preserves the illusion of structure */
+    line-height: 1.5;
+    border-left: 2px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+    font-size: 0.9rem;
+}
+
+/* Zebra striping – subtle heat distortions */
+.codeline:nth-child(even) {
+    background: var(--codeline-stripe);
+}
+
+/* Hover – the line briefly becomes an oasis reflection */
+.codeline:hover {
+    background: var(--codeline-hover);
+    border-left-color: #89b4fa;
+    /* pure mirage water */
+}
+
+/* --------------------------------------------------------------------------
+   Headings, blockquotes, lists – mirage‑touched
+   -------------------------------------------------------------------------- */
+h2 {
+    border-left: 5px solid var(--accent);
+    padding-left: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.7rem;
+    color: #f0f0f0;
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #ccc;
+}
+
+ul,
+ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--dim);
+    margin: 3rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Utility classes & interactive mirages
+   -------------------------------------------------------------------------- */
+.b {
+    font-weight: bold;
+}
+
+.bi {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.i {
+    font-style: italic;
+}
+
+.u {
+    text-decoration: underline;
+}
+
+.s {
+    text-decoration: line-through;
+    color: var(--dim);
+}
+
+a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration-thickness: 0.2em;
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent);
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.danger {
+    color: var(--error);
+}
+
+.dim {
+    color: var(--dim);
+}
+
+/* Redacted effect – a mirage hidden until you thirst for it */
+.redacted {
+    background: #1e1b1b;
+    color: transparent;
+    text-shadow: none;
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    user-select: none;
+    display: inline-block;
+    cursor: help;
+    transition: 0.1s linear;
+}
+
+.redacted:hover {
+    background: var(--bg-card-hover);
+    color: #90a2da;
+}
+
+/* Centered titles – mirage banners */
+.centered-title {
+    text-align: center;
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    margin: 1.8rem 0 1rem 0;
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    background: transparent;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    word-break: keep-all;
+    display: block;
+    width: 100%;
+    clear: both;
+    transition: all 0.2s ease;
+}
+
+.centered-title:hover {
+    text-shadow: 0 0 6px rgba(127, 158, 255, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.centered-title.small {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+/* Hidden message – mirage that appears on click */
+.hidden-reveal {
+    display: none;
+}
+
+.hidden-reveal.active {
+    display: inline;
+    color: inherit;
+    font-weight: inherit;
+}
+
+.dots-toggle {
+    display: inline;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 0.85em;
+    letter-spacing: -0.5px;
+    background: transparent;
+    transition: background 0.15s;
+    user-select: none;
+}
+
+.dots-toggle:hover {
+    background: #1a1a1a;
+}
+
+.dots-toggle:active {
+    background: #222;
+}
+
+.dots-toggle.revealed {
+    cursor: default;
+    color: inherit;
+    background: transparent;
+    font-size: inherit;
+    letter-spacing: inherit;
+    user-select: text;
+}
+
+/* Back‑to‑top button – a mirage that pulls you upward */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+        opacity: 0.1;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Footer – mirage fades into the night
+   -------------------------------------------------------------------------- */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #555;
+    font-size: 0.7rem;
+    border-top: 1px dashed var(--border);
+    padding-top: 1rem;
+}
