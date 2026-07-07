@@ -280,6 +280,20 @@ window.__MAP_DATA = {
       href: "story/untitled",
       type: "story",
     },
+    {
+      id: "writeflow",
+      title: "writeflow",
+      date: "Jul 8, 2026",
+      href: "dreg/writeflow",
+      type: "dreg",
+    },
+    {
+      id: "leveler",
+      title: "Leveler",
+      date: "Jul 8, 2026",
+      href: "story/Leveler",
+      type: "story",
+    },
   ],
 
   connections: [
