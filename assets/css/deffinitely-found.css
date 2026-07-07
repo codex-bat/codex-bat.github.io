@@ -215,3 +215,69 @@ footer {
     user-select: none;
     pointer-events: none;
 }
+
+/* ── cheat toast (no blur) ── */
+.cheat-toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem);
+    background: #0c0c0c;
+    color: #ddd;
+    border: 1px solid #2a2a2a;
+    border-left: 4px solid #ff5c5c;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    /* only a crisp drop shadow, no blur */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+}
+
+.cheat-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+    /* slightly deeper, still no blur */
+}
+
+/* highlight – no glow, just solid red */
+.cheat-toast .cheat-highlight,
+.cheat-toast .hl {
+    color: #ff5c5c;
+    font-weight: bold;
+}
+
+/* no text-shadow anywhere */
+.cheat-toast,
+.cheat-toast .cheat-highlight,
+.cheat-toast .hl {
+    text-shadow: none;
+}
+
+.cheat-toast .dim {
+    color: #6c6f78;
+}
+
+.cheat-toast .toast-symbol {
+    color: #ff5c5c;
+    margin-right: 0.4rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+    .cheat-toast {
+        white-space: normal;
+        max-width: 90vw;
+        padding: 0.5rem 1rem;
+        font-size: 0.78rem;
+        border-left-width: 3px;
+    }
+}
