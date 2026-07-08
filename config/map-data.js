@@ -294,6 +294,13 @@ window.__MAP_DATA = {
       href: "story/Leveler",
       type: "story",
     },
+    {
+      id: "familiar-warmth",
+      title: "familiar warmth",
+      date: "Jul 8, 2026",
+      href: "story/familiar-warmth",
+      type: "story",
+    },
   ],
 
   connections: [
