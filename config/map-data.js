@@ -301,6 +301,13 @@ window.__MAP_DATA = {
       href: "story/Leveler",
       type: "story",
     },
+    {
+      id: "waste",
+      title: "waste",
+      date: "Jul 9, 2026",
+      href: "post/waste",
+      type: "post",
+    },
   ],
 
   connections: [
