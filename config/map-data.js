@@ -308,6 +308,13 @@ window.__MAP_DATA = {
       href: "post/waste",
       type: "post",
     },
+    {
+      id: "public",
+      title: "public",
+      date: "Jul 9, 2026",
+      href: "dreg/public",
+      type: "dreg",
+    },
   ],
 
   connections: [
