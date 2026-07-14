@@ -336,7 +336,6 @@ window.__MAP_DATA = {
       date: "Jul 14, 2026",
       href: "story/piercer",
       type: "story",
-      hideOnHome: true,
     },
   ],
 
