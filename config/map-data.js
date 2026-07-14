@@ -330,6 +330,14 @@ window.__MAP_DATA = {
       type: "story",
       hideOnHome: true,
     },
+    {
+      id: "piercer",
+      title: "Piercer",
+      date: "Jul 14, 2026",
+      href: "story/piercer",
+      type: "story",
+      hideOnHome: true,
+    },
   ],
 
   connections: [
@@ -407,5 +415,6 @@ window.__MAP_DATA = {
     { source: "public", target: "waste" },
     { source: "heart-to-core", target: "untitled" },
     { source: "redngreen", target: "today" },
+    { source: "piercer", target: "leveler" },
   ],
 };
