@@ -334,7 +334,7 @@ window.__MAP_DATA = {
       id: "piercer",
       title: "Piercer",
       date: "Jul 14, 2026",
-      href: "story/piercer",
+      href: "story/Piercer",
       type: "story",
     },
   ],
