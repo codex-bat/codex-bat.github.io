@@ -337,6 +337,13 @@ window.__MAP_DATA = {
       href: "story/Piercer",
       type: "story",
     },
+    {
+      id: "project-umbra",
+      title: "project umbra",
+      date: "Jul 14, 2026",
+      href: "post/project-umbra",
+      type: "post",
+    },
   ],
 
   connections: [
@@ -415,5 +422,9 @@ window.__MAP_DATA = {
     { source: "heart-to-core", target: "untitled" },
     { source: "redngreen", target: "today" },
     { source: "piercer", target: "leveler" },
+    { source: "project-umbra", target: "second-thoughts" },
+    { source: "project-umbra", target: "servility" },
+    { source: "project-umbra", target: "action-p1" },
+    { source: "project-umbra", target: "eye-collector" },
   ],
 };
