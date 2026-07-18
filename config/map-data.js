@@ -344,6 +344,13 @@ window.__MAP_DATA = {
       href: "post/project-umbra",
       type: "post",
     },
+    {
+      id: "exiler",
+      title: "exiler",
+      date: "Jul 18, 2026",
+      href: "post/exiler",
+      type: "post",
+    },
   ],
 
   connections: [
