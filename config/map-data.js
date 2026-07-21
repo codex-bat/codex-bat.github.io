@@ -351,6 +351,20 @@ window.__MAP_DATA = {
       href: "post/exiler",
       type: "post",
     },
+    {
+      id: "policy",
+      title: "policy",
+      date: "Jul 22, 2026",
+      href: "post/policy",
+      type: "post",
+    },
+    {
+      id: "reality-question",
+      title: "reality?",
+      date: "Jul 22, 2026",
+      href: "dreg/reality-question",
+      type: "dreg",
+    },
   ],
 
   connections: [
