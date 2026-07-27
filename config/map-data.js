@@ -373,6 +373,13 @@ window.__MAP_DATA = {
       href: "dreg/what-is",
       type: "dreg",
     },
+    {
+      id: "smoker",
+      title: "smoker",
+      date: "Jul 27, 2026",
+      href: "post/smoker",
+      type: "post",
+    },
   ],
 
   connections: [
