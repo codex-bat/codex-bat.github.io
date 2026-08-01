@@ -380,6 +380,13 @@ window.__MAP_DATA = {
       href: "post/smoker",
       type: "post",
     },
+    {
+      id: "ltt",
+      title: "lesson to teach",
+      date: "Aug 1, 2026",
+      href: "dreg/ltt",
+      type: "dreg",
+    },
   ],
 
   connections: [
