@@ -387,6 +387,13 @@ window.__MAP_DATA = {
       href: "dreg/ltt",
       type: "dreg",
     },
+    {
+      id: "trivia",
+      title: "trivia",
+      date: "Aug 8, 2026",
+      href: "post/trivia",
+      type: "post",
+    },
   ],
 
   connections: [
