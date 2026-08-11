@@ -394,6 +394,13 @@ window.__MAP_DATA = {
       href: "post/trivia",
       type: "post",
     },
+    {
+      id: "HTML",
+      title: "HTML",
+      date: "Aug 11, 2026",
+      href: "story/HTML",
+      type: "story",
+    },
   ],
 
   connections: [
