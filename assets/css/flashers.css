@@ -1,0 +1,218 @@
+/* ---- flash overlay – raw, blocky, less polished ---- */
+#flash-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.85);
+    /* solid dark overlay, no blur */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    font-family: 'Courier New', monospace;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+#flash-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---- popup card – blocky, raw, minimal ---- */
+#flash-popup {
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    /* thicker, no rounding */
+    border-radius: 0;
+    /* square corners */
+    max-width: 480px;
+    width: 100%;
+    padding: 2rem 2rem 1.8rem;
+    box-shadow: none;
+    /* no shadow, raw */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    box-sizing: border-box;
+    color: #ddd;
+    position: relative;
+}
+
+#flash-overlay.show #flash-popup {
+    opacity: 1;
+    /* no transform, no fancy border/shadow */
+    border-color: #2a2a2a;
+    /* keep same border, no glow */
+}
+
+/* ---- popup header / icon ---- */
+#flash-popup .popup-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    display: block;
+    color: #7f9eff;
+    /* accent instead of orange */
+    text-align: center;
+}
+
+#flash-popup .popup-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0.4rem 0 0.6rem 0;
+    text-align: center;
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+#flash-popup .popup-title .accent {
+    color: #7f9eff;
+}
+
+#flash-popup .popup-message {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0 0 1.6rem 0;
+    text-align: center;
+    padding: 0 0.2rem;
+}
+
+#flash-popup .popup-message .flash-emoji {
+    display: inline-block;
+    /* no animation – raw */
+}
+
+#flash-popup .popup-message .target-url {
+    display: inline-block;
+    background: #111;
+    padding: 0.15rem 0.6rem;
+    border-radius: 0;
+    /* square */
+    font-size: 0.8rem;
+    color: #7f9eff;
+    border: 1px solid #2a2a2a;
+    /* match raw border */
+    margin: 0.2rem 0;
+    word-break: break-all;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ---- button row – blocky, raw ---- */
+#flash-popup .popup-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+#flash-popup .popup-actions button {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.8rem;
+    border-radius: 0;
+    /* no rounding */
+    border: 1px solid #2a2a2a;
+    background: transparent;
+    color: #ddd;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    min-width: 110px;
+    text-align: center;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+#flash-popup .popup-actions button:hover {
+    background: #1a1a1a;
+    border-color: #444;
+}
+
+#flash-popup .popup-actions button:active {
+    transform: scale(0.97);
+}
+
+/* accept: raw accent border, no solid fill */
+#flash-popup .popup-actions .btn-accept {
+    background: transparent;
+    border-color: #7f9eff;
+    color: #7f9eff;
+}
+
+#flash-popup .popup-actions .btn-accept:hover {
+    background: #1a1a1a;
+    border-color: #90a2da;
+    color: #90a2da;
+    box-shadow: none;
+    /* no glow */
+}
+
+/* deny: same as default but dimmer */
+#flash-popup .popup-actions .btn-deny {
+    background: transparent;
+    border-color: #3a3a3a;
+    color: #999;
+}
+
+#flash-popup .popup-actions .btn-deny:hover {
+    background: #1a1a1a;
+    border-color: #555;
+    color: #ddd;
+}
+
+/* ---- close button – raw ---- */
+#flash-popup .popup-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0;
+    /* square */
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+#flash-popup .popup-close:hover {
+    color: #aaa;
+}
+
+/* ---- small screen tweaks (keep raw) ---- */
+@media (max-width: 520px) {
+    #flash-popup {
+        padding: 1.5rem 1.2rem 1.4rem;
+    }
+
+    #flash-popup .popup-title {
+        font-size: 1.1rem;
+    }
+
+    #flash-popup .popup-message {
+        font-size: 0.85rem;
+    }
+
+    #flash-popup .popup-actions button {
+        font-size: 0.8rem;
+        padding: 0.5rem 1.2rem;
+        min-width: 90px;
+    }
+
+    #flash-popup .popup-actions {
+        gap: 0.5rem;
+    }
+}
