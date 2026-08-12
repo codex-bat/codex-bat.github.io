@@ -1,6 +1,6 @@
 // remember:
-// hideOnHome: true  
-// hideOnMap: true   
+// hideOnHome: true
+// hideOnMap: true
 
 window.__MAP_DATA = {
   nodes: [
@@ -400,6 +400,13 @@ window.__MAP_DATA = {
       date: "Aug 11, 2026",
       href: "story/HTML",
       type: "story",
+    },
+    {
+      id: "d300",
+      title: "d300",
+      date: "Aug 12, 2026",
+      href: "dreg/d300",
+      type: "dreg",
     },
   ],
 
