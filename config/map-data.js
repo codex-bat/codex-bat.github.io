@@ -408,6 +408,13 @@ window.__MAP_DATA = {
       href: "dreg/d300",
       type: "dreg",
     },
+    {
+      id: "news-to-him",
+      title: "'news to me'",
+      date: "Aug 18, 2026",
+      href: "dreg/news-to-him",
+      type: "dreg",
+    },
   ],
 
   connections: [
