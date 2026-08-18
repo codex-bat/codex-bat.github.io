@@ -415,6 +415,13 @@ window.__MAP_DATA = {
       href: "dreg/news-to-him",
       type: "dreg",
     },
+    {
+      id: "forsakennes",
+      title: "forsakennes",
+      date: "Aug 18, 2026",
+      href: "post/forsakennes",
+      type: "post",
+    },
   ],
 
   connections: [
