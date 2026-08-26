@@ -422,6 +422,13 @@ window.__MAP_DATA = {
       href: "post/forsakennes",
       type: "post",
     },
+    {
+      id: "popcorn",
+      title: "popcorn",
+      date: "Aug 26, 2026",
+      href: "dreg/popcorn",
+      type: "dreg",
+    },
   ],
 
   connections: [
