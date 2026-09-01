@@ -429,6 +429,13 @@ window.__MAP_DATA = {
       href: "dreg/popcorn",
       type: "dreg",
     },
+    {
+      id: "Verschlimmbesserung",
+      title: "Verschlimmbesserung",
+      date: "Sep 1, 2026",
+      href: "story/Verschlimmbesserung",
+      type: "story",
+    },
   ],
 
   connections: [
