@@ -444,10 +444,10 @@ window.__MAP_DATA = {
       type: "dreg",
     },
     {
-      id: "78times",
+      id: "seventyeighttimes",
       title: "78times",
       date: "Sep 4, 2026",
-      href: "dreg/78times",
+      href: "dreg/seventyeighttimes",
       type: "dreg",
     },
   ],
