@@ -443,6 +443,13 @@ window.__MAP_DATA = {
       href: "dreg/got-stuff",
       type: "dreg",
     },
+    {
+      id: "78times",
+      title: "78times",
+      date: "Sep 4, 2026",
+      href: "dreg/78times",
+      type: "dreg",
+    },
   ],
 
   connections: [
