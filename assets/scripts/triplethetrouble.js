@@ -15,7 +15,7 @@ function replaceDashes(container, options) {
   const opts = Object.assign(
     {
       tripleDashToEmDash: true,
-      doubleDashToEnDash: true,
+      doubleDashToEnDash: false,   // <-- disabled by default (only em‑dashes are touched)
     },
     options || {},
   );
@@ -71,13 +71,14 @@ function replaceDashes(container, options) {
     // order matters: triple first, then double.
     // I messed this up at first
     if (opts.tripleDashToEmDash) {
-      const result = replacePattern(text, /(\s*)-(\s*)-(\s*)-(\s*)/g, "—");
-      text = result.text;
-      anyChange = anyChange || result.changed;
+      // Only match --- when NOT surrounded by whitespace (non‑AP style)
+      const before = text;
+      text = text.replace(/(?<!\s)---(?!\s)/g, "—");
+      if (text !== before) anyChange = true;
     }
 
     if (opts.doubleDashToEnDash) {
-      const result = replacePattern(text, /(\s*)-(\s*)-(\s*)/g, "–");
+      const result = replacePattern(text, /(\s*)--(\s*)/g, "–");
       text = result.text;
       anyChange = anyChange || result.changed;
     }
