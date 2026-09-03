@@ -436,6 +436,13 @@ window.__MAP_DATA = {
       href: "story/Verschlimmbesserung",
       type: "story",
     },
+    {
+      id: "got-stuff",
+      title: "got stuff",
+      date: "Sep 3, 2026",
+      href: "dreg/got-stuff",
+      type: "dreg",
+    },
   ],
 
   connections: [
