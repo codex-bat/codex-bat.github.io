@@ -71,13 +71,13 @@ function replaceDashes(container, options) {
     // order matters: triple first, then double.
     // I messed this up at first
     if (opts.tripleDashToEmDash) {
-      const result = replacePattern(text, /(\s*)-\s*-\s*-(\s*)/g, "—");
+      const result = replacePattern(text, /(\s*)---(\s*)/g, "—");
       text = result.text;
       anyChange = anyChange || result.changed;
     }
 
     if (opts.doubleDashToEnDash) {
-      const result = replacePattern(text, /(\s*)-\s*-(\s*)/g, "–");
+      const result = replacePattern(text, /(\s*)--(\s*)/g, "–");
       text = result.text;
       anyChange = anyChange || result.changed;
     }
