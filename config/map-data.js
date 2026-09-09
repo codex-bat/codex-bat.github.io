@@ -450,6 +450,13 @@ window.__MAP_DATA = {
       href: "dreg/seventyeighttimes",
       type: "dreg",
     },
+    {
+      id: "romance",
+      title: "romance",
+      date: "Sep 9, 2026",
+      href: "post/romance",
+      type: "post",
+    },
   ],
 
   connections: [
