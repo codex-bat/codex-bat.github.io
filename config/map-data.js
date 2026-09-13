@@ -457,11 +457,18 @@ window.__MAP_DATA = {
       href: "post/romance",
       type: "post",
     },
-     {
+    {
       id: "vigil-euthanasia",
       title: "vigil euthanasia",
       date: "Sep 13, 2026",
       href: "dreg/vigil-euthanasia",
+      type: "dreg",
+    },
+    {
+      id: "droptheball",
+      title: "titlebad",
+      date: "Sep 13, 2026",
+      href: "dreg/droptheball",
       type: "dreg",
     },
   ],
