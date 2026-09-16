@@ -471,6 +471,13 @@ window.__MAP_DATA = {
       href: "dreg/vigil-euthanasia",
       type: "dreg",
     },
+    {
+      id: "manualProfiling",
+      title: "manualProfiling",
+      date: "Sep 16, 2026",
+      href: "dreg/manualProfiling",
+      type: "dreg",
+    },
   ],
 
   connections: [
