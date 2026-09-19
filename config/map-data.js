@@ -478,6 +478,13 @@ window.__MAP_DATA = {
       href: "dreg/manualProfiling",
       type: "dreg",
     },
+    {
+      id: "supsys",
+      title: "supsys",
+      date: "Sep 19, 2026",
+      href: "post/supsys",
+      type: "post",
+    },
   ],
 
   connections: [
