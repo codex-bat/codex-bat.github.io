@@ -485,6 +485,13 @@ window.__MAP_DATA = {
       href: "post/supsys",
       type: "post",
     },
+    {
+      id: "lsp",
+      title: "lsp",
+      date: "Sep 21, 2026",
+      href: "post/lsp",
+      type: "post",
+    },
   ],
 
   connections: [
