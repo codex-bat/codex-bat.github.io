@@ -492,6 +492,13 @@ window.__MAP_DATA = {
       href: "post/lsp",
       type: "post",
     },
+    {
+      id: "preventative-loaf-sovereignty",
+      title: "preventative loaf sovereignty",
+      date: "Sep 24, 2026",
+      href: "post/preventative-loaf-sovereignty",
+      type: "post",
+    },
   ],
 
   connections: [
