@@ -499,6 +499,15 @@ window.__MAP_DATA = {
       href: "post/preventative-loaf-sovereignty",
       type: "post",
     },
+    {
+      id: "valient",
+      title: "valient",
+      date: "Sep 24, 2026",
+      href: "post/valient",
+      type: "post",
+      hideOnMap: true,
+      hideOnHome: true,
+    },
   ],
 
   connections: [
