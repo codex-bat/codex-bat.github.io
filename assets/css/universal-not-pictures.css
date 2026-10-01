@@ -375,6 +375,150 @@
          border-color: #7f9eff;
      }
 
+     /* ---- audio player ---- */
+     .audio-player {
+         background: #0c0c0c;
+         border: 1px solid #2a2a2a;
+         border-radius: 8px;
+         padding: 1rem 1.2rem;
+         margin: 1.5rem 0;
+         transition: border-color 0.25s ease, box-shadow 0.25s ease;
+     }
+
+     .audio-player:hover {
+         border-color: var(--accent);
+         box-shadow: 0 0 12px rgba(127, 158, 255, 0.08);
+     }
+
+     .audio-label {
+         font-size: 0.8rem;
+         color: var(--dim);
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         margin-bottom: 0.75rem;
+         border-left: 3px solid var(--accent);
+         padding-left: 0.6rem;
+         font-family: 'Courier New', monospace;
+     }
+
+     .audio-player audio {
+         width: 100%;
+         display: block;
+         color-scheme: dark;
+         accent-color: var(--accent);
+         border-radius: 6px;
+         outline: none;
+         filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+     }
+
+     .audio-player audio:focus-visible {
+         outline: 2px solid var(--accent);
+         outline-offset: 2px;
+     }
+
+     /* ============================================================
+   CHROME / WEBKIT AUDIO TIMELINE STYLING
+   (non-standard, works in Blink & WebKit – Chrome, Edge, Safari)
+   ============================================================ */
+
+     /* panel background */
+     .audio-player audio::-webkit-media-controls-panel {
+         background: #0c0c0c;
+         border-radius: 6px;
+     }
+
+     /* timeline container – gives it a little breathing room */
+     .audio-player audio::-webkit-media-controls-timeline-container {
+         background: transparent;
+         padding: 0 6px;
+     }
+
+     /* the timeline element itself */
+     .audio-player audio::-webkit-media-controls-timeline {
+         background: #1a1a1a;
+         border-radius: 4px;
+         height: 6px;
+         margin: 0 8px;
+         /* the filled part is coloured by accent-color on the audio element */
+     }
+
+     /* --- track & thumb for the timeline slider --- */
+     .audio-player audio::-webkit-media-controls-timeline::-webkit-slider-runnable-track {
+         background: #1a1a1a;
+         height: 6px;
+         border-radius: 3px;
+         border: 1px solid #2a2a2a;
+     }
+
+     .audio-player audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         appearance: none;
+         width: 14px;
+         height: 14px;
+         border-radius: 50%;
+         background: var(--accent);
+         border: 2px solid #0c0c0c;
+         box-shadow: 0 0 6px rgba(127, 158, 255, 0.45);
+         margin-top: -5px;
+         /* centres thumb on the 6px track */
+         cursor: pointer;
+         transition: background 0.15s, box-shadow 0.15s;
+     }
+
+     .audio-player audio::-webkit-media-controls-timeline::-webkit-slider-thumb:hover {
+         background: #a0b8ff;
+         box-shadow: 0 0 10px rgba(127, 158, 255, 0.8);
+     }
+
+     /* --- current time / remaining time --- */
+     .audio-player audio::-webkit-media-controls-current-time-display,
+     .audio-player audio::-webkit-media-controls-time-remaining-display {
+         color: var(--accent);
+         font-family: 'Courier New', monospace;
+         font-size: 0.75rem;
+         text-shadow: 0 0 4px rgba(127, 158, 255, 0.35);
+     }
+
+     /* --- volume slider --- */
+     .audio-player audio::-webkit-media-controls-volume-slider {
+         background: #1a1a1a;
+         border-radius: 4px;
+         height: 6px;
+     }
+
+     .audio-player audio::-webkit-media-controls-volume-slider::-webkit-slider-runnable-track {
+         background: #1a1a1a;
+         height: 6px;
+         border-radius: 3px;
+         border: 1px solid #2a2a2a;
+     }
+
+     .audio-player audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         appearance: none;
+         width: 12px;
+         height: 12px;
+         border-radius: 50%;
+         background: var(--accent);
+         border: 2px solid #0c0c0c;
+         box-shadow: 0 0 4px rgba(127, 158, 255, 0.45);
+         margin-top: -4px;
+         cursor: pointer;
+     }
+
+     /* --- play / mute icons tint (optional) --- */
+     .audio-player audio::-webkit-media-controls-play-button,
+     .audio-player audio::-webkit-media-controls-mute-button {
+         filter: invert(0.75) sepia(1) saturate(5) hue-rotate(190deg);
+         opacity: 0.9;
+     }
+
+     .audio-player audio::-webkit-media-controls-play-button:hover,
+     .audio-player audio::-webkit-media-controls-mute-button:hover {
+         opacity: 1;
+         filter: invert(0.85) sepia(1) saturate(6) hue-rotate(190deg);
+     }
+
      @media (max-width: 768px) {
          .post-image-caption {
              max-width: 100%;
