@@ -508,6 +508,13 @@ window.__MAP_DATA = {
       hideOnMap: true,
       hideOnHome: true,
     },
+    {
+      id: "ehh",
+      title: "ehh",
+      date: "Oct 1, 2026",
+      href: "dreg/ehh",
+      type: "dreg",
+    },
   ],
 
   connections: [
