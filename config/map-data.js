@@ -515,6 +515,13 @@ window.__MAP_DATA = {
       href: "dreg/ehh",
       type: "dreg",
     },
+    {
+      id: "cold",
+      title: "cold",
+      date: "Oct 3, 2026",
+      href: "post/cold",
+      type: "post",
+    },
   ],
 
   connections: [
