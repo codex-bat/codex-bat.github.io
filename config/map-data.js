@@ -529,6 +529,13 @@ window.__MAP_DATA = {
       href: "story/spinning-world",
       type: "story",
     },
+    {
+      id: "6",
+      title: "6",
+      date: "Oct 6, 2026",
+      href: "dreg/6",
+      type: "dreg",
+    },
   ],
 
   connections: [
