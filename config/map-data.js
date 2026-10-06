@@ -522,6 +522,13 @@ window.__MAP_DATA = {
       href: "post/cold",
       type: "post",
     },
+    {
+      id: "spinning-world",
+      title: "spinning world",
+      date: "Oct 6, 2026",
+      href: "story/spinning-world",
+      type: "story",
+    },
   ],
 
   connections: [
