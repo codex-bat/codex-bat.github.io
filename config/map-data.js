@@ -536,6 +536,13 @@ window.__MAP_DATA = {
       href: "dreg/6",
       type: "dreg",
     },
+    {
+      id: "boundaries",
+      title: "boundaries",
+      date: "Oct 7, 2026",
+      href: "post/boundaries",
+      type: "post",
+    },
   ],
 
   connections: [
