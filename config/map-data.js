@@ -543,6 +543,13 @@ window.__MAP_DATA = {
       href: "post/boundaries",
       type: "post",
     },
+    {
+      id: "tempus-nexus",
+      title: "tempus-nexus",
+      date: "Oct 7, 2026",
+      href: "dreg/tempus-nexus",
+      type: "dreg",
+    },
   ],
 
   connections: [
