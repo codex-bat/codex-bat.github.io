@@ -1,0 +1,680 @@
+/* ============================================================
+   GHOST THEME — pure black canvas
+   ------------------------------------------------------------
+   • post text + titles  → pure white, with black film grain
+   • everything else     → a whisper on black (barely visible)
+   ============================================================ */
+
+:root {
+    /* --- the only bright things in this theme --- */
+    --ink: #ffffff;
+    /* post text + titles                */
+    --ink-soft: #e9e9e9;
+    /* quotes, inline code, post links   */
+
+    /* --- everything else: so dim it's almost gone --- */
+    --ghost: #131313;
+    /* borders, rules, dividers          */
+    --ghost-2: #1c1c1c;
+    /* chrome text: nav, meta, footer    */
+    --ghost-3: #3a3a3a;
+    /* hover state                       */
+    --ghost-4: #4a4a4a;
+    /* stronger hover                    */
+
+    --bg-deep: #000000;
+    --error: #5a1c1c;
+
+    /* legacy aliases so nothing breaks */
+    --accent: #131313;
+    --dim: #171717;
+    --text: #1c1c1c;
+
+    /* ============================================================
+       FILM GRAIN
+       Pure black dots + smudges, transparent everywhere else.
+       Layer 1: high-frequency fractal noise  → fine dots
+       Layer 2: low-frequency fractal noise   → smudges
+       Both are forced to RGB 0 with a luminance→alpha matrix,
+       so the grain is *black* and only ever darkens the glyphs.
+       ============================================================ */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0.55 0.55 0 -0.62'/%3E%3C/filter%3E%3Cfilter id='s' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0.9 0.9 0 -1.35'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23f)'/%3E%3Crect width='300' height='300' filter='url(%23s)'/%3E%3C/svg%3E");
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    overflow-y: auto;
+    background: #000;
+    color: var(--ghost-2);
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: #1a1a1a #000;
+}
+
+/* ---------------- scrollbar : dim, but findable ---------------- */
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: radial-gradient(circle at 35% 35%,
+            #262626 0%,
+            #1c1c1c 40%,
+            #131313 75%,
+            #0b0b0b 100%);
+    border: 2px solid #000;
+    border-radius: 999px;
+    min-height: 26px;
+    box-shadow: none;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: radial-gradient(circle at 35% 35%,
+            #3a3a3a 0%,
+            #2c2c2c 35%,
+            #1e1e1e 70%,
+            #141414 100%);
+}
+
+body::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+::selection {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   GRAIN ON TEXT — and *only* on text
+   ------------------------------------------------------------
+   background-clip:text paints the background inside the glyphs
+   only. The stack is:  grain (black dots)  →  solid currentColor.
+   So every glyph becomes white with black grain bitten out of it.
+   ============================================================ */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    blockquote,
+    .centered-title {
+        background-image: var(--grain), linear-gradient(currentColor, currentColor);
+        background-repeat: repeat, no-repeat;
+        background-size: 300px 300px, 100% 100%;
+        background-position: 0 0, 0 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* anything that carries its own colour needs its fill back,
+       otherwise the parent's clip would swallow it */
+    a,
+    code,
+    .redacted,
+    .dots-toggle,
+    .hidden-reveal,
+    .highlight,
+    .danger,
+    .dim,
+    .s,
+    .post-image-caption {
+        -webkit-text-fill-color: currentColor;
+    }
+}
+
+/* ---------------- redacted ---------------- */
+.redacted {
+    background: #101010;
+    color: transparent;
+    text-shadow: none;
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    user-select: none;
+    display: inline-block;
+    cursor: help;
+    transition: 0.15s linear;
+}
+
+.redacted:hover {
+    background: #1a1a1a;
+    color: var(--ink);
+}
+
+/* ---------------- header ---------------- */
+header {
+    border-bottom: 1px solid var(--ghost);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--ink);
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: var(--ghost-2);
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--ghost-3);
+    text-decoration: underline;
+}
+
+/* ---------------- inline code ---------------- */
+code:not(pre code) {
+    background: #060606;
+    color: var(--ink-soft);
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: 'Courier New', 'Fira Code', monospace;
+    border: 1px solid var(--ghost);
+    box-shadow: none;
+    transition: all 0.1s ease;
+}
+
+code:not(pre code):hover {
+    background: #0d0d0d;
+    border-color: #242424;
+    color: #fff;
+}
+
+/* ---------------- meta ---------------- */
+.post-meta {
+    color: var(--ghost-2);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--ghost);
+    padding-left: 0.5rem;
+}
+
+/* ---------------- content shell ---------------- */
+.content {
+    background: #000;
+    border: 1px solid #101010;
+    padding: 1.5rem;
+}
+
+h2 {
+    border-left: 4px solid var(--ghost);
+    padding-left: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-size: 1.5rem;
+    color: var(--ink);
+}
+
+h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    border-left: 3px solid var(--ghost);
+    padding-left: 0.7rem;
+    color: var(--ink);
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--ghost-2);
+    font-size: 0.7rem;
+    border-top: 1px dashed var(--ghost);
+    padding-top: 1rem;
+}
+
+/* ---------------- inline utilities ---------------- */
+.b {
+    font-weight: bold;
+}
+
+.bi {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.i {
+    font-style: italic;
+}
+
+.u {
+    text-decoration: underline;
+}
+
+.s {
+    text-decoration: line-through;
+    color: var(--dim);
+}
+
+/* ---------------- links ---------------- */
+a {
+    color: var(--ghost-2);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--ghost-3);
+    text-decoration-thickness: 0.2em;
+    text-decoration-line: underline;
+    text-decoration-color: var(--ghost-3);
+}
+
+blockquote {
+    border-left: 3px solid var(--ghost);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--ink-soft);
+}
+
+ul,
+ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--ghost);
+    margin: 3rem 0;
+}
+
+pre {
+    background: #040404;
+    padding: 1rem;
+    border: 1px solid var(--ghost);
+    overflow-x: auto;
+    color: var(--ink-soft);
+}
+
+.highlight {
+    color: var(--ink);
+    font-weight: bold;
+}
+
+.danger {
+    color: var(--error);
+}
+
+.dim {
+    color: var(--dim);
+}
+
+/* ---------------- post body ---------------- */
+.post-content p,
+.post-content li {
+    color: var(--ink);
+}
+
+.post-content a {
+    color: var(--ink-soft);
+    text-decoration-color: var(--ghost-3);
+}
+
+.post-content a:hover {
+    color: #fff;
+    text-decoration-color: var(--ghost-4);
+}
+
+.post-content pre {
+    background: #040404;
+    border: 1px solid var(--ghost);
+    padding: 0.5rem;
+    overflow-x: auto;
+}
+
+.post-content hr {
+    margin: 2rem 0;
+    border-color: var(--ghost);
+}
+
+.post-content .dim {
+    color: var(--ghost-2);
+}
+
+/* ---------------- centered title ---------------- */
+.centered-title {
+    text-align: center;
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    margin: 1.8rem 0 1rem 0;
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    background: transparent;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    word-break: keep-all;
+    display: block;
+    width: 100%;
+    clear: both;
+    transition: all 0.2s ease;
+}
+
+.centered-title:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.18);
+    letter-spacing: 0.5px;
+}
+
+.centered-title.small {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+/* ---------------- images ---------------- */
+.post-image {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    max-width: 100%;
+    border: 2px solid var(--ghost);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    background: #000;
+}
+
+.post-image:hover {
+    border-color: #242424;
+}
+
+.post-image-wrapper {
+    margin: 2rem 0 1.5rem 0;
+    text-align: center;
+}
+
+.post-image-caption {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ghost-2);
+    text-align: center;
+    margin-top: 0.6rem;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    border-left: 2px solid var(--ghost);
+    padding-left: 1rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-image-caption code {
+    font-size: 0.75rem;
+    background: #0a0a0a;
+    color: var(--ghost-3);
+    border-color: var(--ghost);
+}
+
+/* ---------------- back to top ---------------- */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #000;
+    border: 1px solid var(--ghost);
+    color: var(--ghost-2);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s, color 0.2s, border-color 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-to-top:hover {
+    background: #0a0a0a;
+    border-color: var(--ghost-4);
+    color: var(--ghost-4);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================================
+   AUDIO PLAYER — dim shell
+   ============================================================ */
+.audio-player {
+    background: #000;
+    border: 1px solid var(--ghost);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.audio-player:hover {
+    border-color: #222;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.03);
+}
+
+.audio-label {
+    font-size: 0.8rem;
+    color: var(--ghost-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--ghost);
+    padding-left: 0.6rem;
+    font-family: 'Courier New', monospace;
+}
+
+.audio-player audio {
+    width: 100%;
+    display: block;
+    color-scheme: dark;
+    accent-color: #2a2a2a;
+    border-radius: 6px;
+    outline: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.audio-player audio:focus-visible {
+    outline: 2px solid var(--ghost-4);
+    outline-offset: 2px;
+}
+
+/* ---- Chrome / WebKit control internals ---- */
+.audio-player audio::-webkit-media-controls-panel {
+    background: #000;
+    border-radius: 6px;
+}
+
+.audio-player audio::-webkit-media-controls-timeline-container {
+    background: transparent;
+    padding: 0 6px;
+}
+
+.audio-player audio::-webkit-media-controls-timeline {
+    background: #131313;
+    border-radius: 4px;
+    height: 6px;
+    margin: 0 8px;
+}
+
+.audio-player audio::-webkit-media-controls-timeline::-webkit-slider-runnable-track {
+    background: #131313;
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid #1c1c1c;
+}
+
+.audio-player audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 2px solid #000;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.06);
+    margin-top: -5px;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.audio-player audio::-webkit-media-controls-timeline::-webkit-slider-thumb:hover {
+    background: #4a4a4a;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.12);
+}
+
+.audio-player audio::-webkit-media-controls-current-time-display,
+.audio-player audio::-webkit-media-controls-time-remaining-display {
+    color: var(--ghost-2);
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    text-shadow: none;
+}
+
+.audio-player audio::-webkit-media-controls-volume-slider {
+    background: #131313;
+    border-radius: 4px;
+    height: 6px;
+}
+
+.audio-player audio::-webkit-media-controls-volume-slider::-webkit-slider-runnable-track {
+    background: #131313;
+    height: 6px;
+    border-radius: 3px;
+    border: 1px solid #1c1c1c;
+}
+
+.audio-player audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 2px solid #000;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.06);
+    margin-top: -4px;
+    cursor: pointer;
+}
+
+/* play / mute icons — dimmed, no colour cast */
+.audio-player audio::-webkit-media-controls-play-button,
+.audio-player audio::-webkit-media-controls-mute-button {
+    filter: none;
+    opacity: 0.22;
+    transition: opacity 0.15s ease;
+}
+
+.audio-player audio::-webkit-media-controls-play-button:hover,
+.audio-player audio::-webkit-media-controls-mute-button:hover {
+    opacity: 0.45;
+}
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 768px) {
+    .post-image-caption {
+        max-width: 100%;
+        padding-left: 0.6rem;
+    }
+
+    .back-to-top {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.5rem;
+        opacity: 0.1;
+    }
+}
+
+/* ============================================================
+   HIDDEN MESSAGE + CLICKABLE DOTS
+   ============================================================ */
+.hidden-reveal {
+    display: none;
+}
+
+.hidden-reveal.active {
+    display: inline;
+    color: inherit;
+    font-weight: inherit;
+}
+
+.dots-toggle {
+    display: inline;
+    cursor: pointer;
+    color: var(--ghost-3);
+    font-size: 0.85em;
+    letter-spacing: -0.5px;
+    background: transparent;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.dots-toggle:hover {
+    background: #141414;
+    color: var(--ghost-4);
+}
+
+.dots-toggle:active {
+    background: #1c1c1c;
+}
+
+.dots-toggle.revealed {
+    cursor: default;
+    color: inherit;
+    background: transparent;
+    font-size: inherit;
+    letter-spacing: inherit;
+    user-select: text;
+}
