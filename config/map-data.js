@@ -564,6 +564,13 @@ window.__MAP_DATA = {
       href: "post/protean",
       type: "post",
     },
+    {
+      id: "darkness",
+      title: "The Dark",
+      date: "Oct 9, 2026",
+      href: "story/darkness",
+      type: "story",
+    },
   ],
 
   connections: [
