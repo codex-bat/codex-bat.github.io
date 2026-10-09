@@ -550,6 +550,20 @@ window.__MAP_DATA = {
       href: "dreg/tempus-nexus",
       type: "dreg",
     },
+    {
+      id: "obfuscation",
+      title: "obfuscation",
+      date: "Oct 9, 2026",
+      href: "dreg/obfuscation",
+      type: "dreg",
+    },
+    {
+      id: "protean",
+      title: "protean",
+      date: "Oct 9, 2026",
+      href: "post/protean",
+      type: "post",
+    },
   ],
 
   connections: [
