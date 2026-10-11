@@ -571,6 +571,13 @@ window.__MAP_DATA = {
       href: "story/darkness",
       type: "story",
     },
+    {
+      id: "hollow",
+      title: "hollow",
+      date: "Oct 11, 2026",
+      href: "post/hollow",
+      type: "post",
+}
   ],
 
   connections: [
