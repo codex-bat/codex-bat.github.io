@@ -577,7 +577,14 @@ window.__MAP_DATA = {
       date: "Oct 11, 2026",
       href: "post/hollow",
       type: "post",
-}
+},
+    {
+      id: "boredom",
+      title: "boredom",
+      date: "Oct 13, 2026",
+      href: "dreg/boredom",
+      type: "dreg",
+    },
   ],
 
   connections: [
