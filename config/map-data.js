@@ -592,6 +592,13 @@ window.__MAP_DATA = {
       href: "dreg/exposition",
       type: "dreg",
     },
+    {
+      id: "what",
+      title: "WHAT.",
+      date: "Oct 15, 2026",
+      href: "dreg/what",
+      type: "dreg",
+    },
   ],
 
   connections: [
