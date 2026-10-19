@@ -585,6 +585,13 @@ window.__MAP_DATA = {
       href: "dreg/exposition",
       type: "dreg",
     },
+    {
+      id: "cruelty",
+      title: "cruelty",
+      date: "Oct 19, 2026",
+      href: "dreg/cruelty",
+      type: "dreg",
+    },
   ],
 
   connections: [
