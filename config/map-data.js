@@ -592,6 +592,13 @@ window.__MAP_DATA = {
       href: "dreg/cruelty",
       type: "dreg",
     },
+    {
+      id: "artist",
+      title: "artist",
+      date: "Oct 20, 2026",
+      href: "post/artist",
+      type: "post",
+    },
   ],
 
   connections: [
