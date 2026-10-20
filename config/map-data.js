@@ -606,6 +606,13 @@ window.__MAP_DATA = {
       href: "dreg/resistance",
       type: "dreg",
     },
+    {
+      id: "redoubt",
+      title: "redoubt",
+      date: "Oct 20, 2026",
+      href: "dreg/redoubt",
+      type: "dreg",
+    },
   ],
 
   connections: [
