@@ -599,6 +599,13 @@ window.__MAP_DATA = {
       href: "post/artist",
       type: "post",
     },
+    {
+      id: "resistance",
+      title: "resistance",
+      date: "Oct 20, 2026",
+      href: "dreg/resistance",
+      type: "dreg",
+    },
   ],
 
   connections: [
