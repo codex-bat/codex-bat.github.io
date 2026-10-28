@@ -613,6 +613,13 @@ window.__MAP_DATA = {
       href: "dreg/redoubt",
       type: "dreg",
     },
+    {
+      id: "coffin",
+      title: "coffin",
+      date: "Oct 28, 2026",
+      href: "post/coffin",
+      type: "post",
+    },
   ],
 
   connections: [
