@@ -620,6 +620,13 @@ window.__MAP_DATA = {
       href: "post/coffin",
       type: "post",
     },
+    {
+      id: "fair",
+      title: "fair",
+      date: "Oct 30, 2026",
+      href: "post/fair",
+      type: "post",
+    },
   ],
 
   connections: [
