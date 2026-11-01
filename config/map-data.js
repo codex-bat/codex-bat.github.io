@@ -627,6 +627,13 @@ window.__MAP_DATA = {
       href: "post/fair",
       type: "post",
     },
+    {
+      id: "tired",
+      title: "tired x2",
+      date: "Nov 1, 2026",
+      href: "dreg/tired",
+      type: "dreg",
+    },
   ],
 
   connections: [
