@@ -634,6 +634,13 @@ window.__MAP_DATA = {
       href: "dreg/tired",
       type: "dreg",
     },
+    {
+      id: "statutory",
+      title: "statutory",
+      date: "Nov 2, 2026",
+      href: "post/statutory",
+      type: "post",
+    },
   ],
 
   connections: [
