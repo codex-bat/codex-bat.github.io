@@ -641,6 +641,13 @@ window.__MAP_DATA = {
       href: "post/statutory",
       type: "post",
     },
+    {
+      id: "we-own-water",
+      title: "we own water",
+      date: "Nov 4, 2026",
+      href: "post/we-own-water",
+      type: "post",
+    },
   ],
 
   connections: [
