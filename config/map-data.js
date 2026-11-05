@@ -648,6 +648,13 @@ window.__MAP_DATA = {
       href: "post/we-own-water",
       type: "post",
     },
+    {
+      id: "stress",
+      title: "stress",
+      date: "Nov 5, 2026",
+      href: "dreg/stress",
+      type: "dreg",
+    },
   ],
 
   connections: [
