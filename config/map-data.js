@@ -655,6 +655,13 @@ window.__MAP_DATA = {
       href: "dreg/stress",
       type: "dreg",
     },
+    {
+      id: "number-two",
+      title: "number two",
+      date: "Nov 6, 2026",
+      href: "dreg/number-two",
+      type: "dreg",
+    },
   ],
 
   connections: [
