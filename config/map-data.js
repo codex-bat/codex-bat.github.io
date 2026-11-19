@@ -662,6 +662,13 @@ window.__MAP_DATA = {
       href: "dreg/number-two",
       type: "dreg",
     },
+    {
+      id: "sage",
+      title: "sage",
+      date: "Nov 19, 2026",
+      href: "dreg/sage",
+      type: "dreg",
+    },
   ],
 
   connections: [
