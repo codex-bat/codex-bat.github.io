@@ -669,6 +669,13 @@ window.__MAP_DATA = {
       href: "dreg/sage",
       type: "dreg",
     },
+    {
+      id: "aftermath",
+      title: "aftermath",
+      date: "Nov 24, 2026",
+      href: "post/aftermath",
+      type: "post",
+    },
   ],
 
   connections: [
