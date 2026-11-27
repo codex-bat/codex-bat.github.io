@@ -676,6 +676,13 @@ window.__MAP_DATA = {
       href: "post/aftermath",
       type: "post",
     },
+     {
+      id: "unnamedlp",
+      title: "unnamedLP",
+      date: "Nov 26, 2026",
+      href: "story/unnamedLP",
+      type: "story",
+    },
   ],
 
   connections: [
@@ -758,5 +765,7 @@ window.__MAP_DATA = {
     { source: "project-umbra", target: "servility" },
     { source: "project-umbra", target: "action-p1" },
     { source: "project-umbra", target: "eye-collector" },
+    { source: "unnamedlp", target: "leveler" },
+    { source: "unnamedlp", target: "piercer" },
   ],
 };
