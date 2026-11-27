@@ -690,6 +690,13 @@ window.__MAP_DATA = {
       href: "dreg/rs",
       type: "dreg",
     },
+    {
+      id: "glorious",
+      title: "glorious",
+      date: "Nov 27, 2026",
+      href: "dreg/glorious",
+      type: "dreg",
+    },
   ],
 
   connections: [
